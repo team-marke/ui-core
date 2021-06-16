@@ -1,0 +1,48 @@
+---
+permalink: '/admin/'
+---
+{% set currentUrl = global.site_absolute_url + page.url %}
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ site.faviconPath180x180 }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ site.faviconPath32x32 }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ site.faviconPath16x16 }}">
+    <link rel="canonical" href="{{ currentUrl }}" />
+    <title>Admin - {{site.name}}</title>
+    <meta name="author" content="{{ site.devName }}">
+  </head>
+  <body>
+    <script>
+      window.CMS_MANUAL_INIT = true;
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key={{ global.gmaps_key }}&libraries=places"></script>
+    <script src="../admin/assets/cms.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" crossorigin="anonymous">
+    <style>
+    aside a span {
+      display: inline-flex !important;
+      justify-content: center;
+      align-items: center
+    }
+    aside a span::before {
+      font-family: "Font Awesome 5 Free";
+      font-size: 1rem;
+      font-weight: 900;
+    }
+    aside a span svg {
+      display: none !important;
+    }
+    aside a span::before {
+      font-family: "Font Awesome 5 Free";
+      font-size: 1rem;
+    }
+    aside a[href="#/collections/site"] span::before {
+      content: "\f013";
+    }
+    </style>
+  </body>
+</html>

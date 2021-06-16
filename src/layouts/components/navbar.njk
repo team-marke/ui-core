@@ -1,0 +1,42 @@
+{% macro render(navbarLinks = '', currentPage = '', brandLogo = '', brandLogoMobile = '', brandUrl = '') %}
+<nav class="navbar navbar-light navbar-expand-lg">
+  <a class="navbar-brand" href="{{ brandUrl | url | safe }}">
+    <picture>
+      <source 
+        media="(max-width:768px)" 
+        srcset="{%- imageUrl brandLogoMobile, { fetch_format: 'auto', quality: 'auto', dpr: 2 } %}"
+      >
+      <img 
+        class="navbar-brand-logo"
+        alt="Logo"
+        height="40"
+        src="{%- imageUrl brandLogo, { fetch_format: 'auto', quality: 'auto', dpr: 2 } %}"
+      >
+    </picture> 
+  </a>
+  <div class="collapse navbar-collapse" id="top-navbar-collapse">
+    <ul class="navbar-nav">
+      {%- for home in navbarLinks %}
+      {%- for entry in home.children %}
+      <li class="nav-item{% if entry.children | length and entry.overlayType == 'dropdown' %} dropdown{% endif %}">
+        {{ entry | navbarLink(currentPage) | safe }}
+        {%- if entry.children | length and entry.overlayType == 'dropdown' %}
+          <div class="dropdown-menu dropdown-menu--navbar dropdown-menu-md-right" aria-labelledby="dropdown-menu-{{ entry.title | slug | safe }}">
+            {%- if entry.dropDownTitle %}
+              <div class="dropdown-item-text h3 text-primary title-abril m-0">{{ entry.dropDownTitle }}</div>
+            {% endif %}
+            {%- for child in entry.children %}
+              <a class="dropdown-item{% if child.url == page.url %} active{% endif %}" href="{{ child.url | url }}">{{ child.title | e | safe }}</a>
+            {%- endfor %}
+          </div>
+        {% endif %}
+      </li>
+      {%- endfor %}
+      {%- endfor %}
+    </ul>
+  </div>
+  <button id="navbar-site-menu-mobile-toggler" class="navbar-toggler site-menu-toggle" type="button" data-target="navbar-site-menu-mobile-overlay">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+</nav>
+{% endmacro %}

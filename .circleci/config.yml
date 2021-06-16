@@ -1,0 +1,113 @@
+version: 2.1
+parameters:
+  run_workflow_main:
+    default: true
+    type: boolean
+  run_workflow_staging:
+    default: true
+    type: boolean
+executors:
+  node:
+    parameters:
+      image:
+        type: string
+        default: '14'
+    docker:
+      - image: circleci/node:<< parameters.image >>
+        environment:
+          TZ: 'America/Sao_Paulo'
+    resource_class: medium
+    environment:
+      TZ: 'America/Sao_Paulo'
+aliases:
+  restore_cache: &restore_cache
+    restore_cache:
+      name: Restore build cache
+      keys: 
+        - build-{{ .Branch }}-{{ checksum "package.json" }}-{{ checksum "yarn.lock" }}
+        - build-{{ .Branch }}
+  save_cache: &save_cache
+    save_cache:
+      name: Save build cache
+      key: build-{{ .Branch }}-{{ checksum "package.json" }}-{{ checksum "yarn.lock" }}
+      paths:
+        - ./node_modules/
+        - ./.yarn/
+  yarn_install: &yarn_install
+    run:
+      name: Install yarn dependencies
+      command: yarn
+  yarn_build: &yarn_build
+    run:
+      name: Build production website with 11ty and webpack
+      command: yarn run build
+  yarn_stage: &yarn_stage
+    run:
+      name: Build staging website with 11ty and webpack
+      command: yarn run stage
+  firebase_deploy: &firebase_deploy
+    run:
+      name: Firebase deploy
+      command: ./node_modules/.bin/firebase deploy --token "$FIREBASE_TOKEN" --only hosting:production
+  firebase_deploy_staging: &firebase_deploy_staging
+    run:
+      name: Firebase deploy
+      command: ./node_modules/.bin/firebase deploy --token "$FIREBASE_TOKEN_STAGING" --only hosting:staging
+  install_curl: &install_curl
+    run:
+      name: Install curl
+      command: sudo apt install curl
+  purge_cloudflare_cache: &purge_cloudflare_cache
+    run:
+      name: Purge cloudflare cache
+      command: |-
+        curl -X POST "https://api.cloudflare.com/client/v4/zones/$CF_ZONE/purge_cache" \
+        -H "X-Auth-Email: $CF_EMAIL" \
+        -H "X-Auth-Key: $CF_KEY" \
+        -H "Content-Type: application/json" \
+        --data '{"purge_everything":true}'
+  ping_google_sitemap: &ping_google_sitemap
+    run:
+      name: Ping google with sitemap.xml URL
+      command: |-
+        curl "https://www.google.com/ping?sitemap=$SITEMAP_URL"    
+jobs:
+  build_and_deploy_prod:
+    executor: node
+    steps:
+      - checkout
+      - <<: *restore_cache
+      - <<: *yarn_install
+      - <<: *yarn_build
+      - <<: *save_cache
+      - <<: *install_curl
+      - <<: *firebase_deploy
+      - <<: *purge_cloudflare_cache
+      - <<: *ping_google_sitemap
+  build_and_deploy_staging:
+    executor: node
+    steps:
+      - checkout
+      - <<: *restore_cache
+      - <<: *yarn_install
+      - <<: *yarn_stage
+      - <<: *save_cache
+      - <<: *firebase_deploy_staging
+workflows:
+  version: 2
+  main:
+    when: << pipeline.parameters.run_workflow_main >>
+    jobs:
+      - build_and_deploy_prod:
+          filters:
+            branches:
+              only:
+                - main
+  staging:
+    when: << pipeline.parameters.run_workflow_staging >>
+    jobs:
+      - build_and_deploy_staging:
+          filters:
+            branches:
+              only:
+                - staging

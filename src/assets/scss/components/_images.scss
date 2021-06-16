@@ -1,0 +1,100 @@
+// Responsive images (ensure images don't scale beyond their parents)
+//
+// This is purposefully opt-in via an explicit class rather than being the default for all `<img>`s.
+// We previously tried the "images are responsive by default" approach in Bootstrap v2,
+// and abandoned it in Bootstrap v3 because it breaks lots of third-party widgets (including Google Maps)
+// which weren't expecting the images within themselves to be involuntarily resized.
+// See also https://github.com/twbs/bootstrap/issues/18178
+.img-fluid {
+  @include img-fluid();
+  overflow: hidden;
+  text-indent: 100%;
+  white-space: nowrap;
+}
+
+// Image thumbnails
+.img-thumbnail {
+  padding: $thumbnail-padding;
+  background-color: $thumbnail-bg;
+  border: $thumbnail-border-width solid $thumbnail-border-color;
+  @include border-radius($thumbnail-border-radius);
+  @include box-shadow($thumbnail-box-shadow);
+  // Keep them at most 100% wide
+  @include img-fluid();
+}
+
+// Images as background
+.img-bg {
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+  @include media-breakpoint-down(lg) {
+      object-position: 33.33%;
+      opacity: 0.5;
+  }
+  &--align-left {
+      object-position: left;
+      @include media-breakpoint-down(xl) {
+          object-position: 20%;
+      }
+      @include media-breakpoint-down(lg) {
+          object-position: 33.33%;
+      }
+  }
+  &--align-right {
+      object-position: right;
+      @include media-breakpoint-down(xl) {
+          object-position: 80%;
+      }
+      @include media-breakpoint-down(lg) {
+          object-position: 66.66%;
+      }
+  }
+  text-indent: 100%;
+  white-space: nowrap;
+}
+
+.img-bg-wrapper {
+  position: relative;
+  z-index: 1;
+}
+
+// Images with object fit
+.img-fit-cover {
+  object-fit: cover;
+  overflow: hidden;
+  text-indent: 100%;
+  white-space: nowrap;
+}
+
+.img-fit-contain {
+  object-fit: contain;
+  overflow: hidden;
+  text-indent: 100%;
+  white-space: nowrap;
+}
+
+//
+// Figures
+//
+.figure {
+  // Ensures the caption's text aligns with the image.
+  display: inline-block;
+}
+
+.figure-img {
+  margin-bottom: $spacer / 2;
+  line-height: 1;
+}
+
+.figure-caption {
+  @include font-size($figure-caption-font-size);
+  color: $figure-caption-color;
+}

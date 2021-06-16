@@ -1,0 +1,51 @@
+{
+  "extends": "eslint:recommended",
+  "parserOptions": {
+    "sourceType": "module"
+  },
+  "rules": {
+    "no-unused-vars": 1
+  },
+  "globals": {
+    "Atomics": "readonly",
+    "SharedArrayBuffer": "readonly"
+  },
+  "overrides": [
+    {
+      "files": ["src/assets/js/**/*.js"],
+      "env": {
+        "browser": true,
+        "es2020": true
+      }
+    },
+    {
+      "files": [
+        ".eleventy.js",
+        "webpack.*.js",
+        "src/filters/**/*.js",
+        "src/shortcodes/**/*.js",
+        "src/transforms/**/*.js",
+        "src/**/*.11tydata.js",
+        "src/**/*.11ty.js",
+        "src/data/global/**/*.js"
+      ],
+      "env": {
+        "es2020": true,
+        "node": true
+      }
+    },
+    {
+      "files": ["src/admin/**/*.js"],
+      "env": {
+        "browser": true,
+        "es2020": true,
+        "react": true
+      },
+      "plugins": ["react-hooks"],
+      "rules": {
+        "react-hooks/rules-of-hooks": "error",
+        "react-hooks/exhaustive-deps": "warn"
+      }
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+*.log
+*.scssc
+*.swp
+.cache
+.firebase
+.yarn/*
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
+.pnp.*
+.DS_Store
+.sass-cache
+dist
+node_modules
+npm-debug.*
