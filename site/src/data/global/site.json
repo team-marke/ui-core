@@ -1,0 +1,17 @@
+{
+  "name": "Marke UI",
+  "protocol": "https",
+  "domain": "ui.marke.com.br",
+  "version": "{{ pkg.version }}",
+  "author": "{{ pkg.author }}",
+  "locale": "pt-BR",
+  "logo": "",
+  "logoMobile": "",
+  "favicon": "",
+  "social": {
+    "facebook": "",
+    "instagram": "",
+    "youtube": "",
+    "linkedin": ""
+  }
+}

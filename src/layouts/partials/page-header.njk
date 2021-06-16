@@ -1,7 +1,0 @@
-{% import "components/navbar.njk" as navbar %}
-<header class="page-header">
-  <div class="container position-relative">
-    {%- set navbarLinks = collections.navbar | eleventyNavigation %}
-    {{ navbar.render(navbarLinks = navbarLinks, currentPage = page, brandLogo = site.logo, brandLogoMobile = site.logoMobile, brandUrl = global.site_absolute_url) }}
-  </div>
-</header>

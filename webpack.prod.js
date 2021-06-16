@@ -11,12 +11,4 @@ module.exports = [
       version: package.version,
     }
   }),
-  merge(common.cms, {
-    mode: 'production',
-    cache: {
-      name: 'production-build-cms',
-      type: 'filesystem',
-      version: package.version,
-    }
-  }),
 ];

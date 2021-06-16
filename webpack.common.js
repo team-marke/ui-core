@@ -7,10 +7,10 @@ const hash = require('object-hash');
 module.exports = {
   main: {
     entry: {
-      app: './src/assets/js/main.js',
+      app: './site/src/assets/js/main.js',
     },
     output: {
-      path: path.resolve(__dirname, 'dist/assets'),
+      path: path.resolve(__dirname, 'site/dist/assets'),
       filename: '[name].' + hash.MD5(package) + '.js',
       chunkFilename: '[name].[chunkhash].js',
       publicPath: '/assets/',
@@ -61,33 +61,6 @@ module.exports = {
       fallback: {
         stream: require.resolve('stream-browserify'),
       },
-    },
-  },
-  cms: {
-    entry: {
-      cms: './src/admin/cms.js',
-    },
-    output: {
-      path: path.resolve(__dirname, 'dist/admin/assets/'),
-      filename: '[name].js',
-      chunkFilename: '[name].[chunkhash].js',
-      publicPath: '/admin/assets/',
-    },
-    module: {
-      rules: [
-        {
-          test: /\.m?js$/,
-          include: [path.resolve(__dirname, 'src/admin')],
-          use: {
-            loader: 'babel-loader',
-            options: {
-              presets: ['@babel/preset-react'],
-              plugins: ['@babel/plugin-proposal-object-rest-spread'],
-              plugins: ['@babel/plugin-proposal-class-properties'],
-            },
-          },
-        },
-      ],
     },
   },
 };

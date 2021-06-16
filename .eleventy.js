@@ -22,34 +22,34 @@ module.exports = (eleventyConfig) => {
   // Setup nunjucks environment instance for template layouts
   if (process.env.ELEVENTY_ENV == 'development') {
     global.nunjucksEnvironment = new Nunjucks.Environment(
-      new Nunjucks.FileSystemLoader('src/layouts', { watch: true, noCache: false })
+      new Nunjucks.FileSystemLoader('site/src/layouts', { watch: true, noCache: false })
     );
   } else {
-    global.nunjucksEnvironment = new Nunjucks.Environment(new Nunjucks.FileSystemLoader('src/layouts'));
+    global.nunjucksEnvironment = new Nunjucks.Environment(new Nunjucks.FileSystemLoader('site/src/layouts'));
   }
   eleventyConfig.setLibrary('njk', global.nunjucksEnvironment);
 
   // Eleventy config dir options
   const dirs = {
-    input: 'src',
-    output: 'dist',
+    input: 'site/src',
+    output: 'site/dist',
     data: 'data/global',
     layouts: 'layouts',
   };
 
   // Add watch targets
-  eleventyConfig.addWatchTarget('./src/filters/');
-  eleventyConfig.addWatchTarget('./src/shortcodes/');
-  eleventyConfig.addWatchTarget('./src/transforms/');
-  eleventyConfig.addWatchTarget('./src/collections/');
+  eleventyConfig.addWatchTarget('./site/src/filters/');
+  eleventyConfig.addWatchTarget('./site/src/shortcodes/');
+  eleventyConfig.addWatchTarget('./site/src/transforms/');
+  eleventyConfig.addWatchTarget('./site/src/collections/');
 
   // Dynamically get the path for all project filters, shortcodes, tranforms, collections and layouts
   const paths = {
-    filters: path.join(process.cwd(), './src/filters/*.js'),
-    shortcodes: path.join(process.cwd(), './src/shortcodes/*.js'),
-    transforms: path.join(process.cwd(), './src/transforms/*.js'),
-    collections: path.join(process.cwd(), './src/collections/*.js'),
-    layouts: path.join(process.cwd(), './src/layouts/*.njk'),
+    filters: path.join(process.cwd(), './site/src/filters/*.js'),
+    shortcodes: path.join(process.cwd(), './site/src/shortcodes/*.js'),
+    transforms: path.join(process.cwd(), './site/src/transforms/*.js'),
+    collections: path.join(process.cwd(), './site/src/collections/*.js'),
+    layouts: path.join(process.cwd(), './site/src/layouts/*.njk'),
   };
 
   // Returns an array of matching entries for the paths
@@ -78,7 +78,7 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.setDataDeepMerge(true);
 
   // robots.txt passthrough
-  eleventyConfig.addPassthroughCopy('src/robots.txt');
+  eleventyConfig.addPassthroughCopy('./site/src/robots.txt');
 
   // Setup 404 for browsersync live reload on development environments
   if (process.env.ELEVENTY_ENV == 'development') {
@@ -87,7 +87,7 @@ module.exports = (eleventyConfig) => {
       open: 'local',
       callbacks: {
         ready: (err, browserSync) => {
-          const content_404 = fs.readFileSync('dist/404.html');
+          const content_404 = fs.readFileSync('./site/dist/404.html');
           browserSync.addMiddleware('*', (req, res) => {
             res.write(content_404);
             res.end();

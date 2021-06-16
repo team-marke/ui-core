@@ -1,0 +1,25 @@
+<title>{{ metadata.title | e | safe }}</title>
+<link rel="canonical" href="{{ global.page_absolute_url }}" />
+<meta property="og:locale" content="{{site.locale | hyphenToUnderline | safe }}" />
+<meta property="og:type" content="{{ og.type }}" />
+<meta property="og:title" content="{{ metadata.title }}" />
+<meta property="og:url" content="{{ global.page_absolute_url }}" />
+<meta property="og:site_name" content="{{ site.name }}" />
+{% if metadata.description %}
+<meta name="description" content="{{ metadata.description }}" />
+<meta name="twitter:description" content="{{ metadata.description }}" />
+<meta property="og:description" content="{{ metadata.description }}" />
+{% endif %}
+{% if metadata.image %}
+  {% set ogImage = metadata.image %}
+{% else %}
+  {% if masthead.image %}
+    {% set ogImage = masthead.image %}
+  {% endif %}
+{% endif %}
+{% if ogImage %}
+<meta property="og:image" content="" />
+<meta name="twitter:image" content="" />
+<meta property="og:image:alt" content="Imagem da página {{ metadata.title | e | safe }}" />
+<meta name="twitter:image:alt" content="Imagem da página {{ metadata.title | e | safe }}" />
+{% endif %}

@@ -1,0 +1,35 @@
+{% macro renderToggler(id='', maxwidth='', alt='video thumbnail', classes=[], videoThumbnail='') %}
+<a class="youtube-modal-toggler {{ classes | join(' ') | e | safe }}" data-bs-toggle="modal" data-target="#youtube-modal-{{ id | safe }}" data-bs-target="#youtube-modal-{{ id | safe }}" style="max-width: {{ maxwidth }}">
+  {% if videoThumbnail %}
+  <div class="ratio ratio-16x9">
+    <img class="youtube-modal-toggler__thumb img-fit-cover" alt="{{ alt | e | safe }}" src="{{ videoThumbnail | url | safe }}" loading="lazy">
+  </div>
+  {% else %}
+  <picture class="youtube-modal-toggler__thumb ratio ratio-16x9">
+    <source media="(min-width: 768px)" srcset="https://i.ytimg.com/vi_webp/{{ id }}/maxresdefault.webp" type="image/webp">
+    <source media="(min-width: 768px)" srcset="https://i.ytimg.com/vi/{{ id }}/maxresdefault.jpg" type="image/jpeg">
+    <source srcset="https://i.ytimg.com/vi_webp/{{ id }}/hqdefault.webp" type="image/webp">
+    <source srcset="https://i.ytimg.com/vi/{{ id }}/hqdefault.jpg" type="image/jpeg">
+    <img src="https://i.ytimg.com/vi/{{ id }}/hqdefault.jpg" class="img-fit-cover" loading="lazy" alt="{{ alt }}">
+  </picture>          
+  {% endif %}        
+  <i class="youtube-modal-toggler__play fas fa-play-circle"></i>
+</a>
+{% endmacro %}
+
+{% macro renderModal(id='') %}
+<div class="modal youtube-modal fade" id="youtube-modal-{{ id | safe }}" tabindex="-1" role="dialog" aria-modal="true">
+  <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+    <div class="modal-content bg-transparent border-0">
+      <div class="modal-header border-0">
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body bg-dark mb-0 p-0">
+        <div class="ratio ratio-16x9">
+          <div class="youtube-modal__video-wrapper" data-videoid="{{ id | safe }}"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endmacro %}

@@ -9,11 +9,4 @@ module.exports = [
       contentBase: './dist',
     },
   }),
-  merge(common.cms, {
-    mode: 'development',
-    devtool: 'inline-source-map',
-    devServer: {
-      contentBase: './dist',
-    },
-  }),
 ];
