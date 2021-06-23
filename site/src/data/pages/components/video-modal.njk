@@ -1,0 +1,26 @@
+---
+tags:
+  - navbar
+eleventyNavigation:
+  key: video-modal
+  title: Video Modal
+  order: 0
+  parent: docs
+metadata:
+  title: 
+  description:
+---
+
+<h1>Youtube Modal</h1>
+<p>Lorem ipsum dolor sit amet, stet intellegat cu mei, pertinax oportere at sea. Eos an mutat blandit. Nec at nisl volumus appellantur, an his brute quodsi. Sit ceteros contentiones at, te summo discere pro.</p>
+<div class="row">
+  <div class="col col-12 col-lg-6">
+    {% set context = {
+      "id": "FTQbiNvZqaY",
+      "alt": "Toto Africa",
+      "toggles_modal": true
+        }
+    %}
+    {% include "video-teaser/video-teaser.njk" %}
+  </div>
+</div>
