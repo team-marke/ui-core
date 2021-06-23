@@ -1,5 +1,5 @@
 {
-  "name": "marke-ui",
+  "name": "@marke/ui-core",
   "version": "0.1.0",
   "description": "",
   "author": "Marke Marketing Digital Ltda",
@@ -61,9 +61,7 @@
     "webpack-merge": "^5.7.3"
   },
   "files": [
-    "dist/{css,js}/*.{css,js,map}",
-    "js/{src,dist}/**/*.{js,map}",
-    "scss/**/*.scss"
+    "components/**/*"
   ],
   "scripts": {
     "develop": "run-p develop:eleventy develop:webpack",

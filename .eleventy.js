@@ -21,11 +21,15 @@ module.exports = (eleventyConfig) => {
 
   // Setup nunjucks environment instance for template layouts
   if (process.env.ELEVENTY_ENV == 'development') {
-    global.nunjucksEnvironment = new Nunjucks.Environment(
-      new Nunjucks.FileSystemLoader('site/src/layouts', { watch: true, noCache: false })
-    );
+    global.nunjucksEnvironment = new Nunjucks.Environment([
+      new Nunjucks.FileSystemLoader('site/src/layouts', { watch: true, noCache: false }),
+      new Nunjucks.FileSystemLoader('components', { watch: true, noCache: false }),
+    ]);
   } else {
-    global.nunjucksEnvironment = new Nunjucks.Environment(new Nunjucks.FileSystemLoader('site/src/layouts'));
+    global.nunjucksEnvironment = new Nunjucks.Environment([
+      new Nunjucks.FileSystemLoader('site/src/layouts'),
+      new Nunjucks.FileSystemLoader('components'),
+    ]);
   }
   eleventyConfig.setLibrary('njk', global.nunjucksEnvironment);
 

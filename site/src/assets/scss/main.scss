@@ -1,11 +1,7 @@
-
-@use '../../../../scss/youtube-modal';
-
 // Abstracts
 @import '~bootstrap/scss/functions';
 @import 'abstracts/variables';
-@import '~bootstrap/scss/variables';
-@import '~bootstrap/scss/mixins';
+@import '../../../../components/sass-config';
 
 // Dependencies
 // @import 'swiper';
@@ -34,10 +30,8 @@
 @import '~bootstrap/scss/toasts';
 @import 'components/images';
 
+@import '../../../../components/video-modal';
+@import '../../../../components/video-teaser';
+
 // Layouts
 @import 'layouts/docs';
-
-// Utils
-@import '~bootstrap/scss/helpers';
-@import '~bootstrap/scss/utilities';
-@import '~bootstrap/scss/utilities/api';

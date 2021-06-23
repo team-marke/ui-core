@@ -1,0 +1,42 @@
+//
+// Video teaser with thumbnail toggler
+//
+
+$toggler-border-radius: .25rem;
+$transition: all .2s ease-in-out;
+$color: #f8f9fa;
+$hover-color: #0d6efd;
+
+.video-teaser {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: $toggler-border-radius;
+  overflow: hidden;
+  img {
+    object-fit: cover;
+    aspect-ratio: 16/9;
+    max-width: 100%;
+  }
+  &__thumb {
+    filter: brightness(0.8);
+    transition: $transition;
+  }
+  &__play {
+    position: absolute;
+    height: 3em;
+    width: 3em !important;
+    color: $color;
+    transition: $transition;
+  }
+  &:hover {
+    .video-teaser__thumb {
+      filter: brightness(1);
+    }
+    .video-teaser__play {
+      color: $hover-color
+    }
+  }
+}

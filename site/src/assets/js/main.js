@@ -4,17 +4,15 @@ import '../scss/main.scss';
 /**
  * Load youtube modal component.
  */
- const loadYoutubeModals = () => {
-  if (document.querySelector('.youtube-modal-toggler')) {
-    import(/* webpackChunkName: "components.youtube-modal" */ '../../../../js/components/youtube-modal').then(({ YoutubeModal }) => {
-      document.querySelectorAll('.youtube-modal-toggler').forEach((toggler) => {
-        let modal = document.querySelector(toggler.dataset.target);
-        new YoutubeModal({
-          modal: modal,
-          toggler: toggler,
+const loadYoutubeModals = () => {
+  if (document.querySelector('.video-teaser')) {
+    import(/* webpackChunkName: "components.video-teaser" */ '../../../../components/video-teaser/video-teaser').then(
+      ({ VideoTeaser }) => {
+        document.querySelectorAll('.video-teaser').forEach((el) => {
+          new VideoTeaser(el);
         });
-      });
-    });
+      }
+    );
   }
 };
 
@@ -28,8 +26,7 @@ const loadDynamicModules = () => {
 /**
  * Load modules that are included in our main JS bundle.
  */
-const loadBundledModules = () => {
-};
+const loadBundledModules = () => {};
 
 /**
  * Bootstrap all the JS modules here.
@@ -45,5 +42,4 @@ if (document.readyState === 'loading') {
   loadBundledModules();
 }
 
-window.onload = () => {
-};
+window.onload = () => {};

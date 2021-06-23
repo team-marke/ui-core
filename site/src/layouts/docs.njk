@@ -1,4 +1,3 @@
-{% import "./youtube-modal.njk" as youtubeModal %}
 {%- extends 'base.njk' %}
 {%- block content %}
   <div class="docs-grid container">
@@ -20,11 +19,16 @@
       <p>Lorem ipsum dolor sit amet, stet intellegat cu mei, pertinax oportere at sea. Eos an mutat blandit. Nec at nisl volumus appellantur, an his brute quodsi. Sit ceteros contentiones at, te summo discere pro.</p>
       <div class="row">
         <div class="col col-12 col-lg-6">
-          {{ youtubeModal.renderToggler(id='FTQbiNvZqaY', alt='Toto Africa')}}
+          {% set context = {
+              "id": "FTQbiNvZqaY",
+              "alt": "Toto Africa",
+              "toggles_modal": true
+            }
+          %}
+          {% include "video-teaser/video-teaser.njk" %}
         </div>
       </div>
     </main>
   </div>
-  {{ youtubeModal.renderModal(id='FTQbiNvZqaY') }}
 {%- endblock %}
 {{ content | safe }}

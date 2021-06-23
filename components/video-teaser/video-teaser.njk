@@ -1,0 +1,40 @@
+{%- if context -%}
+  {% set id = context.id %}
+  {% set alt = context.alt %}
+  {% set custom_thumbnail = context.custom_thumbnail %}
+  {% set maxwidth = context.maxwidth %}
+  {% set extra_classes = context.extra_classes %}
+  {% set toggles_modal = context.toggles_modal %}
+{%- endif -%}
+
+<a
+  class="video-teaser
+  {% if extra_classes %}
+  {{ extra_classes | join(' ') | e | safe }}
+  {%- endif -%}"
+  data-video-teaser-id="{{ id | safe }}"
+  {% if toggles_modal %}
+  data-toggle="modal"
+  {%- endif -%}
+  {% if maxwidth %}
+  style="max-width: {{ maxwidth }}"
+  {%- endif -%}
+>
+  {% if custom_thumbnail %}
+  <img
+    class="video-teaser__thumb img-fit-cover"
+    alt="{{ alt | e | safe }}"
+    src="{{ custom_thumbnail | url | safe }}"
+    loading="lazy"
+  >
+  {% else %}
+  <picture class="video-teaser__thumb">
+    <source media="(min-width: 768px)" srcset="https://i.ytimg.com/vi_webp/{{ id }}/maxresdefault.webp" type="image/webp">
+    <source media="(min-width: 768px)" srcset="https://i.ytimg.com/vi/{{ id }}/maxresdefault.jpg" type="image/jpeg">
+    <source srcset="https://i.ytimg.com/vi_webp/{{ id }}/hqdefault.webp" type="image/webp">
+    <source srcset="https://i.ytimg.com/vi/{{ id }}/hqdefault.jpg" type="image/jpeg">
+    <img src="https://i.ytimg.com/vi/{{ id }}/hqdefault.jpg" class="" loading="lazy" alt="{{ alt }}">
+  </picture>          
+  {% endif %}        
+  <i class="video-teaser__play fas fa-play-circle"></i>
+</a>
