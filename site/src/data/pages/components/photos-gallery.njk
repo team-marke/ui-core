@@ -13,8 +13,81 @@ metadata:
 
 <h1>Photos Gallery</h1>
 <p>Lorem ipsum dolor sit amet, stet intellegat cu mei, pertinax oportere at sea. Eos an mutat blandit. Nec at nisl volumus appellantur, an his brute quodsi. Sit ceteros contentiones at, te summo discere pro.</p>
-<div class="row">
-  <div class="col col-12 col-lg-6">
-    <h3>A nice gallery!</h3>
+<section class="py-5">
+  <div class="row">
+    <div class="col col-12">
+      <h2>Dynamic without thumbnail</h2>
+      {% set context = {
+          "isDynamic": true,
+          "title": "Golden Gate Bridge",
+          "gallery": [
+            {
+              "url": "https://res.cloudinary.com/webmaster-marke/image/upload/v1625060742/MarkeUI/golden-gate-bridge-2.jpg",
+              "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+            },
+            {
+              "url": "https://res.cloudinary.com/webmaster-marke/image/upload/v1625060481/MarkeUI/golden-gate-bridge.jpg",
+              "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+            }
+          ]
+        }
+      %}
+      {% include "photo-gallery/photo-gallery.njk" %}
+    </div>
   </div>
-</div>
+</section>
+<section class="py-5">
+  <div class="row">
+    <div class="col col-12">
+      <h2>Dynamic with thumbnail</h2>
+      {% set context = {
+          "isDynamic": true,
+          "thumbnail": {
+            "url": "https://res.cloudinary.com/webmaster-marke/image/upload/v1625060740/MarkeUI/golden-gate-bridge-3.jpg",
+            "alt": "Golden Gate Bridge"
+          },
+          "title": "Golden Gate Bridge",
+          "gallery": [
+            {
+              "url": "https://res.cloudinary.com/webmaster-marke/image/upload/v1625060742/MarkeUI/golden-gate-bridge-2.jpg",
+              "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+            },
+            {
+              "url": "https://res.cloudinary.com/webmaster-marke/image/upload/v1625060481/MarkeUI/golden-gate-bridge.jpg",
+              "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+            }
+          ]
+        }
+      %}
+      {% include "photo-gallery/photo-gallery.njk" %}
+    </div>
+  </div>
+</section>
+<section class="py-5">
+  <div class="row">
+    <div class="col col-12">
+      <h2>Multiple images</h2>
+      {% set context = {
+          "isDynamic": false,
+          "width": 200,
+          "gallery": [
+            {
+              "url": "https://res.cloudinary.com/webmaster-marke/image/upload/v1625060742/MarkeUI/golden-gate-bridge-2.jpg",
+              "description": "Photo 1"
+            },
+            {
+              "url": "https://res.cloudinary.com/webmaster-marke/image/upload/v1625060481/MarkeUI/golden-gate-bridge.jpg",
+              "description": "Photo 2",
+              "title": "Golden Gate"
+            },
+            {
+              "url": "https://res.cloudinary.com/webmaster-marke/image/upload/v1625060740/MarkeUI/golden-gate-bridge-3.jpg",
+              "description": "Photo 3"
+            }
+          ]
+        }
+      %}
+      {% include "photo-gallery/photo-gallery.njk" %}
+    </div>
+  </div>
+</section>

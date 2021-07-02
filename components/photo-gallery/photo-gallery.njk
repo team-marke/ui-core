@@ -1,0 +1,70 @@
+{%- if context -%}
+  {% set thumbnail = context.thumbnail %}
+  {% set gallery = context.gallery %}
+  {% set isDynamic = context.isDynamic %}
+
+  {% if context.title %}
+    {% set title = context.title %}
+  {% else %}
+    {% set title = 'Toggle!' %}
+  {% endif %}
+
+  {% if context.width %}
+    {% set width = context.width %}
+  {% else %}
+    {% set width = 300 %}
+  {% endif %}
+
+{%- endif -%}
+
+{% if isDynamic %}
+  <a
+    dynamic
+    role="button"
+    data-gallery='{{ gallery | photosGalleryData | safe }}'
+    class="photo-gallery photo-gallery-dynamic" 
+  >
+    {% if thumbnail %}
+      <div class="photo-gallery__thumb">
+        <img 
+          src='{% imageUrl thumbnail.url, { fetch_format: "auto", width: width, crop: "thumb", gravity: "center", aspect_ratio: "1:1" } %}' 
+          srcset='{% imageUrl thumbnail.url, { fetch_format: "auto", width: width, crop: "thumb", gravity: "center", aspect_ratio: "1:1", dpr: "2.0" } %} 2x' 
+          {%- if thumbnail.alt %}
+            alt="Image about {{ thumbnail.alt }}" 
+          {% endif %}
+          loading="lazy"
+          class="photo-gallery-dynamic__img" 
+        >
+      </div>
+    {% endif %}
+    <div class="photo-gallery__body">
+      <p>{{ title }}</p>
+    </div>
+  </a>
+{% else %}
+  <div class="photo-gallery">
+    {% for item in gallery %}
+      <a
+        role="button"
+        data-src="{{ item.url }}"
+        data-sub-html="{{ item.description }}" 
+        class="photo-gallery__preview"
+      >
+        <div class="photo-gallery__thumb">
+          <img 
+          src='{% imageUrl item.url, { fetch_format: "auto", width: width, crop: "thumb", gravity: "center", aspect_ratio: "1:1" } %}' 
+          srcset='{% imageUrl item.url, { fetch_format: "auto", width: width, crop: "thumb", gravity: "center", aspect_ratio: "1:1", dpr: "2.0" } %} 2x' 
+          {%- if item.alt %}
+            alt="Image about {{ item.alt }}" 
+          {% endif %}
+          loading="lazy"
+          class="photo-gallery__img" 
+        >
+        </div>
+        <div class="photo-gallery__body">
+          <p>{{ item.title }}</p>
+        </div>
+      </a>
+    {% endfor %}
+  </div>
+{% endif %}

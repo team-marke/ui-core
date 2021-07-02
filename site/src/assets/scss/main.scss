@@ -5,6 +5,7 @@
 
 // Dependencies
 // @import 'swiper';
+@import './dependencies/lightgallery';
 
 // Base
 @import '~bootstrap/scss/reboot';
@@ -32,6 +33,7 @@
 
 @import '../../../../components/video-modal';
 @import '../../../../components/video-teaser';
+@import '../../../../components/photo-gallery';
 
 // Layouts
 @import 'layouts/docs';

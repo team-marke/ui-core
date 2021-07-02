@@ -1,0 +1,9 @@
+// LightGallery lib styles
+
+@import '~lightgallery/scss/lg-variables';
+$lg-path-fonts: '~lightgallery/fonts';
+$lg-path-images: '~lightgallery/images';
+@import '~lightgallery/scss/lg-mixins';
+@import '~lightgallery/scss/lg-fonts';
+@import '~lightgallery/scss/lg-theme-default';
+@import '~lightgallery/scss/lightgallery-core';
