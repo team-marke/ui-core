@@ -4,7 +4,6 @@
     {% for home in navbarLinks %}
       {% if home.key == 'docs' %}
         {% for child in home.children %}
-        {{ page.url | log }}
           <li class="nav-item">
             <a class="nav-link{% if child.url == page.url %} active{% endif %}"
               {% if child.url == page.url %} aria-current="page"{% endif %}

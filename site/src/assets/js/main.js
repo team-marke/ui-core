@@ -17,10 +17,26 @@ const loadYoutubeModals = () => {
 };
 
 /**
+ * Loads galleries components.
+ */
+const loadsGalleries = () => {
+  if (document.querySelector('.photo-gallery')) {
+    import(/* webpackChunkName: "components.photo-gallery" */ '../../../../components/photo-gallery/photo-gallery').then(
+      ({ PhotoGallery }) => {
+        document.querySelectorAll('.photo-gallery').forEach((el) => {
+          new PhotoGallery(el);
+        });
+      }
+    );
+  }
+};
+
+/**
  * Dynamically load modules that are split from the main JS bundle.
  */
 const loadDynamicModules = () => {
   loadYoutubeModals();
+  loadsGalleries();
 };
 
 /**
