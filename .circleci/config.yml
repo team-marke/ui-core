@@ -45,6 +45,14 @@ aliases:
     run:
       name: Build staging website with 11ty and webpack
       command: yarn run stage
+  generate_node_env: &generate_node_env
+    run:
+      name: Generates node .env file with necessary vars
+      command: echo "$NODE_ENV" | base64 --decode > .env
+  generate_node_env_staging: &generate_node_env_staging
+    run:
+      name: Generates node .env file with necessary vars
+      command: echo "$NODE_ENV_STAGING" | base64 --decode > .env
   firebase_deploy: &firebase_deploy
     run:
       name: Firebase deploy
@@ -77,6 +85,7 @@ jobs:
     steps:
       - checkout
       - <<: *restore_cache
+      - <<: *generate_node_env
       - <<: *yarn_install
       - <<: *yarn_build
       - <<: *save_cache
@@ -89,6 +98,7 @@ jobs:
     steps:
       - checkout
       - <<: *restore_cache
+      - <<: *generate_node_env_staging
       - <<: *yarn_install
       - <<: *yarn_stage
       - <<: *save_cache
