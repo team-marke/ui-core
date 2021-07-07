@@ -2,6 +2,21 @@ import 'regenerator-runtime/runtime.js';
 import '../scss/main.scss';
 
 /**
+ * Load off canvas menu component.
+ */
+const loadOffcanvasMenu = () => {
+  if (document.querySelector('.offcanvas-menu')) {
+    import(/* webpackChunkName: "components.offcanvas-menu" */ '../../../../components/offcanvas-menu/offcanvas-menu').then(
+      ({ OffcanvasMenu }) => {
+        document.querySelectorAll('.offcanvas-menu').forEach((el) => {
+          new OffcanvasMenu(el);
+        });
+      }
+    );
+  }
+};
+
+/**
  * Load youtube modal component.
  */
 const loadYoutubeModals = () => {
@@ -53,6 +68,7 @@ const loadDynamicModules = () => {
   loadYoutubeModals();
   loadActionBars();
   loadGalleries();
+  loadOffcanvasMenu();
 };
 
 /**
