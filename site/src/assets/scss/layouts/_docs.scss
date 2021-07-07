@@ -2,6 +2,8 @@
 // Documentation layout styles
 //
 
+@use '../marke-ui' as mkui;
+
 .docs-grid {
   display: grid;
   padding-top: 2rem;
@@ -19,16 +21,16 @@
 .docs-main {
   grid-area: main;
   h2 {
-    margin-top: $spacer * 3;
+    margin-top: mkui.$spacer * 3;
   }
 }
 
 .docs-example {
   position: relative;
-  padding: $spacer;
-  margin-top: $spacer;
-  border: solid $border-color;
-  border-color: $border-color;
-  border-width: $border-width;
-  border-radius: $border-radius;
+  padding: mkui.$spacer;
+  margin-top: mkui.$spacer;
+  border: solid mkui.$border-color;
+  border-color: mkui.$border-color;
+  border-width: mkui.$border-width;
+  border-radius: mkui.$border-radius;
 }

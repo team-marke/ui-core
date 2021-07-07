@@ -2,10 +2,12 @@
 // Video teaser with thumbnail toggler
 //
 
-$toggler-border-radius: .25rem !default;
-$transition: all .2s ease-in-out !default;
-$icon-color: $light !default;
-$icon-hover-color: $primary !default;
+@use '../sass-config' as mkui;
+
+$toggler-border-radius: 0.25rem !default;
+$transition: all 0.2s ease-in-out !default;
+$icon-color: mkui.$light !default;
+$icon-hover-color: mkui.$primary !default;
 
 .video-teaser {
   position: relative;
@@ -36,7 +38,7 @@ $icon-hover-color: $primary !default;
       filter: brightness(1);
     }
     .video-teaser__play {
-      color: $icon-hover-color
+      color: $icon-hover-color;
     }
   }
 }
