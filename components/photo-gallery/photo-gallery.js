@@ -14,7 +14,6 @@ export class PhotoGallery {
       this.el = el;
       this._defaultOptions = {};
       this._isDynamic = this.el.hasAttribute('dynamic');
-      console.log(this._isDynamic)
 
       if (this._isDynamic) {
         let imgs = JSON.parse(this.el.dataset.gallery);

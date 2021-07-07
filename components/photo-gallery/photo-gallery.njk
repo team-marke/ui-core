@@ -37,9 +37,7 @@
         >
       </div>
     {% endif %}
-    <div class="photo-gallery__body">
-      <p>{{ title }}</p>
-    </div>
+    <div class="photo-gallery__body">{{ title }}</div>
   </a>
 {% else %}
   <div class="photo-gallery">
@@ -61,9 +59,7 @@
           class="photo-gallery__img" 
         >
         </div>
-        <div class="photo-gallery__body">
-          <p>{{ item.title }}</p>
-        </div>
+        <div class="photo-gallery__body">{{ item.title }}</div>
       </a>
     {% endfor %}
   </div>
