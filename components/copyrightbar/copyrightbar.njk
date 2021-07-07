@@ -1,0 +1,29 @@
+{%- if context -%}
+  {% set signUrl = context.signUrl %}
+  {% set signLogo = context.signLogo %}
+  {% set signAltText = context.signAltText %}
+  {% set copyrightText = context.copyrightText %}
+  {%- if context.variant and context.variant == 'dark' or context.variant == 'light' -%}
+    {% set variant = "copyrightbar--" + context.variant %}
+  {%- else -%}
+    {% set variant = "copyrightbar--dark" %}
+  {%- endif -%}
+{%- endif -%}
+
+<div class="copyrightbar {{ variant | safe }}">
+  <div class="copyrightbar__text">{{ copyrightText | e | safe }}</div>
+  <a class="copyrightbar__signature" href="{{ signUrl | url | safe }}" target="_blank" title="{{ signAltText | e | safe }}">
+    {%- 
+      image signLogo, { 
+        class: "copyrightbar__signature-image",
+        loading: "lazy",
+        title: signAltText,
+        alt: signAltText,
+        fetch_format: "auto",
+        quality: "auto:best",
+        width: 60,
+        dpr: 2
+      } 
+    %}
+  </a>
+</div>
