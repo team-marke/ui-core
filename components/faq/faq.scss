@@ -1,0 +1,13 @@
+@import '~bootstrap/scss/accordion';
+.faq {
+    &__question {
+        @include font-size($h6-font-size);
+        font-weight: $font-weight-bold;
+        font-family: var(--bs-font-sans-serif);
+        .accordion-button {
+            @include font-size($h6-font-size);
+            font-weight: $font-weight-bold;
+            text-align: start;
+        }
+    }
+}

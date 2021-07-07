@@ -1,6 +1,7 @@
 import 'regenerator-runtime/runtime.js';
 import '../scss/main.scss';
 import '../../../../components/tabs-panel/tabs-panel';
+import '../../../../components/faq/faq';
 
 /**
  * Load youtube modal component.

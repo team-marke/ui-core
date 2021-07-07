@@ -1,0 +1,52 @@
+---
+tags:
+  - navbar
+eleventyNavigation:
+  key: faq
+  title: FAQ
+  order: 0
+  parent: docs
+metadata:
+  title: 
+  description:
+---
+
+<h1>FAQ</h1>
+<p>Lorem ipsum dolor sit amet, stet intellegat mei, pertinax oportere at sea. Eos an mutat blandit. Nec at nisl volumus appellantur, an his brute quodsi. Sit ceteros contentiones at, te summo discere pro.</p>
+<div class="row">
+    {% set context = {
+        id: '',
+        questionTag: 'div',
+        items: [
+            {
+                question: "Como é que se pode conhecer Deus apenas com a luz da razão?",
+                answer: "A partir da criação, isto é, do mundo e da pessoa humana, o homem pode, só pela razão, conhecer com certeza a Deus como origem e fim do universo e como sumo bem, verdade e beleza infinita."
+            }, {
+                question: "Basta porém a exclusiva luz da razão para conhecer Deus?",
+                answer: "Ao conhecer Deus só com a luz da razão, o homem experimenta muitas dificuldades. Além disso, não pode entrar só pelas suas próprias forças na intimidade do mistério divino. Por isso é que Deus o quis iluminar com a sua Revelação não apenas sobre verdades que excedem o seu entendimento, mas também sobre verdades religiosas e morais que, apesar de serem por si acessíveis à razão, podem deste modo ser conhecidas por todos, sem dificuldade, com firme certeza e sem mistura de erro."
+            }, {
+                question: "Como se pode falar de Deus?",
+                answer: "É possível falar de Deus a todos e com todos, a partir das perfeições do homem e das outras criaturas, que são um reflexo, embora limitado, da infinita perfeição de Deus. É, porém, necessário purificar continuamente a nossa linguagem de tudo o que ela contém de imaginário e imperfeito, na consciência de que nunca será possível exprimir plenamente o infinito mistério de Deus."
+            }
+        ]
+    } %}
+    {% include "faq/faq.njk" %}
+    <div class="my-4"></div>
+    {% set context = {
+        id: 'faq2',
+        items: [
+            {
+                question: "Como é que se pode conhecer Deus apenas com a luz da razão?",
+                answer: "A partir da criação, isto é, do mundo e da pessoa humana, o homem pode, só pela razão, conhecer com certeza a Deus como origem e fim do universo e como sumo bem, verdade e beleza infinita."
+            }, {
+                question: "Basta porém a exclusiva luz da razão para conhecer Deus?",
+                answer: "Ao conhecer Deus só com a luz da razão, o homem experimenta muitas dificuldades. Além disso, não pode entrar só pelas suas próprias forças na intimidade do mistério divino. Por isso é que Deus o quis iluminar com a sua Revelação não apenas sobre verdades que excedem o seu entendimento, mas também sobre verdades religiosas e morais que, apesar de serem por si acessíveis à razão, podem deste modo ser conhecidas por todos, sem dificuldade, com firme certeza e sem mistura de erro."
+            }, {
+                question: "Como se pode falar de Deus?",
+                answer: "É possível falar de Deus a todos e com todos, a partir das perfeições do homem e das outras criaturas, que são um reflexo, embora limitado, da infinita perfeição de Deus. É, porém, necessário purificar continuamente a nossa linguagem de tudo o que ela contém de imaginário e imperfeito, na consciência de que nunca será possível exprimir plenamente o infinito mistério de Deus."
+            }
+        ]
+    } %}
+    {% include "faq/faq.njk" %}
+
+</div>
