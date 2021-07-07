@@ -1,0 +1,3 @@
+/**
+ * Post preview component.
+ */
