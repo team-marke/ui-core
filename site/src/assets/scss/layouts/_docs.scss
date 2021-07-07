@@ -18,4 +18,17 @@
 
 .docs-main {
   grid-area: main;
+  h2 {
+    margin-top: $spacer * 3;
+  }
+}
+
+.docs-example {
+  position: relative;
+  padding: $spacer;
+  margin-top: $spacer;
+  border: solid $border-color;
+  border-color: $border-color;
+  border-width: $border-width;
+  border-radius: $border-radius;
 }
