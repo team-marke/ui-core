@@ -1,0 +1,80 @@
+// 
+// Action bar
+//
+
+$actionbar-padding-y: .15rem !default;
+$actionbar-padding-x: 0 !default;
+$actionbar-font-size: $font-size-sm !default;
+$actionbar-item-padding-y: .35rem !default;
+$actionbar-item-padding-x: .5rem !default;
+$actionbar-link-hover-decoration: underline !default;
+
+// dark styles
+$actionbar-dark-color: rgba($light, 0.9) !default;
+$actionbar-dark-hover-color: $light !default;
+
+// light styles
+$actionbar-light-color: rgba($primary, 0.9)  !default;
+$actionbar-light-hover-color: $primary !default;
+
+
+.actionbar {
+  padding-top: $actionbar-padding-y;
+  padding-right: $actionbar-padding-x;
+  padding-bottom: $actionbar-padding-y;
+  padding-left: $actionbar-padding-x;
+  font-size: $actionbar-font-size;
+}
+
+.actionbar__container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.actionbar--dark {
+  color: $actionbar-dark-color;
+  a {
+    color: $actionbar-dark-color;
+    &:hover {
+      color: $actionbar-dark-hover-color;
+      text-decoration: $actionbar-link-hover-decoration;
+    }
+  }
+}
+
+.actionbar--light {
+  color: $actionbar-light-color;
+  a {
+    color: $actionbar-light-color;
+    &:hover {
+      color: $actionbar-light-hover-color;
+      text-decoration: $actionbar-link-hover-decoration;
+    }
+  }
+}
+
+.actionbar__start-items,
+.actionbar__end-items {
+  display: flex;
+}
+
+.actionbar__item,
+.actionbar__link {
+  display: grid;
+  grid-gap: 0.33rem;
+  grid-auto-flow: column;
+  align-items: center;
+}
+
+.actionbar__item {
+  padding-top: $actionbar-item-padding-y;
+  padding-right: $actionbar-item-padding-x;
+  padding-bottom: $actionbar-item-padding-y;
+  padding-left: $actionbar-item-padding-x;
+}
+
+.actionbar__icon.svg-inline--fa {
+  height: 1.25em;
+  vertical-align: -0.275em;
+  width: 1em;
+}

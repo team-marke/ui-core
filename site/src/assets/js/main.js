@@ -17,9 +17,24 @@ const loadYoutubeModals = () => {
 };
 
 /**
- * Loads galleries components.
+ * Load action bars component.
  */
-const loadsGalleries = () => {
+const loadActionBars = () => {
+  if (document.querySelector('.actionbar')) {
+    import(/* webpackChunkName: "components.action-bar" */ '../../../../components/action-bar/action-bar').then(
+      ({ ActionBar }) => {
+        document.querySelectorAll('.actionbar').forEach((el) => {
+          new ActionBar(el);
+        });
+      }
+    );
+  }
+};
+
+/**
+ * Load galleries components.
+ */
+const loadGalleries = () => {
   if (document.querySelector('.photo-gallery')) {
     import(/* webpackChunkName: "components.photo-gallery" */ '../../../../components/photo-gallery/photo-gallery').then(
       ({ PhotoGallery }) => {
@@ -36,7 +51,8 @@ const loadsGalleries = () => {
  */
 const loadDynamicModules = () => {
   loadYoutubeModals();
-  loadsGalleries();
+  loadActionBars();
+  loadGalleries();
 };
 
 /**
