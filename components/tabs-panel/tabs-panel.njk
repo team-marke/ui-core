@@ -1,0 +1,39 @@
+{%- if context -%}
+  {% set id = context.id %}
+  {% set items = context.items %}
+  {% set indexRandom = [1,2,3,4,5,6,7,8,9]|random %}
+{%- endif -%}
+
+<div class="col col-12 col-lg-4 py-3 py-lg-4 pr-lg-5">
+  <ul class="nav nav-pills bg-light shadow rounded" role="tablist">
+    {% for item in items %}
+      <li class="nav-item w-100" role="presentation">
+        <a 
+        id="tab-{{ item.title | slug | safe }}-{{ indexRandom | safe }}{%- if id -%} -{{ id | safe }} {%- endif -%}-tab" 
+        class="nav-link h5 py-3 p-lg-4 mb-0 {%- if loop.index0 === 0 -%} active {%- endif -%}" 
+        data-bs-toggle="tab" 
+        data-bs-target="#tab-{{ item.title | slug | safe }}-{{ indexRandom | safe }}{%- if id -%} -{{ id | safe }} {%- endif -%}" 
+        href="#tab-{{ item.title | slug | safe }}-{{ indexRandom | safe }}{%- if id -%} -{{ id | safe }} {%- endif -%}" 
+        role="tab" 
+        aria-current="page" 
+        aria-controls="tab-{{ item.title | slug | safe }}-{{ indexRandom | safe }}{%- if id -%} -{{ id | safe }} {%- endif -%}" 
+        aria-selected="{%- if loop.index0 === 0 -%} true {%- else -%} false {%- endif -%}">
+        {{ item.title | safe }}
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+</div>
+<div class="col col-12 col-lg-8 py-3 py-lg-4">
+  <div class="tab-content">
+    {% for item in items %}
+      <div 
+      class="{%- if loop.index0 === 0 -%} tab-pane fade show active {%- else -%} tab-pane fade {%- endif -%}" 
+      id="tab-{{ item.title | slug | safe }}-{{ indexRandom | safe }}{%- if id -%} -{{ id | safe }} {%- endif -%}" 
+      role="tabpanel" 
+      aria-labelledby="tab-{{ item.title | slug | safe }}-{{ indexRandom | safe }}{%- if id -%} -{{ id | safe }} {%- endif -%}-tab">
+        {{ item.content | safe }}
+      </div>
+    {% endfor %}
+  </div>
+</div>

@@ -1,26 +1,27 @@
 import 'regenerator-runtime/runtime.js';
 import '../scss/main.scss';
+import '../../../../components/tabs-panel/tabs-panel';
 
 /**
  * Load youtube modal component.
  */
 const loadYoutubeModals = () => {
-  if (document.querySelector('.video-teaser')) {
-    import(/* webpackChunkName: "components.video-teaser" */ '../../../../components/video-teaser/video-teaser').then(
-      ({ VideoTeaser }) => {
-        document.querySelectorAll('.video-teaser').forEach((el) => {
-          new VideoTeaser(el);
-        });
-      }
-    );
-  }
+    if (document.querySelector('.video-teaser')) {
+        import ( /* webpackChunkName: "components.video-teaser" */ '../../../../components/video-teaser/video-teaser').then(
+            ({ VideoTeaser }) => {
+                document.querySelectorAll('.video-teaser').forEach((el) => {
+                    new VideoTeaser(el);
+                });
+            }
+        );
+    }
 };
 
 /**
  * Dynamically load modules that are split from the main JS bundle.
  */
 const loadDynamicModules = () => {
-  loadYoutubeModals();
+    loadYoutubeModals();
 };
 
 /**
@@ -33,13 +34,13 @@ const loadBundledModules = () => {};
  */
 
 if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', () => {
+    document.addEventListener('DOMContentLoaded', () => {
+        loadDynamicModules();
+        loadBundledModules();
+    });
+} else {
     loadDynamicModules();
     loadBundledModules();
-  });
-} else {
-  loadDynamicModules();
-  loadBundledModules();
 }
 
 window.onload = () => {};

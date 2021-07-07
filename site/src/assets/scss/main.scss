@@ -2,15 +2,12 @@
 @import '~bootstrap/scss/functions';
 @import 'abstracts/variables';
 @import '../../../../components/sass-config';
-
 // Dependencies
 // @import 'swiper';
-
 // Base
 @import '~bootstrap/scss/reboot';
 @import '~bootstrap/scss/type';
 @import '~bootstrap/scss/root';
-
 // Components
 @import '~bootstrap/scss/accordion';
 @import '~bootstrap/scss/containers';
@@ -29,9 +26,8 @@
 @import '~bootstrap/scss/spinners';
 @import '~bootstrap/scss/toasts';
 @import 'components/images';
-
+@import '../../../../components/tabs-panel';
 @import '../../../../components/video-modal';
 @import '../../../../components/video-teaser';
-
 // Layouts
 @import 'layouts/docs';
