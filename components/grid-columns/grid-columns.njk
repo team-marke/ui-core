@@ -1,0 +1,47 @@
+{%- if context -%}
+    {% set items = context.items %}
+    {%- if context.titleTag %}
+        {% set titleTag = context.titleTag %}
+    {%- else %}
+        {% set titleTag = 'h2' %}
+    {%- endif %}
+    {%- if context.subtitleTag %}
+        {% set subtitleTag = context.subtitleTag %}
+    {%- else %}
+        {% set subtitleTag = 'h4' %}
+    {%- endif %}
+{%- endif -%}
+
+{%- if items %}
+    {% for item in items %}
+        <div class="{{ item.class }}">
+            {%- if item.image %}
+                <picture>
+                    <source
+                    media="(max-width: 992px)"
+                    srcset='{% imageUrl item.image, { fetch_format: "auto", width: 768, crop: "pad", aspect_ratio: "21:9" } %}'
+                    >
+                    <img 
+                    src='{% imageUrl item.image, { fetch_format: "auto", width: 768 } %}' 
+                    srcset='{% imageUrl item.image, { fetch_format: "auto", width: 768, dpr: "2.0" } %} 2x' 
+                    alt="{{ item.title }}"
+                    class="img-fluid"
+                    loading="lazy"
+                    >
+                </picture>
+            {%- endif %}
+            {%- if item.subtitle %}
+                <{{ subtitleTag | safe }}>{{ item.subtitle | safe }}</{{ subtitleTag | safe }}>
+            {%- endif %}
+            {%- if item.title %}
+                <{{ titleTag | safe }}>{{ item.title | safe }}</{{ titleTag | safe }}>
+            {%- endif %}
+            {%- if item.content %}
+                <p>{{ item.content | safe }}</p>
+            {%- endif %}
+            {%- if item.btn %}
+                <a href="{{ item.btn.href | e | safe }}">{{ item.btn.label | safe }}</a>
+            {%- endif %}
+        </div>
+    {% endfor %}
+{%- endif %}

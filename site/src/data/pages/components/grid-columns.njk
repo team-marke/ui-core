@@ -1,0 +1,59 @@
+---
+tags:
+  - navbar
+eleventyNavigation:
+  key: grid-columns
+  title: Grid columns
+  order: 4
+  parent: docs
+metadata:
+  title: 
+  description:
+---
+
+<h1>Grid columns</h1>
+<p>Lorem ipsum dolor sit amet, stet intellegat mei, pertinax oportere at sea. Eos an mutat blandit. Nec at nisl volumus appellantur, an his brute quodsi. Sit ceteros contentiones at, te summo discere pro.</p>
+<div class="row">
+    {% set context = {
+        titleTag: "h2",
+        subtitleTag: "h4",
+        items: [
+            {
+                class: "col-12 col-md-6",
+                subtitle: "Ave Maria",
+                title: "Ave Maria, gratia plena, Dóminus tecum",
+                content: "Benedícta tu in muliéribus, et benedíctus fructus ventris tui, Iesus. Sancta Maria, Mater Dei, ora pro nobis peccatóribus, nunc, et in hora mortis nostræ. Amen.",
+                btn: {
+                    label: "Conheça melhor", 
+                    href: "#"
+                }
+            },
+            {
+                class: "col-12 col-md-6",
+                image: "https://via.placeholder.com/400x400"
+            }
+        ]
+    } %}
+    {% include "grid-columns/grid-columns.njk" %}
+    <div class="my-4"></div>
+    {% set context = {
+        titleTag: "h2",
+        items: [
+            {
+                class: "col-12 col-md-4",
+                title: "Ave Maria, gratia plena, Dóminus tecum",
+                content: "Benedícta tu in muliéribus, et benedíctus fructus ventris tui, Iesus."
+            },
+            {
+                class: "col-12 col-md-4",
+                content: "Sancta Maria, Mater Dei, ora pro nobis peccatóribus, nunc, et in hora mortis nostræ. Amen. Sancta Maria, Mater Dei, ora pro nobis peccatóribus, nunc, et in hora mortis nostræ. Amen. Sancta Maria, Mater Dei, ora pro nobis peccatóribus, nunc, et in hora mortis nostræ. Amen."
+            },
+            {
+                class: "col-12 col-md-4",
+                image: "https://via.placeholder.com/300x300"
+            }
+        ]
+    } %}
+    {% include "grid-columns/grid-columns.njk" %}
+
+</div>

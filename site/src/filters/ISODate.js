@@ -6,4 +6,3 @@ module.exports = (dataString) => {
   const date = new Date(dataString);
   return date.toISOString();
 };
-
