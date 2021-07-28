@@ -81,7 +81,8 @@
         border-width: $border-width;
         border-color: tint-color($border-color, 20%);
         border-radius: 50rem;
-        padding: $btn-padding-y-sm / 2 $btn-padding-x-sm / 2;
+        padding: $btn-padding-y-sm / 2 $btn-padding-x-sm;
+        text-decoration: none;
         margin-right: 0.25rem;
         margin-bottom: 0.25rem;
         margin-left: 0.25rem;
