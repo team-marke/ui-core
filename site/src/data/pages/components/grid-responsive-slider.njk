@@ -1,0 +1,41 @@
+---
+tags:
+  - navbar
+eleventyNavigation:
+  key: grid-responsive-slider
+  title: Grid Responsive Slider
+  order: 6
+  parent: docs
+metadata:
+  title: Grid Responsive Slider
+  description: Lorem ipsum, dolor sit amet consectetur adipisicing elit. In modi, amet, atque soluta illum, a distinctio.
+items:
+  - title: Lorem ipsum dollor
+    description: Perspiciatis facilis quisquam ex impedit dolor voluptate culpa eligendi quibusdam corporis provident.
+  - title: Lorem ipsum dollor
+    description: Perspiciatis facilis quisquam ex impedit dolor voluptate culpa eligendi quibusdam corporis provident.
+  - title: Lorem ipsum dollor
+    description: Perspiciatis facilis quisquam ex impedit dolor voluptate culpa eligendi quibusdam corporis provident.
+---
+<h1>Grid Responsive Slider</h1>
+<h2>Lorem ipsum dolor sit amet consectetur</h2>
+<div class="docs-example">
+
+  {% set innerContent %}
+    {% for item in items %}
+      <div class="grid-responsive-slider__slide swiper-slide">
+        <h3>{{ item.title }}</h3>
+        <p>{{ item.description }}</p>
+      </div>
+    {% endfor %}
+  {% endset %}
+
+  {{ innerContent | log }}
+  {%- set context = {
+    "minColumns": 1,
+    "maxColumns": 3,
+    "total": (items | length),
+    "children": innerContent
+  } %}
+  {% include "grid-responsive-slider/grid-responsive-slider.njk" %}
+</div>

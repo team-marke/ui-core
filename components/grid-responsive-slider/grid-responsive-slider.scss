@@ -1,0 +1,70 @@
+//
+// Grid responsive slider component
+//
+
+.grid-responsive-slider {
+  padding-bottom: 1rem;
+  margin-right: calc(var(--bs-gutter-x) / -2);
+  margin-left: calc(var(--bs-gutter-x) / -2);
+  @include media-breakpoint-up(lg) {
+    padding-top: calc(var(--bs-gutter-y) / -2);
+    padding-right: calc(var(--bs-gutter-x) / -2);
+    padding-bottom: 1.5rem;
+    padding-left: calc(var(--bs-gutter-x) / -2);
+    margin-bottom: 0;
+    &__pagination {
+      display: none;
+    }
+  }
+  &.swiper-container:not(.swiper-container-initialized) {
+    padding-bottom: 0;
+    .swiper-wrapper {
+      display: grid;
+      grid-template-columns: repeat(var(--grid-responsive-slider-total), calc(100% - var(--bs-gutter-x) * 3));
+      grid-template-rows: repeat(var(--grid-responsive-slider-total) / var(--grid-responsive-slider-max-columns), 1fr);
+      grid-gap: 0;
+      overflow-x: hidden;
+      padding-left: calc(var(--bs-gutter-x) * 3 / 2);
+      padding-bottom: 2.75rem;
+      @include media-breakpoint-up(lg) {
+        padding-left: 0;
+        grid-template-columns: repeat(var(--grid-responsive-slider-max-columns), 1fr);
+      }
+    }
+    .swiper-slide {
+      width: 100%;
+      @include media-breakpoint-up(lg) {
+        width: 100%;
+      }
+    }
+  }
+  &__slide {
+    height: auto;
+    width: calc(100% + var(--bs-gutter-x) * 3);
+    padding-right: calc(var(--bs-gutter-x) / 2);
+    padding-bottom: 2rem;
+    padding-left: calc(var(--bs-gutter-x) / 2);
+    @include media-breakpoint-down(lg) {
+      &:first-child {
+        margin-left: calc(10vw / var(--grid-responsive-slider-min-columns));
+      }
+      &:last-child {
+        margin-right: calc(10vw / var(--grid-responsive-slider-min-columns));
+      }
+    }
+    @include media-breakpoint-up(lg) {
+      padding-top: calc(var(--bs-gutter-y) / 2);
+      padding-right: calc(var(--bs-gutter-x) / 2);
+      padding-bottom: calc(var(--bs-gutter-y) / 2);
+      padding-left: calc(var(--bs-gutter-x) / 2);
+    }
+  }
+
+  /* Swiper CSS Mode */
+  &.swiper-container-css-mode {
+    > .swiper-wrapper > .swiper-slide {
+      scroll-snap-align: center center;
+      scroll-snap-stop: always;
+    }
+  }
+}

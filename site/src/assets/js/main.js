@@ -77,6 +77,21 @@ const loadMastheadSlider = () => {
 };
 
 /**
+ * Load Grid Responsive Slider.
+ */
+const loadGridResponsiveSlider = () => {
+  if (document.querySelector('.grid-responsive-slider')) {
+    import(/* webpackChunkName: "components.grid-responsive-slider" */ '../../../../components/grid-responsive-slider/grid-responsive-slider').then(
+      ({ GridResponsiveSlider }) => {
+        document.querySelectorAll('.grid-responsive-slider').forEach((gridResponsiveSlider) => {
+          new GridResponsiveSlider(gridResponsiveSlider);
+        });
+      }
+    );
+  }
+};
+
+/**
  * Dynamically load modules that are split from the main JS bundle.
  */
 const loadDynamicModules = () => {
@@ -85,6 +100,7 @@ const loadDynamicModules = () => {
   loadGalleries();
   loadOffcanvasMenu();
   loadMastheadSlider();
+  loadGridResponsiveSlider();
 };
 
 /**

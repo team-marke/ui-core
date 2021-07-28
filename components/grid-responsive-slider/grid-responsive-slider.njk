@@ -1,0 +1,25 @@
+{%- if context -%}
+  {% set minColumns = context.minColumns %}
+  {% set maxColumns = context.maxColumns %}
+  {% set total = context.total %}
+  {% set children = context.children %}
+{%- endif -%}
+
+<div 
+  class="grid-responsive-slider swiper-container"
+  data-min-columns="{{ minColumns | e | safe }}"
+  data-max-columns="{{ maxColumns | e | safe }}"
+  data-total="{{ total | e | safe }}"
+  style="
+    --grid-responsive-slider-min-columns: {{ minColumns | e | safe }};
+    --grid-responsive-slider-max-columns: {{ maxColumns | e | safe }};
+    --grid-responsive-slider-total: {{ total | e | safe }};
+  "
+>
+  <div class="grid-responsive-slider__wrapper swiper-wrapper">
+    {{ children | safe }}
+  </div>
+  {% if showPagination %}
+  <div class="grid-responsive-slider__pagination swiper-pagination"></div>
+  {% endif %}
+</div>
