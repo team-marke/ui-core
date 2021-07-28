@@ -62,6 +62,21 @@ const loadGalleries = () => {
 };
 
 /**
+ * Load Masthead Slider.
+ */
+const loadMastheadSlider = () => {
+  if (document.querySelector('.masthead-slider')) {
+    import(/* webpackChunkName: "components.masthead-slider" */ '../../../../components/masthead-slider/masthead-slider').then(
+      ({ MastheadSlider }) => {
+        document.querySelectorAll('.masthead-slider').forEach((mastheadSlider) => {
+          new MastheadSlider(mastheadSlider);
+        });
+      }
+    );
+  }
+};
+
+/**
  * Dynamically load modules that are split from the main JS bundle.
  */
 const loadDynamicModules = () => {
@@ -69,6 +84,7 @@ const loadDynamicModules = () => {
   loadActionBars();
   loadGalleries();
   loadOffcanvasMenu();
+  loadMastheadSlider();
 };
 
 /**

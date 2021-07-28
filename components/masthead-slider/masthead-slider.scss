@@ -1,0 +1,130 @@
+//
+// Masthead slider
+//
+
+$masthead-slider-description-font-size: $font-size-lg !default;
+
+.masthead-slider {
+  --swiper-pagination-color: #{$light};
+  --swiper-theme-color: #{$light};
+  @include media-breakpoint-up(lg) {
+    min-height: 450px;
+  }
+  &__slide {
+    background-color: var(--masthead-background-color);
+  }
+  .masthead-slider__button-prev,
+  .masthead-slider__button-next {
+    display: none;
+    @include media-breakpoint-up(lg) {
+      display: block;
+    }
+    opacity: 0;
+    &.swiper-button-disabled {
+      opacity: 0;
+    }
+    padding: 2rem;
+    transform: translateY(-50%);
+    transition: $transition-base;
+    &:hover {
+      background-color: rgb(37 37 37 / 20%);
+    }
+    &:after {
+      display: block;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+  &:hover .masthead-slider__button-prev,
+  &:hover .masthead-slider__button-next {
+    opacity: 1;
+    &.swiper-button-disabled {
+      opacity: 0.35;
+    }
+  }
+  &__button-prev {
+    @include media-breakpoint-up(xl) {
+      left: 2rem;
+    }
+  }
+  &__button-next {
+    @include media-breakpoint-up(xl) {
+      right: 2rem;
+    }
+  }
+  &__pagination {
+    &.swiper-pagination-bullets {
+      bottom: 2rem;
+      @include media-breakpoint-up(lg) {
+        bottom: 3rem;
+      }
+    }
+    .swiper-pagination-bullet {
+      background: var(--swiper-pagination-color);
+      opacity: 1;
+      border-radius: 5px;
+      transition: $transition-base;
+      &-active {
+        width: 25px;
+      }
+    }
+  }
+}
+
+.masthead-slider__container {
+  color: $light;
+  padding-top: 1rem;
+  padding-bottom: 4rem;
+  @include media-breakpoint-up(lg) {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+}
+
+.masthead-slider__container-inner {
+  @extend .container;
+  display: flex;
+  flex-flow: column;
+  gap: 0.75rem;
+  @include media-breakpoint-up(lg) {
+    gap: 1.5rem;
+  }
+}
+
+.masthead-slider__image {
+  aspect-ratio: 21 / 9;
+  width: 100%;
+  height: auto;
+  @include media-breakpoint-up(lg) {
+    aspect-ratio: auto;
+    height: 450px;
+  }
+}
+
+.masthead-slider__title {
+  margin: 0;
+  max-width: 25ch;
+  color: inherit;
+}
+
+.masthead-slider__divider {
+  max-width: 100px;
+  opacity: 1;
+  color: inherit;
+  margin: 0;
+  height: 2px;
+}
+
+.masthead-slider__description {
+  @include font-size($masthead-slider-description-font-size);
+  max-width: 60ch;
+  color: inherit;
+}

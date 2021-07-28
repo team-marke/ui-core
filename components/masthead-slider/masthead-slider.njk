@@ -1,0 +1,75 @@
+{%- if context -%}
+  {% set slides = context.slides %}
+  {%- if context.showDivider -%}
+    {% set showDivider = context.showDivider %}
+  {%- else -%}
+    {% set showDivider = false %}
+  {%- endif -%}
+{%- endif -%}
+
+<div class="masthead-slider swiper-container">
+  <div class="masthead-slider__wrapper swiper-wrapper">
+    {%- for slide in slides %}
+      {%- if slide.opaqueImage -%}
+        {%- set opacity = 33 -%}
+      {%- else -%}
+        {%- set opacity = 100 -%}
+      {%- endif -%}
+      <div class="masthead-slider__slide swiper-slide" style="--masthead-background-color: {{ slide.backgroundColor | e | safe }};">
+        <picture>
+          <source 
+            media="(max-width:768px)" 
+            srcset="{%- imageUrl slide.image, { transformation: [ { fetch_format: 'auto', quality: 'auto', width: 768, crop: 'thumb', gravity: 'auto:face:70', aspect_ratio: '21:9' } ] } %}">
+          <img 
+            class="masthead-slider__image img-fit-cover"
+            alt="{{ slide.title | e | safe }}"
+            loading="lazy"
+            width="1920"
+            height="800"
+            src="
+            {%- imageUrl slide.image, { 
+                fetch_format: 'auto',
+                quality: 'auto',
+                opacity: opacity,
+                width: 1920,
+                height: 600,
+                crop: 'thumb' 
+              } 
+            %}"
+            srcset="
+            {%- imageUrl slide.image, { 
+                fetch_format: 'auto',
+                quality: 'auto',
+                opacity: opacity,
+                width: 1920,
+                height: 600,
+                crop: 'thumb',
+                dpr: 2
+              } 
+            %} 2x">
+        </picture>    
+        <div class="masthead-slider__container">
+          <div class="masthead-slider__container-inner">
+            {%- if slide.titleTag and slide.title -%}
+            <{{ slide.titleTag }} class="masthead-slider__title">{{ slide.title }}</{{ slide.titleTag }}>
+            {%- endif -%}
+            {%- if showDivider -%}
+            <hr class="masthead-slider__divider">
+            {%- endif -%}
+            {%- if slide.description -%}
+            <div class="masthead-slider__description">{{ slide.description | e | safe }}</div>
+            {%- endif -%}
+            {%- if slide.btn.text -%}
+            <a class="masthead-slider__btn btn btn-outline-light{% if slide.btn.smoothscroll %} smoothscroll{% endif %}" href="{{ slide.btn.href | safe }}">
+              {{ slide.btn.text | e | safe }}
+            </a>
+            {%- endif -%}
+          </div>
+        </div>
+      </div>
+    {%- endfor%}
+  </div>
+  <div class="masthead-slider__button-prev swiper-button-prev"></div>
+  <div class="masthead-slider__button-next swiper-button-next"></div>
+  <div class="masthead-slider__pagination swiper-pagination"></div>
+</div>

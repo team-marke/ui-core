@@ -1527,6 +1527,7 @@ __metadata:
     stylelint-config-recommended-scss: ^4.2.0
     stylelint-config-standard: ^22.0.0
     stylelint-scss: ^3.19.0
+    swiper: ^6.8.0
     webpack: ^5.38.1
     webpack-cli: ^4.7.0
     webpack-merge: ^5.7.3
@@ -4613,6 +4614,15 @@ __metadata:
     domhandler: ^4.2.0
     entities: ^2.0.0
   checksum: 1a5d6970d27a4fac3e7a372f60c544704174b7cc63178a0bae80edfbe5bec7cb2a8c2c3931fc4cb0270b909fadaa19d34506650559dcf1a35edc8db605da98b6
+  languageName: node
+  linkType: hard
+
+"dom7@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "dom7@npm:3.0.0"
+  dependencies:
+    ssr-window: ^3.0.0-alpha.1
+  checksum: 8beff48475ec564d96a5bcec88eac784d1ff2ceca0f663cfb6a5f54fcebd5b5bf805b508161c24ededf7f84d02af7a976b340e86082b11673345d6c216abd8af
   languageName: node
   linkType: hard
 
@@ -12440,6 +12450,13 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
+"ssr-window@npm:^3.0.0, ssr-window@npm:^3.0.0-alpha.1":
+  version: 3.0.0
+  resolution: "ssr-window@npm:3.0.0"
+  checksum: 36ac4b6ba91d0cafc83f43aff094b1e32ce55e3f8b31e4538694b203f4b797690b66c7aca17a3f514df82868271a7248514b5b6aca766eb50c97e6fe77b32358
+  languageName: node
+  linkType: hard
+
 "ssri@npm:^8.0.0, ssri@npm:^8.0.1":
   version: 8.0.1
   resolution: "ssri@npm:8.0.1"
@@ -12983,6 +13000,16 @@ fsevents@~2.3.2:
   bin:
     svgo: bin/svgo
   checksum: 8580eddbab54079813531f9fd8c246662eea6f3f7554d7a6082dce010c25b4a8e8e92ae4ee52b2c80b514abc54ecd0e2bd1ef3011693d5daf473adefc5b48180
+  languageName: node
+  linkType: hard
+
+"swiper@npm:^6.8.0":
+  version: 6.8.0
+  resolution: "swiper@npm:6.8.0"
+  dependencies:
+    dom7: ^3.0.0
+    ssr-window: ^3.0.0
+  checksum: 1f5e9503f2ce6eb5e44d1072338008b72359c01b4a5b44738a84dff113374d2d1dec1e3e8dde4a060e7065c4fc8e7aae22d0456bac5850a75a0db3c7bc8e6950
   languageName: node
   linkType: hard
 

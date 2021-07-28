@@ -1,0 +1,41 @@
+---
+tags:
+  - navbar
+eleventyNavigation:
+  key: masthead-slider
+  title: Masthead Slider
+  order: 4
+  parent: docs
+metadata:
+  title: Masthead Slider
+  description: Lorem ipsum, dolor sit amet consectetur adipisicing elit. In modi, amet, atque soluta illum, a distinctio.
+masthead:
+  slides:
+    - title: Consultoria e Desenvolvimento de Soluções Fiscais
+      titleTag: h1
+      description: Sistemas fiscais com o melhor custo-benefício do mercado.
+      image: https://res.cloudinary.com/webmaster-marke/image/upload/v1625060742/MarkeUI/golden-gate-bridge-2.jpg
+      opaqueImage: false
+      backgroundColor: "#0a1339"
+    - title: Consultoria e Desenvolvimento de Soluções Fiscais
+      titleTag: h1
+      description: Sistemas fiscais com o melhor custo-benefício do mercado.
+      image: https://res.cloudinary.com/webmaster-marke/image/upload/v1625060740/MarkeUI/golden-gate-bridge-3.jpg
+      opaqueImage: false
+      backgroundColor: "#0a1339"
+    - title: Consultoria e Desenvolvimento de Soluções Fiscais
+      titleTag: h1
+      description: Sistemas fiscais com o melhor custo-benefício do mercado.
+      image: https://res.cloudinary.com/webmaster-marke/image/upload/v1625060481/MarkeUI/golden-gate-bridge.jpg
+      opaqueImage: false
+      backgroundColor: "#0a1339"
+---
+<h1>Masthead Slider</h1>
+<h2>Lorem ipsum dolor sit amet consectetur</h2>
+<div class="docs-example">
+  {%- set context = {
+    "slides": masthead.slides,
+    "showDivider": true
+  } %}
+  {% include "masthead-slider/masthead-slider.njk" %}
+</div>
