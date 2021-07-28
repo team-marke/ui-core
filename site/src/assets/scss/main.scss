@@ -4,8 +4,8 @@
 @import '../../../../components/sass-config';
 
 // Dependencies
-// @import 'swiper';
 @import './dependencies/lightgallery';
+@import './dependencies/swiper';
 
 // Base
 @import '~bootstrap/scss/reboot';
@@ -37,6 +37,7 @@
 @import '../../../../components/photo-gallery';
 @import '../../../../components/action-bar';
 @import '../../../../components/copyrightbar';
+@import '../../../../components/masthead-slider';
 
 // Layouts
 @import 'layouts/docs';

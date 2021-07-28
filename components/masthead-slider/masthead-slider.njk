@@ -10,17 +10,13 @@
 <div class="masthead-slider swiper-container">
   <div class="masthead-slider__wrapper swiper-wrapper">
     {%- for slide in slides %}
-      {%- if slide.opaqueImage -%}
-        {%- set opacity = 33 -%}
-      {%- else -%}
-        {%- set opacity = 100 -%}
-      {%- endif -%}
       <div class="masthead-slider__slide swiper-slide" style="--masthead-background-color: {{ slide.backgroundColor | e | safe }};">
         <picture>
           <source 
             media="(max-width:768px)" 
             srcset="{%- imageUrl slide.image, { transformation: [ { fetch_format: 'auto', quality: 'auto', width: 768, crop: 'thumb', gravity: 'auto:face:70', aspect_ratio: '21:9' } ] } %}">
           <img 
+            style="{% if slide.imageBrightness %}filter: brightness({{ slide.imageBrightness }});{% endif %}"
             class="masthead-slider__image img-fit-cover"
             alt="{{ slide.title | e | safe }}"
             loading="lazy"
@@ -30,7 +26,6 @@
             {%- imageUrl slide.image, { 
                 fetch_format: 'auto',
                 quality: 'auto',
-                opacity: opacity,
                 width: 1920,
                 height: 600,
                 crop: 'thumb' 
@@ -40,7 +35,6 @@
             {%- imageUrl slide.image, { 
                 fetch_format: 'auto',
                 quality: 'auto',
-                opacity: opacity,
                 width: 1920,
                 height: 600,
                 crop: 'thumb',

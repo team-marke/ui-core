@@ -3,7 +3,7 @@
  * Read more about the API at @link https://swiperjs.com/api/
  */
 
-import Swiper, { Pagination, Navigation, EffectFade, Autoplay } from 'swiper';
+import Swiper, { Pagination, Navigation, EffectFade } from 'swiper';
 
 class MastheadSlider {
   constructor(...args) {
@@ -12,7 +12,7 @@ class MastheadSlider {
   initSlider(args) {
     let sliderContainer;
     let swiperParams;
-    Swiper.use([Pagination, Navigation, EffectFade, Autoplay]);
+    Swiper.use([Pagination, Navigation, EffectFade]);
     if (args.length === 1) {
       sliderContainer = args[0];
       swiperParams = {
@@ -24,9 +24,6 @@ class MastheadSlider {
         effect: 'fade',
         fadeEffect: {
           crossFade: true,
-        },
-        autoplay: {
-          delay: 6000,
         },
         autoHeight: true,
         simulateTouch: false,
