@@ -2,28 +2,26 @@
 // Action bar
 //
 
-$actionbar-padding-y: .15rem !default;
-$actionbar-padding-x: 0 !default;
-$actionbar-font-size: $font-size-sm !default;
-$actionbar-item-padding-y: .35rem !default;
-$actionbar-item-padding-x: .5rem !default;
-$actionbar-link-hover-decoration: underline !default;
+$padding-y: .15rem !default;
+$padding-x: 0 !default;
+$item-padding-y: .35rem !default;
+$item-padding-x: .5rem !default;
+$link-hover-decoration: underline !default;
 
 // dark styles
-$actionbar-dark-color: rgba($light, 0.9) !default;
-$actionbar-dark-hover-color: $light !default;
+$dark-color: rgba(#f8f9fa, 0.9) !default;
+$dark-hover-color: #f8f9fa !default;
 
 // light styles
-$actionbar-light-color: rgba($dark, 0.9)  !default;
-$actionbar-light-hover-color: $dark !default;
+$light-color: rgba(#212529, 0.9)  !default;
+$light-hover-color: #212529 !default;
 
 
 .actionbar {
-  padding-top: $actionbar-padding-y;
-  padding-right: $actionbar-padding-x;
-  padding-bottom: $actionbar-padding-y;
-  padding-left: $actionbar-padding-x;
-  font-size: $actionbar-font-size;
+  padding-top: $padding-y;
+  padding-right: $padding-x;
+  padding-bottom: $padding-y;
+  padding-left: $padding-x;
 }
 
 .actionbar__container {
@@ -32,23 +30,23 @@ $actionbar-light-hover-color: $dark !default;
 }
 
 .actionbar--dark {
-  color: $actionbar-dark-color;
+  color: $dark-color;
   a {
-    color: $actionbar-dark-color;
+    color: $dark-color;
     &:hover {
-      color: $actionbar-dark-hover-color;
-      text-decoration: $actionbar-link-hover-decoration;
+      color: $dark-hover-color;
+      text-decoration: $link-hover-decoration;
     }
   }
 }
 
 .actionbar--light {
-  color: $actionbar-light-color;
+  color: $light-color;
   a {
-    color: $actionbar-light-color;
+    color: $light-color;
     &:hover {
-      color: $actionbar-light-hover-color;
-      text-decoration: $actionbar-link-hover-decoration;
+      color: $light-hover-color;
+      text-decoration: $link-hover-decoration;
     }
   }
 }
@@ -67,10 +65,10 @@ $actionbar-light-hover-color: $dark !default;
 }
 
 .actionbar__item {
-  padding-top: $actionbar-item-padding-y;
-  padding-right: $actionbar-item-padding-x;
-  padding-bottom: $actionbar-item-padding-y;
-  padding-left: $actionbar-item-padding-x;
+  padding-top: $item-padding-y;
+  padding-right: $item-padding-x;
+  padding-bottom: $item-padding-y;
+  padding-left: $item-padding-x;
 }
 
 .actionbar__icon.svg-inline--fa {

@@ -6,7 +6,7 @@
   padding-bottom: 1rem;
   margin-right: calc(var(--bs-gutter-x) / -2);
   margin-left: calc(var(--bs-gutter-x) / -2);
-  @include media-breakpoint-up(lg) {
+  @media (min-width: 992px) {
     padding-top: calc(var(--bs-gutter-y) / -2);
     padding-right: calc(var(--bs-gutter-x) / -2);
     padding-bottom: 1.5rem;
@@ -26,14 +26,14 @@
       overflow-x: hidden;
       padding-left: calc(var(--bs-gutter-x) * 3 / 2);
       padding-bottom: 2.75rem;
-      @include media-breakpoint-up(lg) {
+      @media (min-width: 992px) {
         padding-left: 0;
         grid-template-columns: repeat(var(--grid-responsive-slider-max-columns), 1fr);
       }
     }
     .swiper-slide {
       width: 100%;
-      @include media-breakpoint-up(lg) {
+      @media (min-width: 992px) {
         width: 100%;
       }
     }
@@ -44,7 +44,7 @@
     padding-right: calc(var(--bs-gutter-x) / 2);
     padding-bottom: 2rem;
     padding-left: calc(var(--bs-gutter-x) / 2);
-    @include media-breakpoint-down(lg) {
+    @media (max-width: 991px) {
       &:first-child {
         margin-left: calc(10vw / var(--grid-responsive-slider-min-columns));
       }
@@ -52,7 +52,7 @@
         margin-right: calc(10vw / var(--grid-responsive-slider-min-columns));
       }
     }
-    @include media-breakpoint-up(lg) {
+    @media (min-width: 992px) {
       padding-top: calc(var(--bs-gutter-y) / 2);
       padding-right: calc(var(--bs-gutter-x) / 2);
       padding-bottom: calc(var(--bs-gutter-y) / 2);

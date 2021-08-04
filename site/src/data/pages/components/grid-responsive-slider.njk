@@ -20,21 +20,21 @@ items:
 <h1>Grid Responsive Slider</h1>
 <h2>Lorem ipsum dolor sit amet consectetur</h2>
 <div class="docs-example">
-
-  {% set stringifiedItems %}
-    {% for item in items %}
-      <div class="card">
-        <h3>{{ item.title }}</h3>
-        <p>{{ item.description }}</p>
-      </div>;
-    {% endfor %}
-  {% endset %}
-
+  {% set arr = [] %}
+  {% for item in items %}
+    {% set renderedItem %}
+    <div class="card">
+      <h3>{{ item.title }}</h3>
+      <p>{{ item.description }}</p>
+    </div>
+    {% endset %}
+    {% set arr = (arr.push(renderedItem), arr) %}
+  {% endfor %}
   {%- set context = {
     "minColumns": 1,
     "maxColumns": 3,
     "total": (items | length),
-    "items": stringifiedItems | split(';', true),
+    "items": arr,
     "showPagination": true
   } %}
   {% include "grid-responsive-slider/grid-responsive-slider.njk" %}

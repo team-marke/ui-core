@@ -1,6 +1,6 @@
 /**
- * Masthead Slider using Swiper API.
- * Read more about the API at @link https://swiperjs.com/api/
+ * Masthead Slider.
+ * Uses Swiper API. Read more about the API at @link https://swiperjs.com/api/
  */
 
 import Swiper, { Pagination, Navigation, EffectFade } from 'swiper';

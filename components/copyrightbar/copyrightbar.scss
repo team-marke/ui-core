@@ -2,31 +2,31 @@
 // Copyrightbar component for footers.
 //
 
-$copyrightbar-padding-y: $spacer * 2 !default;
-$copyrightbar-gap: $grid-gutter-width / 2 !default;
-$copyrightbar-font-size: $font-size-sm !default;
+$padding-y: 1rem !default;
+$gap: .5rem !default;
+$font-size: 0.875rem !default;
 
 // dark styles
-$copyrightbar-dark-color: $light !default;
+$dark-color: #f8f9fa !default;
 
 // light styles
-$copyrightbar-light-color: $dark !default;
+$light-color: #212529 !default;
 
 .copyrightbar {
-  padding-top: $copyrightbar-padding-y;
-  padding-bottom: $copyrightbar-padding-y;
+  padding-top: $padding-y;
+  padding-bottom: $padding-y;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  gap: $copyrightbar-gap;
-  @include media-breakpoint-up(lg) {
+  gap: $gap;
+  @media (min-width: 992px) {
     flex-direction: row;
   }
 }
 
 .copyrightbar__text {
-  @include font-size($copyrightbar-font-size);
+  font-size: $font-size;
 }
 
 .copyrightbar__signature {
@@ -43,10 +43,10 @@ $copyrightbar-light-color: $dark !default;
 }
 
 .copyrightbar--dark {
-  color: $copyrightbar-dark-color;
+  color: $dark-color;
 }
 
 .copyrightbar--light {
-  color: $copyrightbar-light-color;
+  color: $light-color;
 }
 

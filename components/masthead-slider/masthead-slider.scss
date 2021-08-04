@@ -2,12 +2,14 @@
 // Masthead slider
 //
 
-$masthead-slider-description-font-size: $font-size-lg !default;
+$description-font-size: 1.15rem !default;
+$text-color: #f8f9fa;
+$transition: all .15s linear !default;
 
 .masthead-slider {
-  --swiper-pagination-color: #{$light};
-  --swiper-theme-color: #{$light};
-  @include media-breakpoint-up(lg) {
+  --swiper-pagination-color: #{$text-color};
+  --swiper-theme-color: #{$text-color};
+  @media (min-width: 992px) {
     min-height: 450px;
   }
   &__slide {
@@ -16,7 +18,7 @@ $masthead-slider-description-font-size: $font-size-lg !default;
   .masthead-slider__button-prev,
   .masthead-slider__button-next {
     display: none;
-    @include media-breakpoint-up(lg) {
+    @media (min-width: 992px) {
       display: block;
     }
     opacity: 0;
@@ -25,7 +27,7 @@ $masthead-slider-description-font-size: $font-size-lg !default;
     }
     padding: 2rem;
     transform: translateY(-50%);
-    transition: $transition-base;
+    transition: $transition;
     &:hover {
       background-color: rgb(37 37 37 / 20%);
     }
@@ -45,19 +47,19 @@ $masthead-slider-description-font-size: $font-size-lg !default;
     }
   }
   &__button-prev {
-    @include media-breakpoint-up(xl) {
+    @media (min-width: 1200px) {
       left: 2rem;
     }
   }
   &__button-next {
-    @include media-breakpoint-up(xl) {
+    @media (min-width: 1200px) {
       right: 2rem;
     }
   }
   &__pagination {
     &.swiper-pagination-bullets {
       bottom: 2rem;
-      @include media-breakpoint-up(lg) {
+      @media (min-width: 992px) {
         bottom: 3rem;
       }
     }
@@ -65,7 +67,7 @@ $masthead-slider-description-font-size: $font-size-lg !default;
       background: var(--swiper-pagination-color);
       opacity: 1;
       border-radius: 5px;
-      transition: $transition-base;
+      transition: $transition;
       &-active {
         width: 25px;
       }
@@ -74,10 +76,10 @@ $masthead-slider-description-font-size: $font-size-lg !default;
 }
 
 .masthead-slider__container {
-  color: $light;
+  color: $text-color;
   padding-top: 1rem;
   padding-bottom: 4rem;
-  @include media-breakpoint-up(lg) {
+  @media (min-width: 992px) {
     position: absolute;
     top: 0;
     width: 100%;
@@ -90,11 +92,15 @@ $masthead-slider-description-font-size: $font-size-lg !default;
 }
 
 .masthead-slider__container-inner {
-  @extend .container;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
   display: flex;
   flex-flow: column;
   gap: 0.75rem;
-  @include media-breakpoint-up(lg) {
+  @media (min-width: 992px) {
     gap: 1.5rem;
   }
 }
@@ -103,7 +109,7 @@ $masthead-slider-description-font-size: $font-size-lg !default;
   aspect-ratio: 21 / 9;
   width: 100%;
   height: auto;
-  @include media-breakpoint-up(lg) {
+  @media (min-width: 992px) {
     aspect-ratio: auto;
     height: 450px;
   }
@@ -124,7 +130,7 @@ $masthead-slider-description-font-size: $font-size-lg !default;
 }
 
 .masthead-slider__description {
-  @include font-size($masthead-slider-description-font-size);
+  font-size: $description-font-size;
   max-width: 60ch;
   color: inherit;
 }
