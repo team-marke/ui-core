@@ -1,5 +1,5 @@
 {%- if context -%}
-  {% set children = context.children %}
+  {% set items = context.items %}
   {% set showPagination = context.showPagination %}
   {% set total = context.total %}
   {% set minColumns = context.minColumns %}
@@ -33,7 +33,11 @@
   "
 >
   <div class="grid-responsive-slider__wrapper swiper-wrapper">
-    {{ children | safe }}
+    {% for item in items %}
+      <div class="grid-responsive-slider__slide swiper-slide">
+        {{ item | safe }}
+      </div>
+    {% endfor %}
   </div>
   {% if showPagination %}
   <div class="grid-responsive-slider__pagination swiper-pagination"></div>

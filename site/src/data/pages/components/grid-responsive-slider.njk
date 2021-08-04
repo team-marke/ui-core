@@ -21,12 +21,12 @@ items:
 <h2>Lorem ipsum dolor sit amet consectetur</h2>
 <div class="docs-example">
 
-  {% set innerContent %}
+  {% set stringifiedItems %}
     {% for item in items %}
-      <div class="grid-responsive-slider__slide swiper-slide">
+      <div class="card">
         <h3>{{ item.title }}</h3>
         <p>{{ item.description }}</p>
-      </div>
+      </div>;
     {% endfor %}
   {% endset %}
 
@@ -34,18 +34,8 @@ items:
     "minColumns": 1,
     "maxColumns": 3,
     "total": (items | length),
-    "children": innerContent,
+    "items": stringifiedItems | split(';', true),
     "showPagination": true
-  } %}
-  {% include "grid-responsive-slider/grid-responsive-slider.njk" %}
-  
-  {%- set context = {
-    "minColumns": 1,
-    "maxColumns": 3,
-    "total": (items | length),
-    "children": innerContent,
-    "showPagination": true,
-    "variant": "secondary"
   } %}
   {% include "grid-responsive-slider/grid-responsive-slider.njk" %}
 </div>
