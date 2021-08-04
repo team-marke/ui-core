@@ -1,44 +1,20 @@
-// Abstracts
-@import '~bootstrap/scss/functions';
-@import 'abstracts/variables';
-@import '../../../../components/sass-config';
-
-// Dependencies
-@import './dependencies/lightgallery';
-@import './dependencies/swiper';
-
-// Base
-@import '~bootstrap/scss/reboot';
-@import '~bootstrap/scss/type';
-@import '~bootstrap/scss/root';
+@use 'marke-ui' as mkui;
+@use '~lightgallery/scss/lightgallery' as lightgallery with (
+  $lg-path-fonts: '~lightgallery/fonts',
+  $lg-path-images: '~lightgallery/images',
+);
 
 // Components
-@import '~bootstrap/scss/accordion';
-@import '~bootstrap/scss/containers';
-@import '~bootstrap/scss/grid';
-@import '~bootstrap/scss/forms';
-@import '~bootstrap/scss/buttons';
-@import '~bootstrap/scss/nav';
-@import '~bootstrap/scss/navbar';
-@import '~bootstrap/scss/button-group';
-@import '~bootstrap/scss/transitions';
-@import '~bootstrap/scss/forms/labels';
-@import '~bootstrap/scss/forms/form-text';
-@import '~bootstrap/scss/forms/form-control';
-@import '~bootstrap/scss/close';
-@import '~bootstrap/scss/modal';
-@import '~bootstrap/scss/offcanvas';
-@import '~bootstrap/scss/spinners';
-@import '~bootstrap/scss/toasts';
-@import 'components/images';
-
-@import '../../../../components/video-modal';
-@import '../../../../components/video-teaser';
-@import '../../../../components/photo-gallery';
-@import '../../../../components/action-bar';
-@import '../../../../components/copyrightbar';
-@import '../../../../components/masthead-slider';
-@import '../../../../components/grid-responsive-slider/';
+@use '../../../../components/video-teaser' with (
+  $icon-color: mkui.$primary,
+  $icon-hover-color: mkui.$light,
+);
+@use '../../../../components/video-modal';
+@use '../../../../components/photo-gallery';
+@use '../../../../components/action-bar';
+@use '../../../../components/copyrightbar';
+@use '../../../../components/masthead-slider';
+@use '../../../../components/grid-responsive-slider/';
 
 // Layouts
-@import 'layouts/docs';
+@use 'layouts/docs';
