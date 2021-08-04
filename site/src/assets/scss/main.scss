@@ -3,6 +3,12 @@
   $lg-path-fonts: '~lightgallery/fonts',
   $lg-path-images: '~lightgallery/images',
 );
+@use '~swiper/swiper' with (
+  $themeColor: mkui.$primary,
+);
+@use '~swiper/components/pagination/pagination';
+@use '~swiper/components/navigation/navigation';
+@use '~swiper/components/effect-fade/effect-fade';
 
 // Components
 @use '../../../../components/video-teaser' with (
