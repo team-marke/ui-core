@@ -30,12 +30,22 @@ items:
     {% endfor %}
   {% endset %}
 
-  {{ innerContent | log }}
   {%- set context = {
     "minColumns": 1,
     "maxColumns": 3,
     "total": (items | length),
-    "children": innerContent
+    "children": innerContent,
+    "showPagination": true
+  } %}
+  {% include "grid-responsive-slider/grid-responsive-slider.njk" %}
+  
+  {%- set context = {
+    "minColumns": 1,
+    "maxColumns": 3,
+    "total": (items | length),
+    "children": innerContent,
+    "showPagination": true,
+    "variant": "secondary"
   } %}
   {% include "grid-responsive-slider/grid-responsive-slider.njk" %}
 </div>

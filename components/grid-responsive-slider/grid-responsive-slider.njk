@@ -1,11 +1,26 @@
 {%- if context -%}
-  {% set minColumns = context.minColumns %}
-  {% set maxColumns = context.maxColumns %}
-  {% set total = context.total %}
   {% set children = context.children %}
+  {% set showPagination = context.showPagination %}
+  {% set total = context.total %}
+  {% set minColumns = context.minColumns %}
+  {%- if context.minColumns %}
+    {% set minColumns = context.minColumns %}
+  {%- else %}
+    {% set minColumns = 1 %}
+  {%- endif %}
+  {%- if context.maxColumns %}
+    {% set maxColumns = context.maxColumns %}
+  {%- else %}
+    {% set maxColumns = 3 %}
+  {%- endif %}
+  {%- if context.variant %}
+    {% set variant = context.variant %}
+  {%- else %}
+    {% set variant = 'primary' %}
+  {%- endif %}
 {%- endif -%}
 
-<div 
+<div
   class="grid-responsive-slider swiper-container"
   data-min-columns="{{ minColumns | e | safe }}"
   data-max-columns="{{ maxColumns | e | safe }}"
@@ -14,6 +29,7 @@
     --grid-responsive-slider-min-columns: {{ minColumns | e | safe }};
     --grid-responsive-slider-max-columns: {{ maxColumns | e | safe }};
     --grid-responsive-slider-total: {{ total | e | safe }};
+    --swiper-pagination-color: var(--bs-{{ variant }});
   "
 >
   <div class="grid-responsive-slider__wrapper swiper-wrapper">
