@@ -1,0 +1,32 @@
+{%- if context -%}
+  {% set image = context.image %}
+  {% set children = context.children %}
+{%- endif -%}
+
+<div class="card">
+    {%- if image.url and image.width and image.height %}
+    <img 
+      src="
+      {%- imageUrl image.url, { 
+        quality: 'auto:good',
+        width: image.width,
+        height: image.height
+      } %}"
+      srcset="
+      {%- imageUrl image.url, { 
+          quality: 'auto:good',
+          width: image.width',
+          height: image.height
+        } 
+      %} 2x"
+      width="image.width"
+      height="image.height"
+      loading="lazy"
+      class="card-img-top"
+      alt="{{ image.alt }}"
+    >
+    {%- endif %}
+  <div class="card-body">
+    {{ children | safe }}
+  </div>
+</div>

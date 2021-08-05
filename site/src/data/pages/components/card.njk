@@ -1,0 +1,38 @@
+---
+tags:
+  - navbar
+eleventyNavigation:
+  key: card
+  title: Card
+  order: 4
+  parent: docs
+metadata:
+  title: Card
+  description: Descrição
+---
+
+<h1>Card</h1>
+<p>Lorem ipsum dolor sit amet, stet intellegat mei, pertinax oportere at sea. Eos an mutat blandit. Nec at nisl volumus appellantur, an his brute quodsi. Sit ceteros contentiones at, te summo discere pro.</p>
+<div class="row">
+
+  {% set renderedData %}
+    <h5 class="card-title">Card title</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  {% endset %}
+
+  <div class="col-12 col-md-6 mb-3">
+    {% set context = {
+      "image": {
+        url: "https://res.cloudinary.com/webmaster-marke/image/upload/v1626966885/Marke-fundo-vidro.jpg",
+        alt: '',
+        width: '300',
+        height: '200'
+      },
+      "children": renderedData
+      } %}
+    {% include "card/card.njk" %}
+  </div>
+
+
+</div>
