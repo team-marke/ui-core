@@ -4,22 +4,18 @@ tags:
 eleventyNavigation:
   key: video-modal
   title: Video Modal
-  order: 0
-  parent: docs
 metadata:
   title: 
   description:
 ---
-<h1>Modal/Popup de Vídeo</h1>
+<h1>Video Modal</h1>
+<p>Lorem ipsum dolor sit amet, stet intellegat cu mei, pertinax oportere at sea. Eos an mutat blandit. Nec at nisl volumus appellantur, an his brute quodsi. Sit ceteros contentiones at, te summo discere pro.</p>
 <h2>Acionado por um Video Teaser</h2>
-<div class="docs-example">
-  <div class="w-lg-50">
-    {% set context = {
-      "id": "FTQbiNvZqaY",
-      "alt": "Toto Africa",
-      "toggles_modal": true
-        }
-    %}
-    {% include "video-teaser/video-teaser.njk" %}
-  </div>
+<div class="docs-example" style="max-width: 500px;">
+  {% set context = {
+    "id": "FTQbiNvZqaY",
+    "alt": "Toto Africa",
+    "toggles_modal": true
+  } %}
+  {% include "video-teaser/video-teaser.njk" %}
 </div>
