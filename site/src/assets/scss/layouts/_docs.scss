@@ -1,4 +1,4 @@
-// 
+//
 // Documentation layout styles
 //
 
@@ -10,16 +10,19 @@
   padding-bottom: 1rem;
   grid-gap: 1rem;
   grid-template-areas:
-      'sidebar'
-      'main';
-  @media (min-width: 992px) {
+    'sidebar'
+    'main';
+  @include mkui.media-breakpoint-up(lg) {
     display: grid;
     padding-top: 2rem;
     padding-bottom: 2rem;
     grid-gap: 3rem;
     grid-template-columns: 1fr 3fr;
-    grid-template-areas:
-      'sidebar main';
+    grid-template-areas: 'sidebar main';
+  }
+  @include mkui.media-breakpoint-up(xl) {
+    grid-gap: 5rem;
+    grid-template-columns: 1fr 4fr;
   }
 }
 
