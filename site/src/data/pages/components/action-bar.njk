@@ -13,44 +13,6 @@ metadata:
 
 <h1>Action Bar</h1>
 <p>Lorem ipsum dolor sit amet, stet intellegat cu mei, pertinax oportere at sea. Eos an mutat blandit. Nec at nisl volumus appellantur, an his brute quodsi. Sit ceteros contentiones at, te summo discere pro.</p>
-<h2>Action Bar</h2>
-<div class="container bg-primary">
-  {%- set context = {
-    "startItems": [
-      {
-        "text": 'lukeiamyourfather@gmail.com',
-        "href": "mailto:" + 'lukeiamyourfather@gmail.com'
-      }
-    ],
-    "endItems": [
-      {
-        "text": '(88) 9999-999',
-        "href": '889999999'
-      },
-      {
-        "text": '(77) 5555-555',
-        "href": '775555555'
-      },
-      {
-        "icon": "facebook",
-        "href": 'https://facebook.com'
-      },
-      {
-        "icon": "linkedin",
-        "href": 'https://linkedin.com'
-      },
-      {
-        "icon": "youtube",
-        "href": 'https://youtube.com'
-      },
-      {
-        "icon": "instagram",
-        "href": 'https://instagram.com'
-      }
-    ]
-  } %}
-  {% include "action-bar/action-bar.njk" %}
-</div>
 <h2>Dark</h2>
 <div class="container bg-primary">
   {%- set context = {
@@ -59,6 +21,11 @@ metadata:
       {
         "text": '(88) 9999-999',
         "href": '889999999'
+      }
+    ],
+    "centerItems": [
+      {
+        "text": 'Lorem ipsum dolor sit amet, stet intellegat'
       }
     ],
     "endItems": [

@@ -65,7 +65,8 @@
     "webpack-merge": "^5.7.3"
   },
   "files": [
-    "components/**/*"
+    "components/**/*",
+    "design-tokens/**/*"
   ],
   "scripts": {
     "develop": "run-p develop:eleventy develop:webpack",

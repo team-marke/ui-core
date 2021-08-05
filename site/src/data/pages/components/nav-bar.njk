@@ -1,0 +1,48 @@
+---
+tags:
+  - navbar
+eleventyNavigation:
+  key: nav-bar
+  title: Nav Bar
+  order: 7
+  parent: docs
+metadata:
+  title: Nav Bar
+  description: Lorem ipsum dolor sit amet, stet intellegat cu mei, pertinax oportere at sea. Eos an mutat blandit. Nec at nisl volumus appellantur
+---
+
+<h1>Nav Bar</h1>
+<p>Lorem ipsum dolor sit amet, stet intellegat cu mei, pertinax oportere at sea. Eos an mutat blandit. Nec at nisl volumus appellantur, an his brute quodsi. Sit ceteros contentiones at, te summo discere pro.</p>
+<h2>Dark</h2>
+<div class="container">
+  {%- set navbarLinks = [
+    {
+      "key": "link-1",
+      "url": "#link-1",
+      "title": "Link 1"
+    },
+    {
+      "key": "link-2",
+      "url": "#link-2",
+      "title": "Link 2",
+      "navbar": {
+        "scrollSpy": true
+      }
+    },
+    {
+      "key": "link-3",
+      "url": "#link-3",
+      "title": "Link 3"
+    }
+  ] %}
+  {%- set context = {
+    "navbarLinks": navbarLinks,
+    "currentPage": page,
+    "brandLogo": 'https://res.cloudinary.com/webmaster-marke/image/upload/v1620931656/Logo_Marke_dt6azg_pthlhj.svg',
+    "brandLogoMobile": 'https://res.cloudinary.com/webmaster-marke/image/upload/v1620931656/Logo_Marke_dt6azg_pthlhj.svg',
+    "brandLogoMobileWidth": 70,
+    "brandUrl": "#inicio",
+    "offcanvasId": "offcanvas-menu"
+  } %}
+  {% include "nav-bar/nav-bar.njk" %}
+</div>

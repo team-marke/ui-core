@@ -1,59 +1,68 @@
-// 
+//
 // Action bar
 //
 
-$padding-y: .15rem !default;
-$padding-x: 0 !default;
-$item-padding-y: .35rem !default;
-$item-padding-x: .5rem !default;
-$link-hover-decoration: underline !default;
-
-// dark styles
-$dark-color: rgba(#f8f9fa, 0.9) !default;
-$dark-hover-color: #f8f9fa !default;
-
-// light styles
-$light-color: rgba(#212529, 0.9)  !default;
-$light-hover-color: #212529 !default;
-
+$actionbar-padding-y: 0.15rem !default;
+$actionbar-padding-x: 0 !default;
+$actionbar-font-size: 0.875rem !default;
+$actionbar-light-color: #212529 !default;
+$actionbar-dark-color: #f8f9fa !default;
+$actionbar-link-hover-decoration: uppercase !default;
+$actionbar-link-transition: none !default;
+$actionbar-link-light-color: #000 !default;
+$actionbar-link-dark-color: #fff !default;
+$actionbar-item-padding-y: 0.25rem !default;
+$actionbar-item-padding-x: 0.5rem !default;
 
 .actionbar {
-  padding-top: $padding-y;
-  padding-right: $padding-x;
-  padding-bottom: $padding-y;
-  padding-left: $padding-x;
-}
-
-.actionbar__container {
-  display: flex;
-  justify-content: space-between;
-}
-
-.actionbar--dark {
-  color: $dark-color;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding-top: $actionbar-padding-y;
+  padding-right: $actionbar-padding-x;
+  padding-bottom: $actionbar-padding-y;
+  padding-left: $actionbar-padding-x;
+  font-size: $actionbar-font-size;
   a {
-    color: $dark-color;
+    transition: $actionbar-link-transition;
     &:hover {
-      color: $dark-hover-color;
-      text-decoration: $link-hover-decoration;
+      text-decoration: $actionbar-link-hover-decoration;
     }
   }
 }
 
 .actionbar--light {
-  color: $light-color;
+  color: $actionbar-light-color;
   a {
-    color: $light-color;
+    color: rgba($color: $actionbar-link-light-color, $alpha: 0.75);
     &:hover {
-      color: $light-hover-color;
-      text-decoration: $link-hover-decoration;
+      color: $actionbar-link-light-color;
+    }
+  }
+}
+
+.actionbar--dark {
+  color: $actionbar-dark-color;
+  a {
+    color: rgba($color: $actionbar-link-dark-color, $alpha: 0.75);
+    &:hover {
+      color: $actionbar-link-dark-color;
     }
   }
 }
 
 .actionbar__start-items,
+.actionbar__center-items,
 .actionbar__end-items {
   display: flex;
+}
+
+.actionbar__center-items {
+  justify-content: center;
+  text-align: center;
+}
+
+.actionbar__end-items {
+  justify-content: flex-end;
 }
 
 .actionbar__item,
@@ -65,10 +74,11 @@ $light-hover-color: #212529 !default;
 }
 
 .actionbar__item {
-  padding-top: $item-padding-y;
-  padding-right: $item-padding-x;
-  padding-bottom: $item-padding-y;
-  padding-left: $item-padding-x;
+  line-height: 1;
+  padding-top: $actionbar-item-padding-y;
+  padding-right: $actionbar-item-padding-x;
+  padding-bottom: $actionbar-item-padding-y;
+  padding-left: $actionbar-item-padding-x;
 }
 
 .actionbar__icon.svg-inline--fa {

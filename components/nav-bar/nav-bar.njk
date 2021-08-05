@@ -1,0 +1,66 @@
+{%- if context -%}
+  {% set navbarLinks = context.navbarLinks %}
+  {% set currentPage = context.currentPage %}
+  {% set brandLogo = context.brandLogo %}
+  {% set brandLogoMobile = context.brandLogoMobile %}
+  {% set brandUrl = context.brandUrl %}
+  {%- if context.brandLogoWidth -%}
+    {% set brandLogoWidth = context.brandLogoWidth %}
+  {%- else -%}
+    {% set brandLogoWidth = 120 %}
+  {%- endif -%}
+  {%- if context.brandLogoMobileWidth -%}
+    {% set brandLogoMobileWidth = context.brandLogoMobileWidth %}
+  {%- else -%}
+    {% set brandLogoMobileWidth = 50 %}
+  {%- endif -%}
+  {% set offcanvasId = context.offcanvasId %}
+{%- endif -%}
+
+<nav class="navbar navbar-dark navbar-expand-lg">
+  <a class="navbar-brand" href="{{ brandUrl | url | safe }}">
+    <img 
+      class="img-fluid d-block d-lg-none"
+      alt="Logo"
+      width="{{ brandLogoMobileWidth }}"
+      src="{%- imageUrl brandLogoMobile, { fetch_format: 'auto', quality: 'auto', dpr: 2, width: brandLogoWidth } %}"
+    >
+    <img 
+      class="img-fluid d-none d-lg-block"
+      alt="Logo"
+      width="{{ brandLogoWidth }}"
+      src="{%- imageUrl brandLogo, { fetch_format: 'auto', quality: 'auto', dpr: 2, width: brandLogoWidth } %}"
+    >
+  </a>
+  <ul class="navbar-nav">
+    {%- for entry in navbarLinks %}
+    {%- if not entry.navbar.hidden %}
+    <li class="nav-item{% if entry.children | length %} dropdown{% endif %}">
+      {{ entry | navbarLink(currentPage) | safe }}
+      {%- if entry.children | length > 0 and not entry.navbar.hideChildren %}
+        <div class="dropdown-menu dropdown-menu-dark dropdown-menu--navbar dropdown-menu-md-right" aria-labelledby="dropdown-menu-{{ entry.title | slug | safe }}">
+          <a class="dropdown-item{% if entry.url == page.url %} active{% endif %}" href="{{ entry.url | url }}">
+            {%- if entry.navbar.dropdownTitle %}
+            <span>{{ entry.navbar.dropdownTitle | e | safe }}</span>
+            {% else %}
+            <span>Todos {{ entry.title | e | safe }}</span>
+            {% endif %}
+          </a>
+          {%- if not entry.navbar.hideDivider %}
+          <div class="dropdown-divider"></div>
+          {% endif %}
+          {%- for child in entry.children %}
+            <a class="dropdown-item{% if child.url == page.url %} active{% endif %}" href="{{ child.url | url }}">{{ child.title | e | safe }}</a>
+          {%- endfor %}
+        </div>
+      {% endif %}
+    </li>
+    {% endif %}
+    {%- endfor %}
+  </ul>
+  {%- if offcanvasId %}
+  <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#{{ offcanvasId | slug | safe }}">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  {% endif %}
+</nav>
