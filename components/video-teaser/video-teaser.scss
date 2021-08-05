@@ -2,7 +2,7 @@
 // Video teaser with thumbnail toggler
 //
 
-@use '../sass-config' as mkui;
+@use '../../design-tokens' as mkui;
 
 $toggler-border-radius: 0.25rem !default;
 $transition: all 0.2s ease-in-out !default;

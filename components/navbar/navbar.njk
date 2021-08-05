@@ -14,10 +14,19 @@
   {%- else -%}
     {% set brandLogoMobileWidth = 50 %}
   {%- endif -%}
-  {% set offcanvasId = context.offcanvasId %}
+  {%- if context.variant -%}
+    {% set variant = context.variant %}
+  {%- else -%}
+    {% set variant = 'dark' %}
+  {%- endif -%}
+  {%- if context.expand -%}
+    {% set expand = context.expand %}
+  {%- else -%}
+    {% set expand = 'lg' %}
+  {%- endif -%}
 {%- endif -%}
 
-<nav class="navbar navbar-dark navbar-expand-lg">
+<nav class="navbar navbar-{{ variant | e | safe }} navbar-expand-{{ expand | e | safe }}">
   <a class="navbar-brand" href="{{ brandUrl | url | safe }}">
     <img 
       class="img-fluid d-block d-lg-none"
@@ -58,9 +67,43 @@
     {% endif %}
     {%- endfor %}
   </ul>
-  {%- if offcanvasId %}
-  <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#{{ offcanvasId | slug | safe }}">
+  <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbarExample" aria-controls="offcanvasNavbarExample">
     <span class="navbar-toggler-icon"></span>
   </button>
-  {% endif %}
+  <div class="offcanvas offcanvas-start bg-primary" tabindex="-1" id="offcanvasNavbarExample">
+    <div class="offcanvas-header">
+      <div class="offcanvas-title" id="offcanvasNavbarExample-label">
+        <img 
+          class="img-fluid"
+          alt="Logo"
+          width="{{ brandLogoMobileWidth }}"
+          src="{%- imageUrl brandLogoMobile, { fetch_format: 'auto', quality: 'auto', dpr: 2, width: brandLogoWidth } %}"
+        >
+      </div>
+      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="offcanvasNavbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Dropdown
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
 </nav>

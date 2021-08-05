@@ -92,6 +92,15 @@ const loadGridResponsiveSlider = () => {
 };
 
 /**
+ * Load Nav Bar.
+ */
+const loadNavBar = () => {
+  if (document.querySelector('.navbar')) {
+    import(/* webpackChunkName: "navbar" */ '../../../../components/navbar/navbar')
+  }
+};
+
+/**
  * Dynamically load modules that are split from the main JS bundle.
  */
 const loadDynamicModules = () => {
@@ -101,6 +110,7 @@ const loadDynamicModules = () => {
   loadOffcanvasMenu();
   loadMastheadSlider();
   loadGridResponsiveSlider();
+  loadNavBar();
 };
 
 /**

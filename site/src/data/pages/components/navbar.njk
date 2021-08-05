@@ -2,7 +2,7 @@
 tags:
   - navbar
 eleventyNavigation:
-  key: nav-bar
+  key: navbar
   title: Nav Bar
   order: 7
   parent: docs
@@ -14,7 +14,7 @@ metadata:
 <h1>Nav Bar</h1>
 <p>Lorem ipsum dolor sit amet, stet intellegat cu mei, pertinax oportere at sea. Eos an mutat blandit. Nec at nisl volumus appellantur, an his brute quodsi. Sit ceteros contentiones at, te summo discere pro.</p>
 <h2>Dark</h2>
-<div class="container">
+<div class="container bg-primary">
   {%- set navbarLinks = [
     {
       "key": "link-1",
@@ -36,13 +36,13 @@ metadata:
     }
   ] %}
   {%- set context = {
-    "navbarLinks": navbarLinks,
-    "currentPage": page,
-    "brandLogo": 'https://res.cloudinary.com/webmaster-marke/image/upload/v1620931656/Logo_Marke_dt6azg_pthlhj.svg',
-    "brandLogoMobile": 'https://res.cloudinary.com/webmaster-marke/image/upload/v1620931656/Logo_Marke_dt6azg_pthlhj.svg',
-    "brandLogoMobileWidth": 70,
-    "brandUrl": "#inicio",
-    "offcanvasId": "offcanvas-menu"
+    navbarLinks: navbarLinks,
+    currentPage: page,
+    brandLogo: 'https://res.cloudinary.com/webmaster-marke/image/upload/v1620931656/Logo_Marke_dt6azg_pthlhj.svg',
+    brandLogoMobile: 'https://res.cloudinary.com/webmaster-marke/image/upload/v1620931656/Logo_Marke_dt6azg_pthlhj.svg',
+    brandLogoMobileWidth: 70,
+    brandUrl: "#inicio",
+    variant: "dark"
   } %}
-  {% include "nav-bar/nav-bar.njk" %}
+  {% include "navbar/navbar.njk" %}
 </div>
