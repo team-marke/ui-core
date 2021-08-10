@@ -13,13 +13,25 @@ metadata:
 
 <h1>Nav Bar</h1>
 <p>Lorem ipsum dolor sit amet, stet intellegat cu mei, pertinax oportere at sea. Eos an mutat blandit. Nec at nisl volumus appellantur, an his brute quodsi. Sit ceteros contentiones at, te summo discere pro.</p>
-<h2>Dark</h2>
+<h2>Escuro</h2>
 <div class="container bg-primary">
   {%- set navbarLinks = [
     {
       "key": "link-1",
       "url": "#link-1",
-      "title": "Link 1"
+      "title": "Link 1",
+      "children": [
+        {
+          "key": "children-link-1", 
+          "url": "#children-link-1",
+          "title": "Children 1"
+        },
+        {
+          "key": "children-link-2", 
+          "url": "#children-link-2",
+          "title": "Children 2"
+        }
+      ]
     },
     {
       "key": "link-2",
@@ -42,7 +54,53 @@ metadata:
     brandLogoMobile: 'https://res.cloudinary.com/webmaster-marke/image/upload/v1620931656/Logo_Marke_dt6azg_pthlhj.svg',
     brandLogoMobileWidth: 70,
     brandUrl: "#inicio",
-    variant: "dark"
+    variant: "dark",
+    offcanvasColor: "primary"
+  } %}
+  {% include "navbar/navbar.njk" %}
+</div>
+<h2>Claro</h2>
+<div class="container">
+  {%- set navbarLinks = [
+    {
+      "key": "link-1",
+      "url": "#link-1",
+      "title": "Link 1",
+      "children": [
+        {
+          "key": "children-link-1", 
+          "url": "#children-link-1",
+          "title": "Children 1"
+        },
+        {
+          "key": "children-link-2", 
+          "url": "#children-link-2",
+          "title": "Children 2"
+        }
+      ]
+    },
+    {
+      "key": "link-2",
+      "url": "#link-2",
+      "title": "Link 2",
+      "navbar": {
+        "scrollSpy": true
+      }
+    },
+    {
+      "key": "link-3",
+      "url": "#link-3",
+      "title": "Link 3"
+    }
+  ] %}
+  {%- set context = {
+    navbarLinks: navbarLinks,
+    currentPage: page,
+    brandLogo: 'https://res.cloudinary.com/webmaster-marke/image/upload/v1626289554/Marke_logo_dark.svg',
+    brandLogoMobile: 'https://res.cloudinary.com/webmaster-marke/image/upload/v1626289554/Marke_logo_dark.svg',
+    brandLogoMobileWidth: 70,
+    brandUrl: "#inicio",
+    variant: "light"
   } %}
   {% include "navbar/navbar.njk" %}
 </div>

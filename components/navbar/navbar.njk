@@ -24,6 +24,11 @@
   {%- else -%}
     {% set expand = 'lg' %}
   {%- endif -%}
+  {%- if context.offcanvasColor -%}
+    {% set offcanvasColor = context.offcanvasColor %}
+  {%- else -%}
+    {% set offcanvasColor = 'light' %}
+  {%- endif -%}
 {%- endif -%}
 
 <nav class="navbar navbar-{{ variant | e | safe }} navbar-expand-{{ expand | e | safe }}">
@@ -47,7 +52,7 @@
     <li class="nav-item{% if entry.children | length %} dropdown{% endif %}">
       {{ entry | navbarLink(currentPage) | safe }}
       {%- if entry.children | length > 0 and not entry.navbar.hideChildren %}
-        <div class="dropdown-menu dropdown-menu-dark dropdown-menu--navbar dropdown-menu-md-right" aria-labelledby="dropdown-menu-{{ entry.title | slug | safe }}">
+        <div class="dropdown-menu dropdown-menu-md-right{% if variant == 'dark' %} dropdown-menu-dark{% endif %}" aria-labelledby="dropdown-menu-{{ entry.title | slug | safe }}">
           <a class="dropdown-item{% if entry.url == page.url %} active{% endif %}" href="{{ entry.url | url }}">
             {%- if entry.navbar.dropdownTitle %}
             <span>{{ entry.navbar.dropdownTitle | e | safe }}</span>
@@ -67,12 +72,13 @@
     {% endif %}
     {%- endfor %}
   </ul>
-  <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbarExample" aria-controls="offcanvasNavbarExample">
+  {% set offCanvasId %}{% idGenerator %}{% endset %}
+  <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#{{ offCanvasId | safe }}" aria-controls="{{ offCanvasId | safe }}">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <div class="offcanvas offcanvas-start bg-primary" tabindex="-1" id="offcanvasNavbarExample">
+  <div class="offcanvas offcanvas-start {{ 'bg-' + offcanvasColor }}" tabindex="-1" id="{{ offCanvasId | safe }}">
     <div class="offcanvas-header">
-      <div class="offcanvas-title" id="offcanvasNavbarExample-label">
+      <div class="offcanvas-title" id="{{ offCanvasId | safe }}-label">
         <img 
           class="img-fluid"
           alt="Logo"
@@ -83,26 +89,31 @@
       <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">
-      <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+      <ul class="navbar-nav d-flex">
+        {%- for entry in navbarLinks %}
+        {%- if not entry.navbar.hidden %}
+        <li class="nav-item {% if entry.children | length %}dropdown{% endif %}">
+          {{ entry | navbarLink(currentPage) | safe }}
+          {%- if entry.children | length > 0 and not entry.navbar.hideChildren %}
+            <div class="dropdown-menu dropdown-menu-md-right{% if variant == 'dark' %} dropdown-menu-dark{% endif %}" aria-labelledby="dropdown-menu-{{ entry.title | slug | safe }}">
+              <a class="dropdown-item{% if entry.url == page.url %} active{% endif %}" href="{{ entry.url | url }}">
+                {%- if entry.navbar.dropdownTitle %}
+                <span>{{ entry.navbar.dropdownTitle | e | safe }}</span>
+                {% else %}
+                <span>Todos {{ entry.title | e | safe }}</span>
+                {% endif %}
+              </a>
+              {%- if not entry.navbar.hideDivider %}
+              <div class="dropdown-divider"></div>
+              {% endif %}
+              {%- for child in entry.children %}
+                <a class="dropdown-item{% if child.url == page.url %} active{% endif %}" href="{{ child.url | url }}">{{ child.title | e | safe }}</a>
+              {%- endfor %}
+            </div>
+          {% endif %}
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="offcanvasNavbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
-        </li>
+        {% endif %}
+        {%- endfor %}
       </ul>
     </div>
   </div>
