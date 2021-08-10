@@ -15,7 +15,7 @@
 // Provide a static navbar from which we expand to create full-width, fixed, and
 // other navbar variations.
 
-$padding-y:                  mkui.$spacer * .5 !default;
+$padding-y:                  null !default;
 $padding-x:                  null !default;
 
 $nav-link-padding-x:         .5rem !default;
