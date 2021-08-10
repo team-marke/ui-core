@@ -48,7 +48,7 @@
   </a>
   <ul class="navbar-nav">
     {%- for entry in navbarLinks %}
-    {%- if not entry.navbar.hidden %}
+    {%- if not entry.navbar.hidden and not entry.sideNav %}
     <li class="nav-item{% if entry.children | length %} dropdown{% endif %}">
       {{ entry | navbarLink(currentPage) | safe }}
       {%- if entry.children | length > 0 and not entry.navbar.hideChildren %}
@@ -72,6 +72,11 @@
     {% endif %}
     {%- endfor %}
   </ul>
+  {%- for entry in navbarLinks %}
+    {%- if entry.sideNav and entry.button %}
+      <a class="navbar__button btn btn-primary" href="{{ entry.url | url }}">{{ entry.title | e | safe }}</a>
+    {%- endif %}
+  {%- endfor %}
   {% set offCanvasId %}{% idGenerator %}{% endset %}
   <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#{{ offCanvasId | safe }}" aria-controls="{{ offCanvasId | safe }}">
     <span class="navbar-toggler-icon"></span>
@@ -86,12 +91,12 @@
           src="{%- imageUrl brandLogoMobile, { fetch_format: 'auto', quality: 'auto', dpr: 2, width: brandLogoWidth } %}"
         >
       </div>
-      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      <button type="button" class="btn-close {% if variant == 'dark' %} btn-close-white{% endif %}" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">
       <ul class="navbar-nav d-flex">
         {%- for entry in navbarLinks %}
-        {%- if not entry.navbar.hidden %}
+        {%- if not entry.navbar.hidden and not entry.sideNav %}
         <li class="nav-item {% if entry.children | length %}dropdown{% endif %}">
           {{ entry | navbarLink(currentPage) | safe }}
           {%- if entry.children | length > 0 and not entry.navbar.hideChildren %}
@@ -115,6 +120,11 @@
         {% endif %}
         {%- endfor %}
       </ul>
+      {%- for entry in navbarLinks %}
+        {%- if entry.sideNav and entry.button %}
+          <a class="navbar__button btn btn-primary" href="{{ entry.url | url }}">{{ entry.title | e | safe }}</a>
+        {%- endif %}
+      {%- endfor %}
     </div>
   </div>
 </nav>
