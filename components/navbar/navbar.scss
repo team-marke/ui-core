@@ -94,7 +94,7 @@ $dark-brand-hover-color: $dark-active-color !default;
     }
   }
 
-  &__button {
+  &__btn {
     display: none;
     margin-left: $nav-link-padding-x;
     margin-right: $nav-link-padding-x;
@@ -104,7 +104,7 @@ $dark-brand-hover-color: $dark-active-color !default;
   }
 
   .offcanvas{
-    .navbar__button{
+    .navbar__btn{
       display: inline-block;
       margin-left: 0;
       margin-right: 0;
