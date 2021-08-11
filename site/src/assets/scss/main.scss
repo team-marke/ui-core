@@ -22,6 +22,9 @@
 @use '../../../../components/masthead-slider';
 @use '../../../../components/grid-responsive-slider';
 @use '../../../../components/navbar';
+@use '../../../../components/faq';
+@use '../../../../components/post-preview';
+@use '../../../../components/tabs-panel';
 
 // Layouts
 @use 'layouts/docs';
