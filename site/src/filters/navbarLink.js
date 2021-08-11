@@ -8,14 +8,8 @@ const slugify = require('slugify');
 module.exports = (entry, currentPage) => {
   let classList = [];
   let attributes = [];
-  if (!entry.sideNav) {
-    classList.push('nav-link');
-  }
   if (entry.url == currentPage.url) {
     classList.push('active');
-  }
-  if (entry.button) {
-    classList.push('btn', 'btn-sm', 'btn-primary');
   }
   if (entry.scrollSpy) {
     classList.push('smoothscroll');

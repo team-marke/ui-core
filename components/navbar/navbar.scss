@@ -56,6 +56,9 @@ $light-brand-hover-color: $light-active-color !default;
 $dark-brand-color: $dark-active-color !default;
 $dark-brand-hover-color: $dark-active-color !default;
 
+$extra-padding-y: $nav-link-padding-y !default;
+$extra-padding-x: $nav-link-padding-x !default;
+
 .navbar {
   position: relative;
   display: flex;
@@ -94,23 +97,11 @@ $dark-brand-hover-color: $dark-active-color !default;
     }
   }
 
-  &__btn {
-    display: none;
-    margin-left: $nav-link-padding-x;
-    margin-right: $nav-link-padding-x;
-    @include mkui.media-breakpoint-up(lg) {
-      display: block;
-    }
-  }
-
-  .offcanvas{
-    .navbar__btn{
-      display: inline-block;
-      margin-left: 0;
-      margin-right: 0;
-      margin-top: $nav-link-padding-y / 2;
-      margin-bottom: $nav-link-padding-y / 2;
-    }
+  &__extra {
+    padding-top: $extra-padding-y;
+    padding-bottom: $extra-padding-y;
+    padding-right: 0;
+    padding-left: 0;
   }
 }
 
@@ -137,7 +128,7 @@ $dark-brand-hover-color: $dark-active-color !default;
 // Custom navbar navigation (doesn't require `.nav`, but does make use of `.nav-link`).
 
 .navbar-nav {
-  display: none; // sets to flex after expanding
+  display: flex;
   flex-direction: column; // cannot use `inherit` to get the `.navbar`s value
   padding-left: 0;
   margin-bottom: 0;
@@ -257,6 +248,13 @@ $dark-brand-hover-color: $dark-active-color !default;
           overflow: visible;
         }
 
+        .navbar__extra {
+          padding-top: 0;
+          padding-bottom: 0;
+          padding-right: $extra-padding-x;
+          padding-left: $extra-padding-x;
+        }
+
         .navbar-collapse {
           display: flex !important; // stylelint-disable-line declaration-no-important
           flex-basis: auto;
@@ -264,6 +262,36 @@ $dark-brand-hover-color: $dark-active-color !default;
 
         .navbar-toggler {
           display: none;
+        }
+
+        .offcanvas-header {
+          display: none;
+        }
+
+        .offcanvas {
+          position: inherit;
+          bottom: 0;
+          z-index: auto;
+          flex-grow: 1;
+          visibility: visible !important; // stylelint-disable-line declaration-no-important
+          background-color: transparent;
+          border-right: 0;
+          border-left: 0;
+          @include mkui.transition(none);
+          transform: none;
+        }
+        .offcanvas-top,
+        .offcanvas-bottom {
+          height: auto;
+          border-top: 0;
+          border-bottom: 0;
+        }
+
+        .offcanvas-body {
+          display: flex;
+          flex-grow: 0;
+          padding: 0;
+          overflow-y: visible;
         }
       }
     }

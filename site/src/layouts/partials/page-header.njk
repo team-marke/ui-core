@@ -1,36 +1,16 @@
-<header class="navbar navbar-dark bg-primary navbar-expand-lg">
+<header class="bg-primary">
   <div class="container">
-    <a class="navbar-brand" href="{{ global.site_absolute_url | url | safe }}">
-      <img 
-        class="navbar-brand-logo"
-        alt="Logo"
-        width="100"
-        src="https://res.cloudinary.com/webmaster-marke/image/upload/dpr_2,f_auto,q_auto,w_100/Logo_Marke_dt6azg_pthlhj.svg"
-      >
-    </a>
-    <button id="navbar-site-menu-mobile-toggler" class="navbar-toggler site-menu-toggle" type="button" data-target="navbar-site-menu-mobile-overlay">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-      <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Offcanvas</h5>
-        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-      </div>
-      <div class="offcanvas-body">
-        <ul class="navbar-nav justify-content-end flex-grow-1">
-          {%- for entry in collections.page | eleventyNavigation() %}
-          <li class="nav-item">
-            <a 
-              class="nav-link {% if entry.url == page.url %} active{% endif %}"
-              {% if entry.url == page.url %} aria-current="page"{% endif %}
-              href="{{ entry.url | url | safe }}"
-            >
-              <span>{{ entry.title | e | safe }}</span>
-            </a>
-          </li>
-          {%- endfor %}
-        </ul>
-      </div>
-    </div>
+    {% set navbarLinks = collections.page | eleventyNavigation %}
+    {%- set context = {
+      navbarLinks: navbarLinks,
+      currentPage: page,
+      brandLogo: 'https://res.cloudinary.com/webmaster-marke/image/upload/v1620931656/Logo_Marke_dt6azg_pthlhj.svg',
+      brandLogoMobile: 'https://res.cloudinary.com/webmaster-marke/image/upload/v1620931656/Logo_Marke_dt6azg_pthlhj.svg',
+      brandLogoMobileWidth: 70,
+      brandUrl: "/",
+      variant: "dark",
+      offcanvasColor: "primary"
+    } %}
+    {% include "navbar/navbar.njk" %}
   </div>
 </header>

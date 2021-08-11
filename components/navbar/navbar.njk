@@ -4,6 +4,7 @@
   {% set brandLogo = context.brandLogo %}
   {% set brandLogoMobile = context.brandLogoMobile %}
   {% set brandUrl = context.brandUrl %}
+  {% set extraNav = context.extraNav %}
   {%- if context.brandLogoWidth -%}
     {% set brandLogoWidth = context.brandLogoWidth %}
   {%- else -%}
@@ -29,11 +30,6 @@
   {%- else -%}
     {% set offcanvasColor = 'light' %}
   {%- endif -%}
-  {%- if context.btnColor -%}
-    {% set btnColor = context.btnColor %}
-  {%- else -%}
-    {% set btnColor = 'primary' %}
-  {%- endif -%}
 {%- endif -%}
 
 <nav class="navbar navbar-{{ variant | e | safe }} navbar-expand-{{ expand | e | safe }}">
@@ -51,38 +47,7 @@
       src="{%- imageUrl brandLogo, { fetch_format: 'auto', quality: 'auto', dpr: 2, width: brandLogoWidth } %}"
     >
   </a>
-  <ul class="navbar-nav">
-    {%- for entry in navbarLinks %}
-    {%- if not entry.navbar.hidden and not entry.sideNav %}
-    <li class="nav-item{% if entry.children | length %} dropdown{% endif %}">
-      {{ entry | navbarLink(currentPage) | safe }}
-      {%- if entry.children | length > 0 and not entry.navbar.hideChildren %}
-        <div class="dropdown-menu dropdown-menu-md-right{% if variant == 'dark' %} dropdown-menu-dark{% endif %}" aria-labelledby="dropdown-menu-{{ entry.title | slug | safe }}">
-          <a class="dropdown-item{% if entry.url == page.url %} active{% endif %}" href="{{ entry.url | url }}">
-            {%- if entry.navbar.dropdownTitle %}
-            <span>{{ entry.navbar.dropdownTitle | e | safe }}</span>
-            {% else %}
-            <span>Todos {{ entry.title | e | safe }}</span>
-            {% endif %}
-          </a>
-          {%- if not entry.navbar.hideDivider %}
-          <div class="dropdown-divider"></div>
-          {% endif %}
-          {%- for child in entry.children %}
-            <a class="dropdown-item{% if child.url == page.url %} active{% endif %}" href="{{ child.url | url }}">{{ child.title | e | safe }}</a>
-          {%- endfor %}
-        </div>
-      {% endif %}
-    </li>
-    {% endif %}
-    {%- endfor %}
-  </ul>
-  {%- for entry in navbarLinks %}
-    {%- if entry.sideNav and entry.button %}
-      <a class="navbar__btn btn btn-{{ btnColor }}" href="{{ entry.url | url }}">{{ entry.title | e | safe }}</a>
-    {%- endif %}
-  {%- endfor %}
-  {% set offCanvasId %}{% idGenerator %}{% endset %}
+  {% set offCanvasId %}{% idGenerator 'offcanvas' %}{% endset %}
   <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#{{ offCanvasId | safe }}" aria-controls="{{ offCanvasId | safe }}">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -99,9 +64,9 @@
       <button type="button" class="btn-close {% if variant == 'dark' %} btn-close-white{% endif %}" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">
-      <ul class="navbar-nav d-flex">
+      <ul class="navbar-nav">
         {%- for entry in navbarLinks %}
-        {%- if not entry.navbar.hidden and not entry.sideNav %}
+        {%- if not entry.navbar.hidden and not entry.extra %}
         <li class="nav-item {% if entry.children | length %}dropdown{% endif %}">
           {{ entry | navbarLink(currentPage) | safe }}
           {%- if entry.children | length > 0 and not entry.navbar.hideChildren %}
@@ -125,11 +90,11 @@
         {% endif %}
         {%- endfor %}
       </ul>
-      {%- for entry in navbarLinks %}
-        {%- if entry.sideNav and entry.button %}
-          <a class="navbar__btn btn btn-{{ btnColor }}" href="{{ entry.url | url }}">{{ entry.title | e | safe }}</a>
-        {%- endif %}
-      {%- endfor %}
+      {%- if extraNav %}
+      <div class="navbar__extra">
+        {{ extraNav | safe }}
+      </div>
+      {%- endif %}
     </div>
   </div>
 </nav>

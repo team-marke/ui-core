@@ -1,4 +1,4 @@
-module.exports = () => {
+module.exports = (prefix = 'ui-id') => {
   const id = Math.floor(Math.random() * 500000);
-  return `ui-id-${id}`;
+  return `${prefix}-${id}`;
 };
