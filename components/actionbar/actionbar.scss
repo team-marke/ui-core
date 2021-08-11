@@ -4,16 +4,18 @@
 // Action bar
 //
 
+$font-size: 0.875rem !default;
 $padding-y: 0.15rem !default;
 $padding-x: 0 !default;
-$font-size: 0.875rem !default;
-$light-color: mkui.$black !default;
-$dark-color: mkui.$white !default;
 $link-decoration: none !default;
 $link-hover-decoration: underline !default;
 $link-transition: none !default;
 $item-padding-y: 0.25rem !default;
 $item-padding-x: 0.5rem !default;
+
+$dark-color: mkui.$white !default;
+
+$light-color: mkui.$black !default;
 
 .actionbar {
   display: grid;

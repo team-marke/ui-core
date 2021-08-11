@@ -11,35 +11,25 @@ metadata:
 
 <h1>Copyrightbar</h1>
 <p>Lorem ipsum dolor sit amet, stet intellegat cu mei, pertinax oportere at sea. Eos an mutat blandit. Nec at nisl volumus appellantur, an his brute quodsi. Sit ceteros contentiones at, te summo discere pro.</p>
-<h2>Exemplo</h2>
-<div class="px-2 bg-primary">
-  {%- set context = {
-    "signUrl": "https://marke.com.br/servicos-de-marketing-digital/consultoria-seo/",
-    "signLogo": "https://res.cloudinary.com/webmaster-marke/image/upload/v1625684943/MarkeUI/Marke_Marketing_Digital_light.png",
-    "signAltText": "Consultoria SEO",
-    "copyrightText": "© MarkeUI. Todos os Direitos Reservados."
-  } %}
-  {% include "copyrightbar/copyrightbar.njk" %}
-</div>
 <h2>Escuro</h2>
-<div class="px-2 bg-dark">
+<div class="bg-dark">
   {%- set context = {
-    "variant": "dark",
-    "signUrl": "https://marke.com.br/servicos-de-marketing-digital/consultoria-seo/",
-    "signLogo": "https://res.cloudinary.com/webmaster-marke/image/upload/v1625684943/MarkeUI/Marke_Marketing_Digital_light.png",
-    "signAltText": "Consultoria SEO",
-    "copyrightText": "© MarkeUI. Todos os Direitos Reservados."
+    variant: "dark",
+    signUrl: "https://marke.com.br/servicos-de-marketing-digital/consultoria-seo/",
+    signLogo: "https://res.cloudinary.com/webmaster-marke/image/upload/v1625684943/MarkeUI/Marke_Marketing_Digital_light.png",
+    signAltText: "Consultoria SEO",
+    copyrightText: "© MarkeUI. Todos os Direitos Reservados."
   } %}
   {% include "copyrightbar/copyrightbar.njk" %}
 </div>
 <h2>Claro</h2>
-<div class="px-2 bg-light">
+<div class="bg-light">
   {%- set context = {
-    "variant": "light",
-    "signUrl": "https://marke.com.br/servicos-de-marketing-digital/consultoria-seo/",
-    "signLogo": "https://res.cloudinary.com/webmaster-marke/image/upload/v1625683764/MarkeUI/Marke_Marketing_Digital.svg",
-    "signAltText": "Consultoria SEO",
-    "copyrightText": "© MarkeUI. Todos os Direitos Reservados."
+    variant: "light",
+    signUrl: "https://marke.com.br/servicos-de-marketing-digital/consultoria-seo/",
+    signLogo: "https://res.cloudinary.com/webmaster-marke/image/upload/v1625683764/MarkeUI/Marke_Marketing_Digital.svg",
+    signAltText: "Consultoria SEO",
+    copyrightText: "© MarkeUI. Todos os Direitos Reservados."
   } %}
   {% include "copyrightbar/copyrightbar.njk" %}
 </div>

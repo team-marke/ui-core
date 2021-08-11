@@ -1,52 +1,56 @@
-// 
+@use '../../design-tokens' as mkui;
+
+//
 // Copyrightbar component for footers.
 //
 
-$padding-y: 1rem !default;
-$gap: .5rem !default;
 $font-size: 0.875rem !default;
+$gap: 0.5rem !default;
+$padding-y: 1rem !default;
+$padding-x: 1rem !default;
 
-// dark styles
-$dark-color: #f8f9fa !default;
+$dark-color: mkui.$white !default;
 
-// light styles
-$light-color: #212529 !default;
+$light-color: mkui.$black !default;
 
 .copyrightbar {
-  padding-top: $padding-y;
-  padding-bottom: $padding-y;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
   gap: $gap;
-  @media (min-width: 992px) {
+  padding-top: $padding-y;
+  padding-bottom: $padding-y;
+  padding-left: $padding-x;
+  padding-right: $padding-x;
+
+  @include mkui.media-breakpoint-up(lg) {
     flex-direction: row;
   }
-}
 
-.copyrightbar__text {
-  font-size: $font-size;
-}
+  &__text {
+    @include mkui.font-size($font-size);
+  }
 
-.copyrightbar__signature {
-  display: block;
-  line-height: 1;
-}
+  &__signature {
+    display: block;
+    line-height: 1;
+  }
 
-.copyrightbar__signature-image {
-  max-width: 100%;
-  height: auto;
-  overflow: hidden;
-  text-indent: 100%;
-  white-space: nowrap;
-}
+  &__signature-image {
+    max-width: 100%;
+    height: auto;
+    overflow: hidden;
+    text-indent: 100%;
+    white-space: nowrap;
+    vertical-align: inherit;
+  }
 
-.copyrightbar--dark {
-  color: $dark-color;
-}
+  &--dark {
+    color: $dark-color;
+  }
 
-.copyrightbar--light {
-  color: $light-color;
+  &--light {
+    color: $light-color;
+  }
 }
-
