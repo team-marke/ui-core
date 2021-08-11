@@ -1,7 +1,7 @@
 {%- if context -%}
   {% set startItems = context.startItems %}
-  {% set endItems = context.endItems %}
   {% set centerItems = context.centerItems %}
+  {% set endItems = context.endItems %}
   {%- if context.variant == "dark" -%}
     {% set variant = "actionbar--dark" %}
   {%- endif -%}
@@ -19,7 +19,7 @@
 {%- if item.href or item.text %}
 <div class="actionbar__item">
   {% if item.href %}
-    <a 
+    <a
       class="actionbar__link"
       href="{{ item.href | url | safe }}"
       {%- if item.external -%}
@@ -60,21 +60,25 @@
 {% endmacro %}
 
 <div class="actionbar {{ variant | safe }} {{ componentClasses | join(" ") | safe }}">
+  {%- if startItems %}
   <div class="actionbar__start-items">
     {%- for item in startItems -%}
       {{ addItem(item) }}
     {%- endfor -%}
   </div>
+  {%- endif %}
+  {%- if centerItems %}
   <div class="actionbar__center-items">
-    <div class="actionbar__item">
-      {%- for item in centerItems -%}
-        {{ addItem(item) }}
-      {%- endfor -%}
-    </div>
+    {%- for item in centerItems -%}
+      {{ addItem(item) }}
+    {%- endfor -%}
   </div>
+  {%- endif %}
+  {%- if endItems %}
   <div class="actionbar__end-items">
     {%- for item in endItems -%}
       {{ addItem(item) }}
     {%- endfor -%}
   </div>
+  {%- endif %}
 </div>

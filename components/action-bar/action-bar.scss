@@ -1,88 +1,98 @@
+@use '../../design-tokens' as mkui;
+
 //
 // Action bar
 //
 
-$actionbar-padding-y: 0.15rem !default;
-$actionbar-padding-x: 0 !default;
-$actionbar-font-size: 0.875rem !default;
-$actionbar-light-color: #212529 !default;
-$actionbar-dark-color: #f8f9fa !default;
-$actionbar-link-hover-decoration: uppercase !default;
-$actionbar-link-transition: none !default;
-$actionbar-link-light-color: #000 !default;
-$actionbar-link-dark-color: #fff !default;
-$actionbar-item-padding-y: 0.25rem !default;
-$actionbar-item-padding-x: 0.5rem !default;
+$padding-y: 0.15rem !default;
+$padding-x: 0 !default;
+$font-size: 0.875rem !default;
+$light-color: mkui.$black !default;
+$dark-color: mkui.$white !default;
+$link-decoration: none !default;
+$link-hover-decoration: underline !default;
+$link-transition: none !default;
+$item-padding-y: 0.25rem !default;
+$item-padding-x: 0.5rem !default;
 
 .actionbar {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  padding-top: $actionbar-padding-y;
-  padding-right: $actionbar-padding-x;
-  padding-bottom: $actionbar-padding-y;
-  padding-left: $actionbar-padding-x;
-  font-size: $actionbar-font-size;
+  padding-top: $padding-y;
+  padding-right: $padding-x;
+  padding-bottom: $padding-y;
+  padding-left: $padding-x;
+  font-size: $font-size;
   a {
-    transition: $actionbar-link-transition;
+    text-decoration: $link-decoration;
+    transition: $link-transition;
     &:hover {
-      text-decoration: $actionbar-link-hover-decoration;
+      text-decoration: $link-hover-decoration;
+    }
+  }
+
+  &__start-items,
+  &__center-items,
+  &__end-items {
+    display: flex;
+  }
+
+  &__start-items {
+    grid-column: 1 / 2;
+    justify-content: flex-start;
+  }
+
+  &__center-items {
+    grid-column: 2 / 3;
+    justify-content: center;
+  }
+
+  &__end-items {
+    grid-column: 3 / 4;
+    justify-content: flex-end;
+  }
+
+  &__item,
+  &__link {
+    display: grid;
+    grid-gap: 0.33rem;
+    grid-auto-flow: column;
+    align-items: center;
+  }
+
+  &__item {
+    line-height: 1;
+    padding-top: $item-padding-y;
+    padding-right: $item-padding-x;
+    padding-bottom: $item-padding-y;
+    padding-left: $item-padding-x;
+  }
+
+  &__icon.svg-inline--fa {
+    height: 1.25em;
+    vertical-align: -0.275em;
+    width: 1em;
+  }
+
+  &--light {
+    color: $light-color;
+    a {
+      color: rgba($color: $light-color, $alpha: 0.75);
+      &:hover {
+        color: $light-color;
+      }
+    }
+  }
+
+  &--dark {
+    color: $dark-color;
+    a {
+      color: rgba($color: $dark-color, $alpha: 0.75);
+      &:hover {
+        color: $dark-color;
+      }
     }
   }
 }
 
-.actionbar--light {
-  color: $actionbar-light-color;
-  a {
-    color: rgba($color: $actionbar-link-light-color, $alpha: 0.75);
-    &:hover {
-      color: $actionbar-link-light-color;
-    }
-  }
-}
 
-.actionbar--dark {
-  color: $actionbar-dark-color;
-  a {
-    color: rgba($color: $actionbar-link-dark-color, $alpha: 0.75);
-    &:hover {
-      color: $actionbar-link-dark-color;
-    }
-  }
-}
-
-.actionbar__start-items,
-.actionbar__center-items,
-.actionbar__end-items {
-  display: flex;
-}
-
-.actionbar__center-items {
-  justify-content: center;
-  text-align: center;
-}
-
-.actionbar__end-items {
-  justify-content: flex-end;
-}
-
-.actionbar__item,
-.actionbar__link {
-  display: grid;
-  grid-gap: 0.33rem;
-  grid-auto-flow: column;
-  align-items: center;
-}
-
-.actionbar__item {
-  line-height: 1;
-  padding-top: $actionbar-item-padding-y;
-  padding-right: $actionbar-item-padding-x;
-  padding-bottom: $actionbar-item-padding-y;
-  padding-left: $actionbar-item-padding-x;
-}
-
-.actionbar__icon.svg-inline--fa {
-  height: 1.25em;
-  vertical-align: -0.275em;
-  width: 1em;
-}
