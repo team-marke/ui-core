@@ -1,5 +1,7 @@
 import 'regenerator-runtime/runtime.js';
 import '../scss/main.scss';
+import '../../../../components/actionbar/actionbar';
+import '../../../../components/socialbar/socialbar';
 
 /**
  * Load youtube modal component.
@@ -10,21 +12,6 @@ const loadYoutubeModals = () => {
       ({ VideoTeaser }) => {
         document.querySelectorAll('.video-teaser').forEach((el) => {
           new VideoTeaser(el);
-        });
-      }
-    );
-  }
-};
-
-/**
- * Load action bar component.
- */
-const loadActionBar = () => {
-  if (document.querySelector('.actionbar')) {
-    import(/* webpackChunkName: "components.actionbar" */ '../../../../components/actionbar/actionbar').then(
-      ({ ActionBar }) => {
-        document.querySelectorAll('.actionbar').forEach((el) => {
-          new ActionBar(el);
         });
       }
     );
@@ -51,13 +38,13 @@ const loadGalleries = () => {
  */
 const loadMastheadSlider = () => {
   if (document.querySelector('.masthead-slider')) {
-    import(/* webpackChunkName: "components.masthead-slider" */ '../../../../components/masthead-slider/masthead-slider').then(
-      ({ MastheadSlider }) => {
-        document.querySelectorAll('.masthead-slider').forEach((mastheadSlider) => {
-          new MastheadSlider(mastheadSlider);
-        });
-      }
-    );
+    import(
+      /* webpackChunkName: "components.masthead-slider" */ '../../../../ui-core.esm'
+    ).then(({ MastheadSlider }) => {
+      document.querySelectorAll('.masthead-slider').forEach((mastheadSlider) => {
+        new MastheadSlider(mastheadSlider);
+      });
+    });
   }
 };
 
@@ -66,22 +53,22 @@ const loadMastheadSlider = () => {
  */
 const loadGridResponsiveSlider = () => {
   if (document.querySelector('.grid-responsive-slider')) {
-    import(/* webpackChunkName: "components.grid-responsive-slider" */ '../../../../components/grid-responsive-slider/grid-responsive-slider').then(
-      ({ GridResponsiveSlider }) => {
-        document.querySelectorAll('.grid-responsive-slider').forEach((gridResponsiveSlider) => {
-          new GridResponsiveSlider(gridResponsiveSlider);
-        });
-      }
-    );
+    import(
+      /* webpackChunkName: "components.grid-responsive-slider" */ '../../../../components/grid-responsive-slider/grid-responsive-slider'
+    ).then(({ GridResponsiveSlider }) => {
+      document.querySelectorAll('.grid-responsive-slider').forEach((gridResponsiveSlider) => {
+        new GridResponsiveSlider(gridResponsiveSlider);
+      });
+    });
   }
 };
 
 /**
- * Load Nav Bar.
+ * Load NavBar.
  */
 const loadNavBar = () => {
   if (document.querySelector('.navbar')) {
-    import(/* webpackChunkName: "navbar" */ '../../../../components/navbar/navbar')
+    import(/* webpackChunkName: "navbar" */ '../../../../components/navbar/navbar');
   }
 };
 
@@ -90,7 +77,6 @@ const loadNavBar = () => {
  */
 const loadDynamicModules = () => {
   loadYoutubeModals();
-  loadActionBar();
   loadGalleries();
   loadMastheadSlider();
   loadGridResponsiveSlider();

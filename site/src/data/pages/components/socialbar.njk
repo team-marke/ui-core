@@ -1,0 +1,26 @@
+---
+tags:
+  - navbar
+eleventyNavigation:
+  key: socialbar
+  title: Socialbar
+metadata:
+  title: Socialbar
+  description: Lorem ipsum dolor sit amet, stet intellegat cu mei, pertinax oportere at sea. Eos an mutat blandit. Nec at nisl volumus appellantur
+---
+
+<h1>Socialbar</h1>
+<p>Lorem ipsum dolor sit amet, stet intellegat cu mei, pertinax oportere at sea. Eos an mutat blandit. Nec at nisl volumus appellantur, an his brute quodsi. Sit ceteros contentiones at, te summo discere pro.</p>
+<h2>Exemplo</h2>
+<div class="bg-light">
+  {%- set context = {
+    variant: 'dark',
+    items: {
+      instagram: 'https://instagram.com',
+      facebook: 'https://facebook.com',
+      youtube: 'https://youtube.com',
+      linkedin: 'https://linkedin.com'
+    }
+  } %}
+  {% include "socialbar/socialbar.njk" %}
+</div>

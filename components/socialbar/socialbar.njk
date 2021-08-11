@@ -1,0 +1,39 @@
+{%- if context %}
+  {% set instagram = context.items.instagram %}
+  {% set facebook = context.items.facebook %}
+  {% set linkedin = context.items.linkedin %}
+  {% set youtube = context.items.youtube %}
+  {%- if context.variant %}
+    {% set variant = context.variant %}
+  {%- else %}
+    {% set variant = 'dark' %}
+  {%- endif %}
+  {%- if context.componentClasses %}
+    {% set componentClasses = context.componentClasses %}
+  {%- else %}
+    {% set componentClasses = [] %}
+  {%- endif %}
+{%- endif %}
+
+<div class="socialbar socialbar--{{ variant }} {{ componentClasses | join(" ") | safe }}">
+  {%- if facebook %}
+  <a class="socialbar__item" target="_blank" href="{{ facebook | url | safe }}" rel="noopener">
+    <i class="fab fa-facebook"></i>
+  </a>
+  {%- endif %}
+  {%- if instagram %}
+  <a class="socialbar__item" target="_blank" href="{{ instagram | url | safe }}" rel="noopener">
+    <i class="fab fa-instagram"></i>
+  </a>
+  {%- endif %}
+  {%- if linkedin %}
+  <a class="socialbar__item" target="_blank" href="{{ linkedin | url | safe }}" rel="noopener">
+    <i class="fab fa-linkedin-in"></i>
+  </a>
+  {%- endif %}
+  {%- if youtube %}
+  <a class="socialbar__item" target="_blank" href="{{ youtube | url | safe }}" rel="noopener">
+    <i class="fab fa-youtube"></i>
+  </a>
+  {%- endif %}
+</div>
