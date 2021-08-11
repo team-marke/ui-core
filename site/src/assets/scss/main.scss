@@ -1,37 +1,27 @@
-// Abstracts
-@import '~bootstrap/scss/functions';
-@import 'abstracts/variables';
-@import '../../../../components/sass-config';
-// Dependencies
-// @import 'swiper';
-// Base
-@import '~bootstrap/scss/reboot';
-@import '~bootstrap/scss/type';
-@import '~bootstrap/scss/root';
+@use 'marke-ui' as mkui;
+@use '~lightgallery/scss/lightgallery' as lightgallery with (
+  $lg-path-fonts: '~lightgallery/fonts',
+  $lg-path-images: '~lightgallery/images',
+);
+@use '~swiper/swiper' with (
+  $themeColor: mkui.$primary,
+);
+@use '~swiper/components/pagination/pagination';
+@use '~swiper/components/navigation/navigation';
+@use '~swiper/components/effect-fade/effect-fade';
+
 // Components
-@import '~bootstrap/scss/accordion';
-@import '~bootstrap/scss/containers';
-@import '~bootstrap/scss/grid';
-@import '~bootstrap/scss/card';
-@import '~bootstrap/scss/forms';
-@import '~bootstrap/scss/buttons';
-@import '~bootstrap/scss/nav';
-@import '~bootstrap/scss/navbar';
-@import '~bootstrap/scss/button-group';
-@import '~bootstrap/scss/transitions';
-@import '~bootstrap/scss/forms/labels';
-@import '~bootstrap/scss/forms/form-text';
-@import '~bootstrap/scss/forms/form-control';
-@import '~bootstrap/scss/close';
-@import '~bootstrap/scss/modal';
-@import '~bootstrap/scss/spinners';
-@import '~bootstrap/scss/toasts';
-@import 'components/images';
-@import '../../../../components/faq';
-@import '../../../../components/tabs-panel';
-@import '../../../../components/video-modal';
-@import '../../../../components/video-teaser';
-@import '../../../../components/post-preview';
-@import '../../../../components/card';
+@use '../../../../components/video-teaser' with (
+  $icon-color: mkui.$primary,
+  $icon-hover-color: mkui.$light,
+);
+@use '../../../../components/video-modal';
+@use '../../../../components/photo-gallery';
+@use '../../../../components/action-bar';
+@use '../../../../components/copyrightbar';
+@use '../../../../components/masthead-slider';
+@use '../../../../components/grid-responsive-slider';
+@use '../../../../components/navbar';
+
 // Layouts
-@import 'layouts/docs';
+@use 'layouts/docs';

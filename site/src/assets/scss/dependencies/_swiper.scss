@@ -1,0 +1,17 @@
+//
+// Swiper styles
+//
+
+@import '~swiper/swiper';
+@import '~swiper/components/pagination/pagination';
+@import '~swiper/components/navigation/navigation';
+@import '~swiper/components/effect-fade/effect-fade';
+
+:root {
+  --swiper-theme-color: #{$primary};
+  --swiper-navigation-size: 2rem;
+}
+
+.swiper-pagination-bullet:first-child:last-child {
+  display: none;
+}

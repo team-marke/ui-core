@@ -46,6 +46,7 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addWatchTarget('./site/src/shortcodes/');
   eleventyConfig.addWatchTarget('./site/src/transforms/');
   eleventyConfig.addWatchTarget('./site/src/collections/');
+  eleventyConfig.addWatchTarget('components/');
 
   // Dynamically get the path for all project filters, shortcodes, tranforms, collections and layouts
   const paths = {

@@ -2,10 +2,12 @@
 // Video teaser with thumbnail toggler
 //
 
-$toggler-border-radius: .25rem;
-$transition: all .2s ease-in-out;
-$color: #f8f9fa;
-$hover-color: #0d6efd;
+@use '../../design-tokens' as mkui;
+
+$toggler-border-radius: 0.25rem !default;
+$transition: all 0.2s ease-in-out !default;
+$icon-color: mkui.$light !default;
+$icon-hover-color: mkui.$primary !default;
 
 .video-teaser {
   position: relative;
@@ -28,7 +30,7 @@ $hover-color: #0d6efd;
     position: absolute;
     height: 3em;
     width: 3em !important;
-    color: $color;
+    color: $icon-color;
     transition: $transition;
   }
   &:hover {
@@ -36,7 +38,7 @@ $hover-color: #0d6efd;
       filter: brightness(1);
     }
     .video-teaser__play {
-      color: $hover-color
+      color: $icon-hover-color;
     }
   }
 }

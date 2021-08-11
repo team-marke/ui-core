@@ -1,0 +1,80 @@
+{%- if context -%}
+  {% set startItems = context.startItems %}
+  {% set endItems = context.endItems %}
+  {% set centerItems = context.centerItems %}
+  {%- if context.variant == "dark" -%}
+    {% set variant = "actionbar--dark" %}
+  {%- endif -%}
+  {%- if context.variant == "light" -%}
+    {% set variant = "actionbar--light" %}
+  {%- endif -%}
+  {%- if context.componentClasses -%}
+    {% set componentClasses = context.componentClasses %}
+  {%- else -%}
+    {% set componentClasses = [] %}
+  {%- endif -%}
+{%- endif -%}
+
+{% macro addItem(item) %}
+{%- if item.href or item.text %}
+<div class="actionbar__item">
+  {% if item.href %}
+    <a 
+      class="actionbar__link"
+      href="{{ item.href | url | safe }}"
+      {%- if item.external -%}
+      target="__blank"
+      rel="noopener"
+      {%- endif -%}
+    >
+  {% endif %}
+  {% if item.icon == "mail" %}
+    <i class="actionbar__icon fas fa-envelope"></i>
+  {% endif %}
+  {% if item.icon == "phone" %}
+    <i class="actionbar__icon fas fa-phone"></i>
+  {% endif %}
+  {% if item.icon == "whatsapp" %}
+    <i class="actionbar__icon fab fa-whatsapp"></i>
+  {% endif %}
+  {% if item.icon == "facebook" %}
+    <i class="actionbar__icon fab fa-facebook-square"></i>
+  {% endif %}
+  {% if item.icon == "instagram" %}
+    <i class="actionbar__icon fab fa-instagram-square"></i>
+  {% endif %}
+  {% if item.icon == "linkedin" %}
+    <i class="actionbar__icon fab fa-linkedin"></i>
+  {% endif %}
+  {% if item.icon == "youtube" %}
+    <i class="actionbar__icon fab fa-youtube-square"></i>
+  {% endif %}
+  {% if item.text %}
+    <span>{{ item.text | e | safe }}</span>
+  {% endif %}
+  {% if item.href %}
+    </a>
+  {% endif %}
+</div>
+{%- endif %}
+{% endmacro %}
+
+<div class="actionbar {{ variant | safe }} {{ componentClasses | join(" ") | safe }}">
+  <div class="actionbar__start-items">
+    {%- for item in startItems -%}
+      {{ addItem(item) }}
+    {%- endfor -%}
+  </div>
+  <div class="actionbar__center-items">
+    <div class="actionbar__item">
+      {%- for item in centerItems -%}
+        {{ addItem(item) }}
+      {%- endfor -%}
+    </div>
+  </div>
+  <div class="actionbar__end-items">
+    {%- for item in endItems -%}
+      {{ addItem(item) }}
+    {%- endfor -%}
+  </div>
+</div>

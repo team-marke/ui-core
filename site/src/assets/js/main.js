@@ -4,6 +4,21 @@ import '../../../../components/tabs-panel/tabs-panel';
 import '../../../../components/faq/faq';
 
 /**
+ * Load off canvas menu component.
+ */
+const loadOffcanvasMenu = () => {
+  if (document.querySelector('.offcanvas-menu')) {
+    import(/* webpackChunkName: "components.offcanvas-menu" */ '../../../../components/offcanvas-menu/offcanvas-menu').then(
+      ({ OffcanvasMenu }) => {
+        document.querySelectorAll('.offcanvas-menu').forEach((el) => {
+          new OffcanvasMenu(el);
+        });
+      }
+    );
+  }
+};
+
+/**
  * Load youtube modal component.
  */
 const loadYoutubeModals = () => {
@@ -19,14 +34,85 @@ const loadYoutubeModals = () => {
 };
 
 /**
- * Dynamically load modules that are split from the main JS bundle.
+ * Load action bars component.
  */
-const loadDynamicModules = () => {
-    loadYoutubeModals();
+const loadActionBars = () => {
+  if (document.querySelector('.actionbar')) {
+    import(/* webpackChunkName: "components.action-bar" */ '../../../../components/action-bar/action-bar').then(
+      ({ ActionBar }) => {
+        document.querySelectorAll('.actionbar').forEach((el) => {
+          new ActionBar(el);
+        });
+      }
+    );
+  }
 };
 
 /**
- * Load modules that are included in our main JS bundle.
+ * Load galleries components.
+ */
+const loadGalleries = () => {
+  if (document.querySelector('.photo-gallery')) {
+    import(/* webpackChunkName: "components.photo-gallery" */ '../../../../components/photo-gallery/photo-gallery').then(
+      ({ PhotoGallery }) => {
+        document.querySelectorAll('.photo-gallery').forEach((el) => {
+          new PhotoGallery(el);
+        });
+      }
+    );
+  }
+};
+
+/**
+ * Load Masthead Slider.
+ */
+const loadMastheadSlider = () => {
+  if (document.querySelector('.masthead-slider')) {
+    import(/* webpackChunkName: "components.masthead-slider" */ '../../../../components/masthead-slider/masthead-slider').then(
+      ({ MastheadSlider }) => {
+        document.querySelectorAll('.masthead-slider').forEach((mastheadSlider) => {
+          new MastheadSlider(mastheadSlider);
+        });
+      }
+    );
+  }
+};
+
+/**
+ * Load Grid Responsive Slider.
+ */
+const loadGridResponsiveSlider = () => {
+  if (document.querySelector('.grid-responsive-slider')) {
+    import(/* webpackChunkName: "components.grid-responsive-slider" */ '../../../../components/grid-responsive-slider/grid-responsive-slider').then(
+      ({ GridResponsiveSlider }) => {
+        document.querySelectorAll('.grid-responsive-slider').forEach((gridResponsiveSlider) => {
+          new GridResponsiveSlider(gridResponsiveSlider);
+        });
+      }
+    );
+  }
+};
+
+/**
+ * Load Nav Bar.
+ */
+const loadNavBar = () => {
+  if (document.querySelector('.navbar')) {
+    import(/* webpackChunkName: "navbar" */ '../../../../components/navbar/navbar')
+  }
+};
+
+/**
+ * Dynamically load modules that are split from the main JS bundle.
+ */
+const loadDynamicModules = () => {
+  loadOffcanvasMenu();
+  loadMastheadSlider();
+  loadGridResponsiveSlider();
+  loadNavBar();
+};
+
+/**
  */
 const loadBundledModules = () => {};
 

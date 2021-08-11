@@ -1,0 +1,17 @@
+@forward '../../../../design-tokens' with (
+  $gray-500: #bebebe, 
+  $gray-600: #7e7e7e,
+  $gray-700: #585858,
+  $gray-800: #384049,
+  $gray-900: #252525,
+  $primary: #b7485d,
+  $secondary: #585858,
+  $h1-font-size: 2rem,
+  $h2-font-size: 1.65rem,
+  $h3-font-size: 1.5rem,
+  $h4-font-size: 1.25rem,
+  $h5-font-size: 1.15rem,
+  $headings-margin-bottom: 1.25rem,
+  $navbar-dark-color: rgba(#fff, .75),
+  $navbar-dark-hover-color: rgba(#fff, .9),
+);

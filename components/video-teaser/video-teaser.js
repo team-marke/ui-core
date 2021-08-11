@@ -18,7 +18,6 @@ export class VideoTeaser {
       this.videoid = this.el.dataset.videoTeaserId;
       faLibrary.add(faPlayCircle);
       faDom.i2svg();
-      faDom.watch();
       if (this.el.dataset.toggle === 'modal') {
         this.modal = new VideoModal(this.videoid);
       }

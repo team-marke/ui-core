@@ -1,0 +1,64 @@
+---
+tags:
+  - navbar
+eleventyNavigation:
+  key: action-bar
+  title: Action Bar
+metadata:
+  title: 
+  description:
+---
+
+<h1>Action Bar</h1>
+<p>Lorem ipsum dolor sit amet, stet intellegat cu mei, pertinax oportere at sea. Eos an mutat blandit. Nec at nisl volumus appellantur, an his brute quodsi. Sit ceteros contentiones at, te summo discere pro.</p>
+<h2>Escuro</h2>
+<div class="container bg-primary">
+  {%- set context = {
+    "variant": "dark",
+    "startItems": [
+      {
+        "text": '(88) 9999-999',
+        "href": '889999999'
+      }
+    ],
+    "centerItems": [
+      {
+        "text": 'Lorem ipsum dolor sit amet, stet intellegat'
+      }
+    ],
+    "endItems": [
+      {
+        "icon": "youtube",
+        "href": 'https://youtube.com'
+      },
+      {
+        "icon": "instagram",
+        "href": 'https://instagram.com'
+      }
+    ]
+  } %}
+  {% include "action-bar/action-bar.njk" %}
+</div>
+<h2>Claro</h2>
+<div class="px-2 bg-light">
+  {%- set context = {
+    "variant": "light",
+    "startItems": [
+      {
+        "text": '(88) 9999-999',
+        "href": '889999999'
+      }
+    ],
+    "endItems": [
+      {
+        "icon": "youtube",
+        "href": 'https://youtube.com'
+      },
+      {
+        "icon": "instagram",
+        "href": 'https://instagram.com'
+      }
+    ]
+  } %}
+  {% include "action-bar/action-bar.njk" %}
+</div>

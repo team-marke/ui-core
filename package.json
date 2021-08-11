@@ -1,6 +1,6 @@
 {
   "name": "@marke/ui-core",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "",
   "author": "Marke Marketing Digital Ltda",
   "license": "CC-BY-NC-ND-4.0",
@@ -15,10 +15,12 @@
     "@fortawesome/free-regular-svg-icons": "^5.15.3",
     "@fortawesome/free-solid-svg-icons": "^5.15.3",
     "@popperjs/core": "^2.9.2",
-    "bootstrap": "^5.0.1",
-    "cloudinary": "^1.26.2",
+    "bootstrap": "^5.1.0",
+    "cloudinary": "^1.26.1",
+    "lightgallery": "^2.1.6",
     "npm-run-all": "^4.1.5",
     "regenerator-runtime": "^0.13.7",
+    "swiper": "^6.8.0",
     "yt-player": "^3.5.0"
   },
   "devDependencies": {
@@ -38,6 +40,7 @@
     "dotenv-webpack": "^7.0.2",
     "eslint": "^7.27.0",
     "eslint-plugin-react-hooks": "^4.2.0",
+    "file-loader": "^6.2.0",
     "firebase-tools": "^9.12.0",
     "front-matter": "^3.1.0",
     "html-minifier": "^4.0.0",
@@ -62,7 +65,8 @@
     "webpack-merge": "^5.7.3"
   },
   "files": [
-    "components/**/*"
+    "components/**/*",
+    "design-tokens/**/*"
   ],
   "scripts": {
     "develop": "run-p develop:eleventy develop:webpack",

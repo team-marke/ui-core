@@ -1,0 +1,135 @@
+{%- if context -%}
+  {% set navbarLinks = context.navbarLinks %}
+  {% set currentPage = context.currentPage %}
+  {% set brandLogo = context.brandLogo %}
+  {% set brandLogoMobile = context.brandLogoMobile %}
+  {% set brandUrl = context.brandUrl %}
+  {%- if context.brandLogoWidth -%}
+    {% set brandLogoWidth = context.brandLogoWidth %}
+  {%- else -%}
+    {% set brandLogoWidth = 120 %}
+  {%- endif -%}
+  {%- if context.brandLogoMobileWidth -%}
+    {% set brandLogoMobileWidth = context.brandLogoMobileWidth %}
+  {%- else -%}
+    {% set brandLogoMobileWidth = 50 %}
+  {%- endif -%}
+  {%- if context.variant -%}
+    {% set variant = context.variant %}
+  {%- else -%}
+    {% set variant = 'dark' %}
+  {%- endif -%}
+  {%- if context.expand -%}
+    {% set expand = context.expand %}
+  {%- else -%}
+    {% set expand = 'lg' %}
+  {%- endif -%}
+  {%- if context.offcanvasColor -%}
+    {% set offcanvasColor = context.offcanvasColor %}
+  {%- else -%}
+    {% set offcanvasColor = 'light' %}
+  {%- endif -%}
+  {%- if context.btnColor -%}
+    {% set btnColor = context.btnColor %}
+  {%- else -%}
+    {% set btnColor = 'primary' %}
+  {%- endif -%}
+{%- endif -%}
+
+<nav class="navbar navbar-{{ variant | e | safe }} navbar-expand-{{ expand | e | safe }}">
+  <a class="navbar-brand" href="{{ brandUrl | url | safe }}">
+    <img 
+      class="img-fluid d-block d-lg-none"
+      alt="Logo"
+      width="{{ brandLogoMobileWidth }}"
+      src="{%- imageUrl brandLogoMobile, { fetch_format: 'auto', quality: 'auto', dpr: 2, width: brandLogoWidth } %}"
+    >
+    <img 
+      class="img-fluid d-none d-lg-block"
+      alt="Logo"
+      width="{{ brandLogoWidth }}"
+      src="{%- imageUrl brandLogo, { fetch_format: 'auto', quality: 'auto', dpr: 2, width: brandLogoWidth } %}"
+    >
+  </a>
+  <ul class="navbar-nav">
+    {%- for entry in navbarLinks %}
+    {%- if not entry.navbar.hidden and not entry.sideNav %}
+    <li class="nav-item{% if entry.children | length %} dropdown{% endif %}">
+      {{ entry | navbarLink(currentPage) | safe }}
+      {%- if entry.children | length > 0 and not entry.navbar.hideChildren %}
+        <div class="dropdown-menu dropdown-menu-md-right{% if variant == 'dark' %} dropdown-menu-dark{% endif %}" aria-labelledby="dropdown-menu-{{ entry.title | slug | safe }}">
+          <a class="dropdown-item{% if entry.url == page.url %} active{% endif %}" href="{{ entry.url | url }}">
+            {%- if entry.navbar.dropdownTitle %}
+            <span>{{ entry.navbar.dropdownTitle | e | safe }}</span>
+            {% else %}
+            <span>Todos {{ entry.title | e | safe }}</span>
+            {% endif %}
+          </a>
+          {%- if not entry.navbar.hideDivider %}
+          <div class="dropdown-divider"></div>
+          {% endif %}
+          {%- for child in entry.children %}
+            <a class="dropdown-item{% if child.url == page.url %} active{% endif %}" href="{{ child.url | url }}">{{ child.title | e | safe }}</a>
+          {%- endfor %}
+        </div>
+      {% endif %}
+    </li>
+    {% endif %}
+    {%- endfor %}
+  </ul>
+  {%- for entry in navbarLinks %}
+    {%- if entry.sideNav and entry.button %}
+      <a class="navbar__btn btn btn-{{ btnColor }}" href="{{ entry.url | url }}">{{ entry.title | e | safe }}</a>
+    {%- endif %}
+  {%- endfor %}
+  {% set offCanvasId %}{% idGenerator %}{% endset %}
+  <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#{{ offCanvasId | safe }}" aria-controls="{{ offCanvasId | safe }}">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="offcanvas offcanvas-start {{ 'bg-' + offcanvasColor }}" tabindex="-1" id="{{ offCanvasId | safe }}">
+    <div class="offcanvas-header">
+      <div class="offcanvas-title" id="{{ offCanvasId | safe }}-label">
+        <img 
+          class="img-fluid"
+          alt="Logo"
+          width="{{ brandLogoMobileWidth }}"
+          src="{%- imageUrl brandLogoMobile, { fetch_format: 'auto', quality: 'auto', dpr: 2, width: brandLogoWidth } %}"
+        >
+      </div>
+      <button type="button" class="btn-close {% if variant == 'dark' %} btn-close-white{% endif %}" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <ul class="navbar-nav d-flex">
+        {%- for entry in navbarLinks %}
+        {%- if not entry.navbar.hidden and not entry.sideNav %}
+        <li class="nav-item {% if entry.children | length %}dropdown{% endif %}">
+          {{ entry | navbarLink(currentPage) | safe }}
+          {%- if entry.children | length > 0 and not entry.navbar.hideChildren %}
+            <div class="dropdown-menu dropdown-menu-md-right{% if variant == 'dark' %} dropdown-menu-dark{% endif %}" aria-labelledby="dropdown-menu-{{ entry.title | slug | safe }}">
+              <a class="dropdown-item{% if entry.url == page.url %} active{% endif %}" href="{{ entry.url | url }}">
+                {%- if entry.navbar.dropdownTitle %}
+                <span>{{ entry.navbar.dropdownTitle | e | safe }}</span>
+                {% else %}
+                <span>Todos {{ entry.title | e | safe }}</span>
+                {% endif %}
+              </a>
+              {%- if not entry.navbar.hideDivider %}
+              <div class="dropdown-divider"></div>
+              {% endif %}
+              {%- for child in entry.children %}
+                <a class="dropdown-item{% if child.url == page.url %} active{% endif %}" href="{{ child.url | url }}">{{ child.title | e | safe }}</a>
+              {%- endfor %}
+            </div>
+          {% endif %}
+        </li>
+        {% endif %}
+        {%- endfor %}
+      </ul>
+      {%- for entry in navbarLinks %}
+        {%- if entry.sideNav and entry.button %}
+          <a class="navbar__btn btn btn-{{ btnColor }}" href="{{ entry.url | url }}">{{ entry.title | e | safe }}</a>
+        {%- endif %}
+      {%- endfor %}
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,40 @@
+---
+tags:
+  - navbar
+eleventyNavigation:
+  key: masthead-slider
+  title: Masthead Slider
+metadata:
+  title: Masthead Slider
+  description: Lorem ipsum, dolor sit amet consectetur adipisicing elit. In modi, amet, atque soluta illum, a distinctio.
+masthead:
+  slides:
+    - title: Lorem ipsum dolor sit amet consectetur adipisicing elit.
+      titleTag: h2
+      description: Lorem ipsum dolor sit amet consectetur adipisicing elit.
+      image: https://res.cloudinary.com/webmaster-marke/image/upload/v1625060742/MarkeUI/golden-gate-bridge-2.jpg
+      imageBrightness: 0.8
+      backgroundColor: "#b7485d"
+    - title: Lorem ipsum dolor sit amet consectetur adipisicing elit.
+      titleTag: h2
+      description: Lorem ipsum dolor sit amet consectetur adipisicing elit.
+      image: https://res.cloudinary.com/webmaster-marke/image/upload/v1625060740/MarkeUI/golden-gate-bridge-3.jpg
+      imageBrightness: 0.8
+      backgroundColor: "#b7485d"
+    - title: Lorem ipsum dolor sit amet consectetur adipisicing elit.
+      titleTag: h2
+      description: Lorem ipsum dolor sit amet consectetur adipisicing elit.
+      image: https://res.cloudinary.com/webmaster-marke/image/upload/v1625060481/MarkeUI/golden-gate-bridge.jpg
+      imageBrightness: 0.8
+      backgroundColor: "#b7485d"
+---
+<h1>Masthead Slider</h1>
+<p>Lorem ipsum dolor sit amet, stet intellegat cu mei, pertinax oportere at sea. Eos an mutat blandit. Nec at nisl volumus appellantur, an his brute quodsi. Sit ceteros contentiones at, te summo discere pro.</p>
+<h2>Exemplo</h2>
+<div class="docs-example">
+  {%- set context = {
+  "slides": masthead.slides,
+  "showDivider": true
+  } %}
+  {% include "masthead-slider/masthead-slider.njk" %}
+</div>

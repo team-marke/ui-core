@@ -1495,8 +1495,8 @@ __metadata:
     "@popperjs/core": ^2.9.2
     "@types/bootstrap": ^5.0.0
     babel-loader: ^8.2.2
-    bootstrap: ^5.0.1
-    cloudinary: ^1.26.2
+    bootstrap: ^5.1.0
+    cloudinary: ^1.26.1
     css-loader: ^5.2.6
     css-minimizer-webpack-plugin: ^2.0.0
     del: ^6.0.0
@@ -1504,11 +1504,13 @@ __metadata:
     dotenv-webpack: ^7.0.2
     eslint: ^7.27.0
     eslint-plugin-react-hooks: ^4.2.0
+    file-loader: ^6.2.0
     firebase-tools: ^9.12.0
     front-matter: ^3.1.0
     html-minifier: ^4.0.0
     js-yaml: ^3.13.1
     jsdom: ^16.6.0
+    lightgallery: ^2.1.6
     markdown-it: ^12.0.6
     mini-css-extract-plugin: ^0.11.2
     npm-run-all: ^4.1.5
@@ -1525,6 +1527,7 @@ __metadata:
     stylelint-config-recommended-scss: ^4.2.0
     stylelint-config-standard: ^22.0.0
     stylelint-scss: ^3.19.0
+    swiper: ^6.8.0
     webpack: ^5.38.1
     webpack-cli: ^4.7.0
     webpack-merge: ^5.7.3
@@ -2900,12 +2903,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"bootstrap@npm:^5.0.1":
-  version: 5.0.2
-  resolution: "bootstrap@npm:5.0.2"
+"bootstrap@npm:^5.1.0":
+  version: 5.1.0
+  resolution: "bootstrap@npm:5.1.0"
   peerDependencies:
-    "@popperjs/core": ^2.9.2
-  checksum: 5074006f6bdd28f476c9154c3b0945997ad16999564d9b1f0f5aea1ed2083eeeda12619be87ec47da88ff131d6a06a42fea739794c54f487434a14f849c4c187
+    "@popperjs/core": ^2.9.3
+  checksum: 0400dfa3e07726e07131d9fbc0b14acb2a602fd4ba17ef9bd32758b588a120419b61c1569efa3751a18c57beea9d1c386d487e001224aba82f0e3e032b92f136
   languageName: node
   linkType: hard
 
@@ -3551,15 +3554,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cloudinary@npm:^1.26.2":
-  version: 1.26.2
-  resolution: "cloudinary@npm:1.26.2"
+"cloudinary@npm:^1.26.1":
+  version: 1.26.1
+  resolution: "cloudinary@npm:1.26.1"
   dependencies:
     cloudinary-core: ^2.10.2
     core-js: 3.6.5
     lodash: ^4.17.11
     q: ^1.5.1
-  checksum: affab1410c27ffab2377dceaac420b1d4baac6c2ae392991ea15ee5a904584aa4accb246ecf2b9cafb022aeb98e92000fb5598deb81f4632ddf3547ce1d62b86
+  checksum: 71aff47fb7e1dd573f425e448b3e8fc45565384e1235bb3c4d54ac8bed564dcda8695d1b39e183f7982c73ed4d7a646701620ac23e248f10085fa0ddd8cc92c7
   languageName: node
   linkType: hard
 
@@ -4614,6 +4617,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"dom7@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "dom7@npm:3.0.0"
+  dependencies:
+    ssr-window: ^3.0.0-alpha.1
+  checksum: 8beff48475ec564d96a5bcec88eac784d1ff2ceca0f663cfb6a5f54fcebd5b5bf805b508161c24ededf7f84d02af7a976b340e86082b11673345d6c216abd8af
+  languageName: node
+  linkType: hard
+
 "domelementtype@npm:1, domelementtype@npm:^1.3.1":
   version: 1.3.1
   resolution: "domelementtype@npm:1.3.1"
@@ -5627,6 +5639,18 @@ __metadata:
   dependencies:
     flat-cache: ^3.0.4
   checksum: af83a412143100405a995bb7d9a31982ebcfabe6c545dac2e787fc5580b2da74e253ef62968057fa5bbfaf0811a8b85623aeea776e16c77e3ce4c2488b0e4821
+  languageName: node
+  linkType: hard
+
+"file-loader@npm:^6.2.0":
+  version: 6.2.0
+  resolution: "file-loader@npm:6.2.0"
+  dependencies:
+    loader-utils: ^2.0.0
+    schema-utils: ^3.0.0
+  peerDependencies:
+    webpack: ^4.0.0 || ^5.0.0
+  checksum: 0f103418c072ec66c081a9908cd7824ee19905e18be16889cb050f5f373998afaf7ca4c2fd2df4cabf703a2cd526aefe59105930e3f8d266a5b35e6d5f5b3cf4
   languageName: node
   linkType: hard
 
@@ -7981,6 +8005,13 @@ fsevents@~2.3.2:
     prelude-ls: ~1.1.2
     type-check: ~0.3.2
   checksum: 775861da38dcb7e5f1de5bea2a1c7ffaede6e9e8632cfbac76be145ecb295370f46bb41307613c283d66f1fee5d8cc448ca3323c4a02d0fb1e913b2f78de2abb
+  languageName: node
+  linkType: hard
+
+"lightgallery@npm:^2.1.6":
+  version: 2.1.6
+  resolution: "lightgallery@npm:2.1.6"
+  checksum: 091e05731b71c2f383306ef683782a97642fa3a0a9806efb55021a813bfd622626fdd5e70ccb1647e38e5a45a2f943705fcf81deaf408cf39d2788b623b24a49
   languageName: node
   linkType: hard
 
@@ -12419,6 +12450,13 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
+"ssr-window@npm:^3.0.0, ssr-window@npm:^3.0.0-alpha.1":
+  version: 3.0.0
+  resolution: "ssr-window@npm:3.0.0"
+  checksum: 36ac4b6ba91d0cafc83f43aff094b1e32ce55e3f8b31e4538694b203f4b797690b66c7aca17a3f514df82868271a7248514b5b6aca766eb50c97e6fe77b32358
+  languageName: node
+  linkType: hard
+
 "ssri@npm:^8.0.0, ssri@npm:^8.0.1":
   version: 8.0.1
   resolution: "ssri@npm:8.0.1"
@@ -12962,6 +13000,16 @@ fsevents@~2.3.2:
   bin:
     svgo: bin/svgo
   checksum: 8580eddbab54079813531f9fd8c246662eea6f3f7554d7a6082dce010c25b4a8e8e92ae4ee52b2c80b514abc54ecd0e2bd1ef3011693d5daf473adefc5b48180
+  languageName: node
+  linkType: hard
+
+"swiper@npm:^6.8.0":
+  version: 6.8.0
+  resolution: "swiper@npm:6.8.0"
+  dependencies:
+    dom7: ^3.0.0
+    ssr-window: ^3.0.0
+  checksum: 1f5e9503f2ce6eb5e44d1072338008b72359c01b4a5b44738a84dff113374d2d1dec1e3e8dde4a060e7065c4fc8e7aae22d0456bac5850a75a0db3c7bc8e6950
   languageName: node
   linkType: hard
 

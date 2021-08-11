@@ -1,14 +1,14 @@
 ---
 layout: docs
-permalink: /
+permalink: docs/
 tags:
   - navbar
 eleventyNavigation:
   key: docs
-  title: Docs
+  title: Documentação
   order: 0
 metadata:
   title: 
   description:
 ---
-<h1>This is the main docs page!!</h1>
+<h1>Documentação</h1>
