@@ -1,10 +1,6 @@
 {%- if context -%}
-    {% set cols = context.cols %}
+    {% set items = context.items %}
 
-    {%- if context.children -%}
-        {% set children = context.children %}
-    {%- endif -%}
-    
     {%- if context.titleTag %}
         {% set titleTag = context.titleTag %}
     {%- else %}
@@ -16,22 +12,60 @@
     {%- else %}
         {% set subtitleTag = 'h4' %}
     {%- endif %}
+
 {%- endif -%}
 
-{%- if cols %}
-    {% for col in cols %}
-        <div class="{{ col.class }}">
-            {%- if col.classInternal %}
-                <div class="{{ col.classInternal }}">
-                {%- endif %}
-
-                {%- if children -%}
-                    {{ children | safe }}
-                {%- endif -%}
-
-                {%- if col.classInternal %}
-                </div>
+{%- if items %}
+    {% for item in items %}
+        <div class="{{ item.class }}">
+        {%- if item.classInternal %}
+        <div class="{{ item.classInternal }}">
+        {%- endif %}
+            {%- if item.image %}
+                <picture>
+                    {%- if item.image.rescale %}
+                        <source
+                        media="(max-width: 992px)"
+                        srcset='{% imageUrl item.image.url, { fetch_format: "auto", width: 768, crop: "pad", aspect_ratio: "21:9" } %}'
+                        >
+                    {%- endif %}
+                    {%- if item.image.width %}
+                        <img 
+                        src='{% imageUrl item.image.url, { fetch_format: "auto", width: item.image.width } %}' 
+                        srcset='{% imageUrl item.image.url, { fetch_format: "auto", width: item.image.width, dpr: "2.0" } %} 2x' 
+                        alt="{{ item.image.alt }}"
+                        width="{{ item.image.width }}"
+                        class="img-fluid {{ item.image.class }}"
+                        loading="lazy"
+                        >
+                    {%- else %}
+                        <img 
+                        src='{% imageUrl item.image.url, { fetch_format: "auto", width: 768 } %}' 
+                        srcset='{% imageUrl item.image.url, { fetch_format: "auto", width: 768, dpr: "2.0" } %} 2x' 
+                        alt="{{ item.image.alt }}"
+                        width="768"
+                        class="img-fluid {{ item.image.class }}"
+                        loading="lazy"
+                        >
+                    {%- endif %}
+                </picture>
             {%- endif %}
+            {%- if item.subtitle %}
+                <{{ subtitleTag | safe }}>{{ item.subtitle | safe }}</{{ subtitleTag | safe }}>
+            {%- endif %}
+            {%- if item.title %}
+                <{{ titleTag | safe }}>{{ item.title | safe }}</{{ titleTag | safe }}>
+            {%- endif %}
+            {%- if item.content %}
+                <p>{{ item.content | safe }}</p>
+            {%- endif %}
+            {%- if item.btn %}
+                <a href="{{ item.btn.href | e | safe }}" class="{{ item.btn.class | safe }}">{{ item.btn.label | safe }}</a>
+            {%- endif %}
+        
+        {%- if item.classInternal %}
+        </div>
+        {%- endif %}
         </div>
     {% endfor %}
 {%- endif %}

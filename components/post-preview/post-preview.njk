@@ -27,17 +27,16 @@
                     <a href="{{ item.url | e | safe }}" class="post-preview__link">
                         <{{ titleTag | e | safe }} class="post-preview__title">{{ item.title | e | safe }}</{{ titleTag | e | safe }}>
                     </a>
-                    {# {{ item.date.toLocaleDateString('pt-BR',{ 'year': 'numeric', 'month': 'long', 'day': 'numeric' }) }} #}
                     {%- if item.author %}
                         <div class="post-preview__meta">
-                            <span class="post-preview__author-name">{{ item.author | e | safe }}</span>
                             {%- if item.date %}
-                                <time class="post-preview__date" datetime="{{ item.date | ISODate | safe }}">{{ item.date | ISODate | safe }}</time>
+                                <time class="post-preview__date" datetime="{{ item.date | safe }}">{{ item.date | safe }}</time>
                             {%- endif %}
+                            <span class="post-preview__author-name">{{ item.author | e | safe }}</span>
                         </div>
                     {%- else %}
                         {%- if item.date %}
-                            <time class="post-preview__date position-static d-block pb-3" datetime="{{ item.date | ISODate | safe }}">{{ item.date | ISODate | safe }}</time>
+                            <time class="post-preview__date position-static d-block pb-3" datetime="{{ item.date | safe }}">{{ item.date | safe }}</time>
                         {%- endif %}
                     {%- endif %}
                     {%- if item.excerpt %}
