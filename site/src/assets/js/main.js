@@ -2,21 +2,6 @@ import 'regenerator-runtime/runtime.js';
 import '../scss/main.scss';
 
 /**
- * Load off canvas menu component.
- */
-const loadOffcanvasMenu = () => {
-  if (document.querySelector('.offcanvas-menu')) {
-    import(/* webpackChunkName: "components.offcanvas-menu" */ '../../../../components/offcanvas-menu/offcanvas-menu').then(
-      ({ OffcanvasMenu }) => {
-        document.querySelectorAll('.offcanvas-menu').forEach((el) => {
-          new OffcanvasMenu(el);
-        });
-      }
-    );
-  }
-};
-
-/**
  * Load youtube modal component.
  */
 const loadYoutubeModals = () => {
@@ -32,11 +17,11 @@ const loadYoutubeModals = () => {
 };
 
 /**
- * Load action bars component.
+ * Load action bar component.
  */
-const loadActionBars = () => {
+const loadActionBar = () => {
   if (document.querySelector('.actionbar')) {
-    import(/* webpackChunkName: "components.action-bar" */ '../../../../components/action-bar/action-bar').then(
+    import(/* webpackChunkName: "components.actionbar" */ '../../../../components/actionbar/actionbar').then(
       ({ ActionBar }) => {
         document.querySelectorAll('.actionbar').forEach((el) => {
           new ActionBar(el);
@@ -105,9 +90,8 @@ const loadNavBar = () => {
  */
 const loadDynamicModules = () => {
   loadYoutubeModals();
-  loadActionBars();
+  loadActionBar();
   loadGalleries();
-  loadOffcanvasMenu();
   loadMastheadSlider();
   loadGridResponsiveSlider();
   loadNavBar();
