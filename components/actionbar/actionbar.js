@@ -3,7 +3,8 @@
  */
 
 import { dom as faDom, library as faLibrary, config as faConfig } from '@fortawesome/fontawesome-svg-core';
-import { faLinkedin, faFacebookSquare, faYoutubeSquare, faInstagramSquare } from '@fortawesome/free-brands-svg-icons';
+import { faLinkedin, faFacebookSquare, faYoutubeSquare, faInstagramSquare, faWhatsappSquare } from '@fortawesome/free-brands-svg-icons';
+import { faPhone, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 
 export class Actionbar {
   constructor(el) {
@@ -13,7 +14,15 @@ export class Actionbar {
 
   init() {
     faConfig.showMissingIcons = false;
-    faLibrary.add(faLinkedin, faFacebookSquare, faYoutubeSquare, faInstagramSquare);
+    faLibrary.add(
+      faLinkedin, 
+      faFacebookSquare, 
+      faYoutubeSquare, 
+      faInstagramSquare,
+      faWhatsappSquare,
+      faPhone,
+      faEnvelope,
+    );
     faDom.i2svg({ node: this.el });
   }
 }
