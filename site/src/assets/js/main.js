@@ -1,49 +1,44 @@
 import 'regenerator-runtime/runtime.js';
 import '../scss/main.scss';
-import '../../../../components/actionbar/actionbar';
-import '../../../../components/socialbar/socialbar';
 
 /**
  * Load youtube modal component.
  */
-const loadYoutubeModals = () => {
+const loadYoutubeModals = async () => {
   if (document.querySelector('.video-teaser')) {
-    import(/* webpackChunkName: "components.video-teaser" */ '../../../../components/video-teaser/video-teaser').then(
-      ({ VideoTeaser }) => {
-        document.querySelectorAll('.video-teaser').forEach((el) => {
-          new VideoTeaser(el);
-        });
-      }
+    const { VideoTeaser } = await import(
+      /* webpackChunkName: "components.video-teaser" */ '../../../../components/video-teaser/video-teaser'
     );
+    document.querySelectorAll('.video-teaser').forEach((el) => {
+      new VideoTeaser(el);
+    });
   }
 };
 
 /**
  * Load galleries components.
  */
-const loadGalleries = () => {
+const loadGalleries = async () => {
   if (document.querySelector('.photo-gallery')) {
-    import(/* webpackChunkName: "components.photo-gallery" */ '../../../../components/photo-gallery/photo-gallery').then(
-      ({ PhotoGallery }) => {
-        document.querySelectorAll('.photo-gallery').forEach((el) => {
-          new PhotoGallery(el);
-        });
-      }
+    const { PhotoGallery } = await import(
+      /* webpackChunkName: "components.photo-gallery" */ '../../../../components/photo-gallery/photo-gallery'
     );
+    document.querySelectorAll('.photo-gallery').forEach((el) => {
+      new PhotoGallery(el);
+    });
   }
 };
 
 /**
  * Load Masthead Slider.
  */
-const loadMastheadSlider = () => {
+const loadMastheadSlider = async () => {
   if (document.querySelector('.masthead-slider')) {
-    import(
-      /* webpackChunkName: "components.masthead-slider" */ '../../../../ui-core.esm'
-    ).then(({ MastheadSlider }) => {
-      document.querySelectorAll('.masthead-slider').forEach((mastheadSlider) => {
-        new MastheadSlider(mastheadSlider);
-      });
+    const { MastheadSlider } = await import(
+      /* webpackChunkName: "components.masthead-slider" */ '../../../../components/masthead-slider/masthead-slider'
+    );
+    document.querySelectorAll('.masthead-slider').forEach((mastheadSlider) => {
+      new MastheadSlider(mastheadSlider);
     });
   }
 };
@@ -51,24 +46,47 @@ const loadMastheadSlider = () => {
 /**
  * Load Grid Responsive Slider.
  */
-const loadGridResponsiveSlider = () => {
+const loadGridResponsiveSlider = async () => {
   if (document.querySelector('.grid-responsive-slider')) {
-    import(
+    const { GridResponsiveSlider } = await import(
       /* webpackChunkName: "components.grid-responsive-slider" */ '../../../../components/grid-responsive-slider/grid-responsive-slider'
-    ).then(({ GridResponsiveSlider }) => {
-      document.querySelectorAll('.grid-responsive-slider').forEach((gridResponsiveSlider) => {
-        new GridResponsiveSlider(gridResponsiveSlider);
-      });
+    );
+    document.querySelectorAll('.grid-responsive-slider').forEach((gridResponsiveSlider) => {
+      new GridResponsiveSlider(gridResponsiveSlider);
     });
   }
 };
 
 /**
- * Load NavBar.
+ * Load Actionbar.
  */
-const loadNavBar = () => {
+const loadActionbar = async () => {
+  if (document.querySelector('.actionbar')) {
+    const { Actionbar } = await import(/* webpackChunkName: "components.actionbar" */ '../../../../components/actionbar/actionbar');
+    document.querySelectorAll('.actionbar').forEach((actionbar) => {
+      new Actionbar(actionbar);
+    });
+  }
+};
+
+/**
+ * Load Socialbar.
+ */
+const loadSocialbar = async () => {
+  if (document.querySelector('.socialbar')) {
+    const { Socialbar } = await import(/* webpackChunkName: "components.socialbar" */ '../../../../components/socialbar/socialbar');
+    document.querySelectorAll('.socialbar').forEach((socialbar) => {
+      new Socialbar(socialbar);
+    });
+  }
+};
+
+/**
+ * Load Navbar.
+ */
+const loadNavbar = async () => {
   if (document.querySelector('.navbar')) {
-    import(/* webpackChunkName: "navbar" */ '../../../../components/navbar/navbar');
+    await import(/* webpackChunkName: "components.navbar" */ '../../../../components/navbar/navbar');
   }
 };
 
@@ -80,7 +98,9 @@ const loadDynamicModules = () => {
   loadGalleries();
   loadMastheadSlider();
   loadGridResponsiveSlider();
-  loadNavBar();
+  loadNavbar();
+  loadActionbar();
+  loadSocialbar();
 };
 
 /**
