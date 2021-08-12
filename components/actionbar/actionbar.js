@@ -14,6 +14,6 @@ export class Actionbar {
   init() {
     faConfig.showMissingIcons = false;
     faLibrary.add(faLinkedin, faFacebookSquare, faYoutubeSquare, faInstagramSquare);
-    faDom.i2svg(this.el);
+    faDom.i2svg({ node: this.el });
   }
 }

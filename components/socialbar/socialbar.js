@@ -14,6 +14,6 @@ export class Socialbar {
   init() {
     faConfig.showMissingIcons = false;
     faLibrary.add(faLinkedinIn, faFacebook, faInstagram, faYoutube);
-    faDom.i2svg(this.el);
+    faDom.i2svg({ node: this.el });
   }
 }
