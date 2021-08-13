@@ -79,6 +79,21 @@ const loadMastheadSlider = () => {
 };
 
 /**
+ * Load Carousel.
+ */
+ const loadCarousel = () => {
+  if (document.querySelector('.carousel')) {
+    import(/* webpackChunkName: "components.carousel" */ '../../../../components/carousel/carousel').then(
+      ({ Carousel }) => {
+        document.querySelectorAll('.carousel').forEach((carousel) => {
+          new Carousel(carousel);
+        });
+      }
+    );
+  }
+};
+
+/**
  * Load Grid Responsive Slider.
  */
 const loadGridResponsiveSlider = () => {
@@ -108,6 +123,7 @@ const loadNavBar = () => {
 const loadDynamicModules = () => {
   loadOffcanvasMenu();
   loadMastheadSlider();
+  loadCarousel();
   loadGridResponsiveSlider();
   loadNavBar();
 };
