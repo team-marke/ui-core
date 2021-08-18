@@ -62,7 +62,9 @@ const loadGridResponsiveSlider = async () => {
  */
 const loadActionbar = async () => {
   if (document.querySelector('.actionbar')) {
-    const { Actionbar } = await import(/* webpackChunkName: "components.actionbar" */ '../../../../components/actionbar/actionbar');
+    const { Actionbar } = await import(
+      /* webpackChunkName: "components.actionbar" */ '../../../../components/actionbar/actionbar'
+    );
     document.querySelectorAll('.actionbar').forEach((actionbar) => {
       new Actionbar(actionbar);
     });
@@ -74,7 +76,9 @@ const loadActionbar = async () => {
  */
 const loadSocialbar = async () => {
   if (document.querySelector('.socialbar')) {
-    const { Socialbar } = await import(/* webpackChunkName: "components.socialbar" */ '../../../../components/socialbar/socialbar');
+    const { Socialbar } = await import(
+      /* webpackChunkName: "components.socialbar" */ '../../../../components/socialbar/socialbar'
+    );
     document.querySelectorAll('.socialbar').forEach((socialbar) => {
       new Socialbar(socialbar);
     });
@@ -82,11 +86,14 @@ const loadSocialbar = async () => {
 };
 
 /**
- * Load Navbar.
+ * Load Navbar components.
  */
 const loadNavbar = async () => {
   if (document.querySelector('.navbar')) {
-    await import(/* webpackChunkName: "components.navbar" */ '../../../../components/navbar/navbar');
+    const { Navbar } = await import(/* webpackChunkName: "components.navbar" */ '../../../../components/navbar/navbar');
+    document.querySelectorAll('.navbar').forEach((navbar) => {
+      new Navbar(navbar);
+    });
   }
 };
 

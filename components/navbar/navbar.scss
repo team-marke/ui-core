@@ -274,7 +274,7 @@ $extra-padding-x: $nav-link-padding-x !default;
           z-index: auto;
           flex-grow: 1;
           visibility: visible !important; // stylelint-disable-line declaration-no-important
-          background-color: transparent;
+          background-color: transparent !important;
           border-right: 0;
           border-left: 0;
           @include mkui.transition(none);
