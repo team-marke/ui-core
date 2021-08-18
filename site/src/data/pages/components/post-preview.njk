@@ -3,105 +3,74 @@ tags:
   - navbar
 eleventyNavigation:
   key: post-preview
-  title: Post preview
+  title: Post Preview
   order: 0
   parent: docs
-metadata:
-  title: 
-  description:
 ---
-
-<h1>Post preview [Seção | Usa o card]</h1>
+<h1>Post Preview</h1>
 <p>Lorem ipsum dolor sit amet, stet intellegat mei, pertinax oportere at sea. Eos an mutat blandit. Nec at nisl volumus appellantur, an his brute quodsi. Sit ceteros contentiones at, te summo discere pro.</p>
-<div class="row">
-  {% set renderedData %}
-  <div class="post-preview__description">
-    <a href="https://padrepauloricardo.org/episodios/memoria-de-santo-ambrosio-de-milao-bispo-e-doutor-mmxx" class="post-preview__link">
-      <h3 class="post-preview__title">Quem foi Santo Ambrósio de Milão?</h3>
-    </a>
-    <div class="post-preview__meta">
-      <time class="post-preview__date" datetime="25 de dezembro de 2021">25 de dezembro de 2021</time>
-      <span class="post-preview__author-name">Santo Ambrósio</span>
-    </div>
-    <p class="post-preview__excerpt">S. Ambrósio, como muitos sabem, foi elevado ao episcopado de forma extraordinária.</p>
-    <div class="post-preview__categories">
-      <a href="https://exemplo.com.br/categoria/historia" class="post-preview__category">História</a>
-      <a href="https://exemplo.com.br/categoria/teologia" class="post-preview__category">Teologia</a>
-    </div>
-  </div>
-  {% endset %}
 
-  <div class="col-12 col-md-4 mb-3 post-preview">
-    {% set context = {
-      "image": {
-        url: "https://arquivos.padrepauloricardo.org/uploads/episodio/frame/3381/1650-memoria-de-santo-ambrosio-de-milao-frame.jpg",
-        alt: '',
-        width: '300',
-        height: '200'
-      },
-      "children": renderedData
-      } %}
+<h2>Exemplo</h2>
+<div class="docs-example">
+  <div style="max-width: 350px;">
+    {%- 
+      set context = {
+        "title": "Lorem ipsum dolor sit amet causae electram ei eam per affert posidonium eu",
+        "titleTag": "h3",
+        "excerpt": "Te animal forensibus deterruisset per, nam ne dico mazim mandamus. Purto erant intellegat qui cu",
+        "date": "2021-08-18T09:00:00.000Z",
+        "categories": [
+          { 
+            "title": "Eum epicuri",
+            "url": ""
+          },
+          { 
+            "title": "Purto erant",
+            "url": ""
+          }
+        ]  
+      }
+    %}
+    {% include "post-preview/post-preview.njk" %}
+  </div>
+</div>
+
+<h2>Contido em um Card</h2>
+<div class="docs-example" style="max-width: 350px;">
+  {%- set cardBody %}
+  {%- 
+    set context = {
+      "title": "Lorem ipsum dolor sit amet causae electram ei eam per affert posidonium eu",
+      "titleTag": "h3",
+      "excerpt": "Te animal forensibus deterruisset per, nam ne dico mazim mandamus. Purto erant intellegat qui cu",
+      "date": "2021-08-18T09:00:00.000Z",
+      "categories": [
+        { 
+          "title": "Eum epicuri",
+          "url": ""
+        },
+        { 
+          "title": "Purto erant",
+          "url": ""
+        }
+      ]  
+    }
+  %}
+  {% include "post-preview/post-preview.njk" %}
+  {%- endset %}
+    {%- 
+      set context = {
+        "image": {
+          url: "https://picsum.photos/350/200",
+          alt: 'Alt da imagem de card de exemplo',
+          title: 'Title da imagem de card de exemplo',
+          width: '350',
+          height: '200',
+          link: '#lorem'
+        },
+        "interactive": "true",
+        "children": cardBody
+      } 
+    %}
     {% include "card/card.njk" %}
-  </div>
-
-  {% set renderedData %}
-  <div class="post-preview__description">
-    <a href="https://agostinianos.org.br/santo-agostinho/vida/" class="post-preview__link">
-      <h3 class="post-preview__title">Quem foi Santo Agostinho?</h3>
-    </a>
-    <div class="post-preview__meta">
-      <time class="post-preview__date" datetime="25 de dezembro de 2021">25 de dezembro de 2021</time>
-      <span class="post-preview__author-name">Santo Agostinho</span>
-    </div>
-    <p class="post-preview__excerpt">Tomando as Cartas de São Paulo lê: “Não é nos prazeres da vida, mas em seguir a Cristo que se encontra a felicidade”</p>
-    <div class="post-preview__categories">
-      <a href="https://exemplo.com.br/categoria/teologia" class="post-preview__category">Teologia</a>
-      <a href="https://exemplo.com.br/categoria/filosofia" class="post-preview__category">Filosofia</a>
-    </div>
-  </div>
-  {% endset %}
-
-  <div class="col-12 col-md-4 mb-3 post-preview">
-    {% set context = {
-      "image": {
-        url: "https://media.gazetadopovo.com.br/2019/06/11200040/Saint_Augustine_by_Philippe_de_Champaigne-660x372.jpg",
-        alt: '',
-        width: '300',
-        height: '200'
-      },
-      "children": renderedData
-    } %}
-    {% include "card/card.njk" %}
-  </div>
-
-  {% set renderedData %}
-  <div class="post-preview__description">
-    <a href="https://www.vatican.va/archive/cathechism_po/index_new/p1s1c2_50-141_po.html" class="post-preview__link">
-      <h3 class="post-preview__title">Podemos conhecer Deus apenas com a luz da razão?</h3>
-    </a>
-    <div class="post-preview__meta">
-      <time class="post-preview__date" datetime="25 de dezembro de 2021">25 de dezembro de 2021</time>
-      <span class="post-preview__author-name">Santo Tomás</span>
-    </div>
-    <p class="post-preview__excerpt">A partir da criação, isto é, do mundo e da pessoa humana, o homem pode, só pela razão...</p>
-    <div class="post-preview__categories">
-      <a href="https://exemplo.com.br/categoria/teologia" class="post-preview__category">Teologia</a>
-      <a href="https://exemplo.com.br/categoria/filosofia" class="post-preview__category">Filosofia</a>
-    </div>
-  </div>
-  {% endset %}
-
-  <div class="col-12 col-md-4 mb-3 post-preview">
-    {% set context = {
-      "image": {
-        url: "https://educacaopublica.cecierj.edu.br/012020/23644d44367ba32fca766572511165fe.jpg",
-        alt: '',
-        width: '300',
-        height: '200'
-      },
-      "children": renderedData
-      } %}
-    {% include "card/card.njk" %}
-  </div>
-
 </div>

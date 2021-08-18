@@ -9,32 +9,32 @@ metadata:
   title: Carousel
   description: Lorem ipsum, dolor sit amet consectetur adipisicing elit. In modi, amet, atque soluta illum, a distinctio.
 items:
-  - title: Lorem ipsum dollor 1
+  - title: Lorem ipsum dolor 1
     description: Perspiciatis facilis quisquam ex impedit dolor voluptate culpa eligendi quibusdam corporis provident.
-  - title: Lorem ipsum dollor 2 
+  - title: Lorem ipsum dolor 2 
+    description: Sed no autem nostro. Sea eu habeo mutat summo, dicam delicata mel te.
+  - title: Lorem ipsum dolor 3
+    description: Per saperet tincidunt id, qui natum consul tempor ad. Te pri graecis principes conceptam.
+  - title: Lorem ipsum dolor 4
     description: Perspiciatis facilis quisquam ex impedit dolor voluptate culpa eligendi quibusdam corporis provident.
-  - title: Lorem ipsum dollor 3
-    description: Perspiciatis facilis quisquam ex impedit dolor voluptate culpa eligendi quibusdam corporis provident.
-  - title: Lorem ipsum dollor 3
-    description: Perspiciatis facilis quisquam ex impedit dolor voluptate culpa eligendi quibusdam corporis provident.
+  - title: Lorem ipsum dolor 5
+    description: Sed no autem nostro. Sea eu habeo mutat summo, dicam delicata mel te.
+  - title: Lorem ipsum dolor 6
+    description: Per saperet tincidunt id, qui natum consul tempor ad. Te pri graecis principes conceptam.
 ---
 <h1>Carousel</h1>
 <p>Lorem ipsum dolor sit amet, stet intellegat cu mei, pertinax oportere at sea. Eos an mutat blandit. Nec at nisl volumus appellantur, an his brute quodsi. Sit ceteros contentiones at, te summo discere pro.</p>
-<h2>Exemplo</h2>
 
-<div class="docs-example">
+<h2>Exemplo</h2>
+<div class="docs-example px-0 px-lg-4 px-xl-5 gx-lg-4">
   {% set arr = [] %}
   {% for item in items %}
     {% set renderedItem %}
-    <figure class="carousel__item-wrapper p-3">
-      <figcaption class="carousel__info d-flex justify-content-center align-items-center flex-column">
-        <img src="https://res.cloudinary.com/sunlux-marke/image/upload/c_thumb,dpr_2,f_auto,g_faces,h_75,q_auto,w_75/Marcos-Roberto-Ize_iv66ob.jpg" alt="Foto de Marcos Roberto Ize" class="carousel__avatar" height="75" loading="lazy" width="75">
-        <span class="carousel__title" title="Marcos Roberto Ize">{{ item.title }}</cite>
-      </figcaption>
-      <blockquote class="carousel__blockquote blockquote text-center">
-        <p>{{ item.description }}</p>
-      </blockquote>
-    </figure>
+    <div class="d-flex justify-content-center align-items-center flex-column gap-3 p-lg-3 text-center">
+      <img class="img-fluid" height="75" width="75" loading="lazy" src="https://via.placeholder.com/75" alt="{{ item.title | e | safe }}">
+      <h4 class="mb-0">{{ item.title | e | safe }}</h4>
+      <div>{{ item.description | e | safe }}</div>
+    </div>
     {% endset %}
     {% set arr = (arr.push(renderedItem), arr) %}
   {% endfor %}
@@ -49,27 +49,21 @@ items:
   {% include "carousel/carousel.njk" %}
 </div>
 
-<hr class="my-4"></hr>
-
-<div class="docs-example">
+<h2>Múltiplos itens em telas pequenas</h2>
+<div class="docs-example px-0 px-lg-4 px-xl-5 gx-lg-4">
   {% set arr = [] %}
   {% for item in items %}
     {% set renderedItem %}
-    <figure class="carousel__item-wrapper p-2">
-      <figcaption class="carousel__info d-flex justify-content-center align-items-center flex-column">
-        <img src="https://res.cloudinary.com/sunlux-marke/image/upload/c_thumb,dpr_2,f_auto,g_faces,h_75,q_auto,w_75/Marcos-Roberto-Ize_iv66ob.jpg" alt="Foto de Marcos Roberto Ize" class="carousel__avatar" height="75" loading="lazy" width="75">
-        <span class="carousel__title" title="Marcos Roberto Ize">{{ item.title }}</cite>
-      </figcaption>
-      <blockquote class="carousel__blockquote blockquote text-center">
-        <p>{{ item.description }}</p>
-      </blockquote>
-    </figure>
+    <div class="d-flex justify-content-center align-items-center flex-column gap-2 p-lg-2 p-1 text-center">
+      <img class="img-fluid" height="75" width="75" loading="lazy" src="https://via.placeholder.com/75" alt="{{ item.title | e | safe }}">
+      <h6 class="mb-0">{{ item.title | e | safe }}</h6>
+    </div>
     {% endset %}
     {% set arr = (arr.push(renderedItem), arr) %}
   {% endfor %}
   {%- set context = {
-    "minSlidesPerView": 1,
-    "maxSlidesPerView": 3,
+    "minSlidesPerView": 3,
+    "maxSlidesPerView": 5,
     "total": (items | length),
     "items": arr,
     "visibleOverflow": false,

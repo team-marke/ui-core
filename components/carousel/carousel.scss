@@ -1,6 +1,7 @@
 //
-// Carousel component
+// Carousel component styles.
 //
+
 @use '../../design-tokens' as mkui;
 
 .carousel {
@@ -42,10 +43,10 @@
     }
   }
   &__button-prev {
-    left: 0;
+    left: calc(var(--swiper-navigation-size) * -1 - 0.75rem - var(--mkui-gutter-x) / 2);
   }
   &__button-next {
-    right: 0;
+    right: calc(var(--swiper-navigation-size) * -1 - 0.75rem - var(--mkui-gutter-x) / 2);
   }
   &__slide {
     height: auto;

@@ -1,3 +1,236 @@
 /**
- * Card component.
+ * Card component styles.
  */
+
+@use '../../design-tokens' as mkui;
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0; // See https://github.com/twbs/bootstrap/pull/22740#issuecomment-305868106
+  height: mkui.$card-height;
+  word-wrap: break-word;
+  background-color: mkui.$card-bg;
+  background-clip: border-box;
+  border: mkui.$card-border-width solid mkui.$card-border-color;
+  box-shadow: mkui.$box-shadow;
+  @include mkui.border-radius(mkui.$card-border-radius);
+
+  > hr {
+    margin-right: 0;
+    margin-left: 0;
+  }
+
+  > .list-group {
+    border-top: inherit;
+    border-bottom: inherit;
+
+    &:first-child {
+      border-top-width: 0;
+      @include mkui.border-top-radius(mkui.$card-inner-border-radius);
+    }
+
+    &:last-child  {
+      border-bottom-width: 0;
+      @include mkui.border-bottom-radius(mkui.$card-inner-border-radius);
+    }
+  }
+
+  // Due to specificity of the above selector (`.card > .list-group`), we must
+  // use a child selector here to prevent double borders.
+  > .card__header + .list-group,
+  > .list-group + .card__footer {
+    border-top: 0;
+  }
+}
+
+.card__body {
+  // Enable `flex-grow: 1` for decks and groups so that card blocks take up
+  // as much space as possible, ensuring footers are aligned to the bottom.
+  flex: 1 1 auto;
+  position: static;
+  padding: mkui.$card-spacer-y * 0.75 mkui.$card-spacer-x * 0.75;
+  @include mkui.media-breakpoint-up(lg) {
+    padding: mkui.$card-spacer-y mkui.$card-spacer-x;
+  }
+  color: mkui.$card-color;
+}
+
+.card__body--icon-left {
+  @include mkui.media-breakpoint-up(lg) {
+    display: grid;
+    grid-auto-columns: 50px 1fr;
+    grid-auto-rows: min-content;
+    .card__icon {
+      grid-column: 1;
+      grid-row: span 2;
+    }
+    > * {  
+      grid-column: 2;
+    }
+  }
+}
+
+.card--interactive {
+  transition: mkui.$transition-base;
+}
+
+.card--interactive:hover {
+  box-shadow: mkui.$box-shadow-hover;
+}
+
+.card--interactive .card__body {
+  transition: mkui.$transition-base;
+  a:not(.stretched-link) {
+    position: relative;
+    z-index: 2;
+  }
+}
+
+.card--interactive:hover .card__body {
+  transform: translateY(- mkui.$card-spacer-y / 4);
+}
+
+.card__body--overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: mkui.$card-img-overlay-padding;
+  @include mkui.border-radius(mkui.$card-inner-border-radius);
+}
+
+//
+// Optional textual caps
+//
+
+.card__header {
+  padding: mkui.$card-cap-padding-y mkui.$card-cap-padding-x;
+  margin-bottom: 0; // Removes the default margin-bottom of <hN>
+  color: mkui.$card-cap-color;
+  background-color: mkui.$card-cap-bg;
+  border-bottom: mkui.$card-border-width solid mkui.$card-border-color;
+
+  &:first-child {
+    @include mkui.border-radius(mkui.$card-inner-border-radius mkui.$card-inner-border-radius 0 0);
+  }
+}
+
+.card__footer {
+  padding: mkui.$card-cap-padding-y mkui.$card-cap-padding-x;
+  color: mkui.$card-cap-color;
+  background-color: mkui.$card-cap-bg;
+  border-top: mkui.$card-border-width solid mkui.$card-border-color;
+
+  &:last-child {
+    @include mkui.border-radius(0 0 mkui.$card-inner-border-radius mkui.$card-inner-border-radius);
+  }
+}
+
+//
+// Header navs
+//
+
+.card__header-tabs {
+  margin-right: - mkui.$card-cap-padding-x * .5;
+  margin-bottom: - mkui.$card-cap-padding-y;
+  margin-left: - mkui.$card-cap-padding-x * .5;
+  border-bottom: 0;
+
+  @if mkui.$nav-tabs-link-active-bg != mkui.$card-bg {
+    .nav-link.active {
+      background-color: mkui.$card-bg;
+      border-bottom-color: mkui.$card-bg;
+    }
+  }
+}
+
+.card__header-pills {
+  margin-right: - mkui.$card-cap-padding-x * .5;
+  margin-left: - mkui.$card-cap-padding-x * .5;
+}
+
+// Card image
+.card__img {
+  display: block;
+  position: relative;
+  width: 100%;
+  object-fit: cover;
+  overflow: hidden;
+  text-indent: 100%;
+  white-space: nowrap;
+}
+
+.card__img--overlay,
+.card__img--top {
+  @include mkui.border-top-radius(mkui.$card-inner-border-radius);
+}
+
+.card__img--overlay,
+.card__img--bottom {
+  @include mkui.border-bottom-radius(mkui.$card-inner-border-radius);
+}
+
+//
+// Card groups
+//
+
+.card__group {
+  // The child selector allows nested `.card` within `.card__group`
+  // to display properly.
+  > .card {
+    margin-bottom: mkui.$card-group-margin;
+  }
+
+  @include mkui.media-breakpoint-up(sm) {
+    display: flex;
+    flex-flow: row wrap;
+    // The child selector allows nested `.card` within `.card__group`
+    // to display properly.
+    > .card {
+      // Flexbugs #4: https://github.com/philipwalton/flexbugs#flexbug-4
+      flex: 1 0 0%;
+      margin-bottom: 0;
+
+      + .card {
+        margin-left: 0;
+        border-left: 0;
+      }
+
+      // Handle rounded corners
+      @if mkui.$enable-rounded {
+        &:not(:last-child) {
+          @include mkui.border-end-radius(0);
+
+          .card__img-top,
+          .card__header {
+            // stylelint-disable-next-line property-disallowed-list
+            border-top-right-radius: 0;
+          }
+          .card__img-bottom,
+          .card__footer {
+            // stylelint-disable-next-line property-disallowed-list
+            border-bottom-right-radius: 0;
+          }
+        }
+
+        &:not(:first-child) {
+          @include mkui.border-start-radius(0);
+
+          .card__img-top,
+          .card__header {
+            // stylelint-disable-next-line property-disallowed-list
+            border-top-left-radius: 0;
+          }
+          .card__img-bottom,
+          .card__footer {
+            // stylelint-disable-next-line property-disallowed-list
+            border-bottom-left-radius: 0;
+          }
+        }
+      }
+    }
+  }
+}

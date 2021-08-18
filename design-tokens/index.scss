@@ -1,6 +1,13 @@
 // Configuration
 @import '~bootstrap/scss/functions';
+
+$variable-prefix:   mkui- !default;
+$box-shadow:        0 .2rem .5rem rgba(#000, .2) !default;
+$box-shadow-sm:     0 .125rem .25rem rgba(#000, .15) !default;
+$box-shadow-lg:     0 .75rem 1.25rem rgba(#000, .2) !default;
+$box-shadow-hover:  0 .25rem 1rem rgba(#000, .3) !default;
 @import '~bootstrap/scss/variables';
+
 @import '~bootstrap/scss/mixins';
 @import '~bootstrap/scss/utilities';
 
@@ -18,7 +25,6 @@
 @import '~bootstrap/scss/dropdown';
 @import '~bootstrap/scss/button-group';
 @import '~bootstrap/scss/nav';
-@import '~bootstrap/scss/card';
 @import '~bootstrap/scss/accordion';
 @import '~bootstrap/scss/breadcrumb';
 @import '~bootstrap/scss/pagination';

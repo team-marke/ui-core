@@ -6,33 +6,82 @@ eleventyNavigation:
   title: Card
   order: 4
   parent: docs
-metadata:
-  title: Card
-  description: Descrição
 ---
-
 <h1>Card</h1>
 <p>Lorem ipsum dolor sit amet, stet intellegat mei, pertinax oportere at sea. Eos an mutat blandit. Nec at nisl volumus appellantur, an his brute quodsi. Sit ceteros contentiones at, te summo discere pro.</p>
-<div class="row">
 
-  {% set renderedData %}
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  {% endset %}
-
-  <div class="col-12 col-md-6 mb-3">
-    {% set context = {
-      "image": {
-        url: "https://res.cloudinary.com/webmaster-marke/image/upload/v1626966885/Marke-fundo-vidro.jpg",
-        alt: '',
-        width: '300',
-        height: '200'
-      },
-      "children": renderedData
-      } %}
+<h2>Exemplo</h2>
+<div class="docs-example">
+  <div style="max-width: 350px;">
+    {%- set cardBody %}
+    <h5 class="">Lorem ipsum dolor sit amet</h5>
+    <p class="">Illum tritani honestatis ius eu. Eu persecuti percipitur vel, ad sit solum facer ignota, eam an tollit tibique insolens.</p>
+    <a href="" class="btn btn-primary">Ex cibo putent</a>
+    {%- endset %}
+    {%- 
+      set context = {
+        "image": {
+          url: "https://picsum.photos/350/200",
+          alt: 'Alt da imagem de card de exemplo',
+          title: 'Title da imagem de card de exemplo',
+          width: '350',
+          height: '200'
+        },
+        "children": cardBody
+      } 
+    %}
     {% include "card/card.njk" %}
   </div>
+</div>
 
+<h2>Card com link na imagem e interagível</h2>
+<div class="docs-example">
+  <div style="max-width: 350px;">
+    {%- set cardBody %}
+    <h5 class="">Lorem ipsum dolor sit amet</h5>
+    <p class="">Illum tritani honestatis ius eu. Eu persecuti percipitur vel, ad sit solum facer ignota, eam an tollit tibique insolens.</p>
+    <a href="#lorem" class="btn btn-primary stretched-link">Ex cibo putent</a>
+    <a href="#ipsum" class="btn btn-outline-primary">Ex cibo putent</a>
+    {%- endset %}
+    {%- 
+      set context = {
+        "image": {
+          url: "https://picsum.photos/350/200",
+          alt: 'Alt da imagem de card de exemplo',
+          title: 'Title da imagem de card de exemplo',
+          width: '350',
+          height: '200',
+          link: '#lorem'
+        },
+        "interactive": "true",
+        "children": cardBody
+      } 
+    %}
+    {% include "card/card.njk" %}
+  </div>
+</div>
 
+<h2>Imagem como fundo (overlay)</h2>
+<div class="docs-example">
+  <div style="max-width: 550px;">
+    {%- set cardBody %}
+    <h5 class="text-light">Lorem ipsum dolor sit amet</h5>
+    <p class="text-light">Illum tritani honestatis ius eu. Eu persecuti percipitur vel, ad sit solum facer ignota, eam an tollit tibique insolens.</p>
+    <a href="" class="btn btn-light">Ex cibo putent</a>
+    {%- endset %}
+    {%- 
+      set context = {
+        "image": {
+          url: "https://picsum.photos/550/300",
+          alt: 'Alt da imagem de card de exemplo',
+          title: 'Title da imagem de card de exemplo',
+          width: '550',
+          height: '300'
+        },
+        "overlay": "true",
+        "children": cardBody
+      } 
+    %}
+    {% include "card/card.njk" %}
+  </div>
 </div>

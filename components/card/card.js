@@ -1,3 +1,3 @@
 /**
- * Card component.
+ * Card component scripts.
  */

@@ -1,56 +1,42 @@
 {%- if context -%}
-    {% set items = context.items %}
-    {%- if context.titleTag %}
-        {% set titleTag = context.titleTag %}
-    {%- else %}
-        {% set titleTag = 'h2' %}
-    {%- endif %}
+  {%- if context.titleTag %}
+    {% set titleTag = context.titleTag %}
+  {%- else %}
+    {% set titleTag = 'h2' %}
+  {%- endif %}
+  {% set title = context.title %}
+  {% set date = context.date %}
+  {%- if context.locale %}
+    {% set locale = 'pt-BR' %}
+  {%- else %}
+    {% set locale = context.locale %}
+  {%- endif %}
+  {% set url = context.url %}
+  {% set excerpt = context.excerpt %}
+  {% set categories = context.categories %}
 {%- endif -%}
 
-{%- if items %}
-    {% for item in items %}
-        <div class="col col-4">
-            <div class="post-preview">
-                <div class="post-preview__thumbnail">
-                    <a href="{{ item.url | e | safe }}" class="post-preview__link">
-                        <figure class="ratio ratio-16x9 mb-0">
-                            <img src="{{ item.thumbnail | safe }}" 
-                                class="img-cover" 
-                                alt="Thumbnail do post {{ item.title | safe }}"
-                                loading="lazy"
-                                width="373"
-                                height="210">
-                        </figure>
-                    </a>
-                </div>
-                <div class="post-preview__description">
-                    <a href="{{ item.url | e | safe }}" class="post-preview__link">
-                        <{{ titleTag | e | safe }} class="post-preview__title">{{ item.title | e | safe }}</{{ titleTag | e | safe }}>
-                    </a>
-                    {%- if item.author %}
-                        <div class="post-preview__meta">
-                            {%- if item.date %}
-                                <time class="post-preview__date" datetime="{{ item.date | safe }}">{{ item.date | safe }}</time>
-                            {%- endif %}
-                            <span class="post-preview__author-name">{{ item.author | e | safe }}</span>
-                        </div>
-                    {%- else %}
-                        {%- if item.date %}
-                            <time class="post-preview__date position-static d-block pb-3" datetime="{{ item.date | safe }}">{{ item.date | safe }}</time>
-                        {%- endif %}
-                    {%- endif %}
-                    {%- if item.excerpt %}
-                        <p class="post-preview__excerpt">{{ item.excerpt | safe }}</p>
-                    {%- endif %}
-                    {%- if item.categories %}
-                        <div class="post-preview__categories">
-                            {%- for category in item.categories %}
-                                <a href="{{ category.url | e | safe }}" class="post-preview__category">{{ category.title | e | safe }}</a>
-                            {%- endfor %}
-                        </div>
-                    {%- endif %}
-                </div>
-            </div>
-        </div>
-    {% endfor %}
-{%- endif %}
+<div class="post-preview">
+  {%- if url %}
+  <a href="{{ url | url | safe }}" class="post-preview__title-link">
+  {%- endif %}
+  <{{ titleTag | e | safe }} class="post-preview__title">{{ title | e | safe }}</{{ titleTag | e | safe }}>
+  {%- if url %}
+  </a>
+  {%- endif %}
+  {%- if date %}
+  <time class="post-preview__date" datetime="{{ date | ISODate | safe }}">
+    {{ date | toLocaleDateString(locale, { 'year': 'numeric', 'month': 'long', 'day': 'numeric' }) | safe }}
+  </time>
+  {%- endif %}
+  {%- if excerpt %}
+  <p class="post-preview__excerpt">{{ excerpt | e | safe }}</p>
+  {%- endif %}
+  {%- if categories %}
+  <div class="post-preview__categories">
+    {%- for category in categories %}
+    <a href="{{ category.url | url | safe }}" class="post-preview__category">{{ category.title | e | safe }}</a>
+    {%- endfor %}
+  </div>
+  {%- endif %}
+</div>

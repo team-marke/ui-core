@@ -1,32 +1,80 @@
-{%- if context -%}
-  {% set image = context.image %}
-  {% set children = context.children %}
-{%- endif -%}
-
-<div class="card">
-    {%- if image.url and image.width and image.height %}
-    <img 
-      src="
-      {%- imageUrl image.url, { 
-        quality: 'auto:good',
-        width: image.width,
-        height: image.height
-      } %}"
-      srcset="
-      {%- imageUrl image.url, { 
-          quality: 'auto:good',
-          width: image.width',
-          height: image.height
-        } 
-      %} 2x"
-      width="image.width"
-      height="image.height"
-      loading="lazy"
-      class="card-img-top"
-      alt="{{ image.alt }}"
-    >
+{%- if context %}
+  {%- if context.componentClasses %}
+    {%- set componentClasses = context.componentClasses %}
+  {%- endif %}
+  {%- if not context.overlay %}
+    {%- set overlay = false %}
+  {%- else %}
+    {%- set overlay = context.overlay %}
+  {%- endif -%}
+  {%- if not context.interactive %}
+    {%- set interactive = false %}
+  {%- else %}
+    {%- set interactive = context.interactive %}
+  {%- endif -%}
+  {%- set image = context.image %}
+  {%- if context.image and not context.image.position %}
+    {%- set imagePos = 'top' %}
+    {%- if overlay %}
+      {%- set imagePos = 'overlay' %}
     {%- endif %}
-  <div class="card-body">
+  {%- else %}
+    {%- set imagePos = context.image.position %}
+  {%- endif %}
+  {%- set children = context.children %}
+{%- endif %}
+
+<div class="
+    card
+    {%- if interactive %}
+    card--interactive
+    {%- endif %}
+    {%- if componentClasses %}
+    {{ componentClasses | join(" ") | safe }}
+    {%- endif %}
+  ">
+  {%- if image.link %}
+  <a class="" href="{{ image.link | url | safe }}">
+  {%- endif %}
+  {%- if image.url %}
+  <img 
+    src="
+    {%-
+      imageUrl image.url, { 
+        crop: 'thumb',
+        width: image.width,
+        height: image.height,
+        quality: 'auto',
+        fetch: 'auto'
+    } %}"
+    srcset="
+    {%-
+      imageUrl image.url, { 
+        crop: 'thumb',
+        width: image.width',
+        height: image.height,
+        dpr: 2,
+        quality: 'auto',
+        fetch: 'auto'
+      } 
+    %} 2x"
+    width="{{ image.width | e | safe }}"
+    height="{{ image.height | e | safe }}"
+    loading="lazy"
+    class="card__img card__img--{{ imagePos | e | safe }}"
+    alt="{{ image.alt | e | safe }}"
+    title="{{ image.title | e | safe }}"
+  >
+  {%- endif %}
+  {%- if image.link %}
+  </a>
+  {%- endif %}
+  <div class="
+    card__body
+    {%- if overlay %}
+    card__body--overlay
+    {%- endif %}
+  ">
     {{ children | safe }}
   </div>
 </div>

@@ -1,3 +1,3 @@
 /**
- * Post preview component.
+ * Post preview component scripts.
  */
