@@ -1,0 +1,42 @@
+---
+tags:
+  - navbar
+eleventyNavigation:
+  key: masthead
+  title: Masthead
+metadata:
+  title: Masthead
+  description: Lorem ipsum, dolor sit amet consectetur adipisicing elit. In modi, amet, atque soluta illum, a distinctio.
+masthead:
+  image: https://res.cloudinary.com/webmaster-marke/image/upload/v1625060740/MarkeUI/golden-gate-bridge-3.jpg
+  bgColor: '#b7485d'
+  title: Alias fugit
+  description: Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eum, repudiandae?
+---
+<h1>Masthead</h1>
+<p>Lorem ipsum dolor sit amet, stet intellegat cu mei, pertinax oportere at sea. Eos an mutat blandit. Nec at nisl volumus appellantur, an his brute quodsi. Sit ceteros contentiones at, te summo discere pro.</p>
+<h2>Exemplo</h2>
+<div class="docs-example">
+
+  {# Conteúdo que será inserido dentro do masthead #}
+  {% set content %}
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-lg-6">
+          <div class="p-3 bg-light rounded-3">
+            <h1>{{ masthead.title }}</h1>
+            <p>{{ masthead.description }}</p>
+            <a class="btn btn-primary" href="#">Button</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endset %}
+
+  {%- set context = {
+    image: masthead.image,
+    bgColor: masthead.bgColor,
+    children: content
+  } %}
+  {% include "masthead/masthead.njk" %}
+</div>

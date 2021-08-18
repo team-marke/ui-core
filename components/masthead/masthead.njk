@@ -1,0 +1,33 @@
+{%- if context -%}
+  {% set image = context.image %}
+  {% set imgBrightness = context.imgBrightness %}
+  {% set bgColor = context.bgColor %}
+  {% set classes = context.classes %}
+  {% set children = context.children %}
+{%- endif -%}
+
+<div 
+  class="masthead{% if classes %} {{ classes | join(" ") | safe }}{% endif %}"
+  style="{% if bgColor %}background:{{ bgColor | safe }};{% endif %}"
+>
+  {%- if image %}
+    <img
+      class="masthead__image"
+      alt="{{ title | e | safe }}"
+      loading="lazy"
+      width="1920"
+      height="820"
+      sizes="(max-width: 768px) 100vw, (max-width: 1280px) 1280px, 1920px"
+      src="{%- imageUrl image, { fetch_format: 'auto', quality: 'auto', width: 1920, aspect_ratio: '21:9', crop: 'thumb', gravity: 'auto' } %}"
+      srcset="
+        {%- imageUrl image, { fetch_format: 'auto', quality: 'auto', width: 1920, aspect_ratio: '21:9', crop: 'thumb', gravity: 'auto' } %} 1920w,
+        {%- imageUrl image, { fetch_format: 'auto', quality: 'auto', width: 1280, aspect_ratio: '21:9', crop: 'thumb', gravity: 'auto' } %} 1280w, 
+        {%- imageUrl image, { fetch_format: 'auto', quality: 'auto', width: 768, aspect_ratio: '21:9', crop: 'thumb', gravity: 'auto' } %} 768w"
+    >
+  {%- endif %}
+  {%- if children %}
+    <div class="masthead__children">
+      {{ children | safe }}
+    </div>
+  {%- endif %}
+</div>

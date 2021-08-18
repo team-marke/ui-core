@@ -1,24 +1,25 @@
+@use '../../design-tokens' as mkui;
+
 //
 // Masthead slider
 //
 
-$description-font-size: 1.15rem !default;
-$text-color: #f8f9fa;
 $transition: all .15s linear !default;
+$pagination-color: mkui.$light !default;
+$theme-color: mkui.$light !default;
+$button-hover-background: rgb(37 37 37 / 20%) !default;
+$pagination-bullets-bottom: .5rem !default; 
 
 .masthead-slider {
-  --swiper-pagination-color: #{$text-color};
-  --swiper-theme-color: #{$text-color};
-  @media (min-width: 992px) {
+  --swiper-pagination-color: #{$pagination-color};
+  --swiper-theme-color: #{$theme-color};
+  @include mkui.media-breakpoint-up(lg){
     min-height: 450px;
-  }
-  &__slide {
-    background-color: var(--masthead-background-color);
   }
   .masthead-slider__button-prev,
   .masthead-slider__button-next {
     display: none;
-    @media (min-width: 992px) {
+    @include mkui.media-breakpoint-up(lg){
       display: block;
     }
     opacity: 0;
@@ -29,7 +30,7 @@ $transition: all .15s linear !default;
     transform: translateY(-50%);
     transition: $transition;
     &:hover {
-      background-color: rgb(37 37 37 / 20%);
+      background-color: $button-hover-background;
     }
     &:after {
       display: block;
@@ -47,20 +48,20 @@ $transition: all .15s linear !default;
     }
   }
   &__button-prev {
-    @media (min-width: 1200px) {
+    @include mkui.media-breakpoint-up(xl){
       left: 2rem;
     }
   }
   &__button-next {
-    @media (min-width: 1200px) {
+    @include mkui.media-breakpoint-up(xl){
       right: 2rem;
     }
   }
   &__pagination {
     &.swiper-pagination-bullets {
-      bottom: 2rem;
-      @media (min-width: 992px) {
-        bottom: 3rem;
+      bottom: $pagination-bullets-bottom;
+      @include mkui.media-breakpoint-up(lg){
+        bottom: $pagination-bullets-bottom * 2;
       }
     }
     .swiper-pagination-bullet {
@@ -75,62 +76,3 @@ $transition: all .15s linear !default;
   }
 }
 
-.masthead-slider__container {
-  color: $text-color;
-  padding-top: 1rem;
-  padding-bottom: 4rem;
-  @media (min-width: 992px) {
-    position: absolute;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    padding-top: 4rem;
-    padding-bottom: 4rem;
-  }
-}
-
-.masthead-slider__container-inner {
-  width: 100%;
-  margin-right: auto;
-  margin-left: auto;
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
-  display: flex;
-  flex-flow: column;
-  gap: 0.75rem;
-  @media (min-width: 992px) {
-    gap: 1.5rem;
-  }
-}
-
-.masthead-slider__image {
-  aspect-ratio: 21 / 9;
-  width: 100%;
-  height: auto;
-  @media (min-width: 992px) {
-    aspect-ratio: auto;
-    height: 450px;
-  }
-}
-
-.masthead-slider__title {
-  margin: 0;
-  max-width: 25ch;
-  color: inherit;
-}
-
-.masthead-slider__divider {
-  max-width: 100px;
-  opacity: 1;
-  color: inherit;
-  margin: 0;
-  height: 2px;
-}
-
-.masthead-slider__description {
-  font-size: $description-font-size;
-  max-width: 60ch;
-  color: inherit;
-}
