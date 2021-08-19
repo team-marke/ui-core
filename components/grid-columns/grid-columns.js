@@ -1,3 +1,0 @@
-/**
- * Grid columns component.
- */
