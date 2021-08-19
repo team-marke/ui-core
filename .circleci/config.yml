@@ -13,7 +13,7 @@ executors:
       - image: circleci/node:<< parameters.image >>
         environment:
           TZ: 'America/Sao_Paulo'
-    resource_class: medium
+    resource_class: small
     environment:
       TZ: 'America/Sao_Paulo'
 aliases:
