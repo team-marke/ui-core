@@ -1,6 +1,10 @@
 {%- if context -%}
   {% set image = context.image %}
-  {% set imgBrightness = context.imgBrightness %}
+  {%- if context.imgAr %}
+    {% set imgAr = context.imgAr %}
+  {%- else %}
+    {% set imgAr = '21:9' %}
+  {%- endif %}
   {% set bgColor = context.bgColor %}
   {% set classes = context.classes %}
   {% set children = context.children %}
@@ -18,11 +22,11 @@
       width="1920"
       height="820"
       sizes="(max-width: 768px) 100vw, (max-width: 1280px) 1280px, 1920px"
-      src="{%- imageUrl image, { fetch_format: 'auto', quality: 'auto', width: 1920, aspect_ratio: '21:9', crop: 'thumb', gravity: 'auto' } %}"
+      src="{%- imageUrl image, { fetch_format: 'auto', quality: 'auto', width: 1920, aspect_ratio: imgAr, crop: 'thumb', gravity: 'auto' } %}"
       srcset="
-        {%- imageUrl image, { fetch_format: 'auto', quality: 'auto', width: 1920, aspect_ratio: '21:9', crop: 'thumb', gravity: 'auto' } %} 1920w,
-        {%- imageUrl image, { fetch_format: 'auto', quality: 'auto', width: 1280, aspect_ratio: '21:9', crop: 'thumb', gravity: 'auto' } %} 1280w, 
-        {%- imageUrl image, { fetch_format: 'auto', quality: 'auto', width: 768, aspect_ratio: '21:9', crop: 'thumb', gravity: 'auto' } %} 768w"
+        {%- imageUrl image, { fetch_format: 'auto', quality: 'auto', width: 1920, aspect_ratio: imgAr, crop: 'thumb', gravity: 'auto' } %} 1920w,
+        {%- imageUrl image, { fetch_format: 'auto', quality: 'auto', width: 1280, aspect_ratio: imgAr, crop: 'thumb', gravity: 'auto' } %} 1280w, 
+        {%- imageUrl image, { fetch_format: 'auto', quality: 'auto', width: 768, aspect_ratio: imgAr, crop: 'thumb', gravity: 'auto' } %} 768w"
     >
   {%- endif %}
   {%- if children %}
