@@ -1,0 +1,29 @@
+{%- if context %}
+  {%- set id = context.id %}
+  {%- set items = context.items %}
+{%- endif %}
+
+<nav class="tabs nav nav-tabs" id="{{ id }}-tabs" role="tablist">
+  {%- for item in items %}
+  <button
+    class="tabs__label{% if loop.index == 1 %} active{% endif %}"
+    id="{{ id }}-tab-{{ loop.index }}"
+    data-bs-toggle="tab"
+    data-bs-target="#{{ id }}-tab-panel-{{ loop.index }}"
+    type="button"
+    role="tab"
+    aria-controls="{{ id }}-tab-panel-{{ loop.index }}"
+    aria-selected="{% if loop.index == 1 %}true{% else %}false{% endif %}"
+  >{{ item.label | safe }}</button>
+  {%- endfor %}
+</nav>
+<div class="tab-panels" id="{{ id }}-tab-panels">
+  {%- for item in items %}
+  <div
+    class="tab-panels__pane{% if loop.index == 1 %} active{% endif %}"
+    id="{{ id }}-tab-panel-{{ loop.index }}"
+    role="tabpanel"
+    aria-labelledby="{{ id }}-tab-{{ loop.index }}"
+  >{{ item.panel | safe }}</div>
+  {%- endfor %}
+</div>

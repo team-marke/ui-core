@@ -1,0 +1,42 @@
+{%- if context -%}
+  {%- if context.titleTag %}
+    {% set titleTag = context.titleTag %}
+  {%- else %}
+    {% set titleTag = 'h2' %}
+  {%- endif %}
+  {% set title = context.title %}
+  {% set date = context.date %}
+  {%- if context.locale %}
+    {% set locale = 'pt-BR' %}
+  {%- else %}
+    {% set locale = context.locale %}
+  {%- endif %}
+  {% set url = context.url %}
+  {% set excerpt = context.excerpt %}
+  {% set categories = context.categories %}
+{%- endif -%}
+
+<div class="post-preview">
+  {%- if url %}
+  <a href="{{ url | url | safe }}" class="post-preview__title-link">
+  {%- endif %}
+  <{{ titleTag | e | safe }} class="post-preview__title">{{ title | e | safe }}</{{ titleTag | e | safe }}>
+  {%- if url %}
+  </a>
+  {%- endif %}
+  {%- if date %}
+  <time class="post-preview__date" datetime="{{ date | ISODate | safe }}">
+    {{ date | toLocaleDateString(locale, { 'year': 'numeric', 'month': 'long', 'day': 'numeric' }) | safe }}
+  </time>
+  {%- endif %}
+  {%- if excerpt %}
+  <p class="post-preview__excerpt">{{ excerpt | e | safe }}</p>
+  {%- endif %}
+  {%- if categories %}
+  <div class="post-preview__categories">
+    {%- for category in categories %}
+    <a href="{{ category.url | url | safe }}" class="post-preview__category">{{ category.title | e | safe }}</a>
+    {%- endfor %}
+  </div>
+  {%- endif %}
+</div>

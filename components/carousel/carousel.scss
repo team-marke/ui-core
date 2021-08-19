@@ -1,0 +1,88 @@
+//
+// Carousel component styles.
+//
+
+@use '../../design-tokens' as mkui;
+
+.carousel {
+  --swiper-navigation-size: 1rem;
+  margin-right: calc(var(--bs-gutter-x) / -2);
+  margin-left: calc(var(--bs-gutter-x) / -2);
+  position: relative;
+  &__container {
+    @include mkui.media-breakpoint-down(lg) {
+      padding-bottom: 2rem;
+    }
+  }
+  &__button-prev,
+  &__button-next {
+    display: none;
+    background-color: mkui.$white;
+    box-shadow: mkui.$box-shadow;
+    border-radius: 100%;
+    padding: 0.75rem;
+    width: var(--swiper-navigation-size);
+    box-sizing: content-box;
+    transition: mkui.$transition-base;
+    color: mkui.$primary;
+    &:hover {
+      box-shadow: mkui.$box-shadow-lg;
+      color: mkui.$secondary;
+    }
+    @include mkui.media-breakpoint-up(lg) {
+      display: block;
+    }
+    &::after {
+      display: block;
+      position: relative;
+      left: 50%;
+      transform: translateX(-25%);
+      font-weight: bolder;
+    }
+    &.swiper-button-disabled {
+      opacity: 0.15;
+    }
+  }
+  &__button-prev {
+    left: calc(var(--swiper-navigation-size) * -1 - 0.75rem - var(--mkui-gutter-x) / 2);
+  }
+  &__button-next {
+    right: calc(var(--swiper-navigation-size) * -1 - 0.75rem - var(--mkui-gutter-x) / 2);
+  }
+  &__slide {
+    height: auto;
+    padding-top: 0.75rem;
+    padding-right: calc(var(--bs-gutter-x) / 2);
+    padding-bottom: 0.75rem;
+    padding-left: calc(var(--bs-gutter-x) / 2);
+    @include mkui.media-breakpoint-down(lg) {
+      &:first-child {
+        margin-left: calc(10vw / var(--carousel-min-slides));
+      }
+      &:last-child {
+        margin-right: calc(10vw / var(--carousel-min-slides));
+      }
+    }
+  }
+  .swiper-container-css-mode > .swiper-wrapper > .swiper-slide {
+    scroll-snap-align: center center;
+    scroll-snap-stop: always;
+  }
+}
+
+// Visible overflow variant
+.carousel--visible-overflow {
+  @include mkui.media-breakpoint-up(lg) {
+    .carousel__container {
+      overflow: visible;
+    }
+    .carousel__slide {
+      transition: mkui.$transition-base;
+      &:not(.swiper-slide-active) {
+        opacity: 0.666;
+        pointer-events: none;
+        user-select: none;
+      }
+    }
+  }
+}

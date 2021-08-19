@@ -1,10 +1,12 @@
 import 'regenerator-runtime/runtime.js';
 import '../scss/main.scss';
+import '../../../../components/accordion/accordion';
+import '../../../../components/tabs/tabs';
 
 /**
  * Load youtube modal component.
  */
-const loadYoutubeModals = async () => {
+ const loadYoutubeModals = async () => {
   if (document.querySelector('.video-teaser')) {
     const { VideoTeaser } = await import(
       /* webpackChunkName: "components.video-teaser" */ '../../../../components/video-teaser/video-teaser'
@@ -72,6 +74,21 @@ const loadActionbar = async () => {
 };
 
 /**
+ * Load Carousel.
+ */
+ const loadCarousel = () => {
+  if (document.querySelector('.carousel')) {
+    import(/* webpackChunkName: "components.carousel" */ '../../../../components/carousel/carousel').then(
+      ({ Carousel }) => {
+        document.querySelectorAll('.carousel').forEach((carousel) => {
+          new Carousel(carousel);
+        });
+      }
+    );
+  }
+};
+
+/**
  * Load Socialbar.
  */
 const loadSocialbar = async () => {
@@ -108,10 +125,11 @@ const loadDynamicModules = () => {
   loadNavbar();
   loadActionbar();
   loadSocialbar();
+  loadMastheadSlider();
+  loadCarousel();
 };
 
 /**
- * Load modules that are included in our main JS bundle.
  */
 const loadBundledModules = () => {};
 
@@ -120,13 +138,13 @@ const loadBundledModules = () => {};
  */
 
 if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', () => {
+    document.addEventListener('DOMContentLoaded', () => {
+        loadDynamicModules();
+        loadBundledModules();
+    });
+} else {
     loadDynamicModules();
     loadBundledModules();
-  });
-} else {
-  loadDynamicModules();
-  loadBundledModules();
 }
 
 window.onload = () => {};
