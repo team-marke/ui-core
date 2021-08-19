@@ -139,6 +139,7 @@ metadata:
       "key": "link-2",
       "url": "#link-2",
       "title": "Link 2",
+      "extra": true,
       "navbar": {
         "scrollSpy": true
       }
@@ -150,15 +151,19 @@ metadata:
       "extra": true
     }
   ] %}
-  {%- set extraBtn %}
-    {%- for item in navbarLinks %}
-      {%- if item.extra %}
+
+  {% set arr = [] %}
+  {%- for item in navbarLinks %}
+    {%- if item.extra %}
+      {% set renderedItem %}
         <div class="d-flex h-100 align-items-center">
           <a class="btn btn-success" href="{{ item.url | url }}">{{ item.title | e | safe }}</a>
         </div>
-      {%- endif %}
-    {%- endfor %}  
-  {%- endset %}
+      {% endset %}
+    {% set arr = (arr.push(renderedItem), arr) %}
+    {%- endif %}
+  {% endfor %}
+
   {%- set context = {
     navbarLinks: navbarLinks,
     currentPage: page,
@@ -166,9 +171,9 @@ metadata:
     brandLogoMobile: 'https://res.cloudinary.com/webmaster-marke/image/upload/v1620931656/Logo_Marke_dt6azg_pthlhj.svg',
     brandLogoMobileWidth: 70,
     brandUrl: "#inicio",
-    variant: "dark",
     offcanvasColor: "dark",
-    extraNav: extraBtn
+    variant: "dark",
+    extraNavItems: arr
   } %}
   {% include "navbar/navbar.njk" %}
 </div>

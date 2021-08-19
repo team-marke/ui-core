@@ -4,7 +4,7 @@
   {% set brandLogo = context.brandLogo %}
   {% set brandLogoMobile = context.brandLogoMobile %}
   {% set brandUrl = context.brandUrl %}
-  {% set extraNav = context.extraNav %}
+  {% set extraNavItems = context.extraNavItems %}
   {%- if context.brandLogoWidth -%}
     {% set brandLogoWidth = context.brandLogoWidth %}
   {%- else -%}
@@ -90,10 +90,12 @@
         {% endif %}
         {%- endfor %}
       </ul>
-      {%- if extraNav %}
-      <div class="navbar__extra">
-        {{ extraNav | safe }}
-      </div>
+      {%- if extraNavItems %}
+        {% for item in extraNavItems %}
+          <div class="navbar__extra">
+            {{ item | safe }}
+          </div>
+        {% endfor %}
       {%- endif %}
     </div>
   </div>
