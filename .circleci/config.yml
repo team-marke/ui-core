@@ -3,9 +3,6 @@ parameters:
   run_workflow_main:
     default: true
     type: boolean
-  run_workflow_staging:
-    default: true
-    type: boolean
 executors:
   node:
     parameters:
@@ -49,18 +46,10 @@ aliases:
     run:
       name: Generates node .env file with necessary vars
       command: echo "$NODE_ENV" | base64 --decode > .env
-  generate_node_env_staging: &generate_node_env_staging
-    run:
-      name: Generates node .env file with necessary vars
-      command: echo "$NODE_ENV_STAGING" | base64 --decode > .env
   firebase_deploy: &firebase_deploy
     run:
       name: Firebase deploy
       command: ./node_modules/.bin/firebase deploy --token "$FIREBASE_TOKEN" --only hosting:production
-  firebase_deploy_staging: &firebase_deploy_staging
-    run:
-      name: Firebase deploy
-      command: ./node_modules/.bin/firebase deploy --token "$FIREBASE_TOKEN_STAGING" --only hosting:staging
   install_curl: &install_curl
     run:
       name: Install curl
@@ -73,12 +62,7 @@ aliases:
         -H "X-Auth-Email: $CF_EMAIL" \
         -H "X-Auth-Key: $CF_KEY" \
         -H "Content-Type: application/json" \
-        --data '{"purge_everything":true}'
-  ping_google_sitemap: &ping_google_sitemap
-    run:
-      name: Ping google with sitemap.xml URL
-      command: |-
-        curl "https://www.google.com/ping?sitemap=$SITEMAP_URL"    
+        --data '{"purge_everything":true}'   
 jobs:
   build_and_deploy_prod:
     executor: node
@@ -92,17 +76,6 @@ jobs:
       - <<: *install_curl
       - <<: *firebase_deploy
       - <<: *purge_cloudflare_cache
-      - <<: *ping_google_sitemap
-  build_and_deploy_staging:
-    executor: node
-    steps:
-      - checkout
-      - <<: *restore_cache
-      - <<: *generate_node_env_staging
-      - <<: *yarn_install
-      - <<: *yarn_stage
-      - <<: *save_cache
-      - <<: *firebase_deploy_staging
 workflows:
   version: 2
   main:
@@ -113,11 +86,3 @@ workflows:
             branches:
               only:
                 - main
-  staging:
-    when: << pipeline.parameters.run_workflow_staging >>
-    jobs:
-      - build_and_deploy_staging:
-          filters:
-            branches:
-              only:
-                - staging

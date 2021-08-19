@@ -7,8 +7,10 @@ eleventyNavigation:
   key: docs
   title: Documentação
   order: 0
-metadata:
-  title: 
-  description:
+  parent: home
+  navbar:
+    hideChildren: true
 ---
-<h1>Documentação</h1>
+# Documentação
+
+Lorem ipsum dolor sit amet, eros oporteat quo in, te usu vide semper adipiscing. Et sit latine tincidunt. Qui elit iusto an. In vidisse indoctum referrentur sit.

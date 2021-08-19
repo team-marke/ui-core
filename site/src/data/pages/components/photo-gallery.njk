@@ -4,55 +4,11 @@ tags:
 eleventyNavigation:
   key: photos-gallery
   title: Photos Gallery
-metadata:
-  title: 
-  description:
 ---
-<h1>Galeria de Fotos</h1>
+<h1>Photos Gallery</h1>
 <p>Lorem ipsum dolor sit amet, stet intellegat cu mei, pertinax oportere at sea. Eos an mutat blandit. Nec at nisl volumus appellantur, an his brute quodsi. Sit ceteros contentiones at, te summo discere pro.</p>
-<h2>Dinâmica sem thumbnail</h2>
-<div class="docs-example">
-  {% set context = {
-      "isDynamic": true,
-      "title": "Golden Gate Bridge",
-      "gallery": [
-        {
-          "url": "https://res.cloudinary.com/webmaster-marke/image/upload/v1625060742/MarkeUI/golden-gate-bridge-2.jpg",
-          "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-        },
-        {
-          "url": "https://res.cloudinary.com/webmaster-marke/image/upload/v1625060481/MarkeUI/golden-gate-bridge.jpg",
-          "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-        }
-      ]
-    }
-  %}
-  {% include "photo-gallery/photo-gallery.njk" %}
-</div>
-<h2>Dinâmica com thumbnail</h2>
-<div class="docs-example">
-  {% set context = {
-      "isDynamic": true,
-      "thumbnail": {
-        "url": "https://res.cloudinary.com/webmaster-marke/image/upload/v1625060740/MarkeUI/golden-gate-bridge-3.jpg",
-        "alt": "Golden Gate Bridge"
-      },
-      "title": "Golden Gate Bridge",
-      "gallery": [
-        {
-          "url": "https://res.cloudinary.com/webmaster-marke/image/upload/v1625060742/MarkeUI/golden-gate-bridge-2.jpg",
-          "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-        },
-        {
-          "url": "https://res.cloudinary.com/webmaster-marke/image/upload/v1625060481/MarkeUI/golden-gate-bridge.jpg",
-          "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-        }
-      ]
-    }
-  %}
-  {% include "photo-gallery/photo-gallery.njk" %}
-</div>
-<h2>Múltiplas imagens</h2>
+
+<h2>Exemplo</h2>
 <div class="docs-example">
 {% set context = {
     "isDynamic": false,
@@ -75,4 +31,48 @@ metadata:
   }
 %}
 {% include "photo-gallery/photo-gallery.njk" %}
+</div>
+
+<h2>Dinâmica sem thumbnail</h2>
+<div class="docs-example">
+  {% set context = {
+      "isDynamic": true,
+      "title": "Golden Gate Bridge",
+      "gallery": [
+        {
+          "url": "https://res.cloudinary.com/webmaster-marke/image/upload/v1625060742/MarkeUI/golden-gate-bridge-2.jpg",
+          "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+        },
+        {
+          "url": "https://res.cloudinary.com/webmaster-marke/image/upload/v1625060481/MarkeUI/golden-gate-bridge.jpg",
+          "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+        }
+      ]
+    }
+  %}
+  {% include "photo-gallery/photo-gallery.njk" %}
+</div>
+
+<h2>Dinâmica com thumbnail</h2>
+<div class="docs-example">
+  {% set context = {
+      "isDynamic": true,
+      "thumbnail": {
+        "url": "https://res.cloudinary.com/webmaster-marke/image/upload/v1625060740/MarkeUI/golden-gate-bridge-3.jpg",
+        "alt": "Golden Gate Bridge"
+      },
+      "title": "Golden Gate Bridge",
+      "gallery": [
+        {
+          "url": "https://res.cloudinary.com/webmaster-marke/image/upload/v1625060742/MarkeUI/golden-gate-bridge-2.jpg",
+          "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+        },
+        {
+          "url": "https://res.cloudinary.com/webmaster-marke/image/upload/v1625060481/MarkeUI/golden-gate-bridge.jpg",
+          "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+        }
+      ]
+    }
+  %}
+  {% include "photo-gallery/photo-gallery.njk" %}
 </div>

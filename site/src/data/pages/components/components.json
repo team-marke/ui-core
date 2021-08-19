@@ -2,6 +2,6 @@
   "layout": "docs",
   "permalink": "docs/components/{{ page.fileSlug }}/",
   "eleventyNavigation": {
-    "parent": "docs"
+    "parent": "components"
   }
 }

@@ -1,8 +1,8 @@
-@use '../../design-tokens' as mkui;
+// 
+// Masthead component styles.
+// 
 
-// 
-// Masthead component.
-// 
+@use '../../design-tokens' as mkui;
 
 $height: 450px !default;
 $children-padding-y: 1rem; 
