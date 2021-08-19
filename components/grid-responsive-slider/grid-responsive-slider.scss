@@ -4,13 +4,13 @@
 
 .grid-responsive-slider {
   padding-bottom: 1rem;
-  margin-right: calc(var(--bs-gutter-x) / -2);
-  margin-left: calc(var(--bs-gutter-x) / -2);
+  margin-right: calc(var(--mkui-gutter-x) / -2);
+  margin-left: calc(var(--mkui-gutter-x) / -2);
   @media (min-width: 992px) {
-    padding-top: calc(var(--bs-gutter-y) / -2);
-    padding-right: calc(var(--bs-gutter-x) / -2);
+    padding-top: calc(var(--mkui-gutter-y) / -2);
+    padding-right: calc(var(--mkui-gutter-x) / -2);
     padding-bottom: 1.5rem;
-    padding-left: calc(var(--bs-gutter-x) / -2);
+    padding-left: calc(var(--mkui-gutter-x) / -2);
     margin-bottom: 0;
     &__pagination {
       display: none;
@@ -20,11 +20,11 @@
     padding-bottom: 0;
     .swiper-wrapper {
       display: grid;
-      grid-template-columns: repeat(var(--grid-responsive-slider-total), calc(100% - var(--bs-gutter-x) * 3));
+      grid-template-columns: repeat(var(--grid-responsive-slider-total), calc(100% - var(--mkui-gutter-x) * 3));
       grid-template-rows: repeat(var(--grid-responsive-slider-total) / var(--grid-responsive-slider-max-columns), 1fr);
       grid-gap: 0;
       overflow-x: hidden;
-      padding-left: calc(var(--bs-gutter-x) * 3 / 2);
+      padding-left: calc(var(--mkui-gutter-x) * 3 / 2);
       padding-bottom: 2.75rem;
       @media (min-width: 992px) {
         padding-left: 0;
@@ -40,10 +40,10 @@
   }
   &__slide {
     height: auto;
-    width: calc(100% + var(--bs-gutter-x) * 3);
-    padding-right: calc(var(--bs-gutter-x) / 2);
+    width: calc(100% + var(--mkui-gutter-x) * 3);
+    padding-right: calc(var(--mkui-gutter-x) / 2);
     padding-bottom: 2rem;
-    padding-left: calc(var(--bs-gutter-x) / 2);
+    padding-left: calc(var(--mkui-gutter-x) / 2);
     @media (max-width: 991px) {
       &:first-child {
         margin-left: calc(10vw / var(--grid-responsive-slider-min-columns));
@@ -53,10 +53,10 @@
       }
     }
     @media (min-width: 992px) {
-      padding-top: calc(var(--bs-gutter-y) / 2);
-      padding-right: calc(var(--bs-gutter-x) / 2);
-      padding-bottom: calc(var(--bs-gutter-y) / 2);
-      padding-left: calc(var(--bs-gutter-x) / 2);
+      padding-top: calc(var(--mkui-gutter-y) / 2);
+      padding-right: calc(var(--mkui-gutter-x) / 2);
+      padding-bottom: calc(var(--mkui-gutter-y) / 2);
+      padding-left: calc(var(--mkui-gutter-x) / 2);
     }
   }
 
