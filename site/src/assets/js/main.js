@@ -1,22 +1,7 @@
 import 'regenerator-runtime/runtime.js';
 import '../scss/main.scss';
-import '../../../../components/tabs-panel/tabs-panel';
-import '../../../../components/faq/faq';
-
-/**
- * Load off canvas menu component.
- */
-const loadOffcanvasMenu = () => {
-  if (document.querySelector('.offcanvas-menu')) {
-    import(/* webpackChunkName: "components.offcanvas-menu" */ '../../../../components/offcanvas-menu/offcanvas-menu').then(
-      ({ OffcanvasMenu }) => {
-        document.querySelectorAll('.offcanvas-menu').forEach((el) => {
-          new OffcanvasMenu(el);
-        });
-      }
-    );
-  }
-};
+import '../../../../components/accordion/accordion';
+import '../../../../components/tabs/tabs';
 
 /**
  * Load youtube modal component.
@@ -121,11 +106,8 @@ const loadNavBar = () => {
  * Dynamically load modules that are split from the main JS bundle.
  */
 const loadDynamicModules = () => {
-  loadOffcanvasMenu();
   loadMastheadSlider();
   loadCarousel();
-  loadGridResponsiveSlider();
-  loadNavBar();
 };
 
 /**

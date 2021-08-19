@@ -1,0 +1,43 @@
+// 
+// Design tokens elements - resetting, vendor components, helpers and utilities.
+// 
+
+// Bootstrap Layout
+@import '~bootstrap/scss/grid';
+@import '~bootstrap/scss/containers';
+
+// Bootstrap Content
+@import '~bootstrap/scss/root';
+@import '~bootstrap/scss/reboot';
+@import '~bootstrap/scss/type';
+@import '~bootstrap/scss/images';
+@import '~bootstrap/scss/tables';
+@import '~bootstrap/scss/transitions';
+
+// Bootstrap Forms
+@import '~bootstrap/scss/forms';
+
+// Bootstrap Components
+@import '~bootstrap/scss/alert';
+@import '~bootstrap/scss/badge';
+@import '~bootstrap/scss/breadcrumb';
+@import '~bootstrap/scss/buttons';
+@import '~bootstrap/scss/button-group'; 
+@import '~bootstrap/scss/close';
+@import '~bootstrap/scss/dropdown';
+@import '~bootstrap/scss/list-group';
+@import '~bootstrap/scss/modal';
+@import '~bootstrap/scss/nav';
+@import '~bootstrap/scss/offcanvas';
+@import '~bootstrap/scss/pagination';
+@import '~bootstrap/scss/popover';
+@import '~bootstrap/scss/progress';
+@import '~bootstrap/scss/spinners';
+@import '~bootstrap/scss/toasts';
+@import '~bootstrap/scss/tooltip';
+
+// Bootstrap Helpers
+@import '~bootstrap/scss/helpers';
+
+// Bootstrap Utilities
+@import '~bootstrap/scss/utilities/api';

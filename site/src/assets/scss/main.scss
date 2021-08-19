@@ -15,18 +15,18 @@
   $icon-color: mkui.$primary,
   $icon-hover-color: mkui.$light,
 );
-@use '../../../../components/video-modal';
-@use '../../../../components/photo-gallery';
+@use '../../../../components/accordion';
 @use '../../../../components/action-bar';
-@use '../../../../components/copyrightbar';
-@use '../../../../components/masthead-slider';
 @use '../../../../components/card';
 @use '../../../../components/carousel';
+@use '../../../../components/copyrightbar';
 @use '../../../../components/grid-responsive-slider';
+@use '../../../../components/masthead-slider';
+@use '../../../../components/video-modal';
 @use '../../../../components/navbar';
-@use '../../../../components/faq';
+@use '../../../../components/photo-gallery';
 @use '../../../../components/post-preview';
-@use '../../../../components/tabs-panel';
+@use '../../../../components/tabs';
 
 // Layouts
 @use 'layouts/docs';
