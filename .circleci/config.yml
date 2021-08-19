@@ -44,12 +44,12 @@ aliases:
       command: yarn run stage
   generate_node_env: &generate_node_env
     run:
-      name: Generates node .env file with necessary vars
+      name: Generate node .env file with necessary vars
       command: echo "$NODE_ENV" | base64 --decode > .env
   firebase_deploy: &firebase_deploy
     run:
       name: Firebase deploy
-      command: ./node_modules/.bin/firebase deploy --token "$FIREBASE_TOKEN" --only hosting:production
+      command: ./node_modules/.bin/firebase deploy --token "$FIREBASE_TOKEN" --only hosting
   install_curl: &install_curl
     run:
       name: Install curl
