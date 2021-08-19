@@ -1,16 +1,19 @@
-<header class="bg-primary">
+<header class="bg-dark">
   <div class="container">
-    {% set navbarLinks = collections.page | eleventyNavigation %}
-    {%- set context = {
-      navbarLinks: navbarLinks,
-      currentPage: page,
-      brandLogo: 'https://res.cloudinary.com/webmaster-marke/image/upload/v1620931656/Logo_Marke_dt6azg_pthlhj.svg',
-      brandLogoMobile: 'https://res.cloudinary.com/webmaster-marke/image/upload/v1620931656/Logo_Marke_dt6azg_pthlhj.svg',
-      brandLogoMobileWidth: 70,
-      brandUrl: "/",
-      variant: "dark",
-      offcanvasColor: "primary"
-    } %}
+    {%- set navbarLinks = collections.page | eleventyNavigation("home") %}
+    {%- 
+      set context = {
+        navbarLinks: navbarLinks,
+        currentPage: page,
+        brandLogo: 'https://res.cloudinary.com/webmaster-marke/image/upload/v1620931656/Logo_Marke_dt6azg_pthlhj.svg',
+        brandLogoMobile: 'https://res.cloudinary.com/webmaster-marke/image/upload/v1620931656/Logo_Marke_dt6azg_pthlhj.svg',
+        brandLogoMobileWidth: 70,
+        brandUrl: "/",
+        variant: "dark",
+        offcanvasColor: "primary",
+        offcanvasColor: "primary"
+      } 
+    %}
     {% include "navbar/navbar.njk" %}
   </div>
 </header>

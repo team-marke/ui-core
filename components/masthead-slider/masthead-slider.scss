@@ -1,8 +1,8 @@
-@use '../../design-tokens' as mkui;
+//
+// Masthead slider component styles.
+//
 
-//
-// Masthead slider
-//
+@use '../../design-tokens' as mkui;
 
 $transition: all .15s linear !default;
 $pagination-color: mkui.$light !default;

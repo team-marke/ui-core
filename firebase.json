@@ -1,0 +1,17 @@
+{
+  "hosting": {
+    "public": "site/dist",
+    "headers": [
+      {
+        "source": "*",
+        "headers": [
+          {
+            "key": "X-Robots-Tag",
+            "value": "noindex"
+          }
+        ]
+      }
+    ],
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
+  }
+}
