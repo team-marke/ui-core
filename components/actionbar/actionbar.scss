@@ -14,8 +14,10 @@ $item-padding-y: 0.25rem !default;
 $item-padding-x: 0.5rem !default;
 
 $dark-color: mkui.$white !default;
+$dark-icon-color: mkui.$white !default;
 
 $light-color: mkui.$black !default;
+$light-icon-color: red !default;
 
 .actionbar {
   display: grid;
@@ -78,21 +80,33 @@ $light-color: mkui.$black !default;
 
   &--light {
     color: $light-color;
-    a {
+    .actionbar__link {
       color: rgba($color: $light-color, $alpha: 0.75);
       &:hover {
         color: $light-color;
+        .actionbar__icon{
+          color: $light-icon-color;
+        }
       }
+    }
+    .actionbar__icon{
+      color: rgba($color: $light-icon-color, $alpha: 0.75);
     }
   }
 
   &--dark {
     color: $dark-color;
-    a {
+    .actionbar__link {
       color: rgba($color: $dark-color, $alpha: 0.75);
       &:hover {
         color: $dark-color;
+        .actionbar__icon{
+          color: $dark-icon-color;
+        }
       }
+    }
+    .actionbar__icon{
+      color: rgba($color: $dark-icon-color, $alpha: 0.75);
     }
   }
 }
