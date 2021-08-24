@@ -33,34 +33,38 @@
 {%- endif -%}
 
 <nav class="navbar navbar-{{ variant | e | safe }} navbar-expand-{{ expand | e | safe }}">
-  <a class="navbar-brand" href="{{ brandUrl | url | safe }}">
-    <img 
-      class="img-fluid d-block d-lg-none"
-      alt="Logo"
-      width="{{ brandLogoMobileWidth }}"
-      src="{%- imageUrl brandLogoMobile, { fetch_format: 'auto', quality: 'auto', dpr: 2, width: brandLogoWidth } %}"
-    >
-    <img 
-      class="img-fluid d-none d-lg-block"
-      alt="Logo"
-      width="{{ brandLogoWidth }}"
-      src="{%- imageUrl brandLogo, { fetch_format: 'auto', quality: 'auto', dpr: 2, width: brandLogoWidth } %}"
-    >
-  </a>
+  {%- if context.brandLogo -%}
+    <a class="navbar-brand" href="{{ brandUrl | url | safe }}">
+      <img 
+        class="img-fluid d-block d-lg-none"
+        alt="Logo"
+        width="{{ brandLogoMobileWidth }}"
+        src="{%- imageUrl brandLogoMobile, { fetch_format: 'auto', quality: 'auto', dpr: 2, width: brandLogoWidth } %}"
+      >
+      <img 
+        class="img-fluid d-none d-lg-block"
+        alt="Logo"
+        width="{{ brandLogoWidth }}"
+        src="{%- imageUrl brandLogo, { fetch_format: 'auto', quality: 'auto', dpr: 2, width: brandLogoWidth } %}"
+      >
+    </a>
+  {%- endif -%}
   {% set offCanvasId %}{% idGenerator 'offcanvas' %}{% endset %}
   <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#{{ offCanvasId | safe }}" aria-controls="{{ offCanvasId | safe }}">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="offcanvas offcanvas-start {{ 'bg-' + offcanvasColor }}" tabindex="-1" id="{{ offCanvasId | safe }}">
     <div class="offcanvas-header">
-      <div class="offcanvas-title" id="{{ offCanvasId | safe }}-label">
-        <img 
-          class="img-fluid"
-          alt="Logo"
-          width="{{ brandLogoMobileWidth }}"
-          src="{%- imageUrl brandLogoMobile, { fetch_format: 'auto', quality: 'auto', dpr: 2, width: brandLogoWidth } %}"
-        >
-      </div>
+      {%- if context.brandLogoMobile -%}
+        <div class="offcanvas-title" id="{{ offCanvasId | safe }}-label">
+          <img 
+            class="img-fluid"
+            alt="Logo"
+            width="{{ brandLogoMobileWidth }}"
+            src="{%- imageUrl brandLogoMobile, { fetch_format: 'auto', quality: 'auto', dpr: 2, width: brandLogoWidth } %}"
+          >
+        </div>
+      {%- endif -%}
       <button type="button" class="btn-close {% if variant == 'dark' %} btn-close-white{% endif %}" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">
