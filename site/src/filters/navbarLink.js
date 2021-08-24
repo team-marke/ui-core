@@ -3,20 +3,14 @@
  * @param {*} entry
  * @param {*} currentPage
  */
- module.exports = (entry, currentPage) => {
+module.exports = (entry, currentPage) => {
   if (!entry.navbar) {
     entry.navbar = {};
   }
   let classList = [];
   let attributes = [];
-  if (!entry.navbar.sideNav) {
-    classList.push('nav-link');
-  }
   if (entry.url == currentPage.url) {
     classList.push('active');
-  }
-  if (entry.navbar.button) {
-    classList.push('btn', 'btn-sm', 'btn-primary');
   }
   if (entry.navbar.scrollSpy) {
     classList.push('smoothscroll');

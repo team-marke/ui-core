@@ -2,6 +2,7 @@ import 'regenerator-runtime/runtime.js';
 import '../scss/main.scss';
 import '../../../../components/accordion/accordion';
 import '../../../../components/tabs/tabs';
+import { setSmoothScrollLinks } from '../../../../tools/utils/smooth-scrolling'
 
 /**
  * Load youtube modal component.
@@ -147,4 +148,11 @@ if (document.readyState === 'loading') {
     loadBundledModules();
 }
 
-window.onload = () => {};
+window.onload = () => {
+  if (document.querySelector('.page-header')) {
+    const headerOffset = document.querySelector('.page-header').offsetHeight;
+    setSmoothScrollLinks(headerOffset);
+  } else {
+    setSmoothScrollLinks(0);
+  }
+};
