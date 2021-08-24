@@ -66,7 +66,8 @@
   },
   "files": [
     "components/**/*",
-    "design-tokens/**/*"
+    "design-tokens/**/*",
+    "tools/**/*"
   ],
   "scripts": {
     "develop": "run-p develop:eleventy develop:webpack",
