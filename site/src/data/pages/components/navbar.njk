@@ -183,3 +183,53 @@ eleventyNavigation:
     {% include "navbar/navbar.njk" %}
   </div>
 </div>
+
+<h2>Navegação central sem imagem</h2>
+<div class="docs-example p-3">
+  <div class="bg-dark px-3">
+    {%- set navbarLinks = [
+      {
+        "key": "link-1",
+        "url": "#link-1",
+        "title": "Link 1"
+      },
+      {
+        "key": "link-2",
+        "url": "#link-2",
+        "title": "Link 2",
+        "extra": true,
+        "navbar": {
+          "scrollSpy": true
+        }
+      },
+      {
+        "key": "link-3",
+        "url": "#link-3",
+        "title": "Link 3",
+        "extra": true
+      }
+    ] %}
+
+    {% set arr = [] %}
+    {%- for item in navbarLinks %}
+      {%- if item.extra %}
+        {% set renderedItem %}
+          <div class="d-flex h-100 align-items-center">
+            <a class="btn btn-success" href="{{ item.url | url }}">{{ item.title | e | safe }}</a>
+          </div>
+        {% endset %}
+      {% set arr = (arr.push(renderedItem), arr) %}
+      {%- endif %}
+    {% endfor %}
+    {%- set context = {
+      navbarLinks: navbarLinks,
+      navPosition: "between",
+      currentPage: page,
+      brandUrl: "#inicio",
+      offcanvasColor: "dark",
+      variant: "dark",
+      extraNavItems: arr
+    } %}
+    {% include "navbar/navbar.njk" %}
+  </div>
+</div>

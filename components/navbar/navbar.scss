@@ -56,8 +56,8 @@ $light-brand-hover-color: $light-active-color !default;
 $dark-brand-color: $dark-active-color !default;
 $dark-brand-hover-color: $dark-active-color !default;
 
-$extra-padding-y: $nav-link-padding-y !default;
-$extra-padding-x: $nav-link-padding-x !default;
+$item-extra-padding-y: $nav-link-padding-y !default;
+$item-extra-padding-x: $nav-link-padding-x !default;
 
 .navbar {
   position: relative;
@@ -96,13 +96,6 @@ $extra-padding-x: $nav-link-padding-x !default;
       @extend %container-flex-properties;
     }
   }
-
-  &__extra {
-    padding-top: $extra-padding-y;
-    padding-bottom: $extra-padding-y;
-    padding-right: 0;
-    padding-left: 0;
-  }
 }
 
 // Navbar brand
@@ -128,17 +121,25 @@ $extra-padding-x: $nav-link-padding-x !default;
 // Custom navbar navigation (doesn't require `.nav`, but does make use of `.nav-link`).
 
 .navbar-nav {
+  width: 100%;
   display: flex;
   flex-direction: column; // cannot use `inherit` to get the `.navbar`s value
+  justify-content: flex-end;
   padding-left: 0;
   margin-bottom: 0;
-  margin-left: auto;
   list-style: none;
 
   .nav-item {
     height: 100%;
   }
-
+  
+  .nav-item--extra {
+    padding-top: $item-extra-padding-y;
+    padding-bottom: $item-extra-padding-y;
+    padding-right: 0;
+    padding-left: 0;
+  }
+  
   .nav-link {
     display: flex;
     align-items: center;
@@ -150,6 +151,23 @@ $extra-padding-x: $nav-link-padding-x !default;
   .dropdown-menu {
     position: static;
   }
+
+  &--start{
+    justify-content: flex-start;
+  }
+
+  &--center{
+    justify-content: center;
+  }
+
+  &--between{
+    justify-content: space-between;
+  }
+
+  &--around{
+    justify-content: space-around;
+  }
+
 }
 
 // Navbar text
@@ -248,11 +266,11 @@ $extra-padding-x: $nav-link-padding-x !default;
           overflow: visible;
         }
 
-        .navbar__extra {
+        .nav-item--extra {
           padding-top: 0;
           padding-bottom: 0;
-          padding-right: $extra-padding-x;
-          padding-left: $extra-padding-x;
+          padding-right: $item-extra-padding-x;
+          padding-left: $item-extra-padding-x;
         }
 
         .navbar-collapse {
