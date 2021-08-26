@@ -2,6 +2,8 @@
 // Grid responsive slider component
 //
 
+@use '../../design-tokens/sliders' as sliders;
+
 .grid-responsive-slider {
   padding-bottom: 1rem;
   margin-right: calc(var(--mkui-gutter-x) / -2);

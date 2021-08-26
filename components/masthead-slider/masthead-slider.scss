@@ -3,11 +3,11 @@
 //
 
 @use '../../design-tokens' as mkui;
+@use '../../design-tokens/sliders' as sliders;
 
 $transition: all .15s linear !default;
 $pagination-color: mkui.$light !default;
 $theme-color: mkui.$light !default;
-$button-hover-background: rgb(37 37 37 / 20%) !default;
 $pagination-bullets-bottom: .5rem !default; 
 
 .masthead-slider {
@@ -26,12 +26,7 @@ $pagination-bullets-bottom: .5rem !default;
     &.swiper-button-disabled {
       opacity: 0;
     }
-    padding: 2rem;
-    transform: translateY(-50%);
     transition: $transition;
-    &:hover {
-      background-color: $button-hover-background;
-    }
     &:after {
       display: block;
       position: absolute;

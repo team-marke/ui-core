@@ -32,7 +32,7 @@ masthead:
       {% set content %}
         <div class="container">
           <div class="row">
-            <div class="col-12 col-lg-6">
+            <div class="col-12 col-lg-6 offset-lg-3">
               <div class="p-3 bg-light rounded-3" style="--bs-bg-opacity: .5;">
                 <h1>{{ item.title }}</h1>
                 <p>{{ item.description }}</p>
@@ -71,10 +71,11 @@ masthead:
       {% set content %}
         <div class="container">
           <div class="row">
-            <div class="col-12 col-lg-6">
+            <div class="col-12 col-lg-6 offset-lg-3">
               <div class="p-3 bg-light rounded-3" style="--bs-bg-opacity: .5;">
                 <h1>{{ item.title }}</h1>
                 <p>{{ item.description }}</p>
+                <a class="btn btn-warning" href="#">Button</a>
               </div>
             </div>
           </div>
@@ -95,7 +96,7 @@ masthead:
 
   {%- set context = {
     slides: slides,
-    navColor: '#ffd149'
+    navColor: '#ffc107'
   } %}
   {% include "masthead-slider/masthead-slider.njk" %}
 </div>
