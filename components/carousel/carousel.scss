@@ -14,8 +14,8 @@
       padding-bottom: 2rem;
     }
   }
-  &__button-prev,
-  &__button-next {
+  &__button-prev.swiper-button-prev,
+  &__button-next.swiper-button-next {
     display: none;
     background-color: mkui.$white;
     box-shadow: mkui.$box-shadow;
@@ -25,6 +25,9 @@
     box-sizing: content-box;
     transition: mkui.$transition-base;
     color: mkui.$primary;
+    top: 50%;
+    transform: translateY(-50%);
+    margin: 0;
     &:hover {
       box-shadow: mkui.$box-shadow-lg;
       color: mkui.$secondary;
@@ -43,10 +46,10 @@
       opacity: 0.15;
     }
   }
-  &__button-prev {
+  &__button-prev.swiper-button-prev {
     left: calc(var(--swiper-navigation-size) * -1 - 0.75rem - var(--mkui-gutter-x) / 2);
   }
-  &__button-next {
+  &__button-next.swiper-button-next {
     right: calc(var(--swiper-navigation-size) * -1 - 0.75rem - var(--mkui-gutter-x) / 2);
   }
   &__slide {
