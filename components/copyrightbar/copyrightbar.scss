@@ -1,17 +1,16 @@
-@use '../../design-tokens' as mkui;
-
 //
 // Copyrightbar component for footers.
 //
+
+@use '../../design-tokens' as mkui;
 
 $font-size: 0.875rem !default;
 $gap: 0.5rem !default;
 $padding-y: 1rem !default;
 $padding-x: 1rem !default;
 
-$dark-color: mkui.$white !default;
-
-$light-color: mkui.$black !default;
+$dark-text-color: mkui.$light !default;
+$light-text-color: mkui.$dark !default;
 
 .copyrightbar {
   display: flex;
@@ -23,6 +22,7 @@ $light-color: mkui.$black !default;
   padding-bottom: $padding-y;
   padding-left: $padding-x;
   padding-right: $padding-x;
+  color: var(--mkui-copyrightbar-text-color);
 
   @include mkui.media-breakpoint-up(lg) {
     flex-direction: row;
@@ -47,10 +47,10 @@ $light-color: mkui.$black !default;
   }
 
   &--dark {
-    color: $dark-color;
+    --mkui-copyrightbar-text-color: #{$dark-text-color};
   }
 
   &--light {
-    color: $light-color;
+    --mkui-copyrightbar-text-color: #{$light-text-color};
   }
 }
