@@ -20,15 +20,19 @@ module.exports = (eleventyConfig) => {
   }
 
   // Setup nunjucks environment instance for template layouts
+  const commonLoaderOptions = {
+    trimBlocks: true,
+    lstripBlocks: true,
+  }
   if (process.env.ELEVENTY_ENV == 'development') {
     global.nunjucksEnvironment = new Nunjucks.Environment([
-      new Nunjucks.FileSystemLoader('site/src/layouts', { watch: true, noCache: false }),
-      new Nunjucks.FileSystemLoader('components', { watch: true, noCache: false }),
+      new Nunjucks.FileSystemLoader('site/src/layouts', { ...commonLoaderOptions, watch: true }),
+      new Nunjucks.FileSystemLoader('components', { ...commonLoaderOptions, watch: true }),
     ]);
   } else {
     global.nunjucksEnvironment = new Nunjucks.Environment([
-      new Nunjucks.FileSystemLoader('site/src/layouts'),
-      new Nunjucks.FileSystemLoader('components'),
+      new Nunjucks.FileSystemLoader('site/src/layouts', { ...commonLoaderOptions }),
+      new Nunjucks.FileSystemLoader('components', { ...commonLoaderOptions }),
     ]);
   }
   eleventyConfig.setLibrary('njk', global.nunjucksEnvironment);
@@ -47,14 +51,15 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addWatchTarget('./site/src/transforms/');
   eleventyConfig.addWatchTarget('./site/src/collections/');
   eleventyConfig.addWatchTarget('components/');
+  eleventyConfig.addWatchTarget('tools/');
 
   // Dynamically get the path for all project filters, shortcodes, tranforms, collections and layouts
   const paths = {
-    filters: path.join(process.cwd(), './site/src/filters/*.js'),
-    shortcodes: path.join(process.cwd(), './site/src/shortcodes/*.js'),
-    transforms: path.join(process.cwd(), './site/src/transforms/*.js'),
-    collections: path.join(process.cwd(), './site/src/collections/*.js'),
-    layouts: path.join(process.cwd(), './site/src/layouts/*.njk'),
+    filters: path.join(process.cwd(), './site/src/filters/**/*.js'),
+    shortcodes: path.join(process.cwd(), './site/src/shortcodes/**/*.js'),
+    transforms: path.join(process.cwd(), './site/src/transforms/**/*.js'),
+    collections: path.join(process.cwd(), './site/src/collections/**/*.js'),
+    layouts: path.join(process.cwd(), './site/src/layouts/**/*.njk'),
   };
 
   // Returns an array of matching entries for the paths
