@@ -3,7 +3,7 @@
  */
 
 import { dom as faDom, library as faLibrary, config as faConfig } from '@fortawesome/fontawesome-svg-core';
-import { faLinkedin, faFacebookSquare, faYoutubeSquare, faInstagramSquare, faWhatsappSquare } from '@fortawesome/free-brands-svg-icons';
+import { faLinkedin, faFacebookSquare, faYoutubeSquare, faInstagramSquare, faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 import { faPhone, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 
 export class Actionbar {
@@ -19,7 +19,7 @@ export class Actionbar {
       faFacebookSquare, 
       faYoutubeSquare, 
       faInstagramSquare,
-      faWhatsappSquare,
+      faWhatsapp,
       faPhone,
       faEnvelope,
     );
