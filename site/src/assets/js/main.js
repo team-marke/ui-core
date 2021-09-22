@@ -116,6 +116,35 @@ const loadNavbar = async () => {
 };
 
 /**
+ * Load Navbar components.
+ */
+ const loadToastArea = async () => {
+  if (document.querySelector('.toast')) {
+    const { ToastArea } = await import(/* webpackChunkName: "components.toastarea" */ '../../../../components/toastarea/toastarea');
+    document.querySelectorAll('.toast').forEach((toastarea) => {
+      ToastArea.addToast({
+        message: 'Mensagem enviado com sucesso',
+        type: 'success',
+        id: `toast-area-success-${toastarea.id}`,
+        autohide: false,
+      });
+      ToastArea.addToast({
+        message: 'Preencha todos os campos',
+        type: 'warning',
+        id: `toast-area-warning-${toastarea.id}`,
+        autohide: false,
+      });
+      ToastArea.addToast({
+        message: 'Houve um erro no envio do formulário',
+        type: 'danger',
+        id: `toast-area-danger-${toastarea.id}`,
+        autohide: false,
+      });
+    });
+  }
+};
+
+/**
  * Dynamically load modules that are split from the main JS bundle.
  */
 const loadDynamicModules = () => {
@@ -128,6 +157,7 @@ const loadDynamicModules = () => {
   loadSocialbar();
   loadMastheadSlider();
   loadCarousel();
+  loadToastArea();
 };
 
 /**
