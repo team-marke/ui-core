@@ -5,38 +5,31 @@
  import { Toast } from 'bootstrap';
  import { v4 as uuidv4 } from 'uuid';
  
- class ToastArea {
+ class ToastStack {
    /**
-    * Inits the Toast Area.
+    * Inits the Toast Stack.
     * @constructor
     * @param {Object} args
     * @param {Element} args.el
     */
    constructor(...args) {
-     if (!ToastArea._instance) {
-       ToastArea._instance = this;
+     if (!ToastStack._instance) {
+       ToastStack._instance = this;
      }
      if (typeof el !== 'undefined' && el) {
        this.el = el;
      } else {
-       this.el = document.querySelector('.toast-area');
+       this.el = document.querySelector('.toast-stack');
        if (this.el == null) {
          this.el = document.createElement('div');
          this.el.classList.add(
-           'toast-area',
-           'toast-container',
-           'position-fixed',
-           'p-3',
-           'p-lg-5',
-           'bottom-0',
-           'start-50',
-           'translate-middle-x',
-           'zindex-popover'
+           'toast-stack',
+           'toast-container'
          );
          document.body.appendChild(this.el);
        }
      }
-     return ToastArea._instance;
+     return ToastStack._instance;
    }
  
    /**
@@ -48,11 +41,11 @@
     * @param {Number} args.delay
     * @param {String} args.id
     */
-   static addToast({ message, type = '', autohide = true, delay = 10000, id }) {
-     if (!ToastArea._instance) {
-       new ToastArea();
+   static enqueueToast({ message, type = '', vertical = 'bottom', horizontal = 'center', autohide = true, delay = 10000, id }) {
+     if (!ToastStack._instance) {
+       new ToastStack();
      }
-     if (!ToastArea._instance.el) {
+     if (!ToastStack._instance.el) {
        return;
      }
  
@@ -62,11 +55,30 @@
      } else {
        classes.push(`bg-primary`);
      }
+     if(vertical == 'top'){
+       classes.push('top-0');
+     } else if(vertical == 'center'){
+      classes.push('translate-middle-y');
+     } else if(vertical == 'bottom'){
+      classes.push('bottom-0');
+     }
+     if(horizontal == 'left'){
+       classes.push('start-0');
+     } else if(horizontal == 'center'){
+      classes.push('translate-middle-x');
+      classes.push('start-50');
+     } else if(horizontal == 'right'){
+      classes.push('end-0');
+     }
+     classes.push('position-fixed');
+     classes.push('zindex-popover');
+     classes.push('m-3');
+
      if (typeof id !== 'string' || id.length == 0) {
        const uuid = uuidv4();
        id = `toast-${uuid}`;
      }
-     ToastArea._instance.el.insertAdjacentHTML('beforeEnd', ToastArea._instance._renderToast({ message: message, id: id, classes: classes }));
+     ToastStack._instance.el.insertAdjacentHTML('beforeEnd', ToastStack._instance._renderToast({ message: message, id: id, classes: classes }));
  
      const toastEl = document.getElementById(id);
      let toastOptions = {
@@ -76,12 +88,12 @@
      };
      let toast = new Toast(toastEl, toastOptions);
      toast.show();
-     ToastArea._instance._handleToastEvents(toast);
+     ToastStack._instance._handleToastEvents(toast);
    }
  
    /**
     * Gets this singleton instance
-    * @returns {ToastArea}
+    * @returns {ToastStack}
     */
    static getInstance() {
      return this._instance;
@@ -119,4 +131,4 @@
    }
  }
  
- export { ToastArea };
+ export { ToastStack };

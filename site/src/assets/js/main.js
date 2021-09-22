@@ -118,26 +118,32 @@ const loadNavbar = async () => {
 /**
  * Load Navbar components.
  */
- const loadToastArea = async () => {
+ const loadToastStack = async () => {
   if (document.querySelector('.toast')) {
-    const { ToastArea } = await import(/* webpackChunkName: "components.toastarea" */ '../../../../components/toastarea/toastarea');
-    document.querySelectorAll('.toast').forEach((toastarea) => {
-      ToastArea.addToast({
+    const { ToastStack } = await import(/* webpackChunkName: "components.toaststack" */ '../../../../components/toaststack/toaststack');
+    document.querySelectorAll('.toast').forEach((toaststack) => {
+      ToastStack.enqueueToast({
         message: 'Mensagem enviado com sucesso',
         type: 'success',
-        id: `toast-area-success-${toastarea.id}`,
+        vertical: 'bottom',
+        horizontal: 'center',
+        id: `toast-stack-success-${toaststack.id}`,
         autohide: false,
       });
-      ToastArea.addToast({
+      ToastStack.enqueueToast({
         message: 'Preencha todos os campos',
         type: 'warning',
-        id: `toast-area-warning-${toastarea.id}`,
+        vertical: 'bottom',
+        horizontal: 'left',
+        id: `toast-stack-warning-${toaststack.id}`,
         autohide: false,
       });
-      ToastArea.addToast({
+      ToastStack.enqueueToast({
         message: 'Houve um erro no envio do formulário',
         type: 'danger',
-        id: `toast-area-danger-${toastarea.id}`,
+        vertical: 'bottom',
+        horizontal: 'right',
+        id: `toast-stack-danger-${toaststack.id}`,
         autohide: false,
       });
     });
@@ -157,7 +163,7 @@ const loadDynamicModules = () => {
   loadSocialbar();
   loadMastheadSlider();
   loadCarousel();
-  loadToastArea();
+  loadToastStack();
 };
 
 /**
