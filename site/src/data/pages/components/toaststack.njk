@@ -10,5 +10,38 @@ eleventyNavigation:
 
 <h2>Exemplo</h2>
 <div class="docs-example">
-  <div id="toast-1" class="toast toast-stack show"></div>
+  {% 
+    set context = { 
+      items: [
+      { 
+        id: 1,
+        message: "Mensagem enviado com sucesso",
+        type: "success",
+        vertical: "bottom",
+        horizontal: "center",
+        extraclass: "",
+        autohide: false
+      },
+      { 
+        id: 2,
+        message: "Preencha todos os campos",
+        type: "warning",
+        vertical: "bottom",
+        horizontal: "left",
+        extraclass: "",
+        autohide: false
+      },
+      { 
+        id: 3,
+        message: "Houve um erro no envio do formulário",
+        type: "danger",
+        vertical: "bottom",
+        horizontal: "right",
+        extraclass: "",
+        autohide: false
+      }
+    ] 
+    } 
+  %}
+  {% include "toaststack/toaststack.njk" %}
 </div>

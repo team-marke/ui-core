@@ -1,1 +1,17 @@
 
+{%- if context %}
+  {%- set items = context.items %}
+{%- endif %}
+{%- if items %}
+    {%- for item in items %}
+    <div id="{{ item.id }}" 
+        data-type="{{ item.type }}" 
+        data-message="{{ item.message }}" 
+        data-vertical="{{ item.vertical }}" 
+        data-horizontal="{{ item.horizontal }}" 
+        data-autohide="{{ item.autohide }}" 
+        class="toast {{ item.extraclass }}">
+    </div>
+    {%- endfor %}
+{%- endif %}
+<div class="toast-stack show"></div>

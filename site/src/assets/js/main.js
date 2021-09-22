@@ -123,27 +123,11 @@ const loadNavbar = async () => {
     const { ToastStack } = await import(/* webpackChunkName: "components.toaststack" */ '../../../../components/toaststack/toaststack');
     document.querySelectorAll('.toast').forEach((toaststack) => {
       ToastStack.enqueueToast({
-        message: 'Mensagem enviado com sucesso',
-        type: 'success',
-        vertical: 'bottom',
-        horizontal: 'center',
-        id: `toast-stack-success-${toaststack.id}`,
-        autohide: false,
-      });
-      ToastStack.enqueueToast({
-        message: 'Preencha todos os campos',
-        type: 'warning',
-        vertical: 'bottom',
-        horizontal: 'left',
-        id: `toast-stack-warning-${toaststack.id}`,
-        autohide: false,
-      });
-      ToastStack.enqueueToast({
-        message: 'Houve um erro no envio do formulário',
-        type: 'danger',
-        vertical: 'bottom',
-        horizontal: 'right',
-        id: `toast-stack-danger-${toaststack.id}`,
+        message: `${toaststack.dataset.message}`,
+        type: `${toaststack.dataset.type}`,
+        vertical: `${toaststack.dataset.vertical}`,
+        horizontal: `${toaststack.dataset.horizontal}`,
+        id: `toast-stack-${toaststack.dataset.type}-${toaststack.id}`,
         autohide: false,
       });
     });

@@ -37,11 +37,13 @@
     * @param {Object} args
     * @param {String} args.message
     * @param {String} args.type
+    * @param {String} args.vertical
+    * @param {String} args.horizontal
     * @param {Boolean} args.autohide
     * @param {Number} args.delay
     * @param {String} args.id
     */
-   static enqueueToast({ message, type = '', vertical = 'bottom', horizontal = 'center', autohide = true, delay = 10000, id }) {
+   static enqueueToast({ message, type, vertical = 'bottom', horizontal = 'center', autohide = true, delay = 10000, id }) {
      if (!ToastStack._instance) {
        new ToastStack();
      }
