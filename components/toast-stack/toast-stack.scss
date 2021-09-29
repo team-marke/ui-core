@@ -1,0 +1,39 @@
+//
+// Toasts component styles.
+//
+
+@use '../../design-tokens' as mkui;
+
+.toast-stack {
+  position: fixed;
+  width: max-content;
+  max-width: 100%;
+  pointer-events: none;
+  margin: mkui.$spacer * 2;
+  color: mkui.$light;
+  &--v-top {
+    top: 0;
+  }
+  &--v-bottom {
+    bottom: 0;
+  }
+  &--h-left {
+    left: 0;
+  }
+  &--h-center {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  &--h-right {
+    right: 0;
+  }
+  > :not(:last-child) {
+    margin-bottom: 0.75rem;
+  }
+  @each $color, $value in mkui.$theme-colors {
+    .toast-stack__item--#{$color} {
+      background-color: $value;
+      color: mkui.color-contrast($value);
+    }
+  }
+}

@@ -28,6 +28,7 @@
 @use '../../../../components/socialbar';
 @use '../../../../components/tabs';
 @use '../../../../components/video-modal';
+@use '../../../../components/toast-stack';
 @use '../../../../components/video-teaser' with (
   $icon-color: mkui.$primary,
   $icon-hover-color: mkui.$light,

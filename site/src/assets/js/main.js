@@ -2,12 +2,14 @@ import 'regenerator-runtime/runtime.js';
 import '../scss/main.scss';
 import '../../../../components/accordion/accordion';
 import '../../../../components/tabs/tabs';
-import { setSmoothScrollLinks } from '../../../../tools/utils/smooth-scrolling'
+import '../../../../components/toast-stack/toast-stack';
+import { setSmoothScrollLinks } from '../../../../tools/utils/smooth-scrolling';
+import { ToastStack } from '../../../../components/toast-stack/toast-stack';
 
 /**
- * Load youtube modal component.
+ * Load video-teaser examples.
  */
- const loadYoutubeModals = async () => {
+const loadVideoTeasers = async () => {
   if (document.querySelector('.video-teaser')) {
     const { VideoTeaser } = await import(
       /* webpackChunkName: "components.video-teaser" */ '../../../../components/video-teaser/video-teaser'
@@ -19,7 +21,7 @@ import { setSmoothScrollLinks } from '../../../../tools/utils/smooth-scrolling'
 };
 
 /**
- * Load galleries components.
+ * Load galleries examples.
  */
 const loadGalleries = async () => {
   if (document.querySelector('.photo-gallery')) {
@@ -33,7 +35,7 @@ const loadGalleries = async () => {
 };
 
 /**
- * Load Masthead Slider.
+ * Load masthead-slider examples.
  */
 const loadMastheadSlider = async () => {
   if (document.querySelector('.masthead-slider')) {
@@ -47,7 +49,7 @@ const loadMastheadSlider = async () => {
 };
 
 /**
- * Load Grid Responsive Slider.
+ * Load grid-responsive-slider examples.
  */
 const loadGridResponsiveSlider = async () => {
   if (document.querySelector('.grid-responsive-slider')) {
@@ -61,7 +63,7 @@ const loadGridResponsiveSlider = async () => {
 };
 
 /**
- * Load Actionbar.
+ * Load actionbar examples.
  */
 const loadActionbar = async () => {
   if (document.querySelector('.actionbar')) {
@@ -75,17 +77,15 @@ const loadActionbar = async () => {
 };
 
 /**
- * Load Carousel.
+ * Load carousel examples.
  */
- const loadCarousel = () => {
+const loadCarousel = () => {
   if (document.querySelector('.carousel')) {
-    import(/* webpackChunkName: "components.carousel" */ '../../../../components/carousel/carousel').then(
-      ({ Carousel }) => {
-        document.querySelectorAll('.carousel').forEach((carousel) => {
-          new Carousel(carousel);
-        });
-      }
-    );
+    import(/* webpackChunkName: "components.carousel" */ '../../../../components/carousel/carousel').then(({ Carousel }) => {
+      document.querySelectorAll('.carousel').forEach((carousel) => {
+        new Carousel(carousel);
+      });
+    });
   }
 };
 
@@ -116,21 +116,33 @@ const loadNavbar = async () => {
 };
 
 /**
- * Load Navbar components.
+ * Load and handle toast-stack examples.
  */
- const loadToastStack = async () => {
-  if (document.querySelector('.toast')) {
-    const { ToastStack } = await import(/* webpackChunkName: "components.toaststack" */ '../../../../components/toaststack/toaststack');
-    document.querySelectorAll('.toast').forEach((toaststack) => {
-      ToastStack.enqueueToast({
-        message: `${toaststack.dataset.message}`,
-        type: `${toaststack.dataset.type}`,
-        vertical: `${toaststack.dataset.vertical}`,
-        horizontal: `${toaststack.dataset.horizontal}`,
-        id: `toast-stack-${toaststack.dataset.type}-${toaststack.id}`,
-        autohide: false,
-      });
+const loadToastStackExamples = async () => {
+  let examples = document.querySelectorAll('.toast-stack-example');
+  for (let example of examples) {
+    let stack = new ToastStack({
+      anchor: {
+        vertical: example.dataset.toastStackAnchorV,
+        horizontal: example.dataset.toastStackAnchorH,
+      },
     });
+    let btns = example.querySelectorAll('.toast-stack-example-button');
+    for (let btn of btns) {
+      btn.addEventListener('click', (event) => {
+        let action = '';
+        if (event.target.dataset.toastClosebutton != 'false') {
+          action = `<button type="button" class="btn-close btn-close-white" aria-label="Close" data-bs-dismiss="toast"></button>`;
+        }
+        stack.enqueueToast({
+          message: event.target.dataset.toastMessage,
+          variant: event.target.dataset.toastVariant,
+          autoHideDuration: event.target.dataset.toastAutoHideDuration,
+          id: event.target.dataset.toastId,
+          action: action,
+        });
+      });
+    }
   }
 };
 
@@ -138,7 +150,7 @@ const loadNavbar = async () => {
  * Dynamically load modules that are split from the main JS bundle.
  */
 const loadDynamicModules = () => {
-  loadYoutubeModals();
+  loadVideoTeasers();
   loadGalleries();
   loadMastheadSlider();
   loadGridResponsiveSlider();
@@ -147,7 +159,7 @@ const loadDynamicModules = () => {
   loadSocialbar();
   loadMastheadSlider();
   loadCarousel();
-  loadToastStack();
+  loadToastStackExamples();
 };
 
 /**
@@ -159,13 +171,13 @@ const loadBundledModules = () => {};
  */
 
 if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => {
-        loadDynamicModules();
-        loadBundledModules();
-    });
-} else {
+  document.addEventListener('DOMContentLoaded', () => {
     loadDynamicModules();
     loadBundledModules();
+  });
+} else {
+  loadDynamicModules();
+  loadBundledModules();
 }
 
 window.onload = () => {

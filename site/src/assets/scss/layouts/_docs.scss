@@ -32,9 +32,11 @@
 
 .docs-main {
   grid-area: main;
-  > h2 {
-    margin-top: mkui.$spacer * 3;
-  }
+}
+
+.docs-main > h2,
+.docs-section-title {
+  margin-top: mkui.$spacer * 3;
 }
 
 .docs-example {
