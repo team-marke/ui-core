@@ -36,7 +36,8 @@ masthead:
               <div class="p-3 bg-light rounded-3" style="--bs-bg-opacity: .5;">
                 <h1>{{ item.title }}</h1>
                 <p>{{ item.description }}</p>
-                <a class="btn btn-primary" href="#">Button</a>
+                {% set context = { theme: 'primary', text: 'Ex cibo putent' } %}
+                {% include "button/button.njk" %}
               </div>
             </div>
           </div>
@@ -75,7 +76,8 @@ masthead:
               <div class="p-3 bg-light rounded-3" style="--bs-bg-opacity: .5;">
                 <h1>{{ item.title }}</h1>
                 <p>{{ item.description }}</p>
-                <a class="btn btn-warning" href="#">Button</a>
+                {% set context = { theme: 'primary', text: 'Ex cibo putent' } %}
+                {% include "button/button.njk" %}
               </div>
             </div>
           </div>

@@ -14,7 +14,8 @@ eleventyNavigation:
     {%- set cardBody %}
     <h5 class="">Lorem ipsum dolor sit amet</h5>
     <p class="">Illum tritani honestatis ius eu. Eu persecuti percipitur vel, ad sit solum facer ignota, eam an tollit tibique insolens.</p>
-    <a href="" class="btn btn-primary">Ex cibo putent</a>
+    {% set context = { theme: 'primary', text: 'Ex cibo putent' } %}
+    {% include "button/button.njk" %}
     {%- endset %}
     {%- 
       set context = {
@@ -38,8 +39,10 @@ eleventyNavigation:
     {%- set cardBody %}
     <h5 class="">Lorem ipsum dolor sit amet</h5>
     <p class="">Illum tritani honestatis ius eu. Eu persecuti percipitur vel, ad sit solum facer ignota, eam an tollit tibique insolens.</p>
-    <a href="#lorem" class="btn btn-primary stretched-link">Ex cibo putent</a>
-    <a href="#ipsum" class="btn btn-outline-primary">Ex cibo putent</a>
+    {% set context = { theme: 'primary', text: 'Ex cibo putent' } %}
+    {% include "button/button.njk" %}
+    {% set context = { theme: 'outline-primary', text: 'Ex cibo putent' } %}
+    {% include "button/button.njk" %}
     {%- endset %}
     {%- 
       set context = {
@@ -65,7 +68,8 @@ eleventyNavigation:
     {%- set cardBody %}
     <h5 class="text-light">Lorem ipsum dolor sit amet</h5>
     <p class="text-light">Illum tritani honestatis ius eu. Eu persecuti percipitur vel, ad sit solum facer ignota, eam an tollit tibique insolens.</p>
-    <a href="" class="btn btn-light">Ex cibo putent</a>
+    {% set context = { theme: 'primary', text: 'Ex cibo putent' } %}
+    {% include "button/button.njk" %}
     {%- endset %}
     {%- 
       set context = {

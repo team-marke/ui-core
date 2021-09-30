@@ -15,67 +15,95 @@ eleventyNavigation:
 >
   <h2 class="docs-section-title">Exemplo</h2>
   <div class="docs-example">
-    <button
-      type="button"
-      class="btn btn-primary toast-stack-example-button"
-      data-toast-message="Exemplo de notificação."
-      data-toast-variant="primary"
-      data-toast-auto-hide-duration="3000"
-      data-toast-closebutton="false"
-    >Exibir toast</button>
+    {% set context = { 
+      theme: 'primary', 
+      text: 'Exibir toast',
+      override_classes: ['toast-stack-example-button'],
+      override_atts: {
+        'data-toast-message': 'Exemplo de notificação.',
+        'data-toast-variant': 'primary',
+        'data-toast-auto-hide-duration': '3000',
+        'data-toast-closebutton': 'false'
+      }
+    } %}
+    {% include "button/button.njk" %}
   </div>
   <h2 class="docs-section-title">Exemplo de toast com ação</h2>
   <div class="docs-example">
-    <button
-      type="button"
-      class="btn btn-primary toast-stack-example-button"
-      data-toast-message="Você pode me fechar."
-      data-toast-variant="primary"
-    >Exibir toast</button>
+    {% set context = { 
+      theme: 'primary', 
+      text: 'Exibir toast',
+      override_classes: ['toast-stack-example-button'],
+      override_atts: {
+        'data-toast-message': 'Você pode me fechar.',
+        'data-toast-variant': 'primary'
+      }
+    } %}
+    {% include "button/button.njk" %}
   </div>
   <h2 class="docs-section-title">Usando variações de cores</h2>
   <div class="docs-example">
-    <button
-      type="button"
-      class="btn btn-danger toast-stack-example-button"
-      data-toast-message="Perigo!"
-      data-toast-variant="danger"
-    >Danger</button>
-    <button
-      type="button"
-      class="btn btn-warning toast-stack-example-button"
-      data-toast-message="Aviso!"
-      data-toast-variant="warning"
-    >Warning</button>
-    <button
-      type="button"
-      class="btn btn-success toast-stack-example-button"
-      data-toast-message="Sucesso!"
-      data-toast-variant="success"
-    >Success</button>
+    {% set context = { 
+      theme: 'danger', 
+      text: 'Exibir toast',
+      override_classes: ['toast-stack-example-button'],
+      override_atts: {
+        'data-toast-message': 'Perigo!',
+        'data-toast-variant': 'danger'
+      }
+    } %}
+    {% include "button/button.njk" %}
+    {% set context = { 
+      theme: 'warning', 
+      text: 'Exibir toast',
+      override_classes: ['toast-stack-example-button'],
+      override_atts: {
+        'data-toast-message': 'Aviso!',
+        'data-toast-variant': 'warning'
+      }
+    } %}
+    {% include "button/button.njk" %}
+    {% set context = { 
+      theme: 'success', 
+      text: 'Exibir toast',
+      override_classes: ['toast-stack-example-button'],
+      override_atts: {
+        'data-toast-message': 'Sucesso!',
+        'data-toast-variant': 'success'
+      }
+    } %}
+    {% include "button/button.njk" %}
   </div>
   <h2 class="docs-section-title">Definindo tempos de expiração</h2>
   <div class="docs-example">
-    <button
-      type="button"
-      class="btn btn-primary toast-stack-example-button"
-      data-toast-message="Notificação de 5 segundos."
-      data-toast-variant="primary"
-      data-toast-auto-hide-duration="5000"
-      data-toast-closebutton="false"
-    >Exibir toast</button>
+    {% set context = { 
+      theme: 'primary', 
+      text: 'Exibir toast',
+      override_classes: ['toast-stack-example-button'],
+      override_atts: {
+        'data-toast-message': 'Notificação de 5 segundos.',
+        'data-toast-variant': 'primary',
+        'data-toast-auto-hide-duration': '5000',
+        'data-toast-closebutton': 'false'
+      }
+    } %}
+    {% include "button/button.njk" %}
   </div>
   <h2 class="docs-section-title">Prevenindo duplicações</h2>
   <div class="docs-example">
-    <button
-      type="button"
-      class="btn btn-primary toast-stack-example-button"
-      data-toast-message="Você só pode me ver uma vez."
-      data-toast-variant="primary"
-      data-toast-auto-hide-duration="3000"
-      data-toast-closebutton="false"
-      data-toast-id="false"
-    >Exibir toast</button>
+    {% set context = { 
+      theme: 'primary', 
+      text: 'Exibir toast',
+      override_classes: ['toast-stack-example-button'],
+      override_atts: {
+        'data-toast-message': 'Você só pode me ver uma vez.',
+        'data-toast-variant': 'primary',
+        'data-toast-auto-hide-duration': '3000',
+        'data-toast-closebutton': 'false',
+        'data-toast-id': 'false'
+      }
+    } %}
+    {% include "button/button.njk" %}
   </div>
 </div>
 <h2>Escolhendo posições</h2>
@@ -85,23 +113,31 @@ eleventyNavigation:
     data-toast-stack-anchor-v="bottom"
     data-toast-stack-anchor-h="center"
   >
-    <button
-      type="button"
-      class="btn btn-primary toast-stack-example-button"
-      data-toast-message="Estou abaixo e centralizado."
-      data-toast-variant="primary"
-    >Exibir no centro horizontal e abaixo</button>
+    {% set context = { 
+      theme: 'primary', 
+      text: 'Exibir no centro horizontal e abaixo',
+      override_classes: ['toast-stack-example-button'],
+      override_atts: {
+        'data-toast-message': 'Estou abaixo e centralizado.',
+        'data-toast-variant': 'primary'
+      }
+    } %}
+    {% include "button/button.njk" %}
   </span>
   <span
     class="toast-stack-example"
     data-toast-stack-anchor-v="top"
     data-toast-stack-anchor-h="right"
   >
-    <button
-      type="button"
-      class="btn btn-primary toast-stack-example-button"
-      data-toast-message="Estou no topo na direita."
-      data-toast-variant="primary"
-    >Exibir na direita e topo vertical</button>
+    {% set context = { 
+      theme: 'primary', 
+      text: 'Exibir na direita e topo vertical',
+      override_classes: ['toast-stack-example-button'],
+      override_atts: {
+        'data-toast-message': 'Estou no topo na direita.',
+        'data-toast-variant': 'primary'
+      }
+    } %}
+    {% include "button/button.njk" %}
   </span>
 </div>
