@@ -3,6 +3,7 @@
 //
 
 @use '../../design-tokens' as mkui;
+@use '../../components/button' as btn;
 
 .post-preview {
   position: relative;
@@ -37,7 +38,7 @@
     margin-left: -0.25rem;
   }
   &__category {
-    @extend .btn-outline-primary;
+    @extend .btn--outline-primary;
     border-style: solid;
     border-radius: 50rem;
     text-decoration: none;

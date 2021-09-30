@@ -1,0 +1,51 @@
+---
+tags:
+  - navbar
+eleventyNavigation:
+  key: maps
+  title: Maps
+---
+
+<h1>Maps</h1>
+<p>Lorem ipsum dolor sit amet, stet intellegat mei, pertinax oportere at sea. Eos an mutat blandit. Nec at nisl volumus appellantur, an his brute quodsi. Sit ceteros contentiones at, te summo discere pro.</p>
+
+<h2>Exemplo</h2>
+<div class="docs-example">
+  {% set context = {
+    query: 'Ponte+Golden+Gate'
+  } %}
+  {% include "maps/maps.njk" %}
+</div>
+
+<h2>Zoom aumentado</h2>
+<div class="docs-example">
+  {% set context = {
+    options: {
+      zoom: 18
+    },
+    query: 'Ponte+Golden+Gate'
+  } %}
+  {% include "maps/maps.njk" %}
+</div>
+
+<h2>Tamanho específico</h2>
+<div class="docs-example">
+  {% set context = {
+    width: 600,
+    height: 350,
+    query: 'Ponte+Golden+Gate'
+  } %}
+  {% include "maps/maps.njk" %}
+</div>
+
+<h2>Estilo personalizado</h2>
+<div class="docs-example">
+  {% set context = {
+    query: 'Ponte+Golden+Gate',
+    override_styles: {
+      'border': '3px solid #b7485d',
+      'max-width': '450px'
+    }
+  } %}
+  {% include "maps/maps.njk" %}
+</div>

@@ -90,6 +90,21 @@ const loadCarousel = () => {
 };
 
 /**
+ * Load Tabs Slider.
+ */
+ const loadTabsSlider = () => {
+  if (document.querySelector('.tabs-slider')) {
+    import(/* webpackChunkName: "components.tabs-slider" */ '../../../../components/tabs-slider/tabs-slider').then(
+      ({ TabsSlider }) => {
+        document.querySelectorAll('.tabs-slider').forEach((tabsSlider) => {
+          new TabsSlider(tabsSlider);
+        });
+      }
+    );
+  }
+};
+
+/**
  * Load Socialbar.
  */
 const loadSocialbar = async () => {

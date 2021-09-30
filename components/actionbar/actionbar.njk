@@ -56,6 +56,10 @@
     </a>
   {% endif %}
 </div>
+{%- elif item.html %}
+<div class="actionbar__item">
+  {{ item.html | safe }}
+</div>
 {%- endif %}
 {% endmacro %}
 

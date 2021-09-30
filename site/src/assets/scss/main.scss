@@ -16,6 +16,7 @@
 // Marke UI
 @use '../../../../components/accordion';
 @use '../../../../components/actionbar';
+@use '../../../../components/button';
 @use '../../../../components/card';
 @use '../../../../components/carousel';
 @use '../../../../components/copyrightbar';
@@ -27,6 +28,7 @@
 @use '../../../../components/post-preview';
 @use '../../../../components/socialbar';
 @use '../../../../components/tabs';
+@use '../../../../components/tabs-slider';
 @use '../../../../components/video-modal';
 @use '../../../../components/toast-stack';
 @use '../../../../components/video-teaser' with (

@@ -1,0 +1,42 @@
+{% if context %}
+  {% set id = context.id %}
+  {% set width = context.width %}
+  {% set height = context.height %}
+  {% set override_styles = context.override_styles %}
+
+  {% set query = context.query %}
+  {% set options = context.options %}
+{% endif %}
+
+{% if width %}
+  {% set width = width %}
+{% else %}
+  {% set width = '100%' %}
+{% endif %}
+
+{% if height %}
+  {% set height = height %}
+{% else %}
+  {% set height = 450 %}
+{% endif %}
+
+{% if options.zoom %}
+  {% set options = { zoom: options.zoom } %}
+{% else %}
+  {% set options = { zoom: 14 } %}
+{% endif %}
+
+{% set src = ('https://maps.google.com/maps?q=' + query + '&output=embed&z=' + options.zoom) %}
+
+<iframe
+{%- if id %} id="{{ id | e | safe }}" {%- endif %}
+loading="lazy"
+width="{{ width | e | safe }}"
+height="{{ height | e | safe }}"
+src="{{ src | url | safe }}"
+allowfullscreen
+{%- if override_styles %}
+  style="{%- for att, value in override_styles %}{{ att | e | safe }}:{{ value | e | safe }};{%- endfor %}"
+{%- endif %}
+>
+</iframe>

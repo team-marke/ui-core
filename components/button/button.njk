@@ -1,0 +1,52 @@
+{% if context %}
+  {% set theme = context.theme %}
+  {% set href = context.href %}
+  {% set target = context.target %}
+  {% set id = context.id %}
+  {% set text = context.text %}
+  {% set html = context.html %}
+  {% set size = context.size %}
+  {% set type = context.type %}
+  {% set role = context.role %}
+  {% set disabled = context.disabled %}
+  {% set override_atts = context.override_atts %}
+  {% set override_classes = context.override_classes %}
+{% endif %}
+
+{% if href %}
+  {% set elTag = 'a' %}
+{% else %}
+  {% set elTag = 'button' %}
+{% endif %}
+
+{% if html %}
+  {% set elContent = html %}
+{% else %}
+  {% set elContent = text %}
+{% endif %}
+
+{% if role %}
+  {% set elRole = role %}
+{% else %}
+  {% set elRole = 'button' %}
+{% endif %}
+
+<{{elTag}}
+{%- if elTag == 'a' %} href="{{ href | url | safe }}" {%- endif %}
+{%- if (elTag == 'a') and target %} target="{{ target | e | safe }}" {%- endif %}
+{%- if type %} type="{{ type | e | safe }}" {%- endif %}
+{%- if id %} id="{{ id | e | safe }}" {%- endif %}
+role="{{ elRole | e | safe }}"
+class="btn
+{%- if theme %} btn--{{ theme | e | safe }} {%- endif %}
+{%- if size %} btn--{{ size | e | safe }} {%- endif %}
+{%- if override_classes %} {{ override_classes | join(' ') }} {%- endif %}"
+{%- if disabled %} disabled {%- endif %}
+{%- if override_atts %}
+  {%- for att, value in override_atts %}
+    {{ att | e | safe }}="{{ value | e | safe }}"
+  {%- endfor %}
+{%- endif %}
+>
+{{- elContent | safe -}}
+</{{elTag}}>

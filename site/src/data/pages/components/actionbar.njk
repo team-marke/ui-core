@@ -71,3 +71,45 @@ eleventyNavigation:
     {% include "actionbar/actionbar.njk" %}
   </div>
 </div>
+
+<h2>Items com HTML personalizado</h2>
+<div class="docs-example p-3">
+  <div class="bg-light px-3">
+    {% set selectField %}
+      <select class="form-select" aria-label="Default select example">
+        <option selected>Open this select menu</option>
+        <option value="1">One</option>
+        <option value="2">Two</option>
+        <option value="3">Three</option>
+      </select>
+    {% endset %}
+    {% set badgeField %}
+      <button type="button" class="btn btn-primary position-relative">
+        Inbox
+        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+          99+
+          <span class="visually-hidden">unread messages</span>
+        </span>
+      </button>
+    {% endset %}
+    {%- set context = {
+      variant: 'light',
+      startItems: [
+        {
+          icon: 'phone',
+          text: '(51) 9999-9999',
+          href: 'tel:555199999999'
+        }
+      ],
+      endItems: [
+        {
+          html: selectField
+        },
+        {
+          html: badgeField
+        }
+      ]
+    } %}
+    {% include 'actionbar/actionbar.njk' %}
+  </div>
+</div>

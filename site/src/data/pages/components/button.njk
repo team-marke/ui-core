@@ -1,0 +1,119 @@
+---
+tags:
+  - navbar
+eleventyNavigation:
+  key: button
+  title: Button
+---
+
+<h1>Button</h1>
+<p>Lorem ipsum dolor sit amet, stet intellegat mei, pertinax oportere at sea. Eos an mutat blandit. Nec at nisl volumus appellantur, an his brute quodsi. Sit ceteros contentiones at, te summo discere pro.</p>
+
+<h2>Exemplo</h2>
+<div class="docs-example">
+  {% set context = {
+    theme: 'primary',
+    text: 'Primary'
+  } %}
+  {% include "button/button.njk" %}
+  {% set context = {
+    theme: 'secondary',
+    text: 'Secondary'
+  } %}
+  {% include "button/button.njk" %}
+  {% set context = {
+    theme: 'success',
+    text: 'Success'
+  } %}
+  {% include "button/button.njk" %}
+  {% set context = {
+    theme: 'warning',
+    text: 'Warning'
+  } %}
+  {% include "button/button.njk" %}
+</div>
+
+<h2>Com ID</h2>
+<div class="docs-example">
+  {% set context = {
+    theme: 'primary',
+    id: 'sample-button',
+    text: '#sample-button'
+  } %}
+  {% include "button/button.njk" %}
+</div>
+
+<h2>Com link</h2>
+<div class="docs-example">
+  {% set context = {
+    theme: 'primary',
+    href: '#',
+    text: 'Interno'
+  } %}
+  {% include "button/button.njk" %}
+  {% set context = {
+    theme: 'primary',
+    href: '#',
+    text: 'Externo',
+    target: '_blank'
+  } %}
+  {% include "button/button.njk" %}
+</div>
+
+<h2>Com conteúdo HTML</h2>
+<div class="docs-example">
+  {% set context = {
+    theme: 'primary',
+    html: '<span>Botão Span</span>'
+  } %}
+  {% include "button/button.njk" %}
+</div>
+
+<h2>Diferentes tamanhos</h2>
+<div class="docs-example">
+  {% set context = {
+    theme: 'primary',
+    text: 'Grande',
+    size: 'lg'
+  } %}
+  {% include "button/button.njk" %}
+  {% set context = {
+    theme: 'primary',
+    text: 'Pequeno',
+    size: 'sm'
+  } %}
+  {% include "button/button.njk" %}
+</div>
+
+<h2>Desabilitado</h2>
+<div class="docs-example">
+  {% set context = {
+    theme: 'primary',
+    text: ':(',
+    disabled: true
+  } %}
+  {% include "button/button.njk" %}
+</div>
+
+<h2>Atributos personalizados</h2>
+<div class="docs-example">
+  {% set context = {
+    theme: 'primary',
+    text: 'data-number=48',
+    override_atts: {
+      'data-number': '48',
+      'data-action': 'modal'
+    }
+  } %}
+  {% include "button/button.njk" %}
+</div>
+
+<h2>Classes personalizados</h2>
+<div class="docs-example">
+  {% set context = {
+    theme: 'secondary',
+    text: 'text-primary',
+    override_classes: ['text-primary', 'mt-4']
+  } %}
+  {% include "button/button.njk" %}
+</div>

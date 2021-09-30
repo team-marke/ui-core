@@ -311,6 +311,10 @@ $item-extra-padding-x: $nav-link-padding-x !default;
           padding: 0;
           overflow-y: visible;
         }
+
+        .offcanvas__extra-content {
+          display: none;
+        }
       }
     }
   }

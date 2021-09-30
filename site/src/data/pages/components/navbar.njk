@@ -184,6 +184,56 @@ eleventyNavigation:
   </div>
 </div>
 
+<h2>Conteúdo extra somente no mobile</h2>
+<p>Conteúdo será colocado do body do offcanvas e só aparecerá no mobile</p>
+<div class="docs-example p-3">
+  <div class="bg-dark px-3">
+    {%- set navbarLinks = [
+      {
+        "key": "link-1",
+        "url": "#link-1",
+        "title": "Link 1"
+      },
+      {
+        "key": "link-2",
+        "url": "#link-2",
+        "title": "Link 2",
+        "extra": true,
+        "navbar": {
+          "scrollSpy": true
+        }
+      },
+      {
+        "key": "link-3",
+        "url": "#link-3",
+        "title": "Link 3",
+        "extra": true
+      }
+    ] %}
+
+    {%- set extraContent %}
+      <select class="form-select" aria-label="Default select example">
+        <option selected>Open this select menu</option>
+        <option value="1">One</option>
+        <option value="2">Two</option>
+        <option value="3">Three</option>
+      </select>
+    {%- endset %}
+    {%- set context = {
+      navbarLinks: navbarLinks,
+      currentPage: page,
+      brandLogo: 'https://res.cloudinary.com/webmaster-marke/image/upload/v1620931656/Logo_Marke_dt6azg_pthlhj.svg',
+      brandLogoMobile: 'https://res.cloudinary.com/webmaster-marke/image/upload/v1620931656/Logo_Marke_dt6azg_pthlhj.svg',
+      brandLogoMobileWidth: 70,
+      brandUrl: "#inicio",
+      offcanvasColor: "dark",
+      extraOffcanvasContent: extraContent,
+      variant: "dark"
+    } %}
+    {% include "navbar/navbar.njk" %}
+  </div>
+</div>
+
 <h2>Navegação central sem imagem</h2>
 <div class="docs-example p-3">
   <div class="bg-dark px-3">

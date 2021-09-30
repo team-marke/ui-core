@@ -6,6 +6,7 @@
   {% set brandLogoMobile = context.brandLogoMobile %}
   {% set brandUrl = context.brandUrl %}
   {% set extraNavItems = context.extraNavItems %}
+  {% set extraOffcanvasContent = context.extraOffcanvasContent %}
   {%- if context.brandLogoWidth -%}
     {% set brandLogoWidth = context.brandLogoWidth %}
   {%- else -%}
@@ -102,6 +103,12 @@
           {% endfor %}
         {%- endif %}
       </ul>
+        <div class="offcanvas__extra-content">
+          {%- if extraOffcanvasContent %}
+            <div class=""></div>
+            {{ extraOffcanvasContent | safe }}
+          {%- endif %}
+        </div>
     </div>
   </div>
 </nav>
