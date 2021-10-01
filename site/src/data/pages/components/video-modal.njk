@@ -22,3 +22,16 @@ metadata:
     {% include "video-teaser/video-teaser.njk" %}
   </div>
 </div>
+
+<h2>Video Teaser com Thumbnail personalizada</h2>
+<div class="docs-example">
+  <div style="max-width: 500px;">
+    {% set context = {
+      "id": "FTQbiNvZqaY",
+      "alt": "Toto Africa",
+      "toggles_modal": true,
+      "custom_thumbnail": "https://res.cloudinary.com/webmaster-marke/image/upload/v1625060740/MarkeUI/golden-gate-bridge-3.jpg"
+    } %}
+    {% include "video-teaser/video-teaser.njk" %}
+  </div>
+</div>

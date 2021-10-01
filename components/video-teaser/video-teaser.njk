@@ -21,19 +21,20 @@
   {%- endif -%}
 >
   {% if custom_thumbnail %}
-  <img
-    class="video-teaser__thumb img-fit-cover"
-    alt="{{ alt | e | safe }}"
-    src="{{ custom_thumbnail | url | safe }}"
-    loading="lazy"
-  >
+  <picture class="video-teaser__thumb">
+    <img
+      alt="{{ alt | e | safe }}"
+      src="{{ custom_thumbnail | url | safe }}"
+      loading="lazy"
+    >
+  </picture>
   {% else %}
   <picture class="video-teaser__thumb">
     <source media="(min-width: 768px)" srcset="https://i.ytimg.com/vi_webp/{{ id }}/maxresdefault.webp" type="image/webp">
     <source media="(min-width: 768px)" srcset="https://i.ytimg.com/vi/{{ id }}/maxresdefault.jpg" type="image/jpeg">
     <source srcset="https://i.ytimg.com/vi_webp/{{ id }}/hqdefault.webp" type="image/webp">
     <source srcset="https://i.ytimg.com/vi/{{ id }}/hqdefault.jpg" type="image/jpeg">
-    <img src="https://i.ytimg.com/vi/{{ id }}/hqdefault.jpg" class="" loading="lazy" alt="{{ alt }}">
+    <img src="https://i.ytimg.com/vi/{{ id }}/hqdefault.jpg" loading="lazy" alt="{{ alt }}">
   </picture>          
   {% endif %}        
   <i class="video-teaser__play fas fa-play-circle"></i>
