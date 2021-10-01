@@ -3,7 +3,7 @@
  */
 
 import YTPlayer from 'yt-player';
-import { Modal } from 'bootstrap';
+import Modal from 'bootstrap/js/src/modal';
 
 export class VideoModal {
   /**
