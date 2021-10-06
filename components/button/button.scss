@@ -9,6 +9,7 @@ $font-weight: mkui.$btn-font-weight !default;
 $font-size: mkui.$btn-font-size !default;
 $line-height: mkui.$btn-line-height !default;
 $text-decoration: mkui.$link-decoration !default;
+$text-transform: none !default;
 $white-space: mkui.$btn-white-space !default;
 
 $color: mkui.$body-color !default;
@@ -53,6 +54,7 @@ $border-radius-sm: mkui.$btn-border-radius-sm !default;
   color: $color;
   text-align: center;
   text-decoration: if($text-decoration == none, null, none);
+  text-transform: $text-transform;
   white-space: $white-space;
   vertical-align: middle;
   cursor: $cursor;
