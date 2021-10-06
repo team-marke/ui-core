@@ -77,16 +77,18 @@
           {{ entry | navbarLink(currentPage) | safe }}
           {%- if entry.children | length > 0 and not entry.navbar.hideChildren %}
             <div class="dropdown-menu dropdown-menu-md-right{% if variant == 'dark' %} dropdown-menu-dark{% endif %}" aria-labelledby="dropdown-menu-{{ entry.title | slug | safe }}">
-              <a class="dropdown-item{% if entry.url == page.url %} active{% endif %}" href="{{ entry.url | url }}">
-                {%- if entry.navbar.dropdownTitle %}
-                <span>{{ entry.navbar.dropdownTitle | e | safe }}</span>
-                {% else %}
-                <span>Todos {{ entry.title | e | safe }}</span>
-                {% endif %}
-              </a>
-              {%- if not entry.navbar.hideDivider %}
-              <div class="dropdown-divider"></div>
-              {% endif %}
+              {%- if entry.url %}
+                <a class="dropdown-item{% if entry.url == page.url %} active{% endif %}" href="{{ entry.url | url }}">
+                  {%- if entry.navbar.dropdownTitle %}
+                  <span>{{ entry.navbar.dropdownTitle | e | safe }}</span>
+                  {% else %}
+                  <span>Todos {{ entry.title | e | safe }}</span>
+                  {% endif %}
+                </a>
+                {%- if not entry.navbar.hideDivider %}
+                  <div class="dropdown-divider"></div>
+                {%- endif %}
+              {%- endif %}
               {%- for child in entry.children %}
                 <a class="dropdown-item{% if child.url == page.url %} active{% endif %}" href="{{ child.url | url }}">{{ child.title | e | safe }}</a>
               {%- endfor %}

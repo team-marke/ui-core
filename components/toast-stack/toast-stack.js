@@ -2,7 +2,7 @@
  * Toast stack component scripts.
  */
 
-import { Toast } from 'bootstrap';
+import Toast from 'bootstrap/js/src/toast';
 
 class ToastStack {
   /**
