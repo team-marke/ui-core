@@ -87,3 +87,57 @@ eleventyNavigation:
     {% include "card/card.njk" %}
   </div>
 </div>
+
+<h2>Imagem como fundo (overlay) e interagível</h2>
+<div class="docs-example">
+  <div style="max-width: 550px;">
+    {%- set cardBody %}
+    <h5 class="text-light">Lorem ipsum dolor sit amet</h5>
+    <p class="text-light">Illum tritani honestatis ius eu. Eu persecuti percipitur vel, ad sit solum facer ignota, eam an tollit tibique insolens.</p>
+    {% set context = { theme: 'primary', text: 'Ex cibo putent' } %}
+    {% include "button/button.njk" %}
+    {% set context = { theme: 'secondary', text: 'Ex cibo putent' } %}
+    {% include "button/button.njk" %}
+    {%- endset %}
+    {%- 
+      set context = {
+        "image": {
+          url: "https://picsum.photos/550/300",
+          alt: 'Alt da imagem de card de exemplo',
+          title: 'Title da imagem de card de exemplo',
+          width: '550',
+          height: '300'
+        },
+        "interactive": true,
+        "overlay": "true",
+        "children": cardBody
+      } 
+    %}
+    {% include "card/card.njk" %}
+  </div>
+</div>
+
+<h2>Imagem como fundo (overlay) e link</h2>
+<div class="docs-example">
+  <div style="max-width: 550px;">
+    {%- set cardBody %}
+    <h5 class="text-light">Lorem ipsum dolor sit amet</h5>
+    <p class="text-light">Illum tritani honestatis ius eu. Eu persecuti percipitur vel, ad sit solum facer ignota, eam an tollit tibique insolens.</p>
+    {%- endset %}
+    {%- 
+      set context = {
+        "image": {
+          url: "https://picsum.photos/550/300",
+          alt: 'Alt da imagem de card de exemplo',
+          title: 'Title da imagem de card de exemplo',
+          width: '550',
+          height: '300',
+          link: 'https://facebook.com'
+        },
+        "overlay": "true",
+        "children": cardBody
+      } 
+    %}
+    {% include "card/card.njk" %}
+  </div>
+</div>
