@@ -1524,7 +1524,7 @@ __metadata:
     stream-browserify: ^3.0.0
     style-loader: ^2.0.0
     stylelint: ^13.13.1
-    stylelint-config-recommended-scss: ^4.2.0
+    stylelint-config-recommended-scss: ^4.3.0
     stylelint-config-standard: ^22.0.0
     stylelint-scss: ^3.19.0
     swiper: ^6.8.0
@@ -12765,24 +12765,15 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
-"stylelint-config-recommended-scss@npm:^4.2.0":
-  version: 4.2.0
-  resolution: "stylelint-config-recommended-scss@npm:4.2.0"
+"stylelint-config-recommended-scss@npm:^4.3.0":
+  version: 4.3.0
+  resolution: "stylelint-config-recommended-scss@npm:4.3.0"
   dependencies:
-    stylelint-config-recommended: ^3.0.0
+    stylelint-config-recommended: ^5.0.0
   peerDependencies:
     stylelint: ^10.1.0 || ^11.0.0 || ^12.0.0 || ^13.0.0
     stylelint-scss: ^3.0.0
-  checksum: a7cbb1cf97465baeac480bb58e477740d2e45409e03e6b0238a5bf538c4c1b819e13e09e363a5cadbb9163e6f09c4dd760bf3048d0583ab3f003666bc9610b09
-  languageName: node
-  linkType: hard
-
-"stylelint-config-recommended@npm:^3.0.0":
-  version: 3.0.0
-  resolution: "stylelint-config-recommended@npm:3.0.0"
-  peerDependencies:
-    stylelint: ">=10.1.0"
-  checksum: 455fcb427786528495f66c2de1fbcb7cc7e8007aca303d21ad8f34b7150a3f4b7669a46d2b1c69ea7ac7f4f446c43b94c0920a3619b4a8d4dc5f3eee9df7cfa2
+  checksum: 615f70e2060ced5008835147e8bf297fe3c183de9bd45bc703c3551ccef4c66e8085d28249addb1c5753b18f94c59e36c5edc0556e4dc0126a29ceeaf08ca606
   languageName: node
   linkType: hard
 
