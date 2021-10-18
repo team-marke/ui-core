@@ -1,6 +1,7 @@
 {
   "extends": "stylelint-config-recommended-scss",
   "rules": {
+    "indentation": 2,
     "at-rule-no-unknown": null,
     "scss/at-function-named-arguments": "always",
     "scss/at-function-pattern": "^[a-z][a-z-]*$",

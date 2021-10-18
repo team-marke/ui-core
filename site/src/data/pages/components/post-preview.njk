@@ -1,6 +1,4 @@
 ---
-tags:
-  - navbar
 eleventyNavigation:
   key: post-preview
   title: Post Preview
@@ -11,22 +9,22 @@ eleventyNavigation:
 <h2>Exemplo</h2>
 <div class="docs-example">
   <div style="max-width: 350px;">
-    {%- 
+    {%-
       set context = {
         "title": "Lorem ipsum dolor sit amet causae electram ei eam per affert posidonium eu",
         "titleTag": "h3",
         "excerpt": "Te animal forensibus deterruisset per, nam ne dico mazim mandamus. Purto erant intellegat qui cu",
         "date": "2021-08-18T09:00:00.000Z",
         "categories": [
-          { 
+          {
             "title": "Eum epicuri",
             "url": ""
           },
-          { 
+          {
             "title": "Purto erant",
             "url": ""
           }
-        ]  
+        ]
       }
     %}
     {% include "post-preview/post-preview.njk" %}
@@ -36,27 +34,27 @@ eleventyNavigation:
 <h2>Contido em um Card</h2>
 <div class="docs-example" style="max-width: 350px;">
   {%- set cardBody %}
-  {%- 
+  {%-
     set context = {
       "title": "Lorem ipsum dolor sit amet causae electram ei eam per affert posidonium eu",
       "titleTag": "h3",
       "excerpt": "Te animal forensibus deterruisset per, nam ne dico mazim mandamus. Purto erant intellegat qui cu",
       "date": "2021-08-18T09:00:00.000Z",
       "categories": [
-        { 
+        {
           "title": "Eum epicuri",
           "url": ""
         },
-        { 
+        {
           "title": "Purto erant",
           "url": ""
         }
-      ]  
+      ]
     }
   %}
   {% include "post-preview/post-preview.njk" %}
   {%- endset %}
-    {%- 
+    {%-
       set context = {
         "image": {
           url: "https://picsum.photos/350/200",
@@ -68,7 +66,7 @@ eleventyNavigation:
         },
         "interactive": "true",
         "children": cardBody
-      } 
+      }
     %}
     {% include "card/card.njk" %}
 </div>

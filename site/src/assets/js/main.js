@@ -2,14 +2,12 @@ import 'regenerator-runtime/runtime.js';
 import '../scss/main.scss';
 import '../../../../components/accordion/accordion';
 import '../../../../components/tabs/tabs';
-import '../../../../components/toast-stack/toast-stack';
-import { setSmoothScrollLinks } from '../../../../tools/utils/smooth-scrolling';
 import { ToastStack } from '../../../../components/toast-stack/toast-stack';
 
 /**
- * Load video-teaser examples.
+ * Load youtube modal component.
  */
-const loadVideoTeasers = async () => {
+const loadYoutubeModals = async () => {
   if (document.querySelector('.video-teaser')) {
     const { VideoTeaser } = await import(
       /* webpackChunkName: "components.video-teaser" */ '../../../../components/video-teaser/video-teaser'
@@ -21,7 +19,7 @@ const loadVideoTeasers = async () => {
 };
 
 /**
- * Load galleries examples.
+ * Load galleries components.
  */
 const loadGalleries = async () => {
   if (document.querySelector('.photo-gallery')) {
@@ -35,7 +33,7 @@ const loadGalleries = async () => {
 };
 
 /**
- * Load masthead-slider examples.
+ * Load Masthead Slider.
  */
 const loadMastheadSlider = async () => {
   if (document.querySelector('.masthead-slider')) {
@@ -49,7 +47,7 @@ const loadMastheadSlider = async () => {
 };
 
 /**
- * Load grid-responsive-slider examples.
+ * Load Grid Responsive Slider.
  */
 const loadGridResponsiveSlider = async () => {
   if (document.querySelector('.grid-responsive-slider')) {
@@ -63,7 +61,7 @@ const loadGridResponsiveSlider = async () => {
 };
 
 /**
- * Load actionbar examples.
+ * Load Actionbar.
  */
 const loadActionbar = async () => {
   if (document.querySelector('.actionbar')) {
@@ -77,7 +75,7 @@ const loadActionbar = async () => {
 };
 
 /**
- * Load carousel examples.
+ * Load Carousel.
  */
 const loadCarousel = () => {
   if (document.querySelector('.carousel')) {
@@ -147,10 +145,44 @@ const loadToastStackExamples = async () => {
 };
 
 /**
+ * Load input components.
+ */
+const loadInputs = async () => {
+  if (document.querySelector('.text-field')) {
+    const { TextField } = await import(
+      /* webpackChunkName: "components.text-field" */ '../../../../components/text-field/text-field'
+    );
+    document.querySelectorAll('.text-field').forEach((textField) => {
+      new TextField(textField);
+    });
+  }
+  if (document.querySelector('.select')) {
+    const { Select } = await import(/* webpackChunkName: "components.select" */ '../../../../components/select/select');
+    document.querySelectorAll('.select').forEach((select) => {
+      new Select(select);
+    });
+  }
+  if (document.querySelector('.checkbox')) {
+    const { Checkbox } = await import(
+      /* webpackChunkName: "components.checkbox" */ '../../../../components/checkbox/checkbox'
+    );
+    document.querySelectorAll('.checkbox').forEach((checkbox) => {
+      new Checkbox(checkbox);
+    });
+  }
+  if (document.querySelector('.radio')) {
+    const { Radio } = await import(/* webpackChunkName: "components.radio" */ '../../../../components/radio/radio');
+    document.querySelectorAll('.radio').forEach((radio) => {
+      new Radio(radio);
+    });
+  }
+};
+
+/**
  * Dynamically load modules that are split from the main JS bundle.
  */
 const loadDynamicModules = () => {
-  loadVideoTeasers();
+  loadYoutubeModals();
   loadGalleries();
   loadMastheadSlider();
   loadGridResponsiveSlider();
@@ -160,6 +192,7 @@ const loadDynamicModules = () => {
   loadMastheadSlider();
   loadCarousel();
   loadToastStackExamples();
+  loadInputs();
 };
 
 /**
@@ -180,11 +213,4 @@ if (document.readyState === 'loading') {
   loadBundledModules();
 }
 
-window.onload = () => {
-  if (document.querySelector('.page-header')) {
-    const headerOffset = document.querySelector('.page-header').offsetHeight;
-    setSmoothScrollLinks(headerOffset);
-  } else {
-    setSmoothScrollLinks(0);
-  }
-};
+window.onload = () => {};

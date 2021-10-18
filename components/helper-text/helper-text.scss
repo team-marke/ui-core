@@ -1,0 +1,141 @@
+//
+// Helper Text component styles
+//
+
+@use '../../design-tokens' as mkui;
+
+$margin-top:          .25rem !default;
+$font-size:           mkui.$small-font-size !default;
+$font-style:          null !default;
+$font-weight:         null !default;
+$text-color:          mkui.$text-muted !default;
+$line-height:         mkui.$line-height-sm !default;
+
+$tooltip-padding-y:     mkui.$tooltip-padding-y !default;
+$tooltip-padding-x:     mkui.$tooltip-padding-x !default;
+$tooltip-font-size:     mkui.$small-font-size !default;
+$tooltip-line-height:   null !default;
+$tooltip-opacity:       mkui.$tooltip-opacity !default;
+$tooltip-border-radius: mkui.$tooltip-border-radius !default;
+
+//
+// State variation vars
+//
+$valid-color:         mkui.$success !default;
+$invalid-color:       mkui.$danger !default;
+$icon-valid-color:    $valid-color !default;
+$icon-valid:          url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'><path fill='#{$icon-valid-color}' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/></svg>") !default;
+$icon-invalid-color:  $invalid-color !default;
+$icon-invalid:        url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='#{$icon-invalid-color}'><circle cx='6' cy='6' r='4.5'/><path stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/><circle cx='6' cy='8.2' r='.6' fill='#{$icon-invalid-color}' stroke='none'/></svg>") !default;
+$helper-text-states: (
+  "valid": (
+    "color": $valid-color,
+    "icon": $icon-valid
+  ),
+  "invalid": (
+    "color": $invalid-color,
+    "icon": $icon-invalid
+  )
+) !default;
+
+@mixin state-selector($state) {
+  @if ($state == "valid" or $state == "invalid") {
+    .was-validated #{if(&, "&", "")}:#{$state},
+    #{if(&, "&", "")}.is-#{$state} {
+      @content;
+    }
+  } @else {
+    #{if(&, "&", "")}.is-#{$state} {
+      @content;
+    }
+  }
+}
+
+.helper-text {
+  display: block;
+  width: 100%;
+  margin-top: $margin-top;
+  @include mkui.font-size($font-size);
+  font-style: $font-style;
+  font-weight: $font-weight;
+  color: $text-color;
+}
+
+.helper-text--tooltip {
+  position: absolute;
+  top: 100%;
+  z-index: 5;
+  width: auto;
+  display: none;
+  max-width: 100%; // Contain to parent when possible
+  padding: $tooltip-padding-y $tooltip-padding-x;
+  margin-top: .05rem;
+  @include mkui.font-size($tooltip-font-size);
+  line-height: $tooltip-line-height;
+  @include mkui.border-radius($tooltip-border-radius);
+}
+
+@mixin state(
+  $state,
+  $color,
+  $icon,
+  $tooltip-color: mkui.color-contrast($color),
+  $tooltip-bg-color: rgba($color, $tooltip-opacity),
+  $focus-box-shadow: 0 0 mkui.$input-btn-focus-blur mkui.$input-focus-width rgba($color, mkui.$input-btn-focus-color-opacity)
+) {
+  .helper-text--#{$state} {
+    display: none;
+    color: $color;
+    &.helper-text--tooltip {
+      color: $tooltip-color;
+      background-color: $tooltip-bg-color;
+    }
+  }
+
+  @include state-selector($state) {
+    ~ .helper-text--#{$state} {
+      display: block;
+    }
+  }
+
+  .checkbox-input {
+    @include state-selector($state) {
+      border-color: $color;
+
+      &:checked {
+        background-color: $color;
+      }
+
+      &:focus {
+        box-shadow: $focus-box-shadow;
+      }
+
+      ~ .checkbox-label {
+        color: $color;
+      }
+    }
+  }
+  .checkbox-inline .checkbox-input {
+    ~ .helper-text--#{$state} {
+      margin-left: .5em;
+    }
+  }
+
+  .input-group .text-field,
+  .input-group .select {
+    @include state-selector($state) {
+      @if $state == "valid" {
+        z-index: 1;
+      } @else if $state == "invalid" {
+        z-index: 2;
+      }
+      &:focus {
+        z-index: 3;
+      }
+    }
+  }
+}
+
+@each $state, $data in $helper-text-states {
+  @include state($state, $data...);
+}

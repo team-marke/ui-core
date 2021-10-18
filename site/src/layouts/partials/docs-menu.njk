@@ -1,0 +1,58 @@
+<aside class="docs-menu">
+  <h4>Componentes</h4>
+  <ul class="nav flex-column">
+    {%- for entry in collections.page | eleventyNavigation("components") | sort(false, false, 'title') %}
+    <li class="nav-item">
+      <a
+        class="
+          nav-link
+          px-2
+          py-1
+          link-secondary
+          small
+          {% if entry.url == page.url %} active{% endif %}
+          {% if ( entry.children | length ) > 0 %} mt-2{% endif %}
+        "
+        {% if entry.url == page.url %} aria-current="page"{% endif %}
+        {%- if entry.url %}
+        href="{{ entry.url | url | safe }}"
+        {%- endif %}
+      >
+        <span class="
+            {% if ( entry.children | length ) > 0 or entry.url == page.url %}
+            fw-bolder
+            {% endif %}
+            {% if entry.url == page.url %}
+            link-primary
+            {% endif %}
+          "
+        >{{ entry.title | e | safe }}</span>
+      </a>
+      {%- if ( entry.children | length ) > 0 %}
+      <ul class="nav flex-column ms-2 mb-2">
+      {%- for child in entry.children %}
+        <li class="nav-item">
+          <a
+            class="
+              nav-link
+              px-2
+              py-1
+              link-secondary
+              small
+              {% if child.url == page.url %} active{% endif %}
+            "
+            {% if child.url == page.url %} aria-current="page"{% endif %}
+            {%- if child.url %}
+            href="{{ child.url | url | safe }}"
+            {%- endif %}
+          >
+            <span {% if child.url == page.url %}class="fw-bolder link-primary"{% endif %}>{{ child.title | e | safe }}</span>
+          </a>
+        </li>
+      {%- endfor %}
+      </ul>
+      {%- endif %}
+    </li>
+    {%- endfor %}
+  </ul>
+</aside>

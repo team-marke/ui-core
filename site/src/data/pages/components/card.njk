@@ -1,6 +1,4 @@
 ---
-tags:
-  - navbar
 eleventyNavigation:
   key: card
   title: Card
@@ -17,7 +15,7 @@ eleventyNavigation:
     {% set context = { theme: 'primary', text: 'Ex cibo putent' } %}
     {% include "button/button.njk" %}
     {%- endset %}
-    {%- 
+    {%-
       set context = {
         "image": {
           url: "https://picsum.photos/350/200",
@@ -27,7 +25,7 @@ eleventyNavigation:
           height: '200'
         },
         "children": cardBody
-      } 
+      }
     %}
     {% include "card/card.njk" %}
   </div>
@@ -44,7 +42,7 @@ eleventyNavigation:
     {% set context = { theme: 'outline-primary', text: 'Ex cibo putent' } %}
     {% include "button/button.njk" %}
     {%- endset %}
-    {%- 
+    {%-
       set context = {
         "image": {
           url: "https://picsum.photos/350/200",
@@ -56,7 +54,7 @@ eleventyNavigation:
         },
         "interactive": "true",
         "children": cardBody
-      } 
+      }
     %}
     {% include "card/card.njk" %}
   </div>
@@ -71,7 +69,7 @@ eleventyNavigation:
     {% set context = { theme: 'primary', text: 'Ex cibo putent' } %}
     {% include "button/button.njk" %}
     {%- endset %}
-    {%- 
+    {%-
       set context = {
         "image": {
           url: "https://picsum.photos/550/300",
@@ -82,7 +80,7 @@ eleventyNavigation:
         },
         "overlay": "true",
         "children": cardBody
-      } 
+      }
     %}
     {% include "card/card.njk" %}
   </div>
@@ -99,7 +97,7 @@ eleventyNavigation:
     {% set context = { theme: 'secondary', text: 'Ex cibo putent' } %}
     {% include "button/button.njk" %}
     {%- endset %}
-    {%- 
+    {%-
       set context = {
         "image": {
           url: "https://picsum.photos/550/300",
@@ -111,7 +109,7 @@ eleventyNavigation:
         "interactive": true,
         "overlay": "true",
         "children": cardBody
-      } 
+      }
     %}
     {% include "card/card.njk" %}
   </div>
@@ -124,7 +122,7 @@ eleventyNavigation:
     <h5 class="text-light">Lorem ipsum dolor sit amet</h5>
     <p class="text-light">Illum tritani honestatis ius eu. Eu persecuti percipitur vel, ad sit solum facer ignota, eam an tollit tibique insolens.</p>
     {%- endset %}
-    {%- 
+    {%-
       set context = {
         "image": {
           url: "https://picsum.photos/550/300",
@@ -136,7 +134,7 @@ eleventyNavigation:
         },
         "overlay": "true",
         "children": cardBody
-      } 
+      }
     %}
     {% include "card/card.njk" %}
   </div>

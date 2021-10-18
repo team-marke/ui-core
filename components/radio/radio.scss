@@ -1,0 +1,141 @@
+//
+// Radio component styles
+//
+
+@use "sass:map";
+@use '../../design-tokens' as mkui;
+@use '../helper-text' as helper-text;
+@use '../input-label';
+
+$input-width:                  1em !default;
+$min-height:                   mkui.$font-size-base * mkui.$line-height-base !default;
+$padding-start:                $input-width + .5em !default;
+$margin-bottom:                .125rem !default;
+$cursor:                       pointer !default;
+$label-color:                  null !default;
+$label-cursor:                 $cursor !default;
+$transition:                   null !default;
+
+$input-active-filter:          brightness(90%) !default;
+
+$input-bg:                     mkui.$input-bg !default;
+$input-border:                 1px solid rgba(mkui.$black, .25) !default;
+$border-radius:                50% !default;
+$input-focus-border:           mkui.$input-focus-border-color !default;
+$input-focus-box-shadow:       mkui.$input-btn-focus-box-shadow !default;
+
+$input-checked-color:          mkui.$component-active-color !default;
+$input-checked-bg-color:       mkui.$component-active-bg !default;
+$input-checked-border-color:   $input-checked-bg-color !default;
+$checked-bg-image:             url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='2' fill='#{$input-checked-color}'/></svg>") !default;
+
+$input-indeterminate-color:          mkui.$component-active-color !default;
+$input-indeterminate-bg-color:       mkui.$component-active-bg !default;
+$input-indeterminate-border-color:   $input-indeterminate-bg-color !default;
+$input-indeterminate-bg-image:       url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='none' stroke='#{$input-indeterminate-color}' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10h8'/></svg>") !default;
+
+$input-disabled-opacity:        .5 !default;
+$label-disabled-opacity:        $input-disabled-opacity !default;
+$btn-check-disabled-opacity:    mkui.$btn-disabled-opacity !default;
+
+$inline-margin-end:    1rem !default;
+
+.form-control--radio {
+  display: block;
+  min-height: $min-height;
+  padding-left: $padding-start;
+  margin-bottom: $margin-bottom;
+  position: relative;
+
+  .radio {
+    float: left;
+    margin-left: $padding-start * -1;
+  }
+}
+
+.radio {
+  width: $input-width;
+  height: $input-width;
+  margin-top: (mkui.$line-height-base - $input-width) * .5; // line-height minus check height
+  vertical-align: top;
+  background-color: $input-bg;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  border: $input-border;
+  cursor: pointer;
+  appearance: none;
+  color-adjust: exact; // Keep themed appearance for print
+  border-radius: $border-radius;
+  @include mkui.transition($transition);
+
+  &:active {
+    filter: $input-active-filter;
+  }
+
+  &:focus {
+    border-color: $input-focus-border;
+    outline: 0;
+    box-shadow: $input-focus-box-shadow;
+  }
+
+  &:checked {
+    background-color: $input-checked-bg-color;
+    border-color: $input-checked-border-color;
+    @if mkui.$enable-gradients {
+      background-image: mkui.escape-svg($checked-bg-image), var(--#{$variable-prefix}gradient);
+    } @else {
+      background-image: mkui.escape-svg($checked-bg-image);
+    }
+  }
+
+  &:disabled {
+    pointer-events: none;
+    filter: none;
+    opacity: $input-disabled-opacity;
+  }
+
+  // Use disabled attribute in addition of :disabled pseudo-class
+  // See: https://github.com/twbs/bootstrap/issues/28247
+  &[disabled],
+  &:disabled {
+    ~ .input-label--radio {
+      pointer-events: none;
+      opacity: $label-disabled-opacity;
+    }
+  }
+}
+
+.input-label--radio {
+  color: $label-color;
+  cursor: $label-cursor;
+  margin-bottom: 0;
+}
+
+//
+// Helper text styles
+//
+
+@each $state, $data in helper-text.$helper-text-states {
+  $color: map.get($data, "color");
+  $icon: map.get($data, "icon");
+  $focus-box-shadow: 0 0 mkui.$input-btn-focus-blur mkui.$input-btn-focus-width rgba($color, mkui.$input-btn-focus-color-opacity);
+
+  .radio {
+    @include helper-text.state-selector($state) {
+      border-color: $color;
+
+      &:checked {
+        background-color: $color;
+      }
+
+      &:focus {
+        box-shadow: $focus-box-shadow;
+      }
+
+      ~ .input-label--radio {
+        color: $color;
+      }
+    }
+  }
+}

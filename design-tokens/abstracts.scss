@@ -1,13 +1,17 @@
-// 
+//
 // Design tokens abstracts - functions, variables and mixins.
-// 
+//
 @import '~bootstrap/scss/functions';
 
 $variable-prefix:   mkui- !default;
+$spacer:            1rem !default;
 $box-shadow:        0 .2rem .5rem rgba(#000, .2) !default;
 $box-shadow-sm:     0 .125rem .25rem rgba(#000, .15) !default;
 $box-shadow-lg:     0 .75rem 1.25rem rgba(#000, .2) !default;
 $box-shadow-hover:  0 .25rem 1rem rgba(#000, .3) !default;
+$tooltip-padding-y: $spacer * .15 !default;
+$tooltip-padding-x: $spacer * .5 !default;
+$small-font-size:   .85em !default;
 
 @import '~bootstrap/scss/variables';
 

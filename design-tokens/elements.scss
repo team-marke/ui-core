@@ -1,6 +1,6 @@
-// 
+//
 // Design tokens elements - resetting, vendor components, helpers and utilities.
-// 
+//
 
 // Bootstrap Layout
 @import '~bootstrap/scss/grid';
@@ -15,12 +15,13 @@
 @import '~bootstrap/scss/transitions';
 
 // Bootstrap Forms
-@import '~bootstrap/scss/forms';
+@import "~bootstrap/scss/forms/form-range";
+@import "~bootstrap/scss/forms/input-group";
 
 // Bootstrap Components
 @import '~bootstrap/scss/alert';
 @import '~bootstrap/scss/badge';
-@import '~bootstrap/scss/breadcrumb'; 
+@import '~bootstrap/scss/breadcrumb';
 @import '~bootstrap/scss/close';
 @import '~bootstrap/scss/dropdown';
 @import '~bootstrap/scss/list-group';

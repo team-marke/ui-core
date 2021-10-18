@@ -1,6 +1,4 @@
 ---
-tags:
-  - navbar
 eleventyNavigation:
   key: faq
   title: Accordion
@@ -12,7 +10,7 @@ eleventyNavigation:
 
 <h2>Exemplo</h2>
 <div class="docs-example">
-  {% 
+  {%
     set context = {
       id: 'example',
       headerTag: 'div',
@@ -30,14 +28,14 @@ eleventyNavigation:
           body: "Brute laboramus efficiendi pro ut, nobis sensibus at qui, duo alii audire forensibus in. Esse deserunt at has, movet iudico consequat te sea. Graeco appellantur per cu. Usu facilisis repudiare ea."
         }
       ]
-    } 
+    }
   %}
   {% include "accordion/accordion.njk" %}
 </div>
 
 <h2>Flush</h2>
 <div class="docs-example bg-light">
-  {% 
+  {%
     set context = {
       id: 'flush',
       headerTag: 'div',
@@ -56,7 +54,7 @@ eleventyNavigation:
         }
       ],
       flush: true
-    } 
+    }
   %}
   {% include "accordion/accordion.njk" %}
 </div>

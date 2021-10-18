@@ -1,6 +1,4 @@
 ---
-tags:
-  - navbar
 eleventyNavigation:
   key: tabs
   title: Tabs
@@ -32,11 +30,11 @@ eleventyNavigation:
     <p>Ea duo vidisse propriae, assum interpretaris eos an, tantas voluptaria ea his. Mei ea habeo noster appellantur. Eos dico primis at, ex sale signiferumque mea, mei ex elit dicunt.</p>
   </div>
   {%- endset %}
-  {% 
-    set context = { 
+  {%
+    set context = {
       id: 'example',
       items: [
-      { 
+      {
         label: "Per et hinc justo",
         panel: examplePanel1
       },
@@ -48,8 +46,8 @@ eleventyNavigation:
         label: "Aperiam assentior",
         panel: examplePanel3
       }
-    ] 
-    } 
+    ]
+    }
   %}
   {% include "tabs/tabs.njk" %}
 </div>

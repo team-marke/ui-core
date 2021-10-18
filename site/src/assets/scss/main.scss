@@ -1,12 +1,12 @@
-// 
+//
 // Design Tokens / Base
-// 
+//
 
 @use 'marke-ui' as mkui;
 
-// 
+//
 // Components
-// 
+//
 
 @use '~lightgallery/scss/lightgallery' as lightgallery with (
   $lg-path-fonts: '~lightgallery/fonts',
@@ -20,6 +20,11 @@
 @use '../../../../components/card';
 @use '../../../../components/carousel';
 @use '../../../../components/copyrightbar';
+@use '../../../../components/select';
+@use '../../../../components/checkbox';
+@use '../../../../components/radio';
+@use '../../../../components/radio-group';
+@use '../../../../components/text-field';
 @use '../../../../components/grid-responsive-slider';
 @use '../../../../components/masthead';
 @use '../../../../components/masthead-slider';
@@ -35,8 +40,8 @@
   $icon-hover-color: mkui.$light,
 );
 
-// 
+//
 // Layouts
-// 
+//
 
 @use 'layouts/docs';

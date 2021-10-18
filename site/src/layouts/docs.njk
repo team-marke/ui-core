@@ -1,10 +1,11 @@
 {%- extends 'base.njk' %}
 {%- block content %}
   <div class="docs-grid container">
-    {% include './partials/aside-nav.njk' %}
+    {% include './partials/docs-menu.njk' %}
     <main class="docs-main overflow-hidden">
       {{ content | safe }}
     </main>
+    {% include './partials/docs-page-menu.njk' %}
   </div>
 {%- endblock %}
 {{ content | safe }}

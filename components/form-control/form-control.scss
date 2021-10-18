@@ -1,0 +1,32 @@
+//
+// Input Control component styles
+//
+
+@use '../../design-tokens' as mkui;
+
+$height:            mkui.add(3.5rem, mkui.$input-height-border) !default;
+$line-height:       1.25 !default;
+$padding-x:         mkui.$input-padding-x !default;
+$padding-y:         1rem !default;
+$input-padding-t:   1.625rem !default;
+$input-padding-b:   .625rem !default;
+$label-opacity:     .65 !default;
+$label-transform:   scale(.85) translateY(-.5rem) translateX(.15rem) !default;
+$transition:        opacity .1s ease-in-out, transform .1s ease-in-out !default;
+
+.form-control {
+  position: relative;
+  &.form-control--floating-label {
+    > label {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%; // allow textareas
+      padding: $padding-y $padding-x;
+      pointer-events: none;
+      border: mkui.$input-border-width solid transparent; // Required for aligning label's text with the input as it affects inner box model
+      transform-origin: 0 0;
+      @include mkui.transition($transition);
+    }
+  }
+}

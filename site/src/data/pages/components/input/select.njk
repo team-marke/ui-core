@@ -1,0 +1,93 @@
+---
+eleventyNavigation:
+  key: select
+  title: Select
+---
+
+<h1>Select</h1>
+<p>Lorem ipsum dolor sit amet, stet intellegat mei, pertinax oportere at sea. Eos an mutat blandit. Nec at nisl volumus appellantur, an his brute quodsi. Sit ceteros contentiones at, te summo discere pro.</p>
+
+<h2>Exemplos</h2>
+<div class="docs-example d-flex flex-column gap-3">
+  {% set context = {
+    label: 'Seleção',
+    name: 'sample-select-1',
+    id: 'sample-select-1',
+    placeholder: 'Selecione',
+    options: {
+      'Opção Um': 1,
+      'Opção Dois': 2,
+      'Opção Três': 3
+    }
+  } %}
+  {% include "select/select.njk" %}
+  {% set context = {
+    label: 'Seleção com label flutuante',
+    name: 'sample-select-2',
+    id: 'sample-select-2',
+    placeholder: 'Selecione',
+    variant: 'floating',
+    options: {
+      'Opção Um': 1,
+      'Opção Dois': 2,
+      'Opção Três': 3
+    }
+  } %}
+  {% include "select/select.njk" %}
+  {% set context = {
+    size: 'lg',
+    label: 'Seleção grande',
+    name: 'sample-select-3',
+    id: 'sample-select-3',
+    placeholder: 'Selecione',
+    options: {
+      'Opção Um': 1,
+      'Opção Dois': 2,
+      'Opção Três': 3
+    }
+  } %}
+  {% include "select/select.njk" %}
+  {% set context = {
+    size: 'sm',
+    label: 'Seleção pequena',
+    name: 'sample-select-4',
+    id: 'sample-select-4',
+    placeholder: 'Selecione',
+    options: {
+      'Opção Um': 1,
+      'Opção Dois': 2,
+      'Opção Três': 3
+    }
+  } %}
+  {% include "select/select.njk" %}
+  <div class="mb-4">
+  {% set context = {
+    label: 'Seleção com erro',
+    name: 'sample-select-5',
+    id: 'sample-select-5',
+    placeholder: 'Selecione',
+    required: true,
+    isInvalid: true,
+    invalidText: 'Esta seleção é obrigatória! Selecione uma opção.',
+    options: {
+      'Opção Um': 1,
+      'Opção Dois': 2,
+      'Opção Três': 3
+    }
+  } %}
+  {% include "select/select.njk" %}
+  </div>
+  {% set context = {
+    label: 'Seleção com valor inicial',
+    name: 'sample-select-6',
+    id: 'sample-select-6',
+    placeholder: 'Selecione',
+    value: '2',
+    options: {
+      'Opção Um': 1,
+      'Opção Dois': 2,
+      'Opção Três': 3
+    }
+  } %}
+  {% include "select/select.njk" %}
+</div>

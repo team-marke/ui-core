@@ -1,4 +1,7 @@
 {
+  "tags": [
+    "components"
+  ],
   "layout": "docs",
   "permalink": "docs/components/{{ page.fileSlug }}/",
   "eleventyNavigation": {

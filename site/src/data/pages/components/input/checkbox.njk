@@ -1,0 +1,46 @@
+---
+eleventyNavigation:
+  key: checkbox
+  title: Checkbox
+---
+<h1>Checkbox</h1>
+<p>Lorem ipsum dolor sit amet, stet intellegat mei, pertinax oportere at sea. Eos an mutat blandit. Nec at nisl volumus appellantur, an his brute quodsi. Sit ceteros contentiones at, te summo discere pro.</p>
+
+<h2>Exemplos</h2>
+<div class="docs-example d-flex flex-column gap-3">
+  {% set context = {
+    value: 1,
+    name: 'sample-check-1',
+    id: 'sample-check-1',
+    label: 'Checkbox'
+  } %}
+  {% include "checkbox/checkbox.njk" %}
+  {% set context = {
+    value: 1,
+    name: 'sample-check-2',
+    id: 'sample-check-2',
+    label: 'Checkbox pré marcado',
+    checked: true
+  } %}
+  {% include "checkbox/checkbox.njk" %}
+  <div class="mb-4">
+    {% set context = {
+      value: 1,
+      name: 'sample-check-3',
+      id: 'sample-check-3',
+      label: 'Checkbox com erro',
+      required: true,
+      isInvalid: true,
+      invalidText: 'Este checkbox é obrigatório! Aceite a opção.'
+    } %}
+    {% include "checkbox/checkbox.njk" %}
+  </div>
+  {% set context = {
+    value: 1,
+    name: 'sample-check-4',
+    id: 'sample-check-4',
+    label: 'Checkbox desabilitado',
+    disabled: true
+  } %}
+  {% include "checkbox/checkbox.njk" %}
+</div>

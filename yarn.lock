@@ -1261,6 +1261,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@babel/runtime@npm:^7.9.2":
+  version: 7.15.4
+  resolution: "@babel/runtime@npm:7.15.4"
+  dependencies:
+    regenerator-runtime: ^0.13.4
+  checksum: 64b6c250fd02a664f40835b7bfc3ec0b473d251bf4881b06b689b60662bf2ae17adc6fa32fb0e0de308de5d4bc383738c6030ad93d823066fb9fd7c18f552b56
+  languageName: node
+  linkType: hard
+
 "@babel/template@npm:^7.14.5":
   version: 7.14.5
   resolution: "@babel/template@npm:7.14.5"
@@ -1496,6 +1505,7 @@ __metadata:
     "@types/bootstrap": ^5.0.0
     babel-loader: ^8.2.2
     bootstrap: ^5.1.0
+    choices.js: ^9.0.1
     cloudinary: ^1.26.1
     css-loader: ^5.2.6
     css-minimizer-webpack-plugin: ^2.0.0
@@ -1524,7 +1534,7 @@ __metadata:
     stream-browserify: ^3.0.0
     style-loader: ^2.0.0
     stylelint: ^13.13.1
-    stylelint-config-recommended-scss: ^4.3.0
+    stylelint-config-recommended-scss: ^4.2.0
     stylelint-config-standard: ^22.0.0
     stylelint-scss: ^3.19.0
     swiper: ^6.8.0
@@ -3362,6 +3372,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"choices.js@npm:^9.0.1":
+  version: 9.0.1
+  resolution: "choices.js@npm:9.0.1"
+  dependencies:
+    deepmerge: ^4.2.0
+    fuse.js: ^3.4.5
+    redux: ^4.0.4
+  checksum: b5fe94e388aea5a85c4c764aaf0757a3ba92555a3200b8359854ec88b8afb50468d922ae1144d5cd71b4fa8ca02014d403cbf9c49a6eb31f83f5c46cfaa00213
+  languageName: node
+  linkType: hard
+
 "chokidar@npm:>=3.0.0 <4.0.0, chokidar@npm:^3.0.2, chokidar@npm:^3.5.1":
   version: 3.5.2
   resolution: "chokidar@npm:3.5.2"
@@ -4443,6 +4464,13 @@ __metadata:
   version: 0.1.3
   resolution: "deep-is@npm:0.1.3"
   checksum: 3de58f86af4dec86c8be531a5abaf2e6d8ea98fa2f1d81a3a778d0d8df920ee282043a6ef05bfb4eb699c8551df9ac1b808d4dc71d54cc40ab1efa5ce8792943
+  languageName: node
+  linkType: hard
+
+"deepmerge@npm:^4.2.0":
+  version: 4.2.2
+  resolution: "deepmerge@npm:4.2.2"
+  checksum: 85abf8e0045ee280996e7d2396979c877ef0741e413b716e42441110e0a83ac08098b2a49cea035510060bf667c0eae3189b2a52349f5fa4b000c211041637b1
   languageName: node
   linkType: hard
 
@@ -6016,6 +6044,13 @@ fsevents@~2.3.2:
   version: 1.0.1
   resolution: "functional-red-black-tree@npm:1.0.1"
   checksum: 477ecaf62d4f8d788876099b35ed4b97586b331e729d2d28d0df96b598863d21c18b8a45a6cbecb6c2bf7f5e5ef1e82a053570583ef9a0ff8336683ab42b8d14
+  languageName: node
+  linkType: hard
+
+"fuse.js@npm:^3.4.5":
+  version: 3.6.1
+  resolution: "fuse.js@npm:3.6.1"
+  checksum: 2eebc6f8f74abdbf65557f2fe81679ddfb20890482343892bfef43742ad3b7146cc9b89f5b12a40b35ecdfb1d8401848d567fc727261fa90fa87e899e8ec6112
   languageName: node
   linkType: hard
 
@@ -11447,6 +11482,15 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
+"redux@npm:^4.0.4":
+  version: 4.1.1
+  resolution: "redux@npm:4.1.1"
+  dependencies:
+    "@babel/runtime": ^7.9.2
+  checksum: 063e1d52588d62d438bb392975e57c0091c79f9abdbb8594c44c1680a73415280f6133c3d9cb3b116fe1ceb7e1aefb44775d6136b8bb6b9eb6a2c1a23e32a840
+  languageName: node
+  linkType: hard
+
 "regenerate-unicode-properties@npm:^8.2.0":
   version: 8.2.0
   resolution: "regenerate-unicode-properties@npm:8.2.0"
@@ -12765,7 +12809,7 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
-"stylelint-config-recommended-scss@npm:^4.3.0":
+"stylelint-config-recommended-scss@npm:^4.2.0":
   version: 4.3.0
   resolution: "stylelint-config-recommended-scss@npm:4.3.0"
   dependencies:

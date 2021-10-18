@@ -1,0 +1,85 @@
+{%- if context %}
+  {%- if context.variant %}
+    {%- set variant = context.variant %}
+  {%- else %}
+    {%- set variant = 'standard' %}
+  {%- endif %}
+  {%- set size = context.size %}
+  {%- set name = context.name %}
+  {%- set id = context.id %}
+  {%- set value = context.value %}
+  {%- set required = context.required %}
+  {%- set disabled = context.disabled %}
+  {%- set label = context.label %}
+  {%- set placeholder = context.placeholder %}
+  {%- set options = context.options %}
+  {%- set helperText = context.helperText %}
+  {%- set invalidText = context.invalidText %}
+  {%- if context.isInvalid %}
+    {%- set isInvalid = context.isInvalid %}
+  {%- else %}
+    {%- set isInvalid = false %}
+  {%- endif %}
+{%- endif %}
+
+{%- if variant == 'floating' %}
+  {%- set floatingLabel = true %}
+{%- else %}
+  {%- set floatingLabel = false %}
+{%- endif %}
+
+{%- if label %}
+  {%- set labelTag %}
+    {% set context = {
+      content: label,
+      forId: id
+    } %}
+    {% include "../input-label/input-label.njk" %}
+  {%- endset %}
+{%- endif %}
+
+{%- set content %}
+  {% if label and not floatingLabel %}{{ labelTag | safe }}{% endif %}
+  <select
+    class="
+      select
+      {% if size %}select--{{ size | e | safe }}{% endif %}
+      {% if isInvalid %}is-invalid{% endif %}
+    "
+    {% if label %} aria-label="{{ label | e | safe }}" {% endif %}
+    {% if id %} id="{{ id | e | safe }}" {% endif %}
+    {% if required %} required {% endif %}
+    {% if disabled %} disabled {% endif %}
+  >
+    {%- if placeholder %}
+      <option value="">{{ placeholder | e | safe }}</option>
+    {%- endif %}
+    {% for optionLabel, optionValue in options %}
+      <option
+        {% if value == optionValue %} selected {% endif %}
+        value="{{ optionValue | e | safe }}"
+      >{{ optionLabel | e | safe }}</option>
+    {% endfor %}
+  </select>
+  {% if label and floatingLabel %}{{ labelTag | safe }}{% endif %}
+  {%- if helperText %}
+  {% set context = {
+    content: helperText
+  } %}
+  {% include "../helper-text/helper-text.njk" %}
+  {%- endif %}
+  {%- if invalidText %}
+  {% set context = {
+    content: invalidText,
+    variant: 'tooltip',
+    state: 'invalid'
+  } %}
+  {% include "../helper-text/helper-text.njk" %}
+  {%- endif %}
+{%- endset %}
+
+{% set context = {
+  content: content,
+  floatingLabel: floatingLabel
+} %}
+{% include "../form-control/form-control.njk" %}
