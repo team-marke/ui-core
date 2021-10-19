@@ -37,13 +37,13 @@
 <nav class="navbar navbar-{{ variant | e | safe }} navbar-expand-{{ expand | e | safe }}">
   {%- if context.brandLogo -%}
     <a class="navbar-brand" href="{{ brandUrl | url | safe }}">
-      <img 
+      <img
         class="img-fluid d-block d-lg-none"
         alt="Logo"
         width="{{ brandLogoMobileWidth }}"
         src="{%- imageUrl brandLogoMobile, { fetch_format: 'auto', quality: 'auto', dpr: 2, width: brandLogoWidth } %}"
       >
-      <img 
+      <img
         class="img-fluid d-none d-lg-block"
         alt="Logo"
         width="{{ brandLogoWidth }}"
@@ -51,15 +51,14 @@
       >
     </a>
   {%- endif -%}
-  {% set offCanvasId %}{% idGenerator 'offcanvas' %}{% endset %}
-  <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#{{ offCanvasId | safe }}" aria-controls="{{ offCanvasId | safe }}">
+  <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <div class="offcanvas offcanvas-start {{ 'bg-' + offcanvasColor }}" tabindex="-1" id="{{ offCanvasId | safe }}">
+  <div class="offcanvas offcanvas-start {{ 'bg-' + offcanvasColor | e | safe }}" tabindex="-1">
     <div class="offcanvas-header">
       {%- if context.brandLogoMobile -%}
-        <div class="offcanvas-title" id="{{ offCanvasId | safe }}-label">
-          <img 
+        <div class="offcanvas-title">
+          <img
             class="img-fluid"
             alt="Logo"
             width="{{ brandLogoMobileWidth }}"

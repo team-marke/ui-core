@@ -28,10 +28,12 @@
 
 .docs-menu {
   grid-area: docs-menu;
-  overflow-y: auto;
-  position: sticky;
-  top: 1rem;
-  height: calc(100vh - 7rem);
+  @include mkui.media-breakpoint-up(lg) {
+    overflow-y: auto;
+    position: sticky;
+    top: 1rem;
+    height: calc(100vh - 7rem);
+  }
 }
 
 .docs-main {

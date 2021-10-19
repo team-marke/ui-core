@@ -8,7 +8,10 @@ import Dropdown from 'bootstrap/js/src/dropdown';
 export class Navbar {
   constructor(el) {
     el.querySelectorAll('.offcanvas').forEach((offcanvasEl) => {
-      new Offcanvas(offcanvasEl);
+      let offcanvas = new Offcanvas(offcanvasEl);
+      el.querySelector('.navbar-toggler').addEventListener('click', () => {
+        offcanvas.toggle();
+      });
     });
     el.querySelectorAll('.dropdown').forEach((dropdownEl) => {
       new Dropdown(dropdownEl);

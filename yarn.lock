@@ -24,15 +24,13 @@ __metadata:
   linkType: hard
 
 "@11ty/eleventy-plugin-rss@npm:^1.1.1":
-  version: 1.1.1
-  resolution: "@11ty/eleventy-plugin-rss@npm:1.1.1"
+  version: 1.1.2
+  resolution: "@11ty/eleventy-plugin-rss@npm:1.1.2"
   dependencies:
     debug: ^4.3.1
     posthtml: ^0.15.1
     posthtml-urls: 1.0.0
-  peerDependencies:
-    "@11ty/eleventy": ">=0.11.0"
-  checksum: d02a2283a9b0d6d13257ce2a384400531c81f1b4de3326df57d57f63ab9296d9ae6cd2bdaab88d493e255e82b9fa75f7e1fead2f3a4e32ba28730ff2590fd0e6
+  checksum: 1ebfe64fbcb29c546100a0aaea35d38e6a42e8561920fa9ef730aa8b430056ab0268baa69f5ec24331b5ecd8303e49561f4a72d3db5fd4b68130651f20f0750b
   languageName: node
   linkType: hard
 
@@ -4705,7 +4703,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"domutils@npm:^2.4.3, domutils@npm:^2.5.2":
+"domutils@npm:^2.4.3":
   version: 2.7.0
   resolution: "domutils@npm:2.7.0"
   dependencies:
@@ -4713,6 +4711,17 @@ __metadata:
     domelementtype: ^2.2.0
     domhandler: ^4.2.0
   checksum: b7c6cbd4854611447785cdc10f989728cc213652c89211b7d0956c37e565b8a2881683a0162b9a77aa39f52de1eff10f439fe77315d3e828beda3b81a43c1dea
+  languageName: node
+  linkType: hard
+
+"domutils@npm:^2.5.2":
+  version: 2.8.0
+  resolution: "domutils@npm:2.8.0"
+  dependencies:
+    dom-serializer: ^1.0.1
+    domelementtype: ^2.2.0
+    domhandler: ^4.2.0
+  checksum: f1d0cfab0649e530a26ac23a636ab6574302b9c4bb271acb08fdcb84dd3957d5340670bf5eb587871585813c0b3727c33e50be7389e317cd758d837e5442f971
   languageName: node
   linkType: hard
 

@@ -5,8 +5,9 @@ const path = require('path');
 const fs = require('fs');
 const del = require('del');
 const rssPlugin = require('@11ty/eleventy-plugin-rss');
-const eleventyNavigation = require('@11ty/eleventy-navigation');
+const navigationPlugin = require('@11ty/eleventy-navigation');
 const Nunjucks = require('nunjucks');
+const mkuiPlugin = require('./tools/plugins/11ty');
 
 /**
  * Eleventy configuration
@@ -36,6 +37,11 @@ module.exports = (eleventyConfig) => {
     ]);
   }
   eleventyConfig.setLibrary('njk', global.nunjucksEnvironment);
+
+  // Add eleventy plugins
+  eleventyConfig.addPlugin(rssPlugin);
+  eleventyConfig.addPlugin(navigationPlugin);
+  eleventyConfig.addPlugin(mkuiPlugin);
 
   // Eleventy config dir options
   const dirs = {
@@ -79,10 +85,6 @@ module.exports = (eleventyConfig) => {
   transforms.forEach((transform) => eleventyConfig.addTransform(path.basename(transform, '.js'), require(transform)));
   // Add all found collections
   collections.forEach((collection) => eleventyConfig.addCollection(path.basename(collection, '.js'), require(collection)));
-
-  // Add eleventy plugins
-  eleventyConfig.addPlugin(rssPlugin);
-  eleventyConfig.addPlugin(eleventyNavigation);
 
   // Opts in to a full deep merge when combining the Data Cascade
   eleventyConfig.setDataDeepMerge(true);
