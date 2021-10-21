@@ -1,11 +1,12 @@
+/**
+ * Navbar component scripts.
+ */
+
 import Offcanvas from 'bootstrap/js/src/offcanvas';
 import Dropdown from 'bootstrap/js/src/dropdown';
 
-/**
- * Navbar component.
- */
-
-export class Navbar {
+class Navbar {
+  static className = 'navbar';
   constructor(el) {
     el.querySelectorAll('.offcanvas').forEach((offcanvasEl) => {
       let offcanvas = new Offcanvas(offcanvasEl);
@@ -18,3 +19,5 @@ export class Navbar {
     });
   }
 }
+
+export { Navbar as default };

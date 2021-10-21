@@ -70,6 +70,7 @@
     "design-tokens/**/*",
     "tools/**/*"
   ],
+  "main": "index.esm.js",
   "scripts": {
     "develop": "run-p develop:eleventy develop:webpack",
     "stage": "run-s stage:eleventy stage:webpack",

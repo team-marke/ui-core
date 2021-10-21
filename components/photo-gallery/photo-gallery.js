@@ -1,10 +1,11 @@
 /**
- * Photo gallery component.
+ * Photo gallery component scripts.
  */
 
 import lightGallery from 'lightgallery';
 
 export class PhotoGallery {
+  static className = 'photo-gallery';
   /**
    * Inits a new photo gallery.
    * @param {HTMLElement} el

@@ -1,5 +1,5 @@
 /**
- * Video modal component.
+ * Video modal component scripts.
  */
 
 import { dom as faDom, library as faLibrary, config as faConfig } from '@fortawesome/fontawesome-svg-core';
@@ -7,6 +7,7 @@ import { faPlayCircle } from '@fortawesome/free-solid-svg-icons';
 import { VideoModal } from '../video-modal/video-modal';
 
 export class VideoTeaser {
+  static className = 'video-teaser';
   /**
    * Inits a new video teaser.
    * @param {HTMLElement} el

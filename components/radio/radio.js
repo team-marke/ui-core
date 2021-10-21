@@ -1,10 +1,11 @@
-//
-// Radio component scripts.
-//
+/**
+ * Radio component scripts.
+ */
 
 import Input from '../../tools/core-components/input/input';
 
 class Radio extends Input {
+  static className = 'radio';
   /**
    * @constructor
    */

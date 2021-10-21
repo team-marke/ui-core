@@ -6,6 +6,7 @@
 import Swiper, { Navigation, Pagination, Autoplay } from 'swiper';
 
 class Carousel {
+  static className = 'carousel';
   constructor(...args) {
     this.Swiper = this.initSlider(args);
   }
@@ -48,4 +49,4 @@ class Carousel {
   }
 }
 
-export { Carousel };
+export { Carousel as default };
