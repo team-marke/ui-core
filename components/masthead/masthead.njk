@@ -10,29 +10,29 @@
   {% set children = context.children %}
 {%- endif -%}
 
-<div 
+<div
   class="masthead{% if classes %} {{ classes | join(" ") | safe }}{% endif %}"
   style="{% if bgColor %}background:{{ bgColor | safe }};{% endif %}"
 >
   {%- if image %}
     <picture>
-      <source 
-        media="(max-width: 768px)" 
+      <source
+        media="(max-width: 768px)"
         srcset="
-          {% imageUrl image, { fetch_format: 'auto', quality: 'auto', width: 768, aspect_ratio: '21:9', crop: 'thumb', gravity: 'auto' } %}, 
-          {% imageUrl image, { fetch_format: 'auto', quality: 'auto', width: 768, aspect_ratio: '21:9', crop: 'thumb', gravity: 'auto', dpr: 2 } %} 2x" 
+          {% imageUrl image, { fetch_format: 'auto', quality: 'auto', width: 768, aspect_ratio: imgAr, crop: 'thumb', gravity: 'auto' } %},
+          {% imageUrl image, { fetch_format: 'auto', quality: 'auto', width: 768, aspect_ratio: imgAr, crop: 'thumb', gravity: 'auto', dpr: 2 } %} 2x"
       />
-      <source 
-        media="(max-width: 992px)" 
+      <source
+        media="(max-width: 992px)"
         srcset="
-          {% imageUrl image, { fetch_format: 'auto', quality: 'auto', width: 992, aspect_ratio: '21:9', crop: 'thumb', gravity: 'auto' } %}, 
-          {% imageUrl image, { fetch_format: 'auto', quality: 'auto', width: 992, aspect_ratio: '21:9', crop: 'thumb', gravity: 'auto', dpr: 2 } %} 2x" 
+          {% imageUrl image, { fetch_format: 'auto', quality: 'auto', width: 992, aspect_ratio: imgAr, crop: 'thumb', gravity: 'auto' } %},
+          {% imageUrl image, { fetch_format: 'auto', quality: 'auto', width: 992, aspect_ratio: imgAr, crop: 'thumb', gravity: 'auto', dpr: 2 } %} 2x"
       />
-      <source 
-        media="(max-width: 1280px)" 
+      <source
+        media="(max-width: 1280px)"
         srcset="
-          {% imageUrl image, { fetch_format: 'auto', quality: 'auto', width: 1280, aspect_ratio: '21:9', crop: 'thumb', gravity: 'auto' } %}, 
-          {% imageUrl image, { fetch_format: 'auto', quality: 'auto', width: 1280, aspect_ratio: '21:9', crop: 'thumb', gravity: 'auto', dpr: 2 } %} 2x" 
+          {% imageUrl image, { fetch_format: 'auto', quality: 'auto', width: 1280, aspect_ratio: imgAr, crop: 'thumb', gravity: 'auto' } %},
+          {% imageUrl image, { fetch_format: 'auto', quality: 'auto', width: 1280, aspect_ratio: imgAr, crop: 'thumb', gravity: 'auto', dpr: 2 } %} 2x"
       />
       <img
         class="masthead__image"
@@ -40,7 +40,7 @@
         loading="lazy"
         width="1920"
         height="450"
-        src="{%- imageUrl image, { fetch_format: 'auto', quality: 'auto', width: 1920, aspect_ratio: '21:9', crop: 'thumb', gravity: 'auto' } %}"
+        src="{%- imageUrl image, { fetch_format: 'auto', quality: 'auto', width: 1920, aspect_ratio: imgAr, crop: 'thumb', gravity: 'auto' } %}"
       >
     </picture>
   {%- endif %}
