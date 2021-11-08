@@ -40,11 +40,13 @@
       }
     }
   }
+  &__pagination {
+    bottom: 0 !important;
+  }
   &__slide {
     height: auto;
-    width: calc(100% + var(--mkui-gutter-x) * 3);
     padding-right: calc(var(--mkui-gutter-x) / 2);
-    padding-bottom: 2rem;
+    padding-bottom: 1rem;
     padding-left: calc(var(--mkui-gutter-x) / 2);
     @media (max-width: 991px) {
       &:first-child {

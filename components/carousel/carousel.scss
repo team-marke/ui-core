@@ -12,8 +12,11 @@
   position: relative;
   &__container {
     @include mkui.media-breakpoint-down(lg) {
-      padding-bottom: 2rem;
+      padding-bottom: 1rem;
     }
+  }
+  &__pagination {
+    bottom: 0 !important;
   }
   &__button-prev.swiper-button-prev,
   &__button-next.swiper-button-next {
@@ -55,9 +58,8 @@
   }
   &__slide {
     height: auto;
-    padding-top: 0.75rem;
     padding-right: calc(var(--mkui-gutter-x) / 2);
-    padding-bottom: 0.75rem;
+    padding-bottom: 1rem;
     padding-left: calc(var(--mkui-gutter-x) / 2);
     @include mkui.media-breakpoint-down(lg) {
       &:first-child {
