@@ -46,8 +46,9 @@
       {% if size %}select--{{ size | e | safe }}{% endif %}
       {% if isInvalid %}is-invalid{% endif %}
     "
-    {% if label %} aria-label="{{ label | e | safe }}" {% endif %}
+    {% if name %} name="{{ name | e | safe }}" {% endif %}
     {% if id %} id="{{ id | e | safe }}" {% endif %}
+    {% if label %} aria-label="{{ label | e | safe }}" {% endif %}
     {% if required %} required {% endif %}
     {% if disabled %} disabled {% endif %}
   >
