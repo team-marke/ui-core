@@ -4,18 +4,42 @@
 
 @use '../../design-tokens' as mkui;
 
+$height: mkui.$card-height !default;
+$word-wrap: break-word !default;
+$bg: mkui.$card-bg !default;
+$background-clip: border-box !default;
+$border: mkui.$card-border-width solid mkui.$card-border-color !default;
+$box-shadow: mkui.$box-shadow !default;
+$border-radius: mkui.$card-border-radius !default;
+$inner-border-radius: $border-radius !default;
+
+$spacer-y: mkui.$card-spacer-y !default;
+$spacer-x: mkui.$card-spacer-x !default;
+
+$color: mkui.$card-color !default;
+$transition: mkui.$transition-base !default;
+$hover-box-shadow: mkui.$box-shadow-hover !default;
+
+$img-overlay-padding: mkui.$card-img-overlay-padding !default;
+$cap-padding-y: mkui.$card-cap-padding-y !default;
+$cap-padding-x: mkui.$card-cap-padding-x !default;
+$cap-color: mkui.$card-cap-color !default;
+$cap-bg: mkui.$card-cap-bg !default;
+
+$group-margin: mkui.$card-group-margin !default;
+
 .card {
   position: relative;
   display: flex;
   flex-direction: column;
   min-width: 0; // See https://github.com/twbs/bootstrap/pull/22740#issuecomment-305868106
-  height: mkui.$card-height;
-  word-wrap: break-word;
-  background-color: mkui.$card-bg;
-  background-clip: border-box;
-  border: mkui.$card-border-width solid mkui.$card-border-color;
-  box-shadow: mkui.$box-shadow;
-  @include mkui.border-radius(mkui.$card-border-radius);
+  height: $height;
+  word-wrap: $word-wrap;
+  background-color: $bg;
+  background-clip: $background-clip;
+  border: $border;
+  box-shadow: $box-shadow;
+  @include mkui.border-radius($border-radius);
 
   > hr {
     margin-right: 0;
@@ -28,12 +52,12 @@
 
     &:first-child {
       border-top-width: 0;
-      @include mkui.border-top-radius(mkui.$card-inner-border-radius);
+      @include mkui.border-top-radius($inner-border-radius);
     }
 
     &:last-child  {
       border-bottom-width: 0;
-      @include mkui.border-bottom-radius(mkui.$card-inner-border-radius);
+      @include mkui.border-bottom-radius($inner-border-radius);
     }
   }
 
@@ -50,11 +74,11 @@
   // as much space as possible, ensuring footers are aligned to the bottom.
   flex: 1 1 auto;
   position: static;
-  padding: mkui.$card-spacer-y * 0.75 mkui.$card-spacer-x * 0.75;
+  padding: $spacer-y * 0.75 $spacer-x * 0.75;
   @include mkui.media-breakpoint-up(lg) {
-    padding: mkui.$card-spacer-y mkui.$card-spacer-x;
+    padding: $spacer-y $spacer-x;
   }
-  color: mkui.$card-color;
+  color: $color;
 }
 
 .card__body--icon-left {
@@ -66,22 +90,22 @@
       grid-column: 1;
       grid-row: span 2;
     }
-    > * {  
+    > * {
       grid-column: 2;
     }
   }
 }
 
 .card--interactive {
-  transition: mkui.$transition-base;
+  transition: $transition;
 }
 
 .card--interactive:hover {
-  box-shadow: mkui.$box-shadow-hover;
+  box-shadow: $hover-box-shadow;
 }
 
 .card--interactive .card__body {
-  transition: mkui.$transition-base;
+  transition: $transition;
   a:not(.stretched-link) {
     position: relative;
     z-index: 2;
@@ -89,7 +113,7 @@
 }
 
 .card--interactive:hover .card__body {
-  transform: translateY(- mkui.$card-spacer-y / 4);
+  transform: translateY(- $spacer-y / 4);
 }
 
 .card__body--overlay {
@@ -98,8 +122,8 @@
   right: 0;
   bottom: 0;
   left: 0;
-  padding: mkui.$card-img-overlay-padding;
-  @include mkui.border-radius(mkui.$card-inner-border-radius);
+  padding: $img-overlay-padding;
+  @include mkui.border-radius($inner-border-radius);
 }
 
 //
@@ -107,25 +131,25 @@
 //
 
 .card__header {
-  padding: mkui.$card-cap-padding-y mkui.$card-cap-padding-x;
+  padding: $cap-padding-y $cap-padding-x;
   margin-bottom: 0; // Removes the default margin-bottom of <hN>
-  color: mkui.$card-cap-color;
-  background-color: mkui.$card-cap-bg;
-  border-bottom: mkui.$card-border-width solid mkui.$card-border-color;
+  color: $cap-color;
+  background-color: $cap-bg;
+  border-bottom: $border;
 
   &:first-child {
-    @include mkui.border-radius(mkui.$card-inner-border-radius mkui.$card-inner-border-radius 0 0);
+    @include mkui.border-radius($inner-border-radius $inner-border-radius 0 0);
   }
 }
 
 .card__footer {
-  padding: mkui.$card-cap-padding-y mkui.$card-cap-padding-x;
-  color: mkui.$card-cap-color;
-  background-color: mkui.$card-cap-bg;
-  border-top: mkui.$card-border-width solid mkui.$card-border-color;
+  padding: $cap-padding-y $cap-padding-x;
+  color: $cap-color;
+  background-color: $cap-bg;
+  border-top: $border;
 
   &:last-child {
-    @include mkui.border-radius(0 0 mkui.$card-inner-border-radius mkui.$card-inner-border-radius);
+    @include mkui.border-radius(0 0 $inner-border-radius $inner-border-radius);
   }
 }
 
@@ -134,22 +158,22 @@
 //
 
 .card__header-tabs {
-  margin-right: - mkui.$card-cap-padding-x * .5;
-  margin-bottom: - mkui.$card-cap-padding-y;
-  margin-left: - mkui.$card-cap-padding-x * .5;
+  margin-right: - $cap-padding-x * .5;
+  margin-bottom: - $cap-padding-y;
+  margin-left: - $cap-padding-x * .5;
   border-bottom: 0;
 
   @if mkui.$nav-tabs-link-active-bg != mkui.$card-bg {
     .nav-link.active {
-      background-color: mkui.$card-bg;
-      border-bottom-color: mkui.$card-bg;
+      background-color: $bg;
+      border-bottom-color: $bg;
     }
   }
 }
 
 .card__header-pills {
-  margin-right: - mkui.$card-cap-padding-x * .5;
-  margin-left: - mkui.$card-cap-padding-x * .5;
+  margin-right: - $cap-padding-x * .5;
+  margin-left: - $cap-padding-x * .5;
 }
 
 // Card image
@@ -165,12 +189,12 @@
 
 .card__img--overlay,
 .card__img--top {
-  @include mkui.border-top-radius(mkui.$card-inner-border-radius);
+  @include mkui.border-top-radius($inner-border-radius);
 }
 
 .card__img--overlay,
 .card__img--bottom {
-  @include mkui.border-bottom-radius(mkui.$card-inner-border-radius);
+  @include mkui.border-bottom-radius($inner-border-radius);
 }
 
 //
@@ -181,7 +205,7 @@
   // The child selector allows nested `.card` within `.card__group`
   // to display properly.
   > .card {
-    margin-bottom: mkui.$card-group-margin;
+    margin-bottom: $group-margin;
   }
 
   @include mkui.media-breakpoint-up(sm) {
