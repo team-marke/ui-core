@@ -17,6 +17,46 @@ eleventyNavigation:
     {%- endset %}
     {%-
       set context = {
+        "body": cardBody
+      }
+    %}
+    {% include "card/card.njk" %}
+  </div>
+</div>
+
+<h2>Exemplo com header</h2>
+<div class="docs-example">
+  <div style="max-width: 350px;">
+    {%- set cardHeader %}
+      <span>Illum tritani honestatis ius eu. Eu persecuti percipitur vel, ad sit solum facer ignota, eam an tollit tibique insolens.</span>
+    {%- endset %}
+    {%- set cardBody %}
+      <h5 class="">Lorem ipsum dolor sit amet</h5>
+      <p class="">Illum tritani honestatis ius eu. Eu persecuti percipitur vel, ad sit solum facer ignota, eam an tollit tibique insolens.</p>
+      {% set context = { theme: 'primary', text: 'Ex cibo putent' } %}
+      {% include "button/button.njk" %}
+    {%- endset %}
+    {%-
+      set context = {
+        "body": cardBody,
+        "header": cardHeader
+      }
+    %}
+    {% include "card/card.njk" %}
+  </div>
+</div>
+
+<h2>Exemplo com imagem</h2>
+<div class="docs-example">
+  <div style="max-width: 350px;">
+    {%- set cardBody %}
+    <h5 class="">Lorem ipsum dolor sit amet</h5>
+    <p class="">Illum tritani honestatis ius eu. Eu persecuti percipitur vel, ad sit solum facer ignota, eam an tollit tibique insolens.</p>
+    {% set context = { theme: 'primary', text: 'Ex cibo putent' } %}
+    {% include "button/button.njk" %}
+    {%- endset %}
+    {%-
+      set context = {
         "image": {
           url: "https://picsum.photos/350/200",
           alt: 'Alt da imagem de card de exemplo',
@@ -24,7 +64,7 @@ eleventyNavigation:
           width: '350',
           height: '200'
         },
-        "children": cardBody
+        "body": cardBody
       }
     %}
     {% include "card/card.njk" %}
@@ -53,7 +93,7 @@ eleventyNavigation:
           link: '#lorem'
         },
         "interactive": "true",
-        "children": cardBody
+        "body": cardBody
       }
     %}
     {% include "card/card.njk" %}
@@ -79,7 +119,7 @@ eleventyNavigation:
           height: '300'
         },
         "overlay": "true",
-        "children": cardBody
+        "body": cardBody
       }
     %}
     {% include "card/card.njk" %}
@@ -108,7 +148,7 @@ eleventyNavigation:
         },
         "interactive": true,
         "overlay": "true",
-        "children": cardBody
+        "body": cardBody
       }
     %}
     {% include "card/card.njk" %}
@@ -133,7 +173,7 @@ eleventyNavigation:
           link: 'https://facebook.com'
         },
         "overlay": "true",
-        "children": cardBody
+        "body": cardBody
       }
     %}
     {% include "card/card.njk" %}
