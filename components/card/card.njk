@@ -21,9 +21,9 @@
   {%- else %}
     {%- set imagePos = context.image.position %}
   {%- endif %}
-  {%- set body = context.body %}
+  {%- set cardBody = context.body %}
   {%- if context.header %}
-    {%- set header = context.header %}
+    {%- set cardHeader = context.header %}
   {%- endif %}
 {%- endif %}
 
@@ -39,14 +39,14 @@
   {%- if image.link and not overlay %}
   <a href="{{ image.link | url | safe }}">
   {%- endif %}
-  {% if header %}
+  {% if context.header %}
   <div class="
     card__header
     {%- if overlay %}
     card__header--overlay
     {%- endif %}
   ">
-    {{ header | safe }}
+    {{ cardHeader | safe }}
   </div>
   {% endif %}
   {%- if image.url %}
@@ -91,7 +91,7 @@
     card__body--overlay
     {%- endif %}
   ">
-    {{ body | safe }}
+    {{ cardBody | safe }}
   </div>
   {%- if image.link and overlay %}
   </a>
