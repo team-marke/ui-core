@@ -3,46 +3,46 @@
  * Uses Swiper API. Read more about the API at @link https://swiperjs.com/api/
  */
 
-import Swiper, { Pagination, Navigation, EffectFade } from 'swiper';
+import Swiper, { Pagination, Navigation, EffectFade, Autoplay } from 'swiper';
 
 class MastheadSlider {
-  constructor(...args) {
-    this.Swiper = this.initSlider(args);
+  constructor(el) {
+    this.el = el;
+    this.autoplay = this.el.dataset.autoplay;
+    this.Swiper = this.initSlider(el);
   }
-  initSlider(args) {
+
+  initSlider(el) {
     let sliderContainer;
     let swiperParams;
-    Swiper.use([Pagination, Navigation, EffectFade]);
-    if (args.length === 1) {
-      sliderContainer = args[0];
-      swiperParams = {
-        slidesPerView: 1,
-        pagination: {
-          el: '.swiper-pagination',
-          clickable: true,
+    Swiper.use([Pagination, Navigation, EffectFade, Autoplay]);
+    sliderContainer = el;
+    swiperParams = {
+      slidesPerView: 1,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      effect: 'fade',
+      fadeEffect: {
+        crossFade: true,
+      },
+      autoplay: this.autoplay ? { delay: this.autoplay }: false,
+      autoHeight: true,
+      simulateTouch: false,
+      loop: false,
+      breakpoints: {
+        0: {
+          navigation: false,
         },
-        effect: 'fade',
-        fadeEffect: {
-          crossFade: true,
-        },
-        autoHeight: true,
-        simulateTouch: false,
-        loop: false,
-        breakpoints: {
-          0: {
-            navigation: false,
+        992: {
+          navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
           },
-          992: {
-            navigation: {
-              nextEl: '.swiper-button-next',
-              prevEl: '.swiper-button-prev',
-            },
-          },
         },
-      };
-    } else {
-      [sliderContainer, swiperParams] = args;
-    }
+      },
+    };
     return new Swiper(sliderContainer, swiperParams);
   }
 }

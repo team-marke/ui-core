@@ -1,13 +1,15 @@
 {%- if context -%}
   {% set slides = context.slides %}
   {% set navColor = context.navColor %}
+  {% set autoplay = context.autoplay %}
 {%- endif -%}
 
-<div 
-  class="masthead-slider swiper-container" 
+<div
+  {% if autoplay %}data-autoplay="{{ autoplay | e | safe }}"{% endif %}
+  class="masthead-slider swiper-container"
   style="
     {%- if navColor %}
-      --swiper-pagination-color: {{ navColor | safe }}; 
+      --swiper-pagination-color: {{ navColor | safe }};
       --swiper-theme-color: {{ navColor | safe }};
     {%- endif %}
   "
