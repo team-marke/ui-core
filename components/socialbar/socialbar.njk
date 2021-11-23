@@ -3,11 +3,13 @@
   {% set facebook = context.items.facebook %}
   {% set linkedin = context.items.linkedin %}
   {% set youtube = context.items.youtube %}
-  {%- if context.variant %}
-    {% set variant = context.variant %}
-  {%- else %}
-    {% set variant = 'dark' %}
-  {%- endif %}
+  {% set squareIcons = context.squareIcons %}
+  {%- if context.variant == "dark" -%}
+    {% set variant = "socialbar--dark" %}
+  {%- endif -%}
+  {%- if context.variant == "light" -%}
+    {% set variant = "socialbar--light" %}
+  {%- endif -%}
   {%- if context.componentClasses %}
     {% set componentClasses = context.componentClasses %}
   {%- else %}
@@ -15,25 +17,25 @@
   {%- endif %}
 {%- endif %}
 
-<div class="socialbar socialbar--{{ variant }} {{ componentClasses | join(" ") | safe }}">
+<div class="socialbar {{ variant | safe }} {{ componentClasses | join(" ") | safe }}">
   {%- if facebook %}
   <a class="socialbar__item" target="_blank" href="{{ facebook | url | safe }}" rel="noopener">
-    <i class="fab fa-facebook"></i>
+    <i class="fab fa-facebook{% if squareIcons %}-square{% endif %}"></i>
   </a>
   {%- endif %}
   {%- if instagram %}
   <a class="socialbar__item" target="_blank" href="{{ instagram | url | safe }}" rel="noopener">
-    <i class="fab fa-instagram"></i>
+    <i class="fab fa-instagram{% if squareIcons %}-square{% endif %}"></i>
   </a>
   {%- endif %}
   {%- if linkedin %}
   <a class="socialbar__item" target="_blank" href="{{ linkedin | url | safe }}" rel="noopener">
-    <i class="fab fa-linkedin-in"></i>
+    <i class="fab fa-linkedin{% if not squareIcons %}-in{% endif %}"></i>
   </a>
   {%- endif %}
   {%- if youtube %}
   <a class="socialbar__item" target="_blank" href="{{ youtube | url | safe }}" rel="noopener">
-    <i class="fab fa-youtube"></i>
+    <i class="fab fa-youtube{% if squareIcons %}-square{% endif %}"></i>
   </a>
   {%- endif %}
 </div>

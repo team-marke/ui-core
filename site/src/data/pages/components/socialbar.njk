@@ -8,14 +8,49 @@ eleventyNavigation:
 
 <h2>Exemplo</h2>
 <div class="docs-example">
-  {%- set context = {
-    variant: 'dark',
-    items: {
-      instagram: 'https://instagram.com',
-      facebook: 'https://facebook.com',
-      youtube: 'https://youtube.com',
-      linkedin: 'https://linkedin.com'
-    }
-  } %}
-  {% include "socialbar/socialbar.njk" %}
+  <div class="bg-primary p-3">
+    {%- set context = {
+      variant: 'dark',
+      items: {
+        instagram: 'https://instagram.com',
+        facebook: 'https://facebook.com',
+        youtube: 'https://youtube.com',
+        linkedin: 'https://linkedin.com'
+      }
+    } %}
+    {% include "socialbar/socialbar.njk" %}
+  </div>
+</div>
+
+<h2>Ícones quadrados</h2>
+<div class="docs-example">
+  <div class="bg-primary p-3">
+    {%- set context = {
+      variant: 'dark',
+      squareIcons: true,
+      items: {
+        instagram: 'https://instagram.com',
+        facebook: 'https://facebook.com',
+        youtube: 'https://youtube.com',
+        linkedin: 'https://linkedin.com'
+      }
+    } %}
+    {% include "socialbar/socialbar.njk" %}
+  </div>
+</div>
+
+<h2>Variação clara</h2>
+<div class="docs-example">
+  <div class="bg-light p-3">
+    {%- set context = {
+      variant: 'light',
+      items: {
+        instagram: 'https://instagram.com',
+        facebook: 'https://facebook.com',
+        youtube: 'https://youtube.com',
+        linkedin: 'https://linkedin.com'
+      }
+    } %}
+    {% include "socialbar/socialbar.njk" %}
+  </div>
 </div>

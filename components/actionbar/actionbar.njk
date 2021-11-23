@@ -2,6 +2,7 @@
   {% set startItems = context.startItems %}
   {% set centerItems = context.centerItems %}
   {% set endItems = context.endItems %}
+  {% set squareIcons = context.squareIcons %}
   {%- if context.variant == "dark" -%}
     {% set variant = "actionbar--dark" %}
   {%- endif -%}
@@ -29,25 +30,25 @@
     >
   {% endif %}
   {% if item.icon == "mail" %}
-    <i class="actionbar__icon fas fa-envelope"></i>
+    <i class="actionbar__icon fas fa-envelope{% if squareIcons %}-square{% endif %}"></i>
   {% endif %}
   {% if item.icon == "phone" %}
-    <i class="actionbar__icon fas fa-phone"></i>
+    <i class="actionbar__icon fas fa-phone{% if squareIcons %}-square{% endif %}"></i>
   {% endif %}
   {% if item.icon == "whatsapp" %}
-    <i class="actionbar__icon fab fa-whatsapp"></i>
+    <i class="actionbar__icon fab fa-whatsapp{% if squareIcons %}-square{% endif %}"></i>
   {% endif %}
   {% if item.icon == "facebook" %}
-    <i class="actionbar__icon fab fa-facebook-square"></i>
+    <i class="actionbar__icon fab fa-facebook{% if squareIcons %}-square{% endif %}"></i>
   {% endif %}
   {% if item.icon == "instagram" %}
-    <i class="actionbar__icon fab fa-instagram-square"></i>
+    <i class="actionbar__icon fab fa-instagram{% if squareIcons %}-square{% endif %}"></i>
   {% endif %}
   {% if item.icon == "linkedin" %}
-    <i class="actionbar__icon fab fa-linkedin"></i>
+    <i class="actionbar__icon fab fa-linkedin{% if not squareIcons %}-in{% endif %}"></i>
   {% endif %}
   {% if item.icon == "youtube" %}
-    <i class="actionbar__icon fab fa-youtube-square"></i>
+    <i class="actionbar__icon fab fa-youtube{% if squareIcons %}-square{% endif %}"></i>
   {% endif %}
   {% if item.text %}
     <span>{{ item.text | e | safe }}</span>

@@ -4,10 +4,10 @@
 // Social bar icons
 //
 
-$light-color: mkui.$white;
+$light-color: mkui.$black !default;
 $light-hover-color: mkui.$white;
 
-$dark-color: mkui.$black;
+$dark-color: mkui.$white !default;
 $dark-hover-color: mkui.$black;
 
 .socialbar {

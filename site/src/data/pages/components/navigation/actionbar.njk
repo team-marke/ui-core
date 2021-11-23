@@ -25,17 +25,94 @@ eleventyNavigation:
       ],
       "endItems": [
         {
-          "icon": "youtube",
-          "href": 'https://youtube.com'
+          "icon": "phone",
+          "text": "(51) 9999-9999",
+          "href": 'tel:555199999999'
+        }
+      ]
+    } %}
+    {% include "actionbar/actionbar.njk" %}
+  </div>
+</div>
+
+<h2>Com ícones</h2>
+<div class="docs-example p-3">
+  <div class="bg-primary px-3">
+    {%- set context = {
+      "variant": "dark",
+      "startItems": [
+        {
+          "href": 'mailto:email@email.com',
+          "icon": "mail"
+        },
+        {
+          "href": '889999999',
+          "icon": "phone"
+        },
+        {
+          "href": '889999999',
+          "icon": "whatsapp"
+        }
+      ],
+      "endItems": [
+        {
+          "icon": "facebook",
+          "href": 'https://facebook.com'
         },
         {
           "icon": "instagram",
           "href": 'https://instagram.com'
         },
         {
-          "icon": "phone",
-          "text": "(51) 9999-9999",
-          "href": 'tel:555199999999'
+          "icon": "linkedin",
+          "href": 'https://linkedin.com'
+        },
+        {
+          "icon": "youtube",
+          "href": 'https://youtube.com'
+        }
+      ]
+    } %}
+    {% include "actionbar/actionbar.njk" %}
+  </div>
+</div>
+
+<h2>Com ícones quadrados</h2>
+<div class="docs-example p-3">
+  <div class="bg-primary px-3">
+    {%- set context = {
+      "variant": "dark",
+      "squareIcons": "true",
+      "startItems": [
+        {
+          "href": 'mailto:email@email.com',
+          "icon": "mail"
+        },
+        {
+          "href": '889999999',
+          "icon": "phone"
+        },
+        {
+          "href": '889999999',
+          "icon": "whatsapp"
+        }
+      ],
+      "endItems": [
+        {
+          "icon": "facebook",
+          "href": 'https://facebook.com'
+        },
+        {
+          "icon": "instagram",
+          "href": 'https://instagram.com'
+        },
+        {
+          "icon": "linkedin",
+          "href": 'https://linkedin.com'
+        },
+        {
+          "icon": "youtube",
+          "href": 'https://youtube.com'
         }
       ]
     } %}
