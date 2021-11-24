@@ -36,8 +36,7 @@ eleventyNavigation:
       brandLogoMobile: 'https://res.cloudinary.com/webmaster-marke/image/upload/v1620931656/Logo_Marke_dt6azg_pthlhj.svg',
       brandLogoMobileWidth: 70,
       brandUrl: "#inicio",
-      variant: "dark",
-      offcanvasColor: "dark"
+      variant: "dark"
     } %}
     {% include "navbar/navbar.njk" %}
   </div>
@@ -73,8 +72,7 @@ eleventyNavigation:
       brandLogoMobile: 'https://res.cloudinary.com/webmaster-marke/image/upload/v1626289554/Marke_logo_dark.svg',
       brandLogoMobileWidth: 70,
       brandUrl: "#inicio",
-      variant: "light",
-      offcanvasColor: 'light'
+      variant: "light"
     } %}
     {% include "navbar/navbar.njk" %}
   </div>
@@ -122,8 +120,7 @@ eleventyNavigation:
       brandLogoMobile: 'https://res.cloudinary.com/webmaster-marke/image/upload/v1620931656/Logo_Marke_dt6azg_pthlhj.svg',
       brandLogoMobileWidth: 70,
       brandUrl: "#inicio",
-      variant: "dark",
-      offcanvasColor: "dark"
+      variant: "dark"
     } %}
     {% include "navbar/navbar.njk" %}
   </div>
@@ -160,7 +157,12 @@ eleventyNavigation:
       {%- if item.extra %}
         {% set renderedItem %}
           <div class="d-flex h-100 align-items-center">
-            <a class="btn btn-success" href="{{ item.url | url }}">{{ item.title | e | safe }}</a>
+            {% set context = {
+              theme: 'primary',
+              text: item.title,
+              href: item.url
+            } %}
+            {% include "button/button.njk" %}
           </div>
         {% endset %}
       {% set arr = (arr.push(renderedItem), arr) %}
@@ -174,7 +176,6 @@ eleventyNavigation:
       brandLogoMobile: 'https://res.cloudinary.com/webmaster-marke/image/upload/v1620931656/Logo_Marke_dt6azg_pthlhj.svg',
       brandLogoMobileWidth: 70,
       brandUrl: "#inicio",
-      offcanvasColor: "dark",
       variant: "dark",
       extraNavItems: arr
     } %}
@@ -183,7 +184,7 @@ eleventyNavigation:
 </div>
 
 <h2>Conteúdo extra somente no mobile</h2>
-<p>Conteúdo será colocado do body do offcanvas e só aparecerá no mobile</p>
+<p>Conteúdo será colocado no body do offcanvas e só aparecerá no mobile</p>
 <div class="docs-example p-3">
   <div class="bg-dark px-3">
     {%- set navbarLinks = [
@@ -210,12 +211,12 @@ eleventyNavigation:
     ] %}
 
     {%- set extraContent %}
-      <select class="form-select" aria-label="Default select example">
-        <option selected>Open this select menu</option>
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
-      </select>
+      {% set context = {
+        theme: 'primary',
+        text: 'Mobile only!',
+        href: '#'
+      } %}
+      {% include "button/button.njk" %}
     {%- endset %}
     {%- set context = {
       navbarLinks: navbarLinks,
@@ -232,7 +233,7 @@ eleventyNavigation:
   </div>
 </div>
 
-<h2>Navegação central sem imagem</h2>
+<h2 id="sample-id">Navegação central sem imagem</h2>
 <div class="docs-example p-3">
   <div class="bg-dark px-3">
     {%- set navbarLinks = [
@@ -263,17 +264,23 @@ eleventyNavigation:
       {%- if item.extra %}
         {% set renderedItem %}
           <div class="d-flex h-100 align-items-center">
-            <a class="btn btn-success" href="{{ item.url | url }}">{{ item.title | e | safe }}</a>
+            {% set context = {
+              theme: 'primary',
+              text: item.title,
+              href: item.url
+            } %}
+            {% include "button/button.njk" %}
           </div>
         {% endset %}
       {% set arr = (arr.push(renderedItem), arr) %}
       {%- endif %}
     {% endfor %}
+
     {%- set context = {
       navbarLinks: navbarLinks,
-      navPosition: "between",
       currentPage: page,
       brandUrl: "#inicio",
+      navPosition: "between",
       offcanvasColor: "dark",
       variant: "dark",
       extraNavItems: arr

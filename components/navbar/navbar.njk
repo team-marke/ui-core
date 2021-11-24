@@ -17,24 +17,19 @@
   {%- else -%}
     {% set brandLogoMobileWidth = 50 %}
   {%- endif -%}
-  {%- if context.variant -%}
-    {% set variant = context.variant %}
+  {%- if context.variant == 'light' -%}
+    {% set variant = 'navbar-light' %}
   {%- else -%}
-    {% set variant = 'dark' %}
+    {% set variant = 'navbar-dark' %}
   {%- endif -%}
   {%- if context.expand -%}
     {% set expand = context.expand %}
   {%- else -%}
     {% set expand = 'lg' %}
   {%- endif -%}
-  {%- if context.offcanvasColor -%}
-    {% set offcanvasColor = context.offcanvasColor %}
-  {%- else -%}
-    {% set offcanvasColor = 'light' %}
-  {%- endif -%}
 {%- endif -%}
 
-<nav class="navbar navbar-{{ variant | e | safe }} navbar-expand-{{ expand | e | safe }}">
+<nav class="navbar {{ variant | e | safe }} navbar-expand-{{ expand | e | safe }}">
   {%- if context.brandLogo -%}
     <a class="navbar-brand" href="{{ brandUrl | url | safe }}">
       <img
@@ -54,7 +49,7 @@
   <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <div class="offcanvas offcanvas-start {{ 'bg-' + offcanvasColor | e | safe }}" tabindex="-1">
+  <div class="offcanvas offcanvas-start" tabindex="-1">
     <div class="offcanvas-header">
       {%- if context.brandLogoMobile -%}
         <div class="offcanvas-title">

@@ -59,6 +59,9 @@ $dark-brand-hover-color: $dark-active-color !default;
 $item-extra-padding-y: $nav-link-padding-y !default;
 $item-extra-padding-x: $nav-link-padding-x !default;
 
+$offcanvas-light-bg: mkui.$light !default;
+$offcanvas-dark-bg: mkui.$dark !default;
+
 .navbar {
   position: relative;
   display: flex;
@@ -96,6 +99,11 @@ $item-extra-padding-x: $nav-link-padding-x !default;
       @extend %container-flex-properties;
     }
   }
+
+  .offcanvas__extra-content {
+    padding-top: $item-extra-padding-y;
+    padding-bottom: $item-extra-padding-y;
+  }
 }
 
 // Navbar brand
@@ -132,14 +140,14 @@ $item-extra-padding-x: $nav-link-padding-x !default;
   .nav-item {
     height: 100%;
   }
-  
+
   .nav-item--extra {
     padding-top: $item-extra-padding-y;
     padding-bottom: $item-extra-padding-y;
     padding-right: 0;
     padding-left: 0;
   }
-  
+
   .nav-link {
     display: flex;
     align-items: center;
@@ -314,6 +322,8 @@ $item-extra-padding-x: $nav-link-padding-x !default;
 
         .offcanvas__extra-content {
           display: none;
+          padding-right: $item-extra-padding-x;
+          padding-left: $item-extra-padding-x;
         }
       }
     }
@@ -377,6 +387,10 @@ $item-extra-padding-x: $nav-link-padding-x !default;
       color: $light-active-color;
     }
   }
+
+  .offcanvas{
+    background: $offcanvas-light-bg;
+  }
 }
 
 // White links against a dark background
@@ -429,5 +443,9 @@ $item-extra-padding-x: $nav-link-padding-x !default;
     a:focus {
       color: $dark-active-color;
     }
+  }
+
+  .offcanvas{
+    background: $offcanvas-dark-bg;
   }
 }
