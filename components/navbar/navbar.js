@@ -12,6 +12,11 @@ export class Navbar {
       el.querySelector('.navbar-toggler').addEventListener('click', () => {
         offcanvas.toggle();
       });
+      el.querySelectorAll('a').forEach((link) =>
+        link.addEventListener('click', () => {
+          offcanvas.hide();
+        })
+      );
     });
     el.querySelectorAll('.dropdown').forEach((dropdownEl) => {
       new Dropdown(dropdownEl);
