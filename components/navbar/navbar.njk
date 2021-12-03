@@ -1,6 +1,7 @@
 {%- if context -%}
-  {% set navbarLinks = context.navbarLinks %}
-  {% set navPosition = context.navPosition %}
+  {% set id = context.id %}
+  {% set links = context.links %}
+  {% set children = context.children %}
   {% set currentPage = context.currentPage %}
   {% set brandLogo = context.brandLogo %}
   {% set brandLogoMobile = context.brandLogoMobile %}
@@ -46,65 +47,84 @@
       >
     </a>
   {%- endif -%}
-  <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas">
+  <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#{{ id | e | safe }}" aria-controls="{{ id | e | safe }}">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <div class="offcanvas offcanvas-start" tabindex="-1">
+  <div class="offcanvas offcanvas-start {% if variant == 'navbar-dark' %} bg-dark{% endif %}" tabindex="-1" id="{{ id | e | safe }}">
     <div class="offcanvas-header">
       {%- if context.brandLogoMobile -%}
-        <div class="offcanvas-title">
+        <a class="offcanvas-title" href="{{ brandUrl | url | safe }}">
           <img
             class="img-fluid"
             alt="Logo"
             width="{{ brandLogoMobileWidth }}"
             src="{%- imageUrl brandLogoMobile, { fetch_format: 'auto', quality: 'auto', dpr: 2, width: brandLogoWidth } %}"
           >
-        </div>
+        </a>
       {%- endif -%}
-      <button type="button" class="btn-close {% if variant == 'dark' %} btn-close-white{% endif %}" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      <button type="button" class="btn-close {% if variant == 'navbar-dark' %} btn-close-white{% endif %}" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">
-      <ul class="navbar-nav{% if navPosition %} navbar-nav--{{ navPosition | safe }}{% endif %}">
-        {%- for entry in navbarLinks %}
-        {%- if not entry.navbar.hidden and not entry.extra %}
-        <li class="nav-item {% if entry.children | length %}dropdown{% endif %}">
-          {{ entry | navbarLink(currentPage) | safe }}
-          {%- if entry.children | length > 0 and not entry.navbar.hideChildren %}
-            <div class="dropdown-menu dropdown-menu-md-right{% if variant == 'dark' %} dropdown-menu-dark{% endif %}" aria-labelledby="dropdown-menu-{{ entry.title | slug | safe }}">
-              {%- if entry.url %}
-                <a class="dropdown-item{% if entry.url == page.url %} active{% endif %}" href="{{ entry.url | url }}">
-                  {%- if entry.navbar.dropdownTitle %}
-                  <span>{{ entry.navbar.dropdownTitle | e | safe }}</span>
-                  {% else %}
-                  <span>Todos {{ entry.title | e | safe }}</span>
-                  {% endif %}
-                </a>
-                {%- if not entry.navbar.hideDivider %}
-                  <div class="dropdown-divider"></div>
-                {%- endif %}
-              {%- endif %}
-              {%- for child in entry.children %}
-                <a class="dropdown-item{% if child.url == page.url %} active{% endif %}" href="{{ child.url | url }}">{{ child.title | e | safe }}</a>
-              {%- endfor %}
-            </div>
-          {% endif %}
-        </li>
-        {% endif %}
-        {%- endfor %}
-        {%- if extraNavItems %}
-          {% for item in extraNavItems %}
-            <li class="nav-item nav-item--extra">
-              {{ item | safe }}
+      <ul class="navbar-nav">
+        {% for link in links %}
+          {% if (link.children | length) <= 0 %}
+            <li class="nav-item">
+              <a
+                class="nav-link{% if link.url == currentPage %} active{% endif %}"
+                {% if link.url == currentPage %}aria-current="page"{% endif %}
+                href="{{ link.url | url }}"
+                {% if (link.url | first) == '#' %}nav-link-internal{% endif %}
+              >
+                {{ link.title | e | safe }}
+              </a>
             </li>
-          {% endfor %}
-        {%- endif %}
+          {% else %}
+            <li class="nav-item dropdown">
+              <a
+                href="#"
+                class="nav-link dropdown-toggle"
+                id="{{ link.title | slug | safe }}"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                role="button"
+              >
+                {{ link.title | e | safe }}
+              </a>
+              <ul
+                class="dropdown-menu {% if variant == 'navbar-dark' %} dropdown-menu-dark{% endif %}"
+                aria-labelledby="{{ link.title | slug | safe }}"
+              >
+                {% if link.url %}
+                  <li>
+                    <a
+                      class="dropdown-item {% if link.url == currentPage %} active{% endif %}"
+                      {% if link.url == currentPage %}aria-current="page"{% endif %}
+                      href="{{ link.url | url }}"
+                    >
+                      {{ link.title | e | safe }}
+                    </a>
+                  </li>
+                  <li>
+                    <hr class="dropdown-divider">
+                  </li>
+                {% endif %}
+                {% for link in link.children %}
+                  <li>
+                    <a
+                      class="dropdown-item {% if link.url == currentPage %} active{% endif %}"
+                      {% if link.url == currentPage %}aria-current="page"{% endif %}
+                      href="{{ link.url | url }}"
+                    >
+                      {{ link.title | e | safe }}
+                    </a>
+                  </li>
+                {% endfor %}
+              </ul>
+            </li>
+          {% endif %}
+        {% endfor %}
       </ul>
-        <div class="offcanvas__extra-content">
-          {%- if extraOffcanvasContent %}
-            <div class=""></div>
-            {{ extraOffcanvasContent | safe }}
-          {%- endif %}
-        </div>
+      {{ children | safe }}
     </div>
   </div>
 </nav>

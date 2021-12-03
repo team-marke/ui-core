@@ -1,19 +1,14 @@
 <header class="bg-dark">
   <div class="container">
-    {%- set navbarLinks = collections.page | eleventyNavigation("home") %}
-    {%- 
-      set context = {
-        navbarLinks: navbarLinks,
-        currentPage: page,
-        brandLogo: 'https://res.cloudinary.com/webmaster-marke/image/upload/v1620931656/Logo_Marke_dt6azg_pthlhj.svg',
-        brandLogoMobile: 'https://res.cloudinary.com/webmaster-marke/image/upload/v1620931656/Logo_Marke_dt6azg_pthlhj.svg',
-        brandLogoMobileWidth: 70,
-        brandUrl: "/",
-        variant: "dark",
-        offcanvasColor: "primary",
-        offcanvasColor: "primary"
-      } 
-    %}
+    {% set navbarLinks = collections.navbar | eleventyNavigation("home") %}
+    {% set context = {
+      id: 'mkui-navbar',
+      links: navbarLinks,
+      children: navbarChildren,
+      brandLogo: 'https://res.cloudinary.com/webmaster-marke/image/upload/v1620931656/Logo_Marke_dt6azg_pthlhj.svg',
+      brandLogoMobile: 'https://res.cloudinary.com/webmaster-marke/image/upload/v1620931656/Logo_Marke_dt6azg_pthlhj.svg',
+      brandUrl: "/"
+    } %}
     {% include "navbar/navbar.njk" %}
   </div>
 </header>

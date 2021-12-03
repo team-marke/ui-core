@@ -8,8 +8,6 @@ eleventyNavigation:
   title: Documentação
   order: 0
   parent: home
-  navbar:
-    hideChildren: true
 ---
 # Documentação
 
