@@ -110,6 +110,32 @@ eleventyNavigation:
   </div>
 </div>
 
+
+<h2>Navegação alinhada a direita</h2>
+<div class="docs-example">
+  <div class="bg-dark px-3">
+    {% set navbarLinks = [
+      {
+        url: "",
+        title: "Home"
+      },
+      {
+        url: "",
+        title: "Quem Somos"
+      }
+    ] %}
+    {% set context = {
+      id: 'exemplo',
+      links: navbarLinks,
+      brandLogo: 'https://res.cloudinary.com/webmaster-marke/image/upload/v1620931656/Logo_Marke_dt6azg_pthlhj.svg',
+      brandLogoMobile: 'https://res.cloudinary.com/webmaster-marke/image/upload/v1620931656/Logo_Marke_dt6azg_pthlhj.svg',
+      brandUrl: "#home",
+      nav_override_classes: ['w-100', 'justify-content-end']
+    } %}
+    {% include "navbar/navbar.njk" %}
+  </div>
+</div>
+
 <h2>Variação clara</h2>
 <div class="docs-example">
   <div class="bg-light px-3">

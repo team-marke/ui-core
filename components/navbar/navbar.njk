@@ -2,12 +2,10 @@
   {% set id = context.id %}
   {% set links = context.links %}
   {% set children = context.children %}
-  {% set currentPage = context.currentPage %}
+  {% set currentPageUrl = context.currentPageUrl %}
   {% set brandLogo = context.brandLogo %}
   {% set brandLogoMobile = context.brandLogoMobile %}
   {% set brandUrl = context.brandUrl %}
-  {% set extraNavItems = context.extraNavItems %}
-  {% set extraOffcanvasContent = context.extraOffcanvasContent %}
   {%- if context.brandLogoWidth -%}
     {% set brandLogoWidth = context.brandLogoWidth %}
   {%- else -%}
@@ -28,6 +26,7 @@
   {%- else -%}
     {% set expand = 'lg' %}
   {%- endif -%}
+  {% set nav_override_classes = context.nav_override_classes %}
 {%- endif -%}
 
 <nav class="navbar {{ variant | e | safe }} navbar-expand-{{ expand | e | safe }}">
@@ -65,13 +64,19 @@
       <button type="button" class="btn-close {% if variant == 'navbar-dark' %} btn-close-white{% endif %}" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">
-      <ul class="navbar-nav">
+      <ul
+        class="navbar-nav
+        {% if nav_override_classes %}
+          {% for class in nav_override_classes %}
+            {{ class | e | safe }}
+          {% endfor %}
+        {% endif %}">
         {% for link in links %}
           {% if (link.children | length) <= 0 %}
             <li class="nav-item">
               <a
-                class="nav-link{% if link.url == currentPage %} active{% endif %}"
-                {% if link.url == currentPage %}aria-current="page"{% endif %}
+                class="nav-link{% if link.url == currentPageUrl %} active{% endif %}"
+                {% if link.url == currentPageUrl %}aria-current="page"{% endif %}
                 href="{{ link.url | url }}"
                 {% if (link.url | first) == '#' %}nav-link-internal{% endif %}
               >
@@ -97,8 +102,8 @@
                 {% if link.url %}
                   <li>
                     <a
-                      class="dropdown-item {% if link.url == currentPage %} active{% endif %}"
-                      {% if link.url == currentPage %}aria-current="page"{% endif %}
+                      class="dropdown-item {% if link.url == currentPageUrl %} active{% endif %}"
+                      {% if link.url == currentPageUrl %}aria-current="page"{% endif %}
                       href="{{ link.url | url }}"
                     >
                       {{ link.title | e | safe }}
@@ -111,8 +116,8 @@
                 {% for link in link.children %}
                   <li>
                     <a
-                      class="dropdown-item {% if link.url == currentPage %} active{% endif %}"
-                      {% if link.url == currentPage %}aria-current="page"{% endif %}
+                      class="dropdown-item {% if link.url == currentPageUrl %} active{% endif %}"
+                      {% if link.url == currentPageUrl %}aria-current="page"{% endif %}
                       href="{{ link.url | url }}"
                     >
                       {{ link.title | e | safe }}
