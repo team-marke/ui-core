@@ -21,7 +21,7 @@
   $choices-text-color: mkui.$input-color,
   $choices-keyline-color: mkui.$input-border-color,
   $choices-primary-color: mkui.$primary,
-  $choices-disabled-color: null,
+  $choices-disabled-color: mkui.$primary,
   $choices-highlight-color: mkui.$primary,
   $choices-button-dimension: 8px,
   $choices-button-offset: 8px,
