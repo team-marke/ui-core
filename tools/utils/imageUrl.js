@@ -11,37 +11,19 @@ cloudinary.config({
 
 /**
  * Creates image url with transformations/url opts using the Cloudinary API.
- * 
+ *
  * @param {String} source Filename or File URL
  * @param {cloudinary.TransformationOptions | cloudinary.ConfigAndUrlOptions} opts
  * @returns {string} Image full url to Cloudinary.
  */
 module.exports = (source, opts) => {
+  let public_id = '';
   let imageUrl = '';
-  let public_path = '';
-
-  /**
-   * Returns a striped path without '.../V123456789/...'.
-   * 
-   * @param {String} fullPath
-   * @returns {string} Striped path.
-   */
-  const stripVersionNumber = (fullPath) => {
-    const versionLength = fullPath.indexOf('/') + 1;
-    return fullPath.substr(versionLength) + '/';
-  };
-
   try {
     let url = new URL(source);
-    const filePath = path.dirname(url.pathname);
-    const searchTerm = '/upload/';
-    const index = filePath.indexOf(searchTerm);
-    let folder = filePath.substr(index + searchTerm.length) // gets a subtring url from the 'upload' term.
-
-    public_path = stripVersionNumber(folder) + path.basename(url.pathname);
-
+    public_id = path.basename(url.pathname);
     if (url.hostname === 'res.cloudinary.com') {
-      imageUrl = cloudinary.v2.url(public_path, {  secure: true, ...opts });
+      imageUrl = cloudinary.v2.url(public_id, { secure: true, ...opts });
     } else {
       imageUrl = source;
     }
