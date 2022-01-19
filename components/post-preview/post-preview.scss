@@ -2,8 +2,20 @@
 // Post preview component styles.
 //
 
+@use 'sass:math';
 @use '../../design-tokens' as mkui;
 @use '../../components/button' as btn;
+
+$title-color: inherit !default;
+$title-link-color: inherit !default;
+$title-link-color-hover: inherit !default;
+$title-font-size: mkui.$h3-font-size !default;
+$title-font-family: mkui.$headings-font-family !default;
+$title-font-weight: mkui.$headings-font-weight !default;
+$title-transition: mkui.$transition-base !default;
+
+$excerpt-color: mkui.$text-muted !default;
+$excerpt-font-size: 0.9rem !default;
 
 .post-preview {
   position: relative;
@@ -11,25 +23,33 @@
   gap: 1rem;
   flex-direction: column;
   &__title-link {
+    color: $title-link-color;
     text-decoration: none;
     &:hover {
+      color: $title-link-color-hover;
       text-decoration: none;
     }
   }
   &__title {
     margin-bottom: 0;
-    font-family: mkui.$headings-font-family;
-    @include mkui.font-size(mkui.$h3-font-size);
-    font-weight: mkui.$headings-font-weight;
-    transition: mkui.$transition-base;
+    font-family: $title-font-family;
+    @include mkui.font-size($title-font-size);
+    font-weight: $title-font-weight;
+    transition: $title-transition;
+    color: $title-color;
   }
   &__excerpt {
-    color: mkui.tint-color(mkui.$body-color, 20%);
-    font-size: 90%;
+    color: $excerpt-color;
+    @include mkui.font-size($excerpt-font-size);
     margin-bottom: 0;
   }
   &__date {
-    display: block;
+    display: flex;
+    align-items: center;
+    gap: math.div(mkui.$spacer, 2);
+    > time {
+      display: block;
+    }
   }
   &__categories {
     display: flex;

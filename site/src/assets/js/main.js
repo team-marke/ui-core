@@ -102,6 +102,20 @@ const loadSocialbar = async () => {
 };
 
 /**
+ * Load Post Preview.
+ */
+const loadPostPreview = async () => {
+  if (document.querySelector('.post-preview')) {
+    const { PostPreview } = await import(
+      /* webpackChunkName: "components.post-preview" */ '../../../../components/post-preview/post-preview'
+    );
+    document.querySelectorAll('.post-preview').forEach((postPreview) => {
+      new PostPreview(postPreview);
+    });
+  }
+};
+
+/**
  * Load Navbar components.
  */
 const loadNavbar = async () => {
@@ -189,6 +203,7 @@ const loadDynamicModules = () => {
   loadNavbar();
   loadActionbar();
   loadSocialbar();
+  loadPostPreview();
   loadMastheadSlider();
   loadCarousel();
   loadToastStackExamples();

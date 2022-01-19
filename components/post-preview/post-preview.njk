@@ -25,9 +25,12 @@
   </a>
   {%- endif %}
   {%- if date %}
-  <time class="post-preview__date" datetime="{{ date | ISODate | safe }}">
-    {{ date | toLocaleDateString(locale, { 'year': 'numeric', 'month': 'long', 'day': 'numeric' }) | safe }}
-  </time>
+  <div class="post-preview__date">
+    <i class="far fa-calendar-alt"></i>
+    <time datetime="{{ date | ISODate | safe }}">
+      {{ date | toLocaleDateString(locale, { 'year': 'numeric', 'month': 'long', 'day': 'numeric' }) | safe }}
+    </time>
+  </div>
   {%- endif %}
   {%- if excerpt %}
   <p class="post-preview__excerpt">{{ excerpt | e | safe }}</p>
