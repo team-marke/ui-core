@@ -4,34 +4,45 @@ tags:
 eleventyNavigation:
   key: toast-stack
   title: Toast Stack
+metadata:
+  title: Toast Stack
+  description: Notificações push para melhorar a comunicação com o usuário do site.
 ---
-<h1>Toast Stack</h1>
-<p>Lorem ipsum dolor sit amet, stet intellegat mei, pertinax oportere at sea. Eos an mutat blandit. Nec at nisl volumus appellantur, an his brute quodsi. Sit ceteros contentiones at, te summo discere pro.</p>
+<h1>{{metadata.title}}</h1>
+<p>{{metadata.description}}</p>
 
 <div
   class="toast-stack-example"
   data-toast-stack-anchor-v="bottom"
   data-toast-stack-anchor-h="right"
 >
-  <h2 class="docs-section-title">Exemplo</h2>
-  <div class="docs-example">
-    {% set context = { 
-      theme: 'primary', 
-      text: 'Exibir toast',
-      override_classes: ['toast-stack-example-button'],
-      override_atts: {
-        'data-toast-message': 'Exemplo de notificação.',
-        'data-toast-variant': 'primary',
-        'data-toast-auto-hide-duration': '3000',
-        'data-toast-closebutton': 'false'
-      }
-    } %}
-    {% include "button/button.njk" %}
+<section id="toast-example">
+    <h2 class="docs-section-title">Exemplo de Toast simples</h2>
+    <P>Na sua versão mais simples a notificação aparece por tempo determinado e depois desaparece.</p>
+    <li>Recomendamos por padrão o uso do canto inferior direito.</li>
+
+    <div class="docs-example">
+      {% set context = {
+        theme: 'primary',
+        text: 'Exibir toast',
+        override_classes: ['toast-stack-example-button'],
+        override_atts: {
+          'data-toast-message': 'Exemplo de notificação.',
+          'data-toast-variant': 'primary',
+          'data-toast-auto-hide-duration': '3000',
+          'data-toast-closebutton': 'false'
+        }
+      } %}
+      {% include "button/button.njk" %}
   </div>
+</section>
+
+<section id="toast-action">
   <h2 class="docs-section-title">Exemplo de toast com ação</h2>
+  <p>Toast com opção de fechar</p>
   <div class="docs-example">
-    {% set context = { 
-      theme: 'primary', 
+    {% set context = {
+      theme: 'primary',
       text: 'Exibir toast',
       override_classes: ['toast-stack-example-button'],
       override_atts: {
@@ -41,10 +52,12 @@ eleventyNavigation:
     } %}
     {% include "button/button.njk" %}
   </div>
+</section>
+<section id="toast-colors">
   <h2 class="docs-section-title">Usando variações de cores</h2>
   <div class="docs-example">
-    {% set context = { 
-      theme: 'danger', 
+    {% set context = {
+      theme: 'danger',
       text: 'Exibir toast',
       override_classes: ['toast-stack-example-button'],
       override_atts: {
@@ -53,8 +66,8 @@ eleventyNavigation:
       }
     } %}
     {% include "button/button.njk" %}
-    {% set context = { 
-      theme: 'warning', 
+    {% set context = {
+      theme: 'warning',
       text: 'Exibir toast',
       override_classes: ['toast-stack-example-button'],
       override_atts: {
@@ -63,8 +76,8 @@ eleventyNavigation:
       }
     } %}
     {% include "button/button.njk" %}
-    {% set context = { 
-      theme: 'success', 
+    {% set context = {
+      theme: 'success',
       text: 'Exibir toast',
       override_classes: ['toast-stack-example-button'],
       override_atts: {
@@ -74,10 +87,12 @@ eleventyNavigation:
     } %}
     {% include "button/button.njk" %}
   </div>
+</section>
+<section id="toast-time-defined">
   <h2 class="docs-section-title">Definindo tempos de expiração</h2>
   <div class="docs-example">
-    {% set context = { 
-      theme: 'primary', 
+    {% set context = {
+      theme: 'primary',
       text: 'Exibir toast',
       override_classes: ['toast-stack-example-button'],
       override_atts: {
@@ -89,10 +104,13 @@ eleventyNavigation:
     } %}
     {% include "button/button.njk" %}
   </div>
+</section>
+<section id="toast-no-dup">
   <h2 class="docs-section-title">Prevenindo duplicações</h2>
+  <p>Usando essa opção é garantido que apenas um toast por botão apareça por vez, evitando mensagens duplicadas</p>
   <div class="docs-example">
-    {% set context = { 
-      theme: 'primary', 
+    {% set context = {
+      theme: 'primary',
       text: 'Exibir toast',
       override_classes: ['toast-stack-example-button'],
       override_atts: {
@@ -106,38 +124,43 @@ eleventyNavigation:
     {% include "button/button.njk" %}
   </div>
 </div>
-<h2>Escolhendo posições</h2>
-<div class="docs-example">
-  <span
-    class="toast-stack-example"
-    data-toast-stack-anchor-v="bottom"
-    data-toast-stack-anchor-h="center"
-  >
-    {% set context = { 
-      theme: 'primary', 
-      text: 'Exibir no centro horizontal e abaixo',
-      override_classes: ['toast-stack-example-button'],
-      override_atts: {
-        'data-toast-message': 'Estou abaixo e centralizado.',
-        'data-toast-variant': 'primary'
-      }
-    } %}
-    {% include "button/button.njk" %}
-  </span>
-  <span
-    class="toast-stack-example"
-    data-toast-stack-anchor-v="top"
-    data-toast-stack-anchor-h="right"
-  >
-    {% set context = { 
-      theme: 'primary', 
-      text: 'Exibir na direita e topo vertical',
-      override_classes: ['toast-stack-example-button'],
-      override_atts: {
-        'data-toast-message': 'Estou no topo na direita.',
-        'data-toast-variant': 'primary'
-      }
-    } %}
-    {% include "button/button.njk" %}
-  </span>
-</div>
+</section>
+
+<section id="toast-choose-position">
+  <h2 class="pt-3">Escolhendo posições</h2>
+  <p>Quando for necessário alterar a posição do toast</p>
+  <div class="docs-example">
+    <span
+      class="toast-stack-example"
+      data-toast-stack-anchor-v="bottom"
+      data-toast-stack-anchor-h="center"
+    >
+      {% set context = {
+        theme: 'primary',
+        text: 'Exibir no centro horizontal e abaixo',
+        override_classes: ['toast-stack-example-button'],
+        override_atts: {
+          'data-toast-message': 'Estou abaixo e centralizado.',
+          'data-toast-variant': 'primary'
+        }
+      } %}
+      {% include "button/button.njk" %}
+    </span>
+    <span
+      class="toast-stack-example"
+      data-toast-stack-anchor-v="top"
+      data-toast-stack-anchor-h="right"
+    >
+      {% set context = {
+        theme: 'primary',
+        text: 'Exibir na direita e topo vertical',
+        override_classes: ['toast-stack-example-button'],
+        override_atts: {
+          'data-toast-message': 'Estou no topo na direita.',
+          'data-toast-variant': 'primary'
+        }
+      } %}
+      {% include "button/button.njk" %}
+    </span>
+  </div>
+</section>

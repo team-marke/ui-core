@@ -9,27 +9,30 @@ metadata:
 <h1>{{metadata.title}}</h1>
 <p>{{metadata.description}}</p>
 
+<section id="basic">
 <h2>Exemplo básico usando Video Teaser</h2>
-<div class="docs-example">
-  <div style="max-width: 500px;">
-    {% set context = {
-      "id": "IBIVvcIcX6k",
-      "alt": "Como aparecer no Google",
-      "toggles_modal": true
-    } %}
-    {% include "video-teaser/video-teaser.njk" %}
-  </div>
+  <div class="docs-example">
+    <div style="max-width: 500px;">
+      {% set context = {
+        "id": "IBIVvcIcX6k",
+        "alt": "Como aparecer no Google",
+        "toggles_modal": true
+      } %}
+      {% include "video-teaser/video-teaser.njk" %}
+    </div>
 </div>
-
-<h2>Usando uma thumbnail personalizada</h2>
-<div class="docs-example">
-  <div style="max-width: 500px;">
-    {% set context = {
-      "id": "IBIVvcIcX6k",
-      "alt": "Como aparecer no Google",
-      "toggles_modal": true,
-      "custom_thumbnail": "https://res.cloudinary.com/webmaster-marke/image/upload/v1637093236/p%C3%BAblico-alvo-e-persona.jpg"
-    } %}
-    {% include "video-teaser/video-teaser.njk" %}
+</section>
+<section id="thumb-personalizada">
+  <h2>Usando uma thumbnail personalizada</h2>
+  <div class="docs-example">
+    <div style="max-width: 500px;">
+      {% set context = {
+        "id": "IBIVvcIcX6k",
+        "alt": "Como aparecer no Google",
+        "toggles_modal": true,
+        "custom_thumbnail": "https://res.cloudinary.com/webmaster-marke/image/upload/v1637093236/p%C3%BAblico-alvo-e-persona.jpg"
+      } %}
+      {% include "video-teaser/video-teaser.njk" %}
+    </div>
   </div>
-</div>
+</section>
