@@ -2,55 +2,64 @@
 eleventyNavigation:
   key: socialbar
   title: Social Bar
+metadata:
+  title: Social Bar
+  description: Social bar com redes sociais que deseja incluir no site.
 ---
-<h1>Social Bar</h1>
-<p>Lorem ipsum dolor sit amet, stet intellegat cu mei, pertinax oportere at sea. Eos an mutat blandit. Nec at nisl volumus appellantur, an his brute quodsi. Sit ceteros contentiones at, te summo discere pro.</p>
+<h1>{{metadata.title}}</h1>
+<p>{{metadata.description}}</p>
 
-<h2>Exemplo</h2>
-<div class="docs-example">
-  <div class="bg-primary p-3">
-    {%- set context = {
-      variant: 'dark',
-      items: {
-        instagram: 'https://instagram.com',
-        facebook: 'https://facebook.com',
-        youtube: 'https://youtube.com',
-        linkedin: 'https://linkedin.com'
-      }
-    } %}
-    {% include "socialbar/socialbar.njk" %}
+<section id="social-bar">
+  <h2>Exemplo de Social Bar com fundo escuro</h2>
+  <div class="docs-example">
+    <div class="bg-primary p-3">
+      {%- set context = {
+        variant: 'dark',
+        items: {
+          instagram: 'https://instagram.com',
+          facebook: 'https://facebook.com',
+          youtube: 'https://youtube.com',
+          linkedin: 'https://linkedin.com'
+        }
+      } %}
+      {% include "socialbar/socialbar.njk" %}
+    </div>
   </div>
-</div>
+</section>
 
-<h2>Ícones quadrados</h2>
-<div class="docs-example">
-  <div class="bg-primary p-3">
-    {%- set context = {
-      variant: 'dark',
-      squareIcons: true,
-      items: {
-        instagram: 'https://instagram.com',
-        facebook: 'https://facebook.com',
-        youtube: 'https://youtube.com',
-        linkedin: 'https://linkedin.com'
-      }
-    } %}
-    {% include "socialbar/socialbar.njk" %}
+<section id="social-square">
+  <h2 class="pt-4">Fundo escuro e ícones quadrados</h2>
+  <div class="docs-example">
+    <div class="bg-primary p-3">
+      {%- set context = {
+        variant: 'dark',
+        squareIcons: true,
+        items: {
+          instagram: 'https://instagram.com',
+          facebook: 'https://facebook.com',
+          youtube: 'https://youtube.com',
+          linkedin: 'https://linkedin.com'
+        }
+      } %}
+      {% include "socialbar/socialbar.njk" %}
+    </div>
   </div>
-</div>
+</section>
 
-<h2>Variação clara</h2>
-<div class="docs-example">
-  <div class="bg-light p-3">
-    {%- set context = {
-      variant: 'light',
-      items: {
-        instagram: 'https://instagram.com',
-        facebook: 'https://facebook.com',
-        youtube: 'https://youtube.com',
-        linkedin: 'https://linkedin.com'
-      }
-    } %}
-    {% include "socialbar/socialbar.njk" %}
+<section id="social-white">
+  <h2 class="pt-4">Social Bar com fundo claro e ícones escuros</h2>
+  <div class="docs-example">
+    <div class="bg-light p-3">
+      {%- set context = {
+        variant: 'light',
+        items: {
+          instagram: 'https://instagram.com',
+          facebook: 'https://facebook.com',
+          youtube: 'https://youtube.com',
+          linkedin: 'https://linkedin.com'
+        }
+      } %}
+      {% include "socialbar/socialbar.njk" %}
+    </div>
   </div>
-</div>
+</section>
