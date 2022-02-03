@@ -2,189 +2,202 @@
 eleventyNavigation:
   key: actionbar
   title: Action Bar
+metadata:
+  title: Action Bar
+  description: Com a Action Bar é possível adicionar uma barra com campos para a interação do usuário.
 ---
-<h1>Action Bar</h1>
-<p>Lorem ipsum dolor sit amet, stet intellegat cu mei, pertinax oportere at sea. Eos an mutat blandit. Nec at nisl volumus appellantur, an his brute quodsi. Sit ceteros contentiones at, te summo discere pro.</p>
+<h1>{{metadata.title}}</h1>
+<p>{{metadata.description}}
 
-<h2>Exemplo</h2>
-<div class="docs-example p-3">
-  <div class="bg-primary px-3">
-    {%- set context = {
-      "variant": "dark",
-      "startItems": [
-        {
-          "text": '(88) 9999-999',
-          "href": '889999999',
-          "icon": "whatsapp"
-        }
-      ],
-      "centerItems": [
-        {
-          "text": 'Lorem ipsum dolor sit amet, stet intellegat'
-        }
-      ],
-      "endItems": [
-        {
-          "icon": "phone",
-          "text": "(51) 9999-9999",
-          "href": 'tel:555199999999'
-        }
-      ]
-    } %}
-    {% include "actionbar/actionbar.njk" %}
+<section id="action-bar-standard">
+  <h2>Exemplo de Action Bar</h2>
+  <div class="docs-example p-3">
+    <div class="bg-primary px-3">
+      {%- set context = {
+        "variant": "dark",
+        "startItems": [
+          {
+            "text": '(99) 9999-999',
+            "href": '889999999',
+            "icon": "whatsapp"
+          }
+        ],
+        "centerItems": [
+          {
+            "text": 'Os itens podem ser adicionados no início, meio ou fim da barra'
+          }
+        ],
+        "endItems": [
+          {
+            "icon": "phone",
+            "text": "(99) 9999-9999",
+            "href": 'tel:999999999999'
+          }
+        ]
+      } %}
+      {% include "actionbar/actionbar.njk" %}
+    </div>
   </div>
-</div>
+</section>
 
-<h2>Com ícones</h2>
-<div class="docs-example p-3">
-  <div class="bg-primary px-3">
-    {%- set context = {
-      "variant": "dark",
-      "startItems": [
-        {
-          "href": 'mailto:email@email.com',
-          "icon": "mail"
-        },
-        {
-          "href": '889999999',
-          "icon": "phone"
-        },
-        {
-          "href": '889999999',
-          "icon": "whatsapp"
-        }
-      ],
-      "endItems": [
-        {
-          "icon": "facebook",
-          "href": 'https://facebook.com'
-        },
-        {
-          "icon": "instagram",
-          "href": 'https://instagram.com'
-        },
-        {
-          "icon": "linkedin",
-          "href": 'https://linkedin.com'
-        },
-        {
-          "icon": "youtube",
-          "href": 'https://youtube.com'
-        }
-      ]
-    } %}
-    {% include "actionbar/actionbar.njk" %}
+<section id="action-bar-icon">
+  <h2 class="pt-4">Action Bar com ícones</h2>
+  <p>É possível adicionar uma barra com apenas ícones.</p>
+  <div class="docs-example p-3">
+    <div class="bg-primary px-3">
+      {%- set context = {
+        "variant": "dark",
+        "startItems": [
+          {
+            "href": 'mailto:email@email.com',
+            "icon": "mail"
+          },
+          {
+            "href": '999999999',
+            "icon": "phone"
+          },
+          {
+            "href": '999999999',
+            "icon": "whatsapp"
+          }
+        ],
+        "endItems": [
+          {
+            "icon": "facebook",
+            "href": 'https://facebook.com'
+          },
+          {
+            "icon": "instagram",
+            "href": 'https://instagram.com'
+          },
+          {
+            "icon": "linkedin",
+            "href": 'https://linkedin.com'
+          },
+          {
+            "icon": "youtube",
+            "href": 'https://youtube.com'
+          }
+        ]
+      } %}
+      {% include "actionbar/actionbar.njk" %}
+    </div>
   </div>
-</div>
+</section>
 
-<h2>Com ícones quadrados</h2>
-<div class="docs-example p-3">
-  <div class="bg-primary px-3">
-    {%- set context = {
-      "variant": "dark",
-      "squareIcons": "true",
-      "startItems": [
-        {
-          "href": 'mailto:email@email.com',
-          "icon": "mail"
-        },
-        {
-          "href": '889999999',
-          "icon": "phone"
-        },
-        {
-          "href": '889999999',
-          "icon": "whatsapp"
-        }
-      ],
-      "endItems": [
-        {
-          "icon": "facebook",
-          "href": 'https://facebook.com'
-        },
-        {
-          "icon": "instagram",
-          "href": 'https://instagram.com'
-        },
-        {
-          "icon": "linkedin",
-          "href": 'https://linkedin.com'
-        },
-        {
-          "icon": "youtube",
-          "href": 'https://youtube.com'
-        }
-      ]
-    } %}
-    {% include "actionbar/actionbar.njk" %}
+<section id="action-bar-square">
+  <h2 class="pt-4">Com ícones quadrados</h2>
+  <div class="docs-example p-3">
+    <div class="bg-primary px-3">
+      {%- set context = {
+        "variant": "dark",
+        "squareIcons": "true",
+        "startItems": [
+          {
+            "href": 'mailto:email@email.com',
+            "icon": "mail"
+          },
+          {
+            "href": '999999999',
+            "icon": "phone"
+          },
+          {
+            "href": '999999999',
+            "icon": "whatsapp"
+          }
+        ],
+        "endItems": [
+          {
+            "icon": "facebook",
+            "href": 'https://facebook.com'
+          },
+          {
+            "icon": "instagram",
+            "href": 'https://instagram.com'
+          },
+          {
+            "icon": "linkedin",
+            "href": 'https://linkedin.com'
+          },
+          {
+            "icon": "youtube",
+            "href": 'https://youtube.com'
+          }
+        ]
+      } %}
+      {% include "actionbar/actionbar.njk" %}
+    </div>
   </div>
-</div>
+</section>
+<section id="action-bar-whitebg">
+  <h2 class="pt-4">Variação clara da barra com ícones escuros</h2>
+  <div class="docs-example p-3">
+    <div class="bg-light px-3">
+      {%- set context = {
+        "variant": "light",
+        "startItems": [
+          {
+            "icon": "phone",
+            "text": "(51) 9999-9999",
+            "href": 'tel:555199999999'
+          }
+        ],
+        "endItems": [
+          {
+            "icon": "youtube",
+            "href": 'https://youtube.com'
+          },
+          {
+            "icon": "instagram",
+            "href": 'https://instagram.com'
+          }
+        ]
+      } %}
+      {% include "actionbar/actionbar.njk" %}
+    </div>
+  </div>
+</section>
 
-<h2>Variação clara</h2>
-<div class="docs-example p-3">
-  <div class="bg-light px-3">
-    {%- set context = {
-      "variant": "light",
-      "startItems": [
-        {
-          "icon": "phone",
-          "text": "(51) 9999-9999",
-          "href": 'tel:555199999999'
-        }
-      ],
-      "endItems": [
-        {
-          "icon": "youtube",
-          "href": 'https://youtube.com'
-        },
-        {
-          "icon": "instagram",
-          "href": 'https://instagram.com'
-        }
-      ]
-    } %}
-    {% include "actionbar/actionbar.njk" %}
+<section id="action-bar-html">
+  <h2  class="pt-4">Items com HTML personalizado</h2>
+  <div class="docs-example p-3">
+    <div class="bg-light px-3">
+      {% set selectField %}
+        <select class="form-select" aria-label="Default select example">
+          <option selected>Menu com itens</option>
+          <option value="1">Item Um</option>
+          <option value="2">Item Dois</option>
+          <option value="3">Item Três</option>
+        </select>
+      {% endset %}
+      {% set badgeField %}
+        <button type="button" class="btn btn-primary position-relative">
+          Inbox
+          <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+            99+
+            <span class="visually-hidden">unread messages</span>
+          </span>
+        </button>
+      {% endset %}
+      {%- set context = {
+        variant: 'light',
+        startItems: [
+          {
+            icon: 'phone',
+            text: '(99) 9999-9999',
+            href: 'tel:999999999999'
+          }
+        ],
+        endItems: [
+          {
+            html: selectField
+          },
+          {
+            html: badgeField
+          }
+        ]
+      } %}
+      {% include 'actionbar/actionbar.njk' %}
+    </div>
   </div>
-</div>
-
-<h2>Items com HTML personalizado</h2>
-<div class="docs-example p-3">
-  <div class="bg-light px-3">
-    {% set selectField %}
-      <select class="form-select" aria-label="Default select example">
-        <option selected>Open this select menu</option>
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
-      </select>
-    {% endset %}
-    {% set badgeField %}
-      <button type="button" class="btn btn-primary position-relative">
-        Inbox
-        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-          99+
-          <span class="visually-hidden">unread messages</span>
-        </span>
-      </button>
-    {% endset %}
-    {%- set context = {
-      variant: 'light',
-      startItems: [
-        {
-          icon: 'phone',
-          text: '(51) 9999-9999',
-          href: 'tel:555199999999'
-        }
-      ],
-      endItems: [
-        {
-          html: selectField
-        },
-        {
-          html: badgeField
-        }
-      ]
-    } %}
-    {% include 'actionbar/actionbar.njk' %}
-  </div>
-</div>
+</section>
