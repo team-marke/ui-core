@@ -4,53 +4,54 @@ eleventyNavigation:
   title: Tabs
 metadata:
   title: Tabs
-  description:
+  description: Componente para inserir um grupo de guias em um único painel.
 ---
-<h1>Tabs</h1>
-<p>Lorem ipsum dolor sit amet, stet intellegat mei, pertinax oportere at sea. Eos an mutat blandit. Nec at nisl volumus appellantur, an his brute quodsi. Sit ceteros contentiones at, te summo discere pro.</p>
 
-<h2>Exemplo</h2>
-<div class="docs-example">
-  {%- set examplePanel1 %}
-  <div class="p-3">
-    <h5>Lorem ipsum dolor sit amet</h5>
-    <p>Tet intellegat mei, pertinax oportere at sea. Eos an mutat blandit.</p>
-    <p>Eos an mutat blandit. Nec at nisl volumus appellantur, an his brute quodsi. Sit ceteros contentiones at, te summo discere pro.</p>
-  </div>
-  {%- endset %}
-  {%- set examplePanel2 %}
-  <div class="p-3">
-    <h5>Vel te paulo voluptua</h5>
-    <p>Esse deserunt at has, movet iudico consequat te sea. Graeco appellantur per cu. Usu facilisis repudiare ea.</p>
-  </div>
-  {%- endset %}
-  {%- set examplePanel3 %}
-  <div class="p-3">
-    <h5>Eam veniam fabellas ne ut per ferri electram</h5>
-    <p>Ea duo falli eirmod, eligendi dissentias eu pro. Ex nonumes voluptatum mel. Nec te omnis singulis dignissim.</p>
-    <p>Eam ei eirmod alterum patrioque, ad cum everti dolorum definitiones.</p>
-    <h6>Has ex veri volumus?</h6>
-    <p>Ea duo vidisse propriae, assum interpretaris eos an, tantas voluptaria ea his. Mei ea habeo noster appellantur. Eos dico primis at, ex sale signiferumque mea, mei ex elit dicunt.</p>
-  </div>
-  {%- endset %}
-  {%
-    set context = {
-      id: 'example',
-      items: [
-      {
-        label: "Per et hinc justo",
-        panel: examplePanel1
-      },
-      {
-        label: "Prima porro vivendo",
-        panel: examplePanel2
-      },
-      {
-        label: "Aperiam assentior",
-        panel: examplePanel3
+<h1>{{metadata.title}}</h1>
+<p>{{metadata.description}}</p>
+
+<section id="tabs">
+  <h2>Exemplo de Tabs</h2>
+  <div class="docs-example">
+    {%- set examplePanel1 %}
+    <div class="p-3">
+      <h5>Título da Primeira Guia</h5>
+      <p>Dentro da guia pode ser usado qualquer texto.</p>
+    </div>
+    {%- endset %}
+    {%- set examplePanel2 %}
+    <div class="p-3">
+      <h5>Título Segunda Guia</h5>
+      <p>O texto pode incluir <b>marcações</b> necessárias para seu conteúdo.</p>
+    </div>
+    {%- endset %}
+    {%- set examplePanel3 %}
+    <div class="p-3">
+      <h5>Título Terceira Guia</h5>
+      <p>Dentro de uma guia pode haver múltiplos títulos.</p>
+      <h6>Subtítulo Terceira Guia</h6>
+      <p>E seu texto separado.</p>
+    </div>
+    {%- endset %}
+    {%
+      set context = {
+        id: 'example',
+        items: [
+        {
+          label: "Primeira Guia",
+          panel: examplePanel1
+        },
+        {
+          label: "Segunda Guia",
+          panel: examplePanel2
+        },
+        {
+          label: "Terceira Guia",
+          panel: examplePanel3
+        }
+      ]
       }
-    ]
-    }
-  %}
-  {% include "tabs/tabs.njk" %}
-</div>
+    %}
+    {% include "tabs/tabs.njk" %}
+  </div>
+</section>
