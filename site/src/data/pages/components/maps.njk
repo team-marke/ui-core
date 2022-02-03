@@ -2,15 +2,18 @@
 eleventyNavigation:
   key: maps
   title: Maps
+metadata:
+  title: Maps no site
+  description: Usando o Google Maps, adicione um localização diretamente na página
 ---
 
-<h1>Maps</h1>
-<p>Lorem ipsum dolor sit amet, stet intellegat mei, pertinax oportere at sea. Eos an mutat blandit. Nec at nisl volumus appellantur, an his brute quodsi. Sit ceteros contentiones at, te summo discere pro.</p>
+<h1>{{metadata.title}}</h1>
+<p>{{metadata.description}}</p>
 
 <h2>Exemplo</h2>
 <div class="docs-example">
   {% set context = {
-    query: 'Ponte+Golden+Gate'
+    query: 'Feevale Techpark - Hub One Novo Hamburgo'
   } %}
   {% include "maps/maps.njk" %}
 </div>
@@ -21,7 +24,7 @@ eleventyNavigation:
     options: {
       zoom: 18
     },
-    query: 'Ponte+Golden+Gate'
+    query: 'Feevale Techpark - Hub One Novo Hamburgo'
   } %}
   {% include "maps/maps.njk" %}
 </div>
@@ -31,7 +34,7 @@ eleventyNavigation:
   {% set context = {
     width: 600,
     height: 350,
-    query: 'Ponte+Golden+Gate'
+    query: 'Feevale Techpark - Hub One Novo Hamburgo'
   } %}
   {% include "maps/maps.njk" %}
 </div>
@@ -39,7 +42,7 @@ eleventyNavigation:
 <h2>Estilo personalizado</h2>
 <div class="docs-example">
   {% set context = {
-    query: 'Ponte+Golden+Gate',
+    query: 'Feevale Techpark - Hub One Novo Hamburgo',
     override_styles: {
       'border': '3px solid #b7485d',
       'max-width': '450px'
