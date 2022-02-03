@@ -21,9 +21,9 @@ Você pode baixar o Marke UI com administradores de pacotes
 #### npm
 Instale o Marke UI através do [npm](https://www.npmjs.com/)
 
-<code class="language-js">npm i https://github.com/team-marke/ui-core.git#v0.3.5</code>
+<code>npm i https://github.com/team-marke/ui-core.git#v0.3.5</code>
 
 #### yarn
 Instale o Marke UI através do [yarn](https://yarnpkg.com/)
 
-<code class="language-js">yarn install https://github.com/team-marke/ui-core.git#v0.3.5</code>
+'<code>'yarn install https://github.com/team-marke/ui-core.git#v0.3.5</code>
