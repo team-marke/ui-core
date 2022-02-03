@@ -1,94 +1,102 @@
 ---
 eleventyNavigation:
   key: radio
-  title: Radio
+  title: Radio Button
+  order: 1
+metadata:
+  title: Radio Button
+  description: Botão de seleção para o seu site, pode ser agrupado com outros para que apenas um seja válido.
 ---
 
-<h1>Radio</h1>
-<p>Lorem ipsum dolor sit amet, stet intellegat mei, pertinax oportere at sea. Eos an mutat blandit. Nec at nisl volumus appellantur, an his brute quodsi. Sit ceteros contentiones at, te summo discere pro.</p>
+<h1>{{metadata.title}}</h1>
+<p>{{metadata.description}}</p>
 
-<h2>Exemplos</h2>
-<div class="docs-example d-flex flex-column gap-3">
-  {% set context = {
-    value: 1,
-    name: 'sample-radio-1',
-    id: 'sample-radio-1',
-    label: 'Botão radio'
-  } %}
-  {% include "radio/radio.njk" %}
-  {% set context = {
-    value: 1,
-    name: 'sample-radio-2',
-    id: 'sample-radio-2',
-    label: 'Botão radio pré marcado',
-    checked: true
-  } %}
-  {% include "radio/radio.njk" %}
-  {% set context = {
-    value: 1,
-    name: 'sample-radio-3',
-    id: 'sample-radio-3',
-    label: 'Botão radio desabilitado',
-    disabled: true
-  } %}
-  {% include "radio/radio.njk" %}
-  {% set context = {
-    value: 1,
-    name: 'sample-radio-4',
-    id: 'sample-radio-4',
-    label: 'Botão radio com texto de ajuda',
-    helperText: 'Este é um texto de ajuda.'
-  } %}
-  {% include "radio/radio.njk" %}
-</div>
-
-<h2>Exemplos de grupo</h2>
-<div class="docs-example d-flex flex-column gap-3">
-  {% set context = {
-    buttons:
-    [
-      {
-        value: 1,
-        label: 'Opção 1'
-      },
-      {
-        value: 2,
-        label: 'Opção 2'
-      },
-      {
-        value: 3,
-        label: 'Opção 3'
-      }
-    ],
-    label: 'Grupo de botões radio',
-    name: 'sample-radio-group-1',
-    id: 'sample-radio-group-1'
-  } %}
-  {% include "radio-group/radio-group.njk" %}
-  <div class="mb-4">
-  {% set context = {
-    buttons:
-    [
-      {
-        value: 1,
-        label: 'Opção 1'
-      },
-      {
-        value: 2,
-        label: 'Opção 2'
-      },
-      {
-        value: 3,
-        label: 'Opção 3'
-      }
-    ],
-    label: 'Grupo de botões radio com erro',
-    name: 'sample-radio-group-2',
-    id: 'sample-radio-group-2',
-    required: true,
-    isInvalid: true,
-    invalidText: 'Este campo é obrigatório! Selecione uma opção.'
-  } %}
-  {% include "radio-group/radio-group.njk" %}
+<section id="radio-button">
+  <h2>Exemplos</h2>
+  <div class="docs-example d-flex flex-column gap-3">
+    {% set context = {
+      value: 1,
+      name: 'sample-radio-1',
+      id: 'sample-radio-1',
+      label: 'Botão radio'
+    } %}
+    {% include "radio/radio.njk" %}
+    {% set context = {
+      value: 1,
+      name: 'sample-radio-2',
+      id: 'sample-radio-2',
+      label: 'Botão radio pré marcado',
+      checked: true
+    } %}
+    {% include "radio/radio.njk" %}
+    {% set context = {
+      value: 1,
+      name: 'sample-radio-3',
+      id: 'sample-radio-3',
+      label: 'Botão radio desabilitado',
+      disabled: true
+    } %}
+    {% include "radio/radio.njk" %}
+    {% set context = {
+      value: 1,
+      name: 'sample-radio-4',
+      id: 'sample-radio-4',
+      label: 'Botão radio com texto de ajuda',
+      helperText: 'Este é um texto de ajuda.'
+    } %}
+    {% include "radio/radio.njk" %}
   </div>
-</div>
+</section>
+
+<section id="radio-group">
+  <h2 class="pt-4">Exemplos de grupo</h2>
+  <div class="docs-example d-flex flex-column gap-3">
+    {% set context = {
+      buttons:
+      [
+        {
+          value: 1,
+          label: 'Opção 1'
+        },
+        {
+          value: 2,
+          label: 'Opção 2'
+        },
+        {
+          value: 3,
+          label: 'Opção 3'
+        }
+      ],
+      label: 'Grupo de botões radio',
+      name: 'sample-radio-group-1',
+      id: 'sample-radio-group-1'
+    } %}
+    {% include "radio-group/radio-group.njk" %}
+    <div class="mb-4">
+    {% set context = {
+      buttons:
+      [
+        {
+          value: 1,
+          label: 'Opção 1'
+        },
+        {
+          value: 2,
+          label: 'Opção 2'
+        },
+        {
+          value: 3,
+          label: 'Opção 3'
+        }
+      ],
+      label: 'Grupo de botões radio com erro',
+      name: 'sample-radio-group-2',
+      id: 'sample-radio-group-2',
+      required: true,
+      isInvalid: true,
+      invalidText: 'Este campo é obrigatório! Selecione uma opção.'
+    } %}
+    {% include "radio-group/radio-group.njk" %}
+    </div>
+  </div>
+</section>
