@@ -1525,6 +1525,7 @@ __metadata:
     nunjucks: ^3.2.3
     postcss-loader: ^5.3.0
     postcss-preset-env: ^6.7.0
+    prismjs: ^1.26.0
     regenerator-runtime: ^0.13.7
     sass: 1.32.13
     sass-loader: ^11.1.1
@@ -10904,6 +10905,13 @@ fsevents@~2.3.2:
   bin:
     printj: ./bin/printj.njs
   checksum: ee774aa5957a57474f078fca1e9a41a10aac35e9b1ce9b2e2ecdb832f58fd21b1601075441dca633f582c881cca6c60308bf8505e6ab06305181be241bd47241
+  languageName: node
+  linkType: hard
+
+"prismjs@npm:^1.26.0":
+  version: 1.26.0
+  resolution: "prismjs@npm:1.26.0"
+  checksum: 189d0e130bd02c79499344e5db99d97d8c1c1403591e313bdca7e59bc81486a4aa0674ab4d3a8cf46a232eb355c83285f316dd33738471382760e926f210fc45
   languageName: node
   linkType: hard
 

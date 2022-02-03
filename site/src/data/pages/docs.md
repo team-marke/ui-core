@@ -9,6 +9,21 @@ eleventyNavigation:
   order: 0
   parent: home
 ---
-# Documentação
 
-Lorem ipsum dolor sit amet, eros oporteat quo in, te usu vide semper adipiscing. Et sit latine tincidunt. Qui elit iusto an. In vidisse indoctum referrentur sit.
+# Introdução
+
+O Marke UI foi pensado com o objetivo de padronizar os componentes dos sites criados pela Marke, facilitando o entedimento do cliente e o desenvolvimento do produto final. Na documentação você encontrará todos os componentes já padronizados além de exemplos e os códigos necessários para a implementação da sua solução.
+
+## Donwload
+
+Você pode baixar o Marke UI com administradores de pacotes
+
+#### npm
+Instale o Marke UI através do [npm](https://www.npmjs.com/)
+
+<code class="language-js">npm i https://github.com/team-marke/ui-core.git#v0.3.5</code>
+
+#### yarn
+Instale o Marke UI através do [yarn](https://yarnpkg.com/)
+
+<code class="language-js">yarn install https://github.com/team-marke/ui-core.git#v0.3.5</code>
