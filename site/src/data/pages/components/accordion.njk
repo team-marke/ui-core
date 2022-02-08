@@ -3,58 +3,65 @@ eleventyNavigation:
   key: faq
   title: Accordion
   order: 0
+metadata:
+  title: Accordion
+  description: Usado para mostrar várias informações em cards diferentes, o Accordion permite que o usuário abra uma aba por vez, podendo ser usado numa sessão de perguntas e respostas.
 ---
 
-<h1>Accordion</h1>
-<p>Lorem ipsum dolor sit amet, stet intellegat mei, pertinax oportere at sea. Eos an mutat blandit. Nec at nisl volumus appellantur, an his brute quodsi. Sit ceteros contentiones at, te summo discere pro.</p>
+<h1>{{metadata.title}}</h1>
+<p>{{metadata.description}}</p>
 
-<h2>Exemplo</h2>
-<div class="docs-example">
-  {%
-    set context = {
-      id: 'example',
-      headerTag: 'div',
-      items: [
-        {
-          header: "Lorem ipsum dolor sit amet?",
-          body: "Vel te paulo voluptua. Probo utamur omnesque ei his, an ludus docendi consequat usu. Populo reformidans disputationi ius te, discere inciderint persequeris usu in, his ne integre antiopam prodesset. Has ex veri volumus, ius enim sapientem ei. Cu mei cetero torquatos."
-        },
-        {
-          header: "Eam veniam fabellas ne, ut per ferri electram?",
-          body: "Quo erat labores senserit ea. Ea duo falli eirmod, eligendi dissentias eu pro. Ex nonumes voluptatum mel. Nec te omnis singulis dignissim.\n\nPer et hinc justo, no cetero virtute posidonium nam, numquam tractatos adipiscing nec cu. Prima porro vivendo ex cum. Eam ei eirmod alterum patrioque, ad cum everti dolorum definitiones. Illum noster nusquam at eos."
-        },
-        {
-          header: "Aperiam assentior an mei?",
-          body: "Brute laboramus efficiendi pro ut, nobis sensibus at qui, duo alii audire forensibus in. Esse deserunt at has, movet iudico consequat te sea. Graeco appellantur per cu. Usu facilisis repudiare ea."
-        }
-      ]
-    }
-  %}
-  {% include "accordion/accordion.njk" %}
-</div>
+<section id="=accordion">
+  <h2>Exemplo</h2>
+  <div class="docs-example">
+    {%
+      set context = {
+        id: 'example',
+        headerTag: 'div',
+        items: [
+          {
+            header: "Pergunta exemplo?",
+            body: "Permite que a resposta só apareça após abertura do accordion."
+          },
+          {
+            header: "Pode ser usado em qualquer sessão do site?",
+            body: "Sim, mas é ideal para conteúdos que necessitam de FAQ."
+          },
+          {
+            header: "Podem ser inseridos mais de um parágrafo?",
+            body: "Sim.\nUsando quebra de texto possível de se usar mais de um parágrafo."
+          }
+        ]
+      }
+    %}
+    {% include "accordion/accordion.njk" %}
+  </div>
+</section>
 
-<h2>Flush</h2>
-<div class="docs-example bg-light">
-  {%
-    set context = {
-      id: 'flush',
-      headerTag: 'div',
-      items: [
-        {
-          header: "Lorem ipsum dolor sit amet?",
-          body: "Vel te paulo voluptua. Probo utamur omnesque ei his, an ludus docendi consequat usu. Populo reformidans disputationi ius te, discere inciderint persequeris usu in, his ne integre antiopam prodesset. Has ex veri volumus, ius enim sapientem ei. Cu mei cetero torquatos."
-        },
-        {
-          header: "Eam veniam fabellas ne, ut per ferri electram?",
-          body: "Quo erat labores senserit ea. Ea duo falli eirmod, eligendi dissentias eu pro. Ex nonumes voluptatum mel. Nec te omnis singulis dignissim.\n\nPer et hinc justo, no cetero virtute posidonium nam, numquam tractatos adipiscing nec cu. Prima porro vivendo ex cum. Eam ei eirmod alterum patrioque, ad cum everti dolorum definitiones. Illum noster nusquam at eos."
-        },
-        {
-          header: "Aperiam assentior an mei?",
-          body: "Brute laboramus efficiendi pro ut, nobis sensibus at qui, duo alii audire forensibus in. Esse deserunt at has, movet iudico consequat te sea. Graeco appellantur per cu. Usu facilisis repudiare ea."
-        }
-      ],
-      flush: true
-    }
-  %}
-  {% include "accordion/accordion.njk" %}
-</div>
+<section id="accordion-flush">
+  <h2 class="pt-4">Flush</h2>
+  <div class="docs-example bg-light">
+    {%
+      set context = {
+        id: 'flush',
+        headerTag: 'div',
+        items: [
+          {
+            header: "Pergunta exemplo?",
+            body: "Permite que a resposta só apareça após abertura do accordion."
+          },
+          {
+            header: "Pode ser usado em qualquer sessão do site?",
+            body: "Sim, mas é ideal para conteúdos que necessitam de FAQ."
+          },
+          {
+            header: "Podem ser inseridos mais de um parágrafo?",
+            body: "Sim.\nUsando quebra de texto possível de se usar mais de um parágrafo."
+          }
+        ],
+        flush: true
+      }
+    %}
+    {% include "accordion/accordion.njk" %}
+  </div>
+</section>
