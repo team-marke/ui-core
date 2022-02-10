@@ -23,9 +23,21 @@ Você pode baixar o Marke UI com administradores de pacotes
 #### npm
 Instale o Marke UI através do [npm](https://www.npmjs.com/)
 
-<code>npm i https://github.com/team-marke/ui-core.git#v0.3.5</code>
+```js
+npm i https://github.com/team-marke/ui-core.git#v0.3.5
+```
 
 #### yarn
 Instale o Marke UI através do [yarn](https://yarnpkg.com/)
 
-<code>yarn install https://github.com/team-marke/ui-core.git#v0.3.5</code>
+```js
+yarn install https://github.com/team-marke/ui-core.git#v0.3.5</code>
+```
+
+
+## Adicionando ao main.scss
+No arquivo main.sccs do seu projeto adicione:
+
+```scss
+@use 'marke-ui' as mkui;
+```

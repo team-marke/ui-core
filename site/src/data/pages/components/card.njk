@@ -14,7 +14,7 @@ metadata:
   <div class="docs-example">
     <div style="max-width: 350px;">
       {%- set cardBody %}
-      <h5 class="">Card Simples</h5>
+      <h5>Card Simples</h5>
       <p class="">O card mais simples, onde todo o conteúdo está contido no corpo do card.</p>
       {% set context = { theme: 'primary', text: 'Botão' } %}
       {% include "button/button.njk" %}
@@ -27,6 +27,27 @@ metadata:
       {% include "card/card.njk" %}
     </div>
   </div>
+
+{% highlight 'liquid' %}
+  {% raw %}
+<div class="docs-example">
+  <div style="max-width: 350px;">
+    {%- set cardBody %}
+    <h5>Card Simples</h5>
+    <p class="">O card mais simples, onde todo o conteúdo está contido no corpo do card.</p>
+    {% set context = { theme: 'primary', text: 'Botão' } %}
+    {% include "button/button.njk" %}
+    {%- endset %}
+    {%-
+      set context = {
+        "body": cardBody
+      }
+    %}
+    {% include "card/card.njk" %}
+  </div>
+  </div>
+  {% endraw %}
+{% endhighlight %}
 </section>
 
 <section id="card-header">
@@ -51,6 +72,31 @@ metadata:
       {% include "card/card.njk" %}
     </div>
   </div>
+
+{% highlight 'liquid' %}
+  {% raw %}
+<div class="docs-example">
+  <div style="max-width: 350px;">
+    {%- set cardHeader %}
+      <span>Você insere um texto no header para aparecer antes do conteúdo do corpo</span>
+    {%- endset %}
+    {%- set cardBody %}
+      <h5 class="">Título depois do header</h5>
+      <p class="">O header pode ser usado para informações ou descrições sobre o conteúdo do card.</p>
+      {% set context = { theme: 'primary', text: 'Ex cibo putent' } %}
+      {% include "button/button.njk" %}
+    {%- endset %}
+    {%-
+      set context = {
+        "body": cardBody,
+        "header": cardHeader
+      }
+    %}
+    {% include "card/card.njk" %}
+  </div>
+</div>
+  {% endraw %}
+{% endhighlight %}
 </section>
 
 <section="card-image">
@@ -78,6 +124,34 @@ metadata:
       {% include "card/card.njk" %}
     </div>
   </div>
+
+{% highlight 'liquid' %}
+  {% raw %}
+<div class="docs-example">
+  <div style="max-width: 350px;">
+    {%- set cardBody %}
+    <h5 class="">Título do card</h5>
+    <p class="">Use imagens para destacar seu card.</p>
+    {% set context = { theme: 'primary', text: 'Botão' } %}
+    {% include "button/button.njk" %}
+    {%- endset %}
+    {%-
+      set context = {
+        "image": {
+          url: "https://res.cloudinary.com/webmaster-marke/image/upload/v1626966856/Afinal-o-que-%C3%A9-SEO-e-qual-a-import%C3%A2ncia-de-otimizar-um-site.jpg",
+          alt: 'Alt da imagem de card de exemplo',
+          title: 'Title da imagem de card de exemplo',
+          width: '350',
+          height: '200'
+        },
+        "body": cardBody
+      }
+    %}
+    {% include "card/card.njk" %}
+  </div>
+</div>
+  {% endraw %}
+{% endhighlight %}
 </section>
 
 <section id="card-image-interactive">
@@ -109,6 +183,38 @@ metadata:
       {% include "card/card.njk" %}
     </div>
   </div>
+
+{% highlight 'liquid' %}
+  {% raw %}
+<div class="docs-example">
+  <div style="max-width: 350px;">
+    {%- set cardBody %}
+    <h5 class="">Título do card</h5>
+    <p class="">Card interativo que cria um link com uma página externa sem conexão com o botão.</p>
+    {% set context = { theme: 'primary', text: 'Botão 1' } %}
+    {% include "button/button.njk" %}
+    {% set context = { theme: 'outline-primary', text: 'Botão 2' } %}
+    {% include "button/button.njk" %}
+    {%- endset %}
+    {%-
+      set context = {
+        "image": {
+          url: "https://res.cloudinary.com/webmaster-marke/image/upload/v1626966856/Afinal-o-que-%C3%A9-SEO-e-qual-a-import%C3%A2ncia-de-otimizar-um-site.jpg",
+          alt: 'Alt da imagem de card de exemplo',
+          title: 'Title da imagem de card de exemplo',
+          width: '350',
+          height: '200',
+          link: '#lorem'
+        },
+        "interactive": "true",
+        "body": cardBody
+      }
+    %}
+    {% include "card/card.njk" %}
+  </div>
+</div>
+  {% endraw %}
+{% endhighlight %}
 </section>
 
 <section id="card-overlay">
@@ -137,6 +243,35 @@ metadata:
       {% include "card/card.njk" %}
     </div>
   </div>
+
+{% highlight 'liquid' %}
+  {% raw %}
+<div class="docs-example">
+  <div style="max-width: 550px;">
+    {%- set cardBody %}
+    <h5 class="text-light">Título do Card</h5>
+    <p class="text-light">Com a imagem de overlay, todo o card é preenchido pela imagem que você quiser.</p>
+    {% set context = { theme: 'primary', text: 'Botão 1' } %}
+    {% include "button/button.njk" %}
+    {%- endset %}
+    {%-
+      set context = {
+        "image": {
+          url: "https://res.cloudinary.com/webmaster-marke/image/upload/v1626966697/indicadores-de-desempenho.jpg",
+          alt: 'Alt da imagem de card de exemplo',
+          title: 'Title da imagem de card de exemplo',
+          width: '550',
+          height: '300'
+        },
+        "overlay": "true",
+        "body": cardBody
+      }
+    %}
+    {% include "card/card.njk" %}
+  </div>
+</div>
+  {% endraw %}
+{% endhighlight %}
 </section>
 
 <section id="card-overlay-interactive">
@@ -168,6 +303,38 @@ metadata:
       {% include "card/card.njk" %}
     </div>
   </div>
+
+{% highlight 'liquid' %}
+  {% raw %}
+<div class="docs-example">
+  <div style="max-width: 550px;">
+    {%- set cardBody %}
+    <h5 class="text-light">Título do Card</h5>
+    <p class="text-light">Imagem de overlay interagível.</p>
+    {% set context = { theme: 'primary', text: 'Botão 1' } %}
+    {% include "button/button.njk" %}
+    {% set context = { theme: 'secondary', text: 'Botão 2' } %}
+    {% include "button/button.njk" %}
+    {%- endset %}
+    {%-
+      set context = {
+        "image": {
+          url: "https://res.cloudinary.com/webmaster-marke/image/upload/v1626966697/indicadores-de-desempenho.jpg",
+          alt: 'Alt da imagem de card de exemplo',
+          title: 'Title da imagem de card de exemplo',
+          width: '550',
+          height: '300'
+        },
+        "interactive": true,
+        "overlay": "true",
+        "body": cardBody
+      }
+    %}
+    {% include "card/card.njk" %}
+  </div>
+</div>
+  {% endraw %}
+{% endhighlight %}
 </section>
 
 <section id="card-overlay-link">
@@ -195,4 +362,63 @@ metadata:
       {% include "card/card.njk" %}
     </div>
   </div>
+
+{% highlight 'liquid' %}
+  {% raw %}
+<div class="docs-example">
+  <div style="max-width: 550px;">
+    {%- set cardBody %}
+    <h5 class="text-light">Título do Card</h5>
+    <p class="text-light">Imagem de fundo clicável</p>
+    {%- endset %}
+    {%-
+      set context = {
+        "image": {
+          url: "https://res.cloudinary.com/webmaster-marke/image/upload/v1626966697/indicadores-de-desempenho.jpg",
+          alt: 'Alt da imagem de card de exemplo',
+          title: 'Title da imagem de card de exemplo',
+          width: '550',
+          height: '300',
+          link: 'https://facebook.com'
+        },
+        "overlay": "true",
+        "body": cardBody
+      }
+    %}
+    {% include "card/card.njk" %}
+  </div>
+</div>
+  {% endraw %}
+{% endhighlight %}
+</section>
+
+
+<section id="scss">
+  <h2 class="pt-4">Scss</h2>
+  <h4>Variáveis</h4>
+  {% highlight 'scss' %}
+$height: mkui.$card-height !default;
+$word-wrap: break-word !default;
+$bg: mkui.$card-bg !default;
+$background-clip: border-box !default;
+$border: mkui.$card-border-width solid mkui.$card-border-color !default;
+$box-shadow: mkui.$box-shadow !default;
+$border-radius: mkui.$card-border-radius !default;
+$inner-border-radius: $border-radius !default;
+
+$spacer-y: mkui.$card-spacer-y !default;
+$spacer-x: mkui.$card-spacer-x !default;
+
+$color: mkui.$card-color !default;
+$transition: mkui.$transition-base !default;
+$hover-box-shadow: mkui.$box-shadow-hover !default;
+
+$img-overlay-padding: mkui.$card-img-overlay-padding !default;
+$cap-padding-y: mkui.$card-cap-padding-y !default;
+$cap-padding-x: mkui.$card-cap-padding-x !default;
+$cap-color: mkui.$card-cap-color !default;
+$cap-bg: mkui.$card-cap-bg !default;
+
+$group-margin: mkui.$card-group-margin !default;
+  {% endhighlight %}
 </section>
