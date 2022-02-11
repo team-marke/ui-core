@@ -48,6 +48,33 @@ items:
   {% include "carousel/carousel.njk" %}
 </div>
 
+{% highlight 'liquid'%}
+  {% raw %}
+<div class="docs-example px-0 px-lg-4 px-xl-5 gx-lg-4">
+  {% set arr = [] %}
+  {% for item in items %}
+  {% set renderedItem %}
+  <div class="d-flex justify-content-center align-items-center flex-column gap-3 p-lg-3 text-center">
+    <img class="img-fluid" height="75" width="75" loading="lazy" src="https://via.placeholder.com/75" alt="{{ item.title | e | safe }}">
+    <h4 class="mb-0">{{ item.title | e | safe }}</h4>
+    <div>{{ item.description | e | safe }}</div>
+  </div>
+  {% endset %}
+  {% set arr = (arr.push(renderedItem), arr) %}
+  {% endfor %}
+  {%- set context = {
+  "minSlidesPerView": 1,
+  "maxSlidesPerView": 2,
+  "total": (items | length),
+  "items": arr,
+  "visibleOverflow": false,
+  "showNavs": true
+  } %}
+{% include "carousel/carousel.njk" %}
+</div>
+  {% endraw %}
+{% endhighlight%}
+
 <h2>Múltiplos itens em telas pequenas</h2>
 <div class="docs-example px-0 px-lg-4 px-xl-5 gx-lg-4">
   {% set arr = [] %}
@@ -70,3 +97,29 @@ items:
   } %}
   {% include "carousel/carousel.njk" %}
 </div>
+
+{% highlight 'liquid'%}
+  {% raw %}
+<div class="docs-example px-0 px-lg-4 px-xl-5 gx-lg-4">
+  {% set arr = [] %}
+  {% for item in items %}
+    {% set renderedItem %}
+    <div class="d-flex justify-content-center align-items-center flex-column gap-2 p-lg-2 p-1 text-center">
+      <img class="img-fluid" height="75" width="75" loading="lazy" src="https://via.placeholder.com/75" alt="{{ item.title | e | safe }}">
+      <h6 class="mb-0">{{ item.title | e | safe }}</h6>
+    </div>
+    {% endset %}
+    {% set arr = (arr.push(renderedItem), arr) %}
+  {% endfor %}
+  {%- set context = {
+    "minSlidesPerView": 3,
+    "maxSlidesPerView": 5,
+    "total": (items | length),
+    "items": arr,
+    "visibleOverflow": false,
+    "showNavs": true
+  } %}
+  {% include "carousel/carousel.njk" %}
+</div>
+  {% endraw %}
+{% endhighlight%}
