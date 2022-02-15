@@ -15,18 +15,15 @@
 {%- endif %}
 
 {% macro addItem(item) %}
-{%- if item.href or item.text %}
-<div class="socialbar__item">
-  {% if item.href %}
-    <a
-      class="socialbar__link"
-      href="{{ item.href | url | safe }}"
-      {%- if item.external -%}
-      target="__blank"
-      rel="noopener"
-      {%- endif -%}
-    >
-  {% endif %}
+{%- if item.href %}
+<a
+  class="socialbar__item"
+  href="{{ item.href | url | safe }}"
+  {%- if item.external -%}
+  target="__blank"
+  rel="noopener"
+  {%- endif -%}
+>
   {%- if item.icon == "facebook" %}
     <i class="fab fa-facebook{% if squareIcons %}-square{% endif %}"></i>
   {%- endif %}
@@ -48,19 +45,13 @@
   {%- if item.icon == "email" %}
     <i class="fas fa-envelope{% if squareIcons %}-square{% endif %}"></i>
   {% endif %}
-</div>
-{%- elif item.html %}
-<div class="socialbar__item">
-  {{ item.html | safe }}
-</div>
+</a>
 {%- endif %}
 {% endmacro %}
 
 <div class="socialbar {{ variant | safe }} {{ componentClasses | join(" ") | safe }}">
-  <div class="socialbar_items">
-    {%- for item in items -%}
-      {{ addItem(item) }}
-    {%- endfor -%}
-  </div>
+  {%- for item in items -%}
+    {{ addItem(item) }}
+  {%- endfor -%}
 </div>
 

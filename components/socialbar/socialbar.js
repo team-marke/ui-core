@@ -6,13 +6,16 @@ import { dom as faDom, library as faLibrary, config as faConfig } from '@fortawe
 import {
   faLinkedinIn,
   faFacebook,
-  faInstagram,
   faYoutube,
+  faInstagram,
+  faWhatsapp,
   faLinkedin,
   faFacebookSquare,
-  faInstagramSquare,
   faYoutubeSquare,
+  faInstagramSquare,
+  faWhatsappSquare,
 } from '@fortawesome/free-brands-svg-icons';
+import { faPhone, faEnvelope, faPhoneSquare, faEnvelopeSquare } from '@fortawesome/free-solid-svg-icons';
 
 export class Socialbar {
   constructor(el) {
@@ -25,12 +28,18 @@ export class Socialbar {
     faLibrary.add(
       faLinkedinIn,
       faFacebook,
-      faInstagram,
       faYoutube,
+      faInstagram,
+      faWhatsapp,
       faLinkedin,
       faFacebookSquare,
+      faYoutubeSquare,
       faInstagramSquare,
-      faYoutubeSquare
+      faWhatsappSquare,
+      faPhone,
+      faEnvelope,
+      faPhoneSquare,
+      faEnvelopeSquare
     );
     faDom.i2svg({ node: this.el });
   }
