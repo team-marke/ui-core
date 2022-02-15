@@ -29,6 +29,29 @@ metadata:
   %}
   {% include "photo-gallery/photo-gallery.njk" %}
   </div>
+
+  {% highlight 'liquid' %}
+    {% raw %}
+<div class="docs-example">
+{% set context = {
+    "isDynamic": false,
+    "width": 200,
+    "gallery": [
+      {
+        "url": "https://res.cloudinary.com/webmaster-marke/image/upload/v1636740077/como-criar-um-instagram-comercial.jpg",
+        "description": "Foto 1"
+      },
+      {
+        "url": "https://res.cloudinary.com/webmaster-marke/image/upload/v1628529641/o-que-%C3%A9-o-google-ads.jpg",
+        "description": "Foto 2"
+      }
+    ]
+  }
+%}
+{% include "photo-gallery/photo-gallery.njk" %}
+</div>
+    {% endraw %}
+  {% endhighlight %}
 </section>
 
 <section id="photo-no-thumb">
@@ -51,6 +74,29 @@ metadata:
     %}
     {% include "photo-gallery/photo-gallery.njk" %}
   </div>
+
+  {% highlight 'liquid' %}
+    {% raw %}
+<div class="docs-example pt-4">
+  {% set context = {
+      "isDynamic": true,
+      "title": "Exemplo de título",
+      "gallery": [
+        {
+          "url": "https://res.cloudinary.com/webmaster-marke/image/upload/v1636740077/como-criar-um-instagram-comercial.jpg",
+          "description": "Foto 1"
+        },
+        {
+          "url": "https://res.cloudinary.com/webmaster-marke/image/upload/v1628529641/o-que-%C3%A9-o-google-ads.jpg",
+          "description": "Foto 2"
+        }
+      ]
+    }
+  %}
+  {% include "photo-gallery/photo-gallery.njk" %}
+</div>
+    {% endraw %}
+  {% endhighlight %}
 </section>
 
 <section id="photo-thumbail">
@@ -78,4 +124,45 @@ metadata:
     %}
     {% include "photo-gallery/photo-gallery.njk" %}
   </div>
+
+  {% highlight 'liquid' %}
+    {% raw %}
+<div class="docs-example">
+  {% set context = {
+      "isDynamic": true,
+      "thumbnail": {
+        "url": "https://res.cloudinary.com/webmaster-marke/image/upload/v1626966886/Marke-Consultoria-SEO-e-Mkt-Digital.jpg",
+        "alt": "Marke"
+      },
+      "title": "Marke",
+      "gallery": [
+        {
+          "url": "https://res.cloudinary.com/webmaster-marke/image/upload/v1626966892/desenho-K-Marke-II_33381d4e.jpg",
+          "description": "Foto 1"
+        },
+        {
+          "url": "https://res.cloudinary.com/webmaster-marke/image/upload/v1626966884/Marke-fundo-predios.jpg",
+          "description": "Foto 2"
+        }
+      ]
+    }
+  %}
+  {% include "photo-gallery/photo-gallery.njk" %}
+  </div>
+    {% endraw %}
+  {% endhighlight %}
+</section>
+
+<section id="scss">
+  <h2 class="pt-4">Scss</h2>
+  <h4>Variáveis</h4>
+  {% highlight 'scss' %}
+$font-size: 0.875rem !default;
+$gap: 0.5rem !default;
+$padding-y: 1rem !default;
+$padding-x: 1rem !default;
+
+$dark-text-color: mkui.$light !default;
+$light-text-color: mkui.$dark !default;
+  {% endhighlight %}
 </section>

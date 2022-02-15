@@ -33,6 +33,33 @@ metadata:
       {% include "navbar/navbar.njk" %}
     </div>
   </div>
+
+{% highlight 'liquid' %}
+  {% raw %}
+<div class="docs-example">
+  <div class="bg-dark px-3">
+    {% set navbarLinks = [
+      {
+        url: "",
+        title: "Home"
+      },
+      {
+        url: "",
+        title: "Quem Somos"
+      }
+    ] %}
+    {% set context = {
+      id: 'exemplo',
+      links: navbarLinks,
+      brandLogo: 'https://res.cloudinary.com/webmaster-marke/image/upload/v1620931656/Logo_Marke_dt6azg_pthlhj.svg',
+      brandLogoMobile: 'https://res.cloudinary.com/webmaster-marke/image/upload/v1620931656/Logo_Marke_dt6azg_pthlhj.svg',
+      brandUrl: "#home"
+    } %}
+    {% include "navbar/navbar.njk" %}
+  </div>
+</div>
+  {% endraw %}
+{% endhighlight %}
 </section>
 
 <section id="navbar-links">
@@ -78,6 +105,52 @@ metadata:
       {% include "navbar/navbar.njk" %}
     </div>
   </div>
+
+{% highlight 'liquid' %}
+  {% raw %}
+<div class="docs-example">
+  <div class="bg-dark px-3">
+    {% set navbarLinks = [
+      {
+        key: "home",
+        url: "",
+        title: "Home"
+      },
+      {
+        key: "quem-somos",
+        url: "",
+        title: "Quem Somos"
+      },
+      {
+        key: "produtos",
+        url: "",
+        title: "Produtos",
+        children: [
+          {
+            key: "produto-um",
+            url: "",
+            title: "Exemplo 1"
+          },
+          {
+            key: "produto-2",
+            url: "",
+            title: "Exemplo 2"
+          }
+        ]
+      }
+    ] %}
+    {% set context = {
+      id: 'exemplo-hierarquia',
+      links: navbarLinks,
+      brandLogo: 'https://res.cloudinary.com/webmaster-marke/image/upload/v1620931656/Logo_Marke_dt6azg_pthlhj.svg',
+      brandLogoMobile: 'https://res.cloudinary.com/webmaster-marke/image/upload/v1620931656/Logo_Marke_dt6azg_pthlhj.svg',
+      brandUrl: "#home"
+    } %}
+    {% include "navbar/navbar.njk" %}
+  </div>
+</div>
+  {% endraw %}
+{% endhighlight %}
 </section>
 
 <section id="navbar-custom">
@@ -117,6 +190,46 @@ metadata:
       {% include "navbar/navbar.njk" %}
     </div>
   </div>
+
+{% highlight 'liquid' %}
+  {% raw %}
+<div class="docs-example">
+  <div class="bg-dark px-3">
+    {% set navbarLinks = [
+      {
+        key: "home",
+        url: "",
+        title: "Home"
+      },
+      {
+        key: "quem-somos",
+        url: "",
+        title: "Quem Somos"
+      }
+    ] %}
+    {% set navbarChildren  %}
+      <div class="d-flex">
+        {% set context = {
+          theme: 'success',
+          text: 'Contato',
+          href: ''
+        } %}
+        {% include "button/button.njk" %}
+      </div>
+    {% endset %}
+    {% set context = {
+      id: 'exemplo-elementos',
+      links: navbarLinks,
+      children: navbarChildren,
+      brandLogo: 'https://res.cloudinary.com/webmaster-marke/image/upload/v1620931656/Logo_Marke_dt6azg_pthlhj.svg',
+      brandLogoMobile: 'https://res.cloudinary.com/webmaster-marke/image/upload/v1620931656/Logo_Marke_dt6azg_pthlhj.svg',
+      brandUrl: "#home"
+    } %}
+    {% include "navbar/navbar.njk" %}
+  </div>
+</div>
+  {% endraw %}
+{% endhighlight %}
 </section>
 
 <section id="navbar-right">
@@ -144,6 +257,34 @@ metadata:
       {% include "navbar/navbar.njk" %}
     </div>
   </div>
+
+{% highlight 'liquid' %}
+  {% raw %}
+<div class="docs-example">
+  <div class="bg-dark px-3">
+    {% set navbarLinks = [
+      {
+        url: "",
+        title: "Home"
+      },
+      {
+        url: "",
+        title: "Quem Somos"
+      }
+    ] %}
+    {% set context = {
+      id: 'exemplo',
+      links: navbarLinks,
+      brandLogo: 'https://res.cloudinary.com/webmaster-marke/image/upload/v1620931656/Logo_Marke_dt6azg_pthlhj.svg',
+      brandLogoMobile: 'https://res.cloudinary.com/webmaster-marke/image/upload/v1620931656/Logo_Marke_dt6azg_pthlhj.svg',
+      brandUrl: "#home",
+      nav_override_classes: ['w-100', 'justify-content-end']
+    } %}
+    {% include "navbar/navbar.njk" %}
+  </div>
+</div>
+  {% endraw %}
+{% endhighlight %}
 </section>
 
 <section id="navbar">
@@ -171,4 +312,83 @@ metadata:
       {% include "navbar/navbar.njk" %}
     </div>
   </div>
+
+{% highlight 'liquid' %}
+  {% raw %}
+<div class="docs-example">
+  <div class="bg-light px-3">
+    {% set navbarLinks = [
+      {
+        url: "",
+        title: "Home"
+      },
+      {
+        url: "",
+        title: "Quem Somos"
+      }
+    ] %}
+    {% set context = {
+      id: 'exemplo',
+      links: navbarLinks,
+      brandLogo: 'https://res.cloudinary.com/webmaster-marke/image/upload/v1626289554/Marke_logo_dark.svg',
+      brandLogoMobile: 'https://res.cloudinary.com/webmaster-marke/image/upload/v1626289554/Marke_logo_dark.svg',
+      brandUrl: "#home",
+      variant: "light"
+    } %}
+    {% include "navbar/navbar.njk" %}
+  </div>
+</div>
+  {% endraw %}
+{% endhighlight %}
+</section>
+
+<section id="scss">
+  <h2 class="pt-4">Scss</h2>
+  <h4>Variáveis</h4>
+  {% highlight 'scss' %}
+$padding-y: mkui.$navbar-padding-y !default;
+$padding-x: mkui.$navbar-padding-x !default;
+
+$nav-link-padding-y: mkui.$nav-link-padding-y !default;
+$nav-link-padding-x: mkui.$nav-link-padding-x !default;
+
+$brand-font-size: mkui.$font-size-lg !default;
+
+$nav-link-height: mkui.$nav-link-height !default;
+$brand-height: $brand-font-size * mkui.$line-height-base !default;
+$brand-padding-y: ($nav-link-height - $brand-height) * .5 !default;
+$brand-margin-end: mkui.$navbar-brand-margin-end !default;
+
+$toggler-padding-y: mkui.$navbar-toggler-padding-y !default;
+$toggler-padding-x: mkui.$navbar-toggler-padding-x !default;
+$toggler-font-size: mkui.$font-size-lg !default;
+$toggler-border-radius: mkui.$btn-border-radius !default;
+$toggler-focus-width: mkui.$btn-focus-width !default;
+$toggler-transition: mkui.$navbar-toggler-transition !default;
+
+$dark-color: mkui.$navbar-dark-color !default;
+$dark-hover-color: mkui.$navbar-dark-hover-color !default;
+$dark-active-color: mkui.$navbar-dark-active-color !default;
+$dark-disabled-color: mkui.$navbar-dark-disabled-color !default;
+$dark-toggler-icon-bg: mkui.$navbar-dark-toggler-icon-bg !default;
+$dark-toggler-border-color: mkui.$navbar-dark-toggler-border-color !default;
+
+$light-color: mkui.$navbar-light-color !default;
+$light-hover-color: mkui.$navbar-light-hover-color !default;
+$light-active-color: mkui.$navbar-light-active-color !default;
+$light-disabled-color: mkui.$navbar-light-disabled-color !default;
+$light-toggler-icon-bg: mkui.$navbar-light-toggler-icon-bg !default;
+$light-toggler-border-color: mkui.$navbar-light-toggler-border-color !default;
+
+$light-brand-color: $light-active-color !default;
+$light-brand-hover-color: $light-active-color !default;
+$dark-brand-color: $dark-active-color !default;
+$dark-brand-hover-color: $dark-active-color !default;
+
+$item-extra-padding-y: $nav-link-padding-y !default;
+$item-extra-padding-x: $nav-link-padding-x !default;
+
+$offcanvas-light-bg: mkui.$light !default;
+$offcanvas-dark-bg: mkui.$dark !default;
+  {% endhighlight %}
 </section>

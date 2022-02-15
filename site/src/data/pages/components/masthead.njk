@@ -16,8 +16,6 @@ masthead:
 
 <h2>Exemplo</h2>
 <div class="docs-example">
-
-  {# Conteúdo que será inserido dentro do masthead #}
   {% set content %}
     <div class="container">
       <div class="row">
@@ -40,10 +38,37 @@ masthead:
   } %}
   {% include "masthead/masthead.njk" %}
 </div>
+
+{% highlight 'liquid' %}
+  {% raw %}
+<div class="docs-example">
+  {% set content %}
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-lg-6">
+          <div class="p-3 bg-light rounded-3">
+            <h1>{{ masthead.title }}</h1>
+            <p>{{ masthead.description }}</p>
+            {% set context = { theme: 'primary', text: 'Ex cibo putent' } %}
+            {% include "button/button.njk" %}
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endset %}
+
+  {%- set context = {
+    image: masthead.image,
+    bgColor: masthead.bgColor,
+    children: content
+  } %}
+  {% include "masthead/masthead.njk" %}
+</div>
+  {% endraw %}
+{% endhighlight %}
+
 <h2>Aspect Ratio</h2>
 <div class="docs-example">
-
-  {# Conteúdo que será inserido dentro do masthead #}
   {% set content %}
     <div class="container">
       <div class="row">
@@ -67,3 +92,33 @@ masthead:
   } %}
   {% include "masthead/masthead.njk" %}
 </div>
+
+{% highlight 'liquid' %}
+  {% raw %}
+<div class="docs-example">
+  {% set content %}
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-lg-6">
+          <div class="p-3 bg-light rounded-3">
+            <h1>{{ masthead.title }}</h1>
+            <p>{{ masthead.description }}</p>
+            {% set context = { theme: 'primary', text: 'Ex cibo putent' } %}
+            {% include "button/button.njk" %}
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endset %}
+
+  {%- set context = {
+    image: masthead.image,
+    bgColor: masthead.bgColor,
+    imgAr: '16:9',
+    children: content
+  } %}
+  {% include "masthead/masthead.njk" %}
+</div>
+  {% endraw %}
+{% endhighlight %}
+

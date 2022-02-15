@@ -26,7 +26,6 @@ masthead:
 <section id="mastehead">
   <h2 class="pt-4">Exemplo</h2>
   <div class="docs-example">
-
     {% set slides = [] %}
     {% for item in masthead.items %}
       {% set renderedMasthead %}
@@ -59,6 +58,44 @@ masthead:
     } %}
     {% include "masthead-slider/masthead-slider.njk" %}
   </div>
+
+{% highlight 'liquid' %}
+  {% raw %}
+<div class="docs-example">
+  {% set slides = [] %}
+  {% for item in masthead.items %}
+    {% set renderedMasthead %}
+      {% set content %}
+        <div class="container">
+          <div class="row">
+            <div class="col-12 col-lg-6 offset-lg-3">
+              <div class="p-3 bg-light rounded-3" style="--bs-bg-opacity: .5;">
+                <h1>{{ item.title }}</h1>
+                <p>{{ item.description }}</p>
+                {% set context = { theme: 'primary', text: 'Acesse' } %}
+                {% include "button/button.njk" %}
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endset %}
+      {%- set context = {
+        image: item.image,
+        bgColor: item.bgColor,
+        classes: ['pb-4', 'pb-lg-0'],
+        children: content
+      } %}
+      {% include "masthead/masthead.njk" %}
+    {% endset %}
+    {% set slides = (slides.push(renderedMasthead), slides) %}
+  {% endfor %}
+  {%- set context = {
+    slides: slides
+  } %}
+  {% include "masthead-slider/masthead-slider.njk" %}
+</div>
+  {% endraw %}
+{% endhighlight %}
 </section>
 
 <section id="masthead-autoplay">
@@ -98,6 +135,45 @@ masthead:
     } %}
     {% include "masthead-slider/masthead-slider.njk" %}
   </div>
+
+  {% highlight 'liquid' %}
+  {% raw %}
+<div class="docs-example">
+  {% set slides = [] %}
+  {% for item in masthead.items %}
+    {% set renderedMasthead %}
+      {% set content %}
+        <div class="container">
+          <div class="row">
+            <div class="col-12 col-lg-6 offset-lg-3">
+              <div class="p-3 bg-light rounded-3" style="--bs-bg-opacity: .5;">
+                <h1>{{ item.title }}</h1>
+                <p>{{ item.description }}</p>
+                {% set context = { theme: 'primary', text: 'Ex cibo putent' } %}
+                {% include "button/button.njk" %}
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endset %}
+      {%- set context = {
+        image: item.image,
+        bgColor: item.bgColor,
+        classes: ['pb-4', 'pb-lg-0'],
+        children: content
+      } %}
+      {% include "masthead/masthead.njk" %}
+    {% endset %}
+    {% set slides = (slides.push(renderedMasthead), slides) %}
+  {% endfor %}
+  {%- set context = {
+    slides: slides,
+    autoplay: 3000
+  } %}
+  {% include "masthead-slider/masthead-slider.njk" %}
+</div>
+  {% endraw %}
+{% endhighlight %}
 </section>
 
 <section id="masthead-custom">
@@ -136,4 +212,43 @@ masthead:
     } %}
     {% include "masthead-slider/masthead-slider.njk" %}
   </div>
+
+    {% highlight 'liquid' %}
+  {% raw %}
+  <div class="docs-example">
+    {% set slides = [] %}
+    {% for item in masthead.items %}
+      {% set renderedMasthead %}
+        {% set content %}
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-lg-6 offset-lg-3">
+                <div class="p-3 bg-light rounded-3" style="--bs-bg-opacity: .5;">
+                  <h1>{{ item.title }}</h1>
+                  <p>{{ item.description }}</p>
+                  {% set context = { theme: 'primary', text: 'Ex cibo putent' } %}
+                  {% include "button/button.njk" %}
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endset %}
+        {%- set context = {
+          image: item.image,
+          bgColor: item.bgColor,
+          classes: ['pb-4', 'pb-lg-0'],
+          children: content
+        } %}
+        {% include "masthead/masthead.njk" %}
+      {% endset %}
+      {% set slides = (slides.push(renderedMasthead), slides) %}
+    {% endfor %}
+    {%- set context = {
+      slides: slides,
+      navColor: '#ffc107'
+    } %}
+    {% include "masthead-slider/masthead-slider.njk" %}
+  </div>
+  {% endraw %}
+{% endhighlight %}
 </section>

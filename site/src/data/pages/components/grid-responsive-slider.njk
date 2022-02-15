@@ -37,3 +37,28 @@ items:
   } %}
   {% include "grid-responsive-slider/grid-responsive-slider.njk" %}
 </div>
+
+{% highlight 'liquid' %}
+  {% raw %}
+<div class="docs-example gx-lg-4">
+  {% set arr = [] %}
+  {% for item in items %}
+    {% set renderedItem %}
+    <div>
+      <h3>{{ item.title }}</h3>
+      <p>{{ item.description }}</p>
+    </div>
+    {% endset %}
+    {% set arr = (arr.push(renderedItem), arr) %}
+  {% endfor %}
+  {%- set context = {
+    "minColumns": 1,
+    "maxColumns": 3,
+    "total": (items | length),
+    "items": arr,
+    "showPagination": true
+  } %}
+  {% include "grid-responsive-slider/grid-responsive-slider.njk" %}
+</div>
+  {% endraw %}
+{% endhighlight %}
