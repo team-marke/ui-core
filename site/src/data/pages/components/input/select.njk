@@ -2,13 +2,17 @@
 eleventyNavigation:
   key: select
   title: Select
+  order: 2
+metadata:
+  title:
+  description: Caixas de seleção, podendo conter um valor padrão, obrigatório e mais.
 ---
 
-<h1>Select</h1>
-<p>Lorem ipsum dolor sit amet, stet intellegat mei, pertinax oportere at sea. Eos an mutat blandit. Nec at nisl volumus appellantur, an his brute quodsi. Sit ceteros contentiones at, te summo discere pro.</p>
+<h1>{{metadata.title}}</h1>
+<p>{{metadata.description}}</p>
 
 <h2>Exemplos</h2>
-<div class="docs-example d-flex flex-column gap-3">
+<div class="docs-example d-flex flex-column gap-3 pb-5 mb-5">
   {% set context = {
     label: 'Seleção',
     name: 'sample-select-1',
@@ -77,6 +81,7 @@ eleventyNavigation:
   } %}
   {% include "select/select.njk" %}
   </div>
+  <div class="mb-5">
   {% set context = {
     label: 'Seleção com valor inicial',
     name: 'sample-select-6',
@@ -90,4 +95,5 @@ eleventyNavigation:
     }
   } %}
   {% include "select/select.njk" %}
+  </div>
 </div>

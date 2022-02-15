@@ -2,10 +2,13 @@
 eleventyNavigation:
   key: button
   title: Button
+metadata:
+  title: Buttons
+  description: Os Botões podem ser personalizados com diversos parêmtros para acomodar as necessidades do projeto.
 ---
 
-<h1>Button</h1>
-<p>Lorem ipsum dolor sit amet, stet intellegat mei, pertinax oportere at sea. Eos an mutat blandit. Nec at nisl volumus appellantur, an his brute quodsi. Sit ceteros contentiones at, te summo discere pro.</p>
+<h1>{{metadata.title}}</h1>
+<p>{{metadata.description}}</p>
 
 <h2>Exemplo</h2>
 <div class="docs-example">
@@ -30,6 +33,32 @@ eleventyNavigation:
   } %}
   {% include "button/button.njk" %}
 </div>
+{% highlight 'liquid' %}
+  {% raw %}
+<div class="docs-example">
+  {% set context = {
+    theme: 'primary',
+    text: 'Primary'
+  } %}
+  {% include "button/button.njk" %}
+  {% set context = {
+    theme: 'secondary',
+    text: 'Secondary'
+  } %}
+  {% include "button/button.njk" %}
+  {% set context = {
+    theme: 'success',
+    text: 'Success'
+  } %}
+  {% include "button/button.njk" %}
+  {% set context = {
+    theme: 'warning',
+    text: 'Warning'
+  } %}
+  {% include "button/button.njk" %}
+</div>
+  {% endraw %}
+{% endhighlight %}
 
 <h2>Com ID</h2>
 <div class="docs-example">
@@ -40,6 +69,19 @@ eleventyNavigation:
   } %}
   {% include "button/button.njk" %}
 </div>
+
+{% highlight 'liquid' %}
+  {% raw %}
+<div class="docs-example">
+  {% set context = {
+    theme: 'primary',
+    id: 'sample-button',
+    text: '#sample-button'
+  } %}
+  {% include "button/button.njk" %}
+</div>
+  {% endraw %}
+{% endhighlight %}
 
 <h2>Com link</h2>
 <div class="docs-example">
@@ -58,6 +100,26 @@ eleventyNavigation:
   {% include "button/button.njk" %}
 </div>
 
+{% highlight 'liquid' %}
+  {% raw %}
+<div class="docs-example">
+  {% set context = {
+    theme: 'primary',
+    href: '#',
+    text: 'Interno'
+  } %}
+  {% include "button/button.njk" %}
+  {% set context = {
+    theme: 'primary',
+    href: '#',
+    text: 'Externo',
+    target: '_blank'
+  } %}
+  {% include "button/button.njk" %}
+</div>
+  {% endraw %}
+{% endhighlight %}
+
 <h2>Com conteúdo HTML</h2>
 <div class="docs-example">
   {% set context = {
@@ -66,6 +128,18 @@ eleventyNavigation:
   } %}
   {% include "button/button.njk" %}
 </div>
+
+{% highlight 'liquid' %}
+  {% raw %}
+<div class="docs-example">
+  {% set context = {
+    theme: 'primary',
+    html: '<span>Botão Span</span>'
+  } %}
+  {% include "button/button.njk" %}
+</div>
+  {% endraw %}
+{% endhighlight %}
 
 <h2>Diferentes tamanhos</h2>
 <div class="docs-example">
@@ -83,6 +157,26 @@ eleventyNavigation:
   {% include "button/button.njk" %}
 </div>
 
+{% highlight 'liquid' %}
+  {% raw %}
+<div class="docs-example">
+  {% set context = {
+    theme: 'primary',
+    text: 'Grande',
+    size: 'lg'
+  } %}
+  {% include "button/button.njk" %}
+  {% set context = {
+    theme: 'primary',
+    text: 'Pequeno',
+    size: 'sm'
+  } %}
+  {% include "button/button.njk" %}
+</div>ude "button/button.njk" %}
+</div>
+  {% endraw %}
+{% endhighlight %}
+
 <h2>Desabilitado</h2>
 <div class="docs-example">
   {% set context = {
@@ -92,6 +186,19 @@ eleventyNavigation:
   } %}
   {% include "button/button.njk" %}
 </div>
+
+{% highlight 'liquid' %}
+  {% raw %}
+<div class="docs-example">
+  {% set context = {
+    theme: 'primary',
+    text: ':(',
+    disabled: true
+  } %}
+  {% include "button/button.njk" %}
+</div>
+  {% endraw %}
+{% endhighlight %}
 
 <h2>Atributos personalizados</h2>
 <div class="docs-example">
@@ -106,6 +213,22 @@ eleventyNavigation:
   {% include "button/button.njk" %}
 </div>
 
+{% highlight 'liquid' %}
+  {% raw %}
+<div class="docs-example">
+  {% set context = {
+    theme: 'primary',
+    text: 'data-number=48',
+    override_atts: {
+      'data-number': '48',
+      'data-action': 'modal'
+    }
+  } %}
+  {% include "button/button.njk" %}
+</div>
+  {% endraw %}
+{% endhighlight %}
+
 <h2>Classes personalizados</h2>
 <div class="docs-example">
   {% set context = {
@@ -115,3 +238,64 @@ eleventyNavigation:
   } %}
   {% include "button/button.njk" %}
 </div>
+
+{% highlight 'liquid' %}
+  {% raw %}
+<div class="docs-example">
+  {% set context = {
+    theme: 'secondary',
+    text: 'text-primary',
+    override_classes: ['text-primary', 'mt-4']
+  } %}
+  {% include "button/button.njk" %}
+</div>
+  {% endraw %}
+{% endhighlight %}
+
+<section id="scss">
+  <h2 class="pt-4">Scss</h2>
+  <h4>Variáveis</h4>
+  {% highlight 'scss' %}
+$font-family: mkui.$btn-font-family !default;
+$font-weight: mkui.$btn-font-weight !default;
+$font-size: mkui.$btn-font-size !default;
+$line-height: mkui.$btn-line-height !default;
+$text-decoration: mkui.$link-decoration !default;
+$text-transform: none !default;
+$white-space: mkui.$btn-white-space !default;
+
+$color: mkui.$body-color !default;
+$cursor: pointer !default;
+$border: mkui.$btn-border-width solid transparent !default;
+$border-radius: mkui.$btn-border-radius !default;
+$transition: mkui.$btn-transition !default;
+
+$padding-y: mkui.$btn-padding-y !default;
+$padding-x: mkui.$btn-padding-x !default;
+
+// hover properties
+$hover-color: mkui.$body-color !default;
+$hover-text-decoration: none !default;
+
+// focus properties
+$focus-box-shadow: mkui.$btn-focus-box-shadow !default;
+
+// active properties
+$active-box-shadow: mkui.$btn-active-box-shadow !default;
+
+// disabled properties
+$disabled-opacity: mkui.$btn-disabled-opacity !default;
+
+// lg size properties
+$padding-y-lg: mkui.$btn-padding-y-lg !default;
+$padding-x-lg: mkui.$btn-padding-x-lg !default;
+$font-size-lg: mkui.$btn-font-size-lg !default;
+$border-radius-lg: mkui.$btn-border-radius-lg !default;
+
+// sm size properties
+$padding-y-sm: mkui.$btn-padding-y-sm !default;
+$padding-x-sm: mkui.$btn-padding-x-sm !default;
+$font-size-sm: mkui.$btn-font-size-sm !default;
+$border-radius-sm: mkui.$btn-border-radius-sm !default;
+  {% endhighlight %}
+</section>

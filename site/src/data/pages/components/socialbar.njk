@@ -2,127 +2,136 @@
 eleventyNavigation:
   key: socialbar
   title: Social Bar
+metadata:
+  title: Social Bar
+  description: Social bar com redes sociais que deseja incluir no site.
 ---
-<h1>Social Bar</h1>
-<p>Lorem ipsum dolor sit amet, stet intellegat cu mei, pertinax oportere at sea. Eos an mutat blandit. Nec at nisl volumus appellantur, an his brute quodsi. Sit ceteros contentiones at, te summo discere pro.</p>
+<h1>{{metadata.title}}</h1>
+<p>{{metadata.description}}</p>
 
-<h2>Exemplo</h2>
-<div class="docs-example">
-  <div class="bg-primary p-3">
-    {%- set context = {
-      variant: 'dark',
-      items: [
-        {
-          href:  'https://instagram.com',
-          icon: 'instagram'
-        },
-        {
-          href:  'https://facebook.com',
-          icon: 'facebook'
-        },
-        {
-          href:  'https://youtube.com',
-          icon: 'youtube'
-        },
-        {
-          href:  'https://linkedin.com',
-          icon: 'linkedin'
-        },
-        {
-          href:  'https://whatsapp.com',
-          icon: 'whatsapp'
-        },
-        {
-          href:  'tel:51999999',
-          icon: 'phone'
-        },
-        {
-          href:  'mailto:example@mail.com',
-          icon: 'email'
-        }
-      ]
-    } %}
-    {% include "socialbar/socialbar.njk" %}
+<section>
+  <h2>Exemplo</h2>
+  <div class="docs-example">
+    <div class="bg-primary p-3">
+      {%- set context = {
+        variant: 'dark',
+        items: [
+          {
+            href:  'https://instagram.com',
+            icon: 'instagram'
+          },
+          {
+            href:  'https://facebook.com',
+            icon: 'facebook'
+          },
+          {
+            href:  'https://youtube.com',
+            icon: 'youtube'
+          },
+          {
+            href:  'https://linkedin.com',
+            icon: 'linkedin'
+          },
+          {
+            href:  'https://whatsapp.com',
+            icon: 'whatsapp'
+          },
+          {
+            href:  'tel:51999999',
+            icon: 'phone'
+          },
+          {
+            href:  'mailto:example@mail.com',
+            icon: 'email'
+          }
+        ]
+      } %}
+      {% include "socialbar/socialbar.njk" %}
+    </div>
   </div>
-</div>
+</section>
 
-<h2>Ícones quadrados</h2>
-<div class="docs-example">
-  <div class="bg-primary p-3">
-    {%- set context = {
-      variant: 'dark',
-      squareIcons: true,
-      items: [
-        {
-          href:  'https://instagram.com',
-          icon: 'instagram'
-        },
-        {
-          href:  'https://facebook.com',
-          icon: 'facebook'
-        },
-        {
-          href:  'https://youtube.com',
-          icon: 'youtube'
-        },
-        {
-          href:  'https://linkedin.com',
-          icon: 'linkedin'
-        },
-        {
-          href:  'https://whatsapp.com',
-          icon: 'whatsapp'
-        },
-        {
-          href:  'tel:51999999',
-          icon: 'phone'
-        },
-        {
-          href:  'mailto:example@mail.com',
-          icon: 'email'
-        }
-      ]
-    } %}
-    {% include "socialbar/socialbar.njk" %}
+<section>
+  <h2 class="pt-4">Ícones quadrados</h2>
+  <div class="docs-example">
+    <div class="bg-primary p-3">
+      {%- set context = {
+        variant: 'dark',
+        squareIcons: true,
+        items: [
+          {
+            href:  'https://instagram.com',
+            icon: 'instagram'
+          },
+          {
+            href:  'https://facebook.com',
+            icon: 'facebook'
+          },
+          {
+            href:  'https://youtube.com',
+            icon: 'youtube'
+          },
+          {
+            href:  'https://linkedin.com',
+            icon: 'linkedin'
+          },
+          {
+            href:  'https://whatsapp.com',
+            icon: 'whatsapp'
+          },
+          {
+            href:  'tel:51999999',
+            icon: 'phone'
+          },
+          {
+            href:  'mailto:example@mail.com',
+            icon: 'email'
+          }
+        ]
+      } %}
+      {% include "socialbar/socialbar.njk" %}
+    </div>
   </div>
-</div>
+</section>
 
-<h2>Variação clara</h2>
-<div class="docs-example">
-  <div class="bg-light p-3">
-    {%- set context = {
-      variant: 'light',
-      items: [
-        {
-          href:  'https://instagram.com',
-          icon: 'instagram'
-        },
-        {
-          href:  'https://facebook.com',
-          icon: 'facebook'
-        },
-        {
-          href:  'https://youtube.com',
-          icon: 'youtube'
-        },
-        {
-          href:  'https://linkedin.com',
-          icon: 'linkedin'
-        },
-        {
-          href:  'https://whatsapp.com',
-          icon: 'whatsapp'
-        },
-        {
-          href:  'tel:51999999',
-          icon: 'phone'
-        },
-        {
-          href:  'mailto:example@mail.com',
-          icon: 'email'
-        }
-      ]
-    } %}
-    {% include "socialbar/socialbar.njk" %}
+<section>
+  <h2 class="pt-4">Variação clara</h2>
+  <div class="docs-example">
+    <div class="bg-light p-3">
+      {%- set context = {
+        variant: 'light',
+        items: [
+          {
+            href:  'https://instagram.com',
+            icon: 'instagram'
+          },
+          {
+            href:  'https://facebook.com',
+            icon: 'facebook'
+          },
+          {
+            href:  'https://youtube.com',
+            icon: 'youtube'
+          },
+          {
+            href:  'https://linkedin.com',
+            icon: 'linkedin'
+          },
+          {
+            href:  'https://whatsapp.com',
+            icon: 'whatsapp'
+          },
+          {
+            href:  'tel:51999999',
+            icon: 'phone'
+          },
+          {
+            href:  'mailto:example@mail.com',
+            icon: 'email'
+          }
+        ]
+      } %}
+      {% include "socialbar/socialbar.njk" %}
+    </div>
   </div>
-</div>
+</section>

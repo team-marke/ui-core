@@ -3,54 +3,114 @@ eleventyNavigation:
   key: faq
   title: Accordion
   order: 0
+metadata:
+  title: Accordion
+  description: Usado para mostrar várias informações em cards diferentes, o Accordion permite que o usuário abra uma aba por vez, podendo ser usado numa sessão de perguntas e respostas.
 ---
 
-<h1>Accordion</h1>
-<p>Lorem ipsum dolor sit amet, stet intellegat mei, pertinax oportere at sea. Eos an mutat blandit. Nec at nisl volumus appellantur, an his brute quodsi. Sit ceteros contentiones at, te summo discere pro.</p>
+<h1>{{metadata.title}}</h1>
+<p>{{metadata.description}}</p>
 
-<h2>Exemplo</h2>
-<div class="docs-example">
-  {%
-    set context = {
-      id: 'example',
-      headerTag: 'div',
-      items: [
-        {
-          header: "Lorem ipsum dolor sit amet?",
-          body: "Vel te paulo voluptua. Probo utamur omnesque ei his, an ludus docendi consequat usu. Populo reformidans disputationi ius te, discere inciderint persequeris usu in, his ne integre antiopam prodesset. Has ex veri volumus, ius enim sapientem ei. Cu mei cetero torquatos."
-        },
-        {
-          header: "Eam veniam fabellas ne, ut per ferri electram?",
-          body: "Quo erat labores senserit ea. Ea duo falli eirmod, eligendi dissentias eu pro. Ex nonumes voluptatum mel. Nec te omnis singulis dignissim.\n\nPer et hinc justo, no cetero virtute posidonium nam, numquam tractatos adipiscing nec cu. Prima porro vivendo ex cum. Eam ei eirmod alterum patrioque, ad cum everti dolorum definitiones. Illum noster nusquam at eos."
-        },
-        {
-          header: "Aperiam assentior an mei?",
-          body: "Brute laboramus efficiendi pro ut, nobis sensibus at qui, duo alii audire forensibus in. Esse deserunt at has, movet iudico consequat te sea. Graeco appellantur per cu. Usu facilisis repudiare ea."
-        }
-      ]
-    }
-  %}
-  {% include "accordion/accordion.njk" %}
+<section id="=accordion">
+  <h2>Exemplo</h2>
+  <div class="docs-example">
+    {%
+      set context = {
+        id: 'example',
+        headerTag: 'div',
+        items: [
+          {
+            header: "Pergunta exemplo?",
+            body: "Permite que a resposta só apareça após abertura do accordion."
+          },
+          {
+            header: "Pode ser usado em qualquer sessão do site?",
+            body: "Sim, mas é ideal para conteúdos que necessitam de FAQ."
+          },
+          {
+            header: "Podem ser inseridos mais de um parágrafo?",
+            body: "Sim.\nUsando quebra de texto possível de se usar mais de um parágrafo."
+          }
+        ]
+      }
+    %}
+    {% include "accordion/accordion.njk" %}
+  </div>
+  {% highlight 'liquid' %}
+    {% raw %}
+  <div class="docs-example">
+{%
+  set context = {
+    id: 'example',
+    headerTag: 'div',
+    items: [
+      {
+        header: "Pergunta exemplo?",
+        body: "Permite que a resposta só apareça após abertura do accordion."
+      },
+      {
+        header: "Pode ser usado em qualquer sessão do site?",
+        body: "Sim, mas é ideal para conteúdos que necessitam de FAQ."
+      },
+      {
+        header: "Podem ser inseridos mais de um parágrafo?",
+        body: "Sim.\nUsando quebra de texto possível de se usar mais de um parágrafo."
+      }
+    ]
+  }
+%}
+{% include "accordion/accordion.njk" %}
 </div>
+    {% endraw %}
+  {% endhighlight %}
+</section>
 
-<h2>Flush</h2>
-<div class="docs-example bg-light">
+<section id="accordion-flush">
+  <h2 class="pt-4">Flush</h2>
+  <div class="docs-example bg-light">
+    {%
+      set context = {
+        id: 'flush',
+        headerTag: 'div',
+        items: [
+          {
+            header: "Pergunta exemplo?",
+            body: "Permite que a resposta só apareça após abertura do accordion."
+          },
+          {
+            header: "Pode ser usado em qualquer sessão do site?",
+            body: "Sim, mas é ideal para conteúdos que necessitam de FAQ."
+          },
+          {
+            header: "Podem ser inseridos mais de um parágrafo?",
+            body: "Sim.\nUsando quebra de texto possível de se usar mais de um parágrafo."
+          }
+        ],
+        flush: true
+      }
+    %}
+    {% include "accordion/accordion.njk" %}
+  </div>
+  <div>
+  {% highlight "liquid" %}
+    {% raw %}
+      <div class="docs-example bg-light">
   {%
     set context = {
       id: 'flush',
       headerTag: 'div',
       items: [
         {
-          header: "Lorem ipsum dolor sit amet?",
-          body: "Vel te paulo voluptua. Probo utamur omnesque ei his, an ludus docendi consequat usu. Populo reformidans disputationi ius te, discere inciderint persequeris usu in, his ne integre antiopam prodesset. Has ex veri volumus, ius enim sapientem ei. Cu mei cetero torquatos."
+          header: "Pergunta exemplo?",
+          body: "Permite que a resposta só apareça após abertura do accordion."
         },
         {
-          header: "Eam veniam fabellas ne, ut per ferri electram?",
-          body: "Quo erat labores senserit ea. Ea duo falli eirmod, eligendi dissentias eu pro. Ex nonumes voluptatum mel. Nec te omnis singulis dignissim.\n\nPer et hinc justo, no cetero virtute posidonium nam, numquam tractatos adipiscing nec cu. Prima porro vivendo ex cum. Eam ei eirmod alterum patrioque, ad cum everti dolorum definitiones. Illum noster nusquam at eos."
+          header: "Pode ser usado em qualquer sessão do site?",
+          body: "Sim, mas é ideal para conteúdos que necessitam de FAQ."
         },
         {
-          header: "Aperiam assentior an mei?",
-          body: "Brute laboramus efficiendi pro ut, nobis sensibus at qui, duo alii audire forensibus in. Esse deserunt at has, movet iudico consequat te sea. Graeco appellantur per cu. Usu facilisis repudiare ea."
+          header: "Podem ser inseridos mais de um parágrafo?",
+          body: "Sim.\\nUsando quebra de texto possível de se usar mais de um parágrafo."
         }
       ],
       flush: true
@@ -58,3 +118,45 @@ eleventyNavigation:
   %}
   {% include "accordion/accordion.njk" %}
 </div>
+    {% endraw %}
+  {% endhighlight %}
+</section>
+
+<section id="scss">
+  <h2 class="pt-4">Scss</h2>
+  <h4>Variáveis</h4>
+  {% highlight 'scss' %}
+$padding-y:                     1rem !default;
+$padding-x:                     1.25rem !default;
+$color:                         mkui.$body-color !default;
+$bg:                            mkui.$body-bg !default;
+$border-width:                  mkui.$border-width !default;
+$border-color:                  rgba(mkui.$black, .125) !default;
+$border-radius:                 mkui.$border-radius !default;
+$inner-border-radius:           subtract($border-radius, $border-width) !default;
+
+$body-padding-y:                $padding-y !default;
+$body-padding-x:                $padding-x !default;
+
+$button-padding-y:              $padding-y !default;
+$button-padding-x:              $padding-x !default;
+$button-color:                  $color !default;
+$button-bg:                     $bg !default;
+$transition:                    mkui.$btn-transition, border-radius .15s ease !default;
+$button-active-bg:              tint-color(mkui.$component-active-bg, 90%) !default;
+$button-active-color:           shade-color(mkui.$primary, 10%) !default;
+
+$button-focus-border-color:     mkui.$input-focus-border-color !default;
+$button-focus-box-shadow:       mkui.$btn-focus-box-shadow !default;
+
+$icon-width:                    1.25rem !default;
+$icon-color:                    $button-color !default;
+$icon-active-color:             $button-active-color !default;
+$icon-transition:               transform .2s ease-in-out !default;
+$icon-transform:                rotate(-180deg) !default;
+
+$button-icon:         url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='#{$icon-color}'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg>") !default;
+$button-active-icon:  url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='#{$icon-active-color}'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg>") !default;
+
+  {% endhighlight %}
+</section>

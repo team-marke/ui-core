@@ -2,75 +2,80 @@
 eleventyNavigation:
   key: photos-gallery
   title: Photos Gallery
+metadata:
+  title: Photo Gallery
+  description: Crie uma galeria de fotos que abrem um modal para a vizualização com um tamanho maior.
 ---
-<h1>Photos Gallery</h1>
-<p>Lorem ipsum dolor sit amet, stet intellegat cu mei, pertinax oportere at sea. Eos an mutat blandit. Nec at nisl volumus appellantur, an his brute quodsi. Sit ceteros contentiones at, te summo discere pro.</p>
+<h1>{{metadata.title}}</h1>
+<p>{{metadata.description}}</p>
 
-<h2>Exemplo</h2>
-<div class="docs-example">
-{% set context = {
-    "isDynamic": false,
-    "width": 200,
-    "gallery": [
-      {
-        "url": "https://picsum.photos/1920/1080?random=1",
-        "description": "Photo 1"
-      },
-      {
-        "url": "https://picsum.photos/1920/1080?random=2",
-        "description": "Photo 2",
-        "title": "Golden Gate"
-      },
-      {
-        "url": "https://picsum.photos/1920/1080?random=3",
-        "description": "Photo 3"
+<section id="photo-gallery">
+  <h2>Exemplo de Photo Gallery</h2>
+  <div class="docs-example">
+  {% set context = {
+      "isDynamic": false,
+      "width": 200,
+      "gallery": [
+        {
+          "url": "https://res.cloudinary.com/webmaster-marke/image/upload/v1636740077/como-criar-um-instagram-comercial.jpg",
+          "description": "Foto 1"
+        },
+        {
+          "url": "https://res.cloudinary.com/webmaster-marke/image/upload/v1628529641/o-que-%C3%A9-o-google-ads.jpg",
+          "description": "Foto 2"
+        }
+      ]
+    }
+  %}
+  {% include "photo-gallery/photo-gallery.njk" %}
+  </div>
+</section>
+
+<section id="photo-no-thumb">
+  <h2 class="pt-4">Photo Gallery dinâmica e sem thumbnail</h2>
+  <div class="docs-example pt-4">
+    {% set context = {
+        "isDynamic": true,
+        "title": "Exemplo de título",
+        "gallery": [
+          {
+            "url": "https://res.cloudinary.com/webmaster-marke/image/upload/v1636740077/como-criar-um-instagram-comercial.jpg",
+            "description": "Foto 1"
+          },
+          {
+            "url": "https://res.cloudinary.com/webmaster-marke/image/upload/v1628529641/o-que-%C3%A9-o-google-ads.jpg",
+            "description": "Foto 2"
+          }
+        ]
       }
-    ]
-  }
-%}
-{% include "photo-gallery/photo-gallery.njk" %}
-</div>
+    %}
+    {% include "photo-gallery/photo-gallery.njk" %}
+  </div>
+</section>
 
-<h2>Dinâmica sem thumbnail</h2>
-<div class="docs-example">
-  {% set context = {
-      "isDynamic": true,
-      "title": "Golden Gate Bridge",
-      "gallery": [
-        {
-          "url": "https://picsum.photos/1920/1080?random=1",
-          "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+<section id="photo-thumbail">
+  <h2 class="pt-4">Dinâmica com thumbnail</h2>
+  <p>Use o Photo Gallery com uma thumbnail própria</p>
+  <div class="docs-example">
+    {% set context = {
+        "isDynamic": true,
+        "thumbnail": {
+          "url": "https://res.cloudinary.com/webmaster-marke/image/upload/v1626966886/Marke-Consultoria-SEO-e-Mkt-Digital.jpg",
+          "alt": "Marke"
         },
-        {
-          "url": "https://picsum.photos/1920/1080?random=2",
-          "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-        }
-      ]
-    }
-  %}
-  {% include "photo-gallery/photo-gallery.njk" %}
-</div>
-
-<h2>Dinâmica com thumbnail</h2>
-<div class="docs-example">
-  {% set context = {
-      "isDynamic": true,
-      "thumbnail": {
-        "url": "https://picsum.photos/1920/1080?random=1",
-        "alt": "Golden Gate Bridge"
-      },
-      "title": "Golden Gate Bridge",
-      "gallery": [
-        {
-          "url": "https://picsum.photos/1920/1080?random=2",
-          "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-        },
-        {
-          "url": "https://picsum.photos/1920/1080?random=3",
-          "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-        }
-      ]
-    }
-  %}
-  {% include "photo-gallery/photo-gallery.njk" %}
-</div>
+        "title": "Marke",
+        "gallery": [
+          {
+            "url": "https://res.cloudinary.com/webmaster-marke/image/upload/v1626966892/desenho-K-Marke-II_33381d4e.jpg",
+            "description": "Foto 1"
+          },
+          {
+            "url": "https://res.cloudinary.com/webmaster-marke/image/upload/v1626966884/Marke-fundo-predios.jpg",
+            "description": "Foto 2"
+          }
+        ]
+      }
+    %}
+    {% include "photo-gallery/photo-gallery.njk" %}
+  </div>
+</section>

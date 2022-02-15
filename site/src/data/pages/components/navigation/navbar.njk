@@ -2,161 +2,173 @@
 eleventyNavigation:
   key: navbar
   title: Nav Bar
+metadata:
+  title: Navigation Bar
+  description: Barra para navegação principal do site
 ---
-<h1>Nav Bar</h1>
-<p>Barra para navegação principal do site</p>
+<h1>{{metadata.title}}</h1>
+<p>{{metadata.description}}</p>
 
-<h2>Exemplo</h2>
-<div class="docs-example">
-  <div class="bg-dark px-3">
-    {% set navbarLinks = [
-      {
-        url: "",
-        title: "Home"
-      },
-      {
-        url: "",
-        title: "Quem Somos"
-      }
-    ] %}
-    {% set context = {
-      id: 'exemplo',
-      links: navbarLinks,
-      brandLogo: 'https://res.cloudinary.com/webmaster-marke/image/upload/v1620931656/Logo_Marke_dt6azg_pthlhj.svg',
-      brandLogoMobile: 'https://res.cloudinary.com/webmaster-marke/image/upload/v1620931656/Logo_Marke_dt6azg_pthlhj.svg',
-      brandUrl: "#home"
-    } %}
-    {% include "navbar/navbar.njk" %}
+<section id="navbar">
+  <h2>Exemplo</h2>
+  <div class="docs-example">
+    <div class="bg-dark px-3">
+      {% set navbarLinks = [
+        {
+          url: "",
+          title: "Home"
+        },
+        {
+          url: "",
+          title: "Quem Somos"
+        }
+      ] %}
+      {% set context = {
+        id: 'exemplo',
+        links: navbarLinks,
+        brandLogo: 'https://res.cloudinary.com/webmaster-marke/image/upload/v1620931656/Logo_Marke_dt6azg_pthlhj.svg',
+        brandLogoMobile: 'https://res.cloudinary.com/webmaster-marke/image/upload/v1620931656/Logo_Marke_dt6azg_pthlhj.svg',
+        brandUrl: "#home"
+      } %}
+      {% include "navbar/navbar.njk" %}
+    </div>
   </div>
-</div>
+</section>
 
-<h2>Com hierarquia de links</h2>
-<div class="docs-example">
-  <div class="bg-dark px-3">
-    {% set navbarLinks = [
-      {
-        key: "home",
-        url: "",
-        title: "Home"
-      },
-      {
-        key: "quem-somos",
-        url: "",
-        title: "Quem Somos"
-      },
-      {
-        key: "produtos",
-        url: "",
-        title: "Produtos",
-        children: [
-          {
-            key: "lorem-ipsum",
-            url: "",
-            title: "Lorem Ipsum"
-          },
-          {
-            key: "sit-amet",
-            url: "",
-            title: "Sit Amet"
-          }
-        ]
-      }
-    ] %}
-    {% set context = {
-      id: 'exemplo-hierarquia',
-      links: navbarLinks,
-      brandLogo: 'https://res.cloudinary.com/webmaster-marke/image/upload/v1620931656/Logo_Marke_dt6azg_pthlhj.svg',
-      brandLogoMobile: 'https://res.cloudinary.com/webmaster-marke/image/upload/v1620931656/Logo_Marke_dt6azg_pthlhj.svg',
-      brandUrl: "#home"
-    } %}
-    {% include "navbar/navbar.njk" %}
+<section id="navbar-links">
+  <h2 class="pt-4">Com hierarquia de links</h2>
+  <div class="docs-example">
+    <div class="bg-dark px-3">
+      {% set navbarLinks = [
+        {
+          key: "home",
+          url: "",
+          title: "Home"
+        },
+        {
+          key: "quem-somos",
+          url: "",
+          title: "Quem Somos"
+        },
+        {
+          key: "produtos",
+          url: "",
+          title: "Produtos",
+          children: [
+            {
+              key: "produto-um",
+              url: "",
+              title: "Exemplo 1"
+            },
+            {
+              key: "produto-2",
+              url: "",
+              title: "Exemplo 2"
+            }
+          ]
+        }
+      ] %}
+      {% set context = {
+        id: 'exemplo-hierarquia',
+        links: navbarLinks,
+        brandLogo: 'https://res.cloudinary.com/webmaster-marke/image/upload/v1620931656/Logo_Marke_dt6azg_pthlhj.svg',
+        brandLogoMobile: 'https://res.cloudinary.com/webmaster-marke/image/upload/v1620931656/Logo_Marke_dt6azg_pthlhj.svg',
+        brandUrl: "#home"
+      } %}
+      {% include "navbar/navbar.njk" %}
+    </div>
   </div>
-</div>
+</section>
 
-<h2>Com elementos ao lado da navegação</h2>
-<div class="docs-example">
-  <div class="bg-dark px-3">
-    {% set navbarLinks = [
-      {
-        key: "home",
-        url: "",
-        title: "Home"
-      },
-      {
-        key: "quem-somos",
-        url: "",
-        title: "Quem Somos"
-      }
-    ] %}
-    {% set navbarChildren  %}
-      <div class="d-flex">
-        {% set context = {
-          theme: 'success',
-          text: 'Contato',
-          href: ''
-        } %}
-        {% include "button/button.njk" %}
-      </div>
-    {% endset %}
-    {% set context = {
-      id: 'exemplo-elementos',
-      links: navbarLinks,
-      children: navbarChildren,
-      brandLogo: 'https://res.cloudinary.com/webmaster-marke/image/upload/v1620931656/Logo_Marke_dt6azg_pthlhj.svg',
-      brandLogoMobile: 'https://res.cloudinary.com/webmaster-marke/image/upload/v1620931656/Logo_Marke_dt6azg_pthlhj.svg',
-      brandUrl: "#home"
-    } %}
-    {% include "navbar/navbar.njk" %}
+<section id="navbar-custom">
+  <h2 class="pt-4">Com elementos ao lado da navegação</h2>
+  <div class="docs-example">
+    <div class="bg-dark px-3">
+      {% set navbarLinks = [
+        {
+          key: "home",
+          url: "",
+          title: "Home"
+        },
+        {
+          key: "quem-somos",
+          url: "",
+          title: "Quem Somos"
+        }
+      ] %}
+      {% set navbarChildren  %}
+        <div class="d-flex">
+          {% set context = {
+            theme: 'success',
+            text: 'Contato',
+            href: ''
+          } %}
+          {% include "button/button.njk" %}
+        </div>
+      {% endset %}
+      {% set context = {
+        id: 'exemplo-elementos',
+        links: navbarLinks,
+        children: navbarChildren,
+        brandLogo: 'https://res.cloudinary.com/webmaster-marke/image/upload/v1620931656/Logo_Marke_dt6azg_pthlhj.svg',
+        brandLogoMobile: 'https://res.cloudinary.com/webmaster-marke/image/upload/v1620931656/Logo_Marke_dt6azg_pthlhj.svg',
+        brandUrl: "#home"
+      } %}
+      {% include "navbar/navbar.njk" %}
+    </div>
   </div>
-</div>
+</section>
 
-
-<h2>Navegação alinhada a direita</h2>
-<div class="docs-example">
-  <div class="bg-dark px-3">
-    {% set navbarLinks = [
-      {
-        url: "",
-        title: "Home"
-      },
-      {
-        url: "",
-        title: "Quem Somos"
-      }
-    ] %}
-    {% set context = {
-      id: 'exemplo',
-      links: navbarLinks,
-      brandLogo: 'https://res.cloudinary.com/webmaster-marke/image/upload/v1620931656/Logo_Marke_dt6azg_pthlhj.svg',
-      brandLogoMobile: 'https://res.cloudinary.com/webmaster-marke/image/upload/v1620931656/Logo_Marke_dt6azg_pthlhj.svg',
-      brandUrl: "#home",
-      nav_override_classes: ['w-100', 'justify-content-end']
-    } %}
-    {% include "navbar/navbar.njk" %}
+<section id="navbar-right">
+  <h2 class="pt-4">Navegação alinhada a direita</h2>
+  <div class="docs-example">
+    <div class="bg-dark px-3">
+      {% set navbarLinks = [
+        {
+          url: "",
+          title: "Home"
+        },
+        {
+          url: "",
+          title: "Quem Somos"
+        }
+      ] %}
+      {% set context = {
+        id: 'exemplo',
+        links: navbarLinks,
+        brandLogo: 'https://res.cloudinary.com/webmaster-marke/image/upload/v1620931656/Logo_Marke_dt6azg_pthlhj.svg',
+        brandLogoMobile: 'https://res.cloudinary.com/webmaster-marke/image/upload/v1620931656/Logo_Marke_dt6azg_pthlhj.svg',
+        brandUrl: "#home",
+        nav_override_classes: ['w-100', 'justify-content-end']
+      } %}
+      {% include "navbar/navbar.njk" %}
+    </div>
   </div>
-</div>
+</section>
 
-<h2>Variação clara</h2>
-<div class="docs-example">
-  <div class="bg-light px-3">
-    {% set navbarLinks = [
-      {
-        url: "",
-        title: "Home"
-      },
-      {
-        url: "",
-        title: "Quem Somos"
-      }
-    ] %}
-    {% set context = {
-      id: 'exemplo',
-      links: navbarLinks,
-      brandLogo: 'https://res.cloudinary.com/webmaster-marke/image/upload/v1626289554/Marke_logo_dark.svg',
-      brandLogoMobile: 'https://res.cloudinary.com/webmaster-marke/image/upload/v1626289554/Marke_logo_dark.svg',
-      brandUrl: "#home",
-      variant: "light"
-    } %}
-    {% include "navbar/navbar.njk" %}
+<section id="navbar">
+  <h2 class="pt-4">Variação clara</h2>
+  <div class="docs-example">
+    <div class="bg-light px-3">
+      {% set navbarLinks = [
+        {
+          url: "",
+          title: "Home"
+        },
+        {
+          url: "",
+          title: "Quem Somos"
+        }
+      ] %}
+      {% set context = {
+        id: 'exemplo',
+        links: navbarLinks,
+        brandLogo: 'https://res.cloudinary.com/webmaster-marke/image/upload/v1626289554/Marke_logo_dark.svg',
+        brandLogoMobile: 'https://res.cloudinary.com/webmaster-marke/image/upload/v1626289554/Marke_logo_dark.svg',
+        brandUrl: "#home",
+        variant: "light"
+      } %}
+      {% include "navbar/navbar.njk" %}
+    </div>
   </div>
-</div>
+</section>

@@ -8,6 +8,7 @@ const rssPlugin = require('@11ty/eleventy-plugin-rss');
 const navigationPlugin = require('@11ty/eleventy-navigation');
 const Nunjucks = require('nunjucks');
 const mkuiPlugin = require('./tools/plugins/11ty');
+const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 
 /**
  * Eleventy configuration
@@ -42,6 +43,7 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addPlugin(rssPlugin);
   eleventyConfig.addPlugin(navigationPlugin);
   eleventyConfig.addPlugin(mkuiPlugin);
+  eleventyConfig.addPlugin(syntaxHighlight);
 
   // Eleventy config dir options
   const dirs = {

@@ -3,33 +3,36 @@ eleventyNavigation:
   key: video-modal
   title: Video Modal
 metadata:
-  title:
-  description:
+  title: Video Modal
+  description: Use o Video Modal para adicionar um vídeo diretamente no site, abrindo um modal para a reprodução do conteúdo. Usando um link no YouTube é possível reproduzir qualquer vídeo.
 ---
-<h1>Video Modal</h1>
-<p>Lorem ipsum dolor sit amet, stet intellegat cu mei, pertinax oportere at sea. Eos an mutat blandit. Nec at nisl volumus appellantur, an his brute quodsi. Sit ceteros contentiones at, te summo discere pro.</p>
+<h1>{{metadata.title}}</h1>
+<p>{{metadata.description}}</p>
 
-<h2>Exemplo acionado por um Video Teaser</h2>
-<div class="docs-example">
-  <div style="max-width: 500px;">
-    {% set context = {
-      "id": "FTQbiNvZqaY",
-      "alt": "Toto Africa",
-      "toggles_modal": true
-    } %}
-    {% include "video-teaser/video-teaser.njk" %}
-  </div>
+<section id="basic">
+<h2>Exemplo básico usando Video Teaser</h2>
+  <div class="docs-example">
+    <div style="max-width: 500px;">
+      {% set context = {
+        "id": "IBIVvcIcX6k",
+        "alt": "Como aparecer no Google",
+        "toggles_modal": true
+      } %}
+      {% include "video-teaser/video-teaser.njk" %}
+    </div>
 </div>
-
-<h2>Video Teaser com Thumbnail personalizada</h2>
-<div class="docs-example">
-  <div style="max-width: 500px;">
-    {% set context = {
-      "id": "Gs069dndIYk",
-      "alt": "Toto Africa",
-      "toggles_modal": true,
-      "custom_thumbnail": "https://res.cloudinary.com/webmaster-marke/image/upload/v1625060740/golden-gate-bridge-3.jpg"
-    } %}
-    {% include "video-teaser/video-teaser.njk" %}
+</section>
+<section id="thumb-personalizada">
+  <h2>Usando uma thumbnail personalizada</h2>
+  <div class="docs-example">
+    <div style="max-width: 500px;">
+      {% set context = {
+        "id": "IBIVvcIcX6k",
+        "alt": "Como aparecer no Google",
+        "toggles_modal": true,
+        "custom_thumbnail": "https://res.cloudinary.com/webmaster-marke/image/upload/v1638896454/google-uac.jpg"
+      } %}
+      {% include "video-teaser/video-teaser.njk" %}
+    </div>
   </div>
-</div>
+</section>

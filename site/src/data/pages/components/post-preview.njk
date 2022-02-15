@@ -2,26 +2,53 @@
 eleventyNavigation:
   key: post-preview
   title: Post Preview
+metadata:
+  title: Post Preview
+  description: Usando o Post Preview é possível dar uma ideia dos post do blog do seu site, usando características atrativas para que o usuário clique no link da postagem.
 ---
-<h1>Post Preview</h1>
-<p>Lorem ipsum dolor sit amet, stet intellegat mei, pertinax oportere at sea. Eos an mutat blandit. Nec at nisl volumus appellantur, an his brute quodsi. Sit ceteros contentiones at, te summo discere pro.</p>
+<h1>{{metadata.title}}</h1>
+<p>{{metadata.description}}</p>
 
-<h2>Exemplo</h2>
-<div class="docs-example">
-  <div style="max-width: 350px;">
+<section id="post-preview">
+  <h2>Exemplo de Post Preview</h2>
+  <div class="docs-example">
+    <div style="max-width: 350px;">
+      {%-
+        set context = {
+          "title": "Título do Card",
+          "titleTag": "h3",
+          "excerpt": "Pequeno trecho do post",
+          "date": "2021-08-18T09:00:00.000Z",
+          "categories": [
+            {
+              "title": "Categoria A",
+              "url": ""
+            },
+            {
+              "title": "Categoria B",
+              "url": ""
+            }
+          ]
+        }
+      %}
+      {% include "post-preview/post-preview.njk" %}
+    </div>
+  </div>
+</section>
+
+<section id="post-card">
+  <h2 class="pt-4">Post Preview contido em um Card</h2>
+  <div class="docs-example" style="max-width: 350px;">
+    {%- set cardBody %}
     {%-
       set context = {
-        "title": "Lorem ipsum dolor sit amet causae electram ei eam per affert posidonium eu",
+        "title": "Título do Card",
         "titleTag": "h3",
-        "excerpt": "Te animal forensibus deterruisset per, nam ne dico mazim mandamus. Purto erant intellegat qui cu",
+        "excerpt": "Pequeno trecho do post, usando uma imagem no card pode trazer mais atenção para a postagem",
         "date": "2021-08-18T09:00:00.000Z",
         "categories": [
           {
-            "title": "Eum epicuri",
-            "url": ""
-          },
-          {
-            "title": "Purto erant",
+            "title": "Categoria 1",
             "url": ""
           }
         ],
@@ -29,45 +56,21 @@ eleventyNavigation:
       }
     %}
     {% include "post-preview/post-preview.njk" %}
-  </div>
-</div>
-
-<h2>Contido em um Card</h2>
-<div class="docs-example" style="max-width: 350px;">
-  {%- set cardBody %}
-  {%-
-    set context = {
-      "title": "Lorem ipsum dolor sit amet causae electram ei eam per affert posidonium eu",
-      "titleTag": "h3",
-      "excerpt": "Te animal forensibus deterruisset per, nam ne dico mazim mandamus. Purto erant intellegat qui cu",
-      "date": "2021-08-18T09:00:00.000Z",
-      "categories": [
-        {
-          "title": "Eum epicuri",
-          "url": ""
-        },
-        {
-          "title": "Purto erant",
-          "url": ""
+    {%- endset %}
+      {%-
+        set context = {
+          "image": {
+            url: "https://res.cloudinary.com/webmaster-marke/image/upload/v1628877442/kpi-marketing.jpg",
+            alt: 'Alt da imagem de card de exemplo',
+            title: 'Title da imagem de card de exemplo',
+            width: '350',
+            height: '200',
+            link: '#lorem'
+          },
+          "interactive": "true",
+          "children": cardBody
         }
-      ]
-    }
-  %}
-  {% include "post-preview/post-preview.njk" %}
-  {%- endset %}
-    {%-
-      set context = {
-        "image": {
-          url: "https://picsum.photos/350/200",
-          alt: 'Alt da imagem de card de exemplo',
-          title: 'Title da imagem de card de exemplo',
-          width: '350',
-          height: '200',
-          link: '#lorem'
-        },
-        "interactive": "true",
-        "children": cardBody
-      }
-    %}
-    {% include "card/card.njk" %}
-</div>
+      %}
+      {% include "card/card.njk" %}
+  </div>
+</section>

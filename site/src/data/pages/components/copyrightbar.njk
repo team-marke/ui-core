@@ -2,9 +2,12 @@
 eleventyNavigation:
   key: copyrightbar
   title: Copyright Bar
+metadata:
+  title: Copyright Bar
+  description: Aquela barra com a informação de desenvolvimento da Marke.
 ---
-<h1>Copyright Bar</h1>
-<p>Lorem ipsum dolor sit amet, stet intellegat cu mei, pertinax oportere at sea. Eos an mutat blandit. Nec at nisl volumus appellantur, an his brute quodsi. Sit ceteros contentiones at, te summo discere pro.</p>
+<h1>{{metadata.title}}</h1>
+<p>{{metadata.description}}</p>
 
 <h2>Exemplo</h2>
 <div class="docs-example p-3">
@@ -19,6 +22,23 @@ eleventyNavigation:
     {% include "copyrightbar/copyrightbar.njk" %}
   </div>
 </div>
+
+{% highlight 'liquid' %}
+  {% raw %}
+<div class="docs-example p-3">
+  <div class="bg-primary">
+  {%- set context = {
+    variant: "dark",
+    signUrl: "https://marke.com.br/servicos-de-marketing-digital/consultoria-seo/",
+    signLogo: "https://res.cloudinary.com/webmaster-marke/image/upload/v1625684943/Marke_Marketing_Digital_light.png",
+    signAltText: "Consultoria SEO",
+    copyrightText: "© MarkeUI. Todos os Direitos Reservados."
+  } %}
+  {% include "copyrightbar/copyrightbar.njk" %}
+  </div>
+</div>
+  {% endraw %}
+{% endhighlight %}
 
 <h2>Variação clara</h2>
 <div class="docs-example p-3">
