@@ -1,8 +1,5 @@
 {%- if context %}
-  {% set instagram = context.items.instagram %}
-  {% set facebook = context.items.facebook %}
-  {% set linkedin = context.items.linkedin %}
-  {% set youtube = context.items.youtube %}
+  {% set items = context.items %}
   {% set squareIcons = context.squareIcons %}
   {%- if context.variant == "dark" -%}
     {% set variant = "socialbar--dark" %}
@@ -17,25 +14,52 @@
   {%- endif %}
 {%- endif %}
 
-<div class="socialbar {{ variant | safe }} {{ componentClasses | join(" ") | safe }}">
-  {%- if facebook %}
-  <a class="socialbar__item" target="_blank" href="{{ facebook | url | safe }}" rel="noopener">
+{% macro addItem(item) %}
+{%- if item.href or item.text %}
+<div class="socialbar__item">
+  {% if item.href %}
+    <a
+      class="socialbar__link"
+      href="{{ item.href | url | safe }}"
+      {%- if item.external -%}
+      target="__blank"
+      rel="noopener"
+      {%- endif -%}
+    >
+  {% endif %}
+  {%- if item.icon == "facebook" %}
     <i class="fab fa-facebook{% if squareIcons %}-square{% endif %}"></i>
-  </a>
   {%- endif %}
-  {%- if instagram %}
-  <a class="socialbar__item" target="_blank" href="{{ instagram | url | safe }}" rel="noopener">
+  {%- if item.icon == "instagram" %}
     <i class="fab fa-instagram{% if squareIcons %}-square{% endif %}"></i>
-  </a>
   {%- endif %}
-  {%- if linkedin %}
-  <a class="socialbar__item" target="_blank" href="{{ linkedin | url | safe }}" rel="noopener">
+  {%- if item.icon == "linkedin" %}
     <i class="fab fa-linkedin{% if not squareIcons %}-in{% endif %}"></i>
-  </a>
   {%- endif %}
-  {%- if youtube %}
-  <a class="socialbar__item" target="_blank" href="{{ youtube | url | safe }}" rel="noopener">
+  {%- if item.icon == "youtube" %}
     <i class="fab fa-youtube{% if squareIcons %}-square{% endif %}"></i>
-  </a>
   {%- endif %}
+  {%- if item.icon == "whatsapp" %}
+    <i class="fab fa-whatsapp{% if squareIcons %}-square{% endif %}"></i>
+  {% endif %}
+  {%- if item.icon == "phone" %}
+    <i class="fas fa-phone{% if squareIcons %}-square{% endif %}"></i>
+  {% endif %}
+  {%- if item.icon == "email" %}
+    <i class="fas fa-envelope{% if squareIcons %}-square{% endif %}"></i>
+  {% endif %}
+</div>
+{%- elif item.html %}
+<div class="socialbar__item">
+  {{ item.html | safe }}
+</div>
+{%- endif %}
+{% endmacro %}
+
+<div class="socialbar {{ variant | safe }} {{ componentClasses | join(" ") | safe }}">
+  <div class="socialbar_items">
+    {%- for item in items -%}
+      {{ addItem(item) }}
+    {%- endfor -%}
+  </div>
 </div>

@@ -18,7 +18,18 @@ metadata:
   {% include "maps/maps.njk" %}
 </div>
 
-<h2>Zoom aumentado</h2>
+{% highlight 'liquid' %}
+  {% raw %}
+<div class="docs-example">
+  {% set context = {
+    query: 'Feevale Techpark - Hub One Novo Hamburgo'
+  } %}
+  {% include "maps/maps.njk" %}
+</div>
+  {% endraw %}
+{% endhighlight %}
+
+<h2>Com zoom</h2>
 <div class="docs-example">
   {% set context = {
     options: {
@@ -29,6 +40,20 @@ metadata:
   {% include "maps/maps.njk" %}
 </div>
 
+{% highlight 'liquid' %}
+  {% raw %}
+<div class="docs-example">
+  {% set context = {
+    options: {
+      zoom: 18
+    },
+    query: 'Feevale Techpark - Hub One Novo Hamburgo'
+  } %}
+  {% include "maps/maps.njk" %}
+</div>
+  {% endraw %}
+{% endhighlight %}
+
 <h2>Tamanho específico</h2>
 <div class="docs-example">
   {% set context = {
@@ -38,6 +63,19 @@ metadata:
   } %}
   {% include "maps/maps.njk" %}
 </div>
+
+{% highlight 'liquid' %}
+  {% raw %}
+<div class="docs-example">
+  {% set context = {
+    width: 600,
+    height: 350,
+    query: 'Feevale Techpark - Hub One Novo Hamburgo'
+  } %}
+  {% include "maps/maps.njk" %}
+</div>
+  {% endraw %}
+{% endhighlight %}
 
 <h2>Estilo personalizado</h2>
 <div class="docs-example">
@@ -50,3 +88,18 @@ metadata:
   } %}
   {% include "maps/maps.njk" %}
 </div>
+
+{% highlight 'liquid' %}
+  {% raw %}
+<div class="docs-example">
+  {% set context = {
+    query: 'Feevale Techpark - Hub One Novo Hamburgo',
+    override_styles: {
+      'border': '3px solid #b7485d',
+      'max-width': '450px'
+    }
+  } %}
+  {% include "maps/maps.njk" %}
+</div>
+  {% endraw %}
+{% endhighlight %}
