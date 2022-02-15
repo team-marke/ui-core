@@ -49,6 +49,49 @@ metadata:
       {% include "socialbar/socialbar.njk" %}
     </div>
   </div>
+
+{% highlight 'liquid' %}
+  {% raw %}
+<div class="docs-example">
+  <div class="bg-primary p-3">
+    {%- set context = {
+      variant: 'dark',
+      items: [
+        {
+          href:  'https://instagram.com',
+          icon: 'instagram'
+        },
+        {
+          href:  'https://facebook.com',
+          icon: 'facebook'
+        },
+        {
+          href:  'https://youtube.com',
+          icon: 'youtube'
+        },
+        {
+          href:  'https://linkedin.com',
+          icon: 'linkedin'
+        },
+        {
+          href:  'https://whatsapp.com',
+          icon: 'whatsapp'
+        },
+        {
+          href:  'tel:51999999',
+          icon: 'phone'
+        },
+        {
+          href:  'mailto:example@mail.com',
+          icon: 'email'
+        }
+      ]
+    } %}
+    {% include "socialbar/socialbar.njk" %}
+  </div>
+</div>
+  {% endraw %}
+{% endhighlight %}
 </section>
 
 <section>
@@ -92,6 +135,50 @@ metadata:
       {% include "socialbar/socialbar.njk" %}
     </div>
   </div>
+
+{% highlight 'liquid' %}
+  {% raw %}
+<div class="docs-example">
+  <div class="bg-primary p-3">
+    {%- set context = {
+      variant: 'dark',
+      squareIcons: true,
+      items: [
+        {
+          href:  'https://instagram.com',
+          icon: 'instagram'
+        },
+        {
+          href:  'https://facebook.com',
+          icon: 'facebook'
+        },
+        {
+          href:  'https://youtube.com',
+          icon: 'youtube'
+        },
+        {
+          href:  'https://linkedin.com',
+          icon: 'linkedin'
+        },
+        {
+          href:  'https://whatsapp.com',
+          icon: 'whatsapp'
+        },
+        {
+          href:  'tel:51999999',
+          icon: 'phone'
+        },
+        {
+          href:  'mailto:example@mail.com',
+          icon: 'email'
+        }
+      ]
+    } %}
+    {% include "socialbar/socialbar.njk" %}
+  </div>
+</div>
+  {% endraw %}
+{% endhighlight %}
 </section>
 
 <section>
@@ -134,4 +221,59 @@ metadata:
       {% include "socialbar/socialbar.njk" %}
     </div>
   </div>
+
+{% highlight 'liquid' %}
+  {% raw %}
+<div class="docs-example">
+  <div class="bg-light p-3">
+    {%- set context = {
+      variant: 'light',
+      items: [
+        {
+          href:  'https://instagram.com',
+          icon: 'instagram'
+        },
+        {
+          href:  'https://facebook.com',
+          icon: 'facebook'
+        },
+        {
+          href:  'https://youtube.com',
+          icon: 'youtube'
+        },
+        {
+          href:  'https://linkedin.com',
+          icon: 'linkedin'
+        },
+        {
+          href:  'https://whatsapp.com',
+          icon: 'whatsapp'
+        },
+        {
+          href:  'tel:51999999',
+          icon: 'phone'
+        },
+        {
+          href:  'mailto:example@mail.com',
+          icon: 'email'
+        }
+      ]
+    } %}
+    {% include "socialbar/socialbar.njk" %}
+  </div>
+</div>
+  {% endraw %}
+{% endhighlight %}
+</section>
+
+<section id="scss">
+  <h2 class="pt-4">Scss</h2>
+  <h4>Variáveis</h4>
+  {% highlight 'scss' %}
+$light-color: mkui.$black !default;
+$light-hover-color: mkui.$white;
+
+$dark-color: mkui.$white !default;
+$dark-hover-color: mkui.$black;
+  {% endhighlight %}
 </section>

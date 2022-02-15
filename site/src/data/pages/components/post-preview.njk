@@ -34,6 +34,34 @@ metadata:
       {% include "post-preview/post-preview.njk" %}
     </div>
   </div>
+
+{% highlight 'liquid' %}
+  {% raw %}
+<div class="docs-example">
+  <div style="max-width: 350px;">
+    {%-
+      set context = {
+        "title": "Título do Card",
+        "titleTag": "h3",
+        "excerpt": "Pequeno trecho do post",
+        "date": "2021-08-18T09:00:00.000Z",
+        "categories": [
+          {
+            "title": "Categoria A",
+            "url": ""
+          },
+          {
+            "title": "Categoria B",
+            "url": ""
+          }
+        ]
+      }
+    %}
+    {% include "post-preview/post-preview.njk" %}
+  </div>
+</div>
+  {% endraw %}
+{% endhighlight %}
 </section>
 
 <section id="post-card">
@@ -73,4 +101,62 @@ metadata:
       %}
       {% include "card/card.njk" %}
   </div>
+
+{% highlight 'liquid' %}
+  {% raw %}
+<div class="docs-example" style="max-width: 350px;">
+  {%- set cardBody %}
+  {%-
+    set context = {
+      "title": "Título do Card",
+      "titleTag": "h3",
+      "excerpt": "Pequeno trecho do post, usando uma imagem no card pode trazer mais atenção para a postagem",
+      "date": "2021-08-18T09:00:00.000Z",
+      "categories": [
+        {
+          "title": "Categoria 1",
+          "url": ""
+        }
+      ],
+      "url": "#"
+    }
+  %}
+  {% include "post-preview/post-preview.njk" %}
+  {%- endset %}
+    {%-
+      set context = {
+        "image": {
+          url: "https://res.cloudinary.com/webmaster-marke/image/upload/v1628877442/kpi-marketing.jpg",
+          alt: 'Alt da imagem de card de exemplo',
+          title: 'Title da imagem de card de exemplo',
+          width: '350',
+          height: '200',
+          link: '#lorem'
+        },
+        "interactive": "true",
+        "children": cardBody
+      }
+    %}
+    {% include "card/card.njk" %}
+</div>
+  {% endraw %}
+{% endhighlight %}
+</section>
+
+
+<section id="scss">
+  <h2 class="pt-4">Scss</h2>
+  <h4>Variáveis</h4>
+  {% highlight 'scss' %}
+$title-color: inherit !default;
+$title-link-color: inherit !default;
+$title-link-color-hover: inherit !default;
+$title-font-size: mkui.$h3-font-size !default;
+$title-font-family: mkui.$headings-font-family !default;
+$title-font-weight: mkui.$headings-font-weight !default;
+$title-transition: mkui.$transition-base !default;
+
+$excerpt-color: mkui.$text-muted !default;
+$excerpt-font-size: 0.9rem !default;
+  {% endhighlight %}
 </section>

@@ -21,7 +21,24 @@ metadata:
       {% include "video-teaser/video-teaser.njk" %}
     </div>
 </div>
+
+{% highlight 'liquid' %}
+  {% raw %}
+<div class="docs-example">
+  <div style="max-width: 500px;">
+    {% set context = {
+      "id": "IBIVvcIcX6k",
+      "alt": "Como aparecer no Google",
+      "toggles_modal": true
+    } %}
+    {% include "video-teaser/video-teaser.njk" %}
+  </div>
+</div>
+  {% endraw %}
+{% endhighlight %}
 </section>
+
+
 <section id="thumb-personalizada">
   <h2>Usando uma thumbnail personalizada</h2>
   <div class="docs-example">
@@ -35,4 +52,20 @@ metadata:
       {% include "video-teaser/video-teaser.njk" %}
     </div>
   </div>
+
+{% highlight 'liquid' %}
+  {% raw %}
+<div class="docs-example">
+  <div style="max-width: 500px;">
+    {% set context = {
+      "id": "IBIVvcIcX6k",
+      "alt": "Como aparecer no Google",
+      "toggles_modal": true,
+      "custom_thumbnail": "https://res.cloudinary.com/webmaster-marke/image/upload/v1638896454/google-uac.jpg"
+    } %}
+    {% include "video-teaser/video-teaser.njk" %}
+  </div>
+</div>
+  {% endraw %}
+{% endhighlight %}
 </section>

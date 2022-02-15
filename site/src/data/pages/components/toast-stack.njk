@@ -35,6 +35,25 @@ metadata:
       } %}
       {% include "button/button.njk" %}
   </div>
+
+{% highlight 'liquid' %}
+  {% raw %}
+<div class="docs-example">
+  {% set context = {
+    theme: 'primary',
+    text: 'Exibir toast',
+    override_classes: ['toast-stack-example-button'],
+    override_atts: {
+      'data-toast-message': 'Exemplo de notificação.',
+      'data-toast-variant': 'primary',
+      'data-toast-auto-hide-duration': '3000',
+      'data-toast-closebutton': 'false'
+    }
+  } %}
+  {% include "button/button.njk" %}
+</div>
+  {% endraw %}
+{% endhighlight %}
 </section>
 
 <section id="toast-action">
@@ -52,7 +71,25 @@ metadata:
     } %}
     {% include "button/button.njk" %}
   </div>
+
+{% highlight 'liquid' %}
+  {% raw %}
+<div class="docs-example">
+  {% set context = {
+    theme: 'primary',
+    text: 'Exibir toast',
+    override_classes: ['toast-stack-example-button'],
+    override_atts: {
+      'data-toast-message': 'Você pode me fechar.',
+      'data-toast-variant': 'primary'
+    }
+  } %}
+  {% include "button/button.njk" %}
+</div>
+  {% endraw %}
+{% endhighlight %}
 </section>
+
 <section id="toast-colors">
   <h2 class="docs-section-title">Usando variações de cores</h2>
   <div class="docs-example">
@@ -87,7 +124,45 @@ metadata:
     } %}
     {% include "button/button.njk" %}
   </div>
+
+  {% highlight 'liquid' %}
+  {% raw %}
+<div class="docs-example">
+  {% set context = {
+    theme: 'danger',
+    text: 'Exibir toast',
+    override_classes: ['toast-stack-example-button'],
+    override_atts: {
+      'data-toast-message': 'Perigo!',
+      'data-toast-variant': 'danger'
+    }
+  } %}
+  {% include "button/button.njk" %}
+  {% set context = {
+    theme: 'warning',
+    text: 'Exibir toast',
+    override_classes: ['toast-stack-example-button'],
+    override_atts: {
+      'data-toast-message': 'Aviso!',
+      'data-toast-variant': 'warning'
+    }
+  } %}
+  {% include "button/button.njk" %}
+  {% set context = {
+    theme: 'success',
+    text: 'Exibir toast',
+    override_classes: ['toast-stack-example-button'],
+    override_atts: {
+      'data-toast-message': 'Sucesso!',
+      'data-toast-variant': 'success'
+    }
+  } %}
+  {% include "button/button.njk" %}
+</div>
+  {% endraw %}
+{% endhighlight %}
 </section>
+
 <section id="toast-time-defined">
   <h2 class="docs-section-title">Definindo tempos de expiração</h2>
   <div class="docs-example">
@@ -104,7 +179,27 @@ metadata:
     } %}
     {% include "button/button.njk" %}
   </div>
+
+  {% highlight 'liquid' %}
+  {% raw %}
+<div class="docs-example">
+  {% set context = {
+    theme: 'primary',
+    text: 'Exibir toast',
+    override_classes: ['toast-stack-example-button'],
+    override_atts: {
+      'data-toast-message': 'Notificação de 5 segundos.',
+      'data-toast-variant': 'primary',
+      'data-toast-auto-hide-duration': '5000',
+      'data-toast-closebutton': 'false'
+    }
+  } %}
+  {% include "button/button.njk" %}
+</div>
+  {% endraw %}
+{% endhighlight %}
 </section>
+
 <section id="toast-no-dup">
   <h2 class="docs-section-title">Prevenindo duplicações</h2>
   <p>Usando essa opção é garantido que apenas um toast por botão apareça por vez, evitando mensagens duplicadas</p>
@@ -124,6 +219,26 @@ metadata:
     {% include "button/button.njk" %}
   </div>
 </div>
+
+  {% highlight 'liquid' %}
+    {% raw %}
+<div class="docs-example">
+  {% set context = {
+    theme: 'primary',
+    text: 'Exibir toast',
+    override_classes: ['toast-stack-example-button'],
+    override_atts: {
+      'data-toast-message': 'Você só pode me ver uma vez.',
+      'data-toast-variant': 'primary',
+      'data-toast-auto-hide-duration': '3000',
+      'data-toast-closebutton': 'false',
+      'data-toast-id': 'false'
+    }
+  } %}
+  {% include "button/button.njk" %}
+</div>
+    {% endraw %}
+  {% endhighlight %}
 </section>
 
 <section id="toast-choose-position">
@@ -163,4 +278,43 @@ metadata:
       {% include "button/button.njk" %}
     </span>
   </div>
+
+  {% highlight 'liquid' %}
+    {% raw %}
+  <div class="docs-example">
+    <span
+      class="toast-stack-example"
+      data-toast-stack-anchor-v="bottom"
+      data-toast-stack-anchor-h="center"
+    >
+      {% set context = {
+        theme: 'primary',
+        text: 'Exibir no centro horizontal e abaixo',
+        override_classes: ['toast-stack-example-button'],
+        override_atts: {
+          'data-toast-message': 'Estou abaixo e centralizado.',
+          'data-toast-variant': 'primary'
+        }
+      } %}
+      {% include "button/button.njk" %}
+    </span>
+    <span
+      class="toast-stack-example"
+      data-toast-stack-anchor-v="top"
+      data-toast-stack-anchor-h="right"
+    >
+      {% set context = {
+        theme: 'primary',
+        text: 'Exibir na direita e topo vertical',
+        override_classes: ['toast-stack-example-button'],
+        override_atts: {
+          'data-toast-message': 'Estou no topo na direita.',
+          'data-toast-variant': 'primary'
+        }
+      } %}
+      {% include "button/button.njk" %}
+    </span>
+  </div>
+    {% endraw %}
+  {% endhighlight %}
 </section>
