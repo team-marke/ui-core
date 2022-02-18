@@ -1,0 +1,23 @@
+---
+eleventyNavigation:
+  key: breadcrumb
+  title: Breadcrumb
+metadata:
+  title: Breadcrumb
+  description: O Breadcrumb permite a exibição de forma ordenada da hierarquia das páginas e subpáginas de sessões do site.
+breadcrumbsItems:
+    - item: /Home
+    - item: /Blog
+    - item: /Categorias
+---
+
+<h1>{{ metadata.title }}</h1>
+<p>{{ metadata.description }}</p>
+
+{% for crumbs in breadcrumbsItems %}
+    {% set context = {
+        items: crumbs.item,
+        divider: 'slash'
+    } %}
+{% endfor %}
+{% include "breadcrumbs/breadcrumbs.njk" %}
