@@ -1,0 +1,27 @@
+---
+eleventyNavigation:
+  key: pagination
+  title: Pagination
+metadata:
+  title: Pagination
+  description: Componente para organização dos posts em páginas.
+---
+<h1>{{ metadata.title }}</h1>
+<p>{{metadata.description}}</p>
+
+<section>
+    <h2>Exemplo de Pagination</h2>
+    <div class="docs-example">
+        {% if pagination.href.previous or pagination.href.next %}
+            {% set context = {
+                "all": pagination.hrefs,
+                "previous": pagination.href.previous,
+                "next": pagination.href.next,
+                "first": pagination.href.first,
+                "last": pagination.href.last,
+                "currentPage": page.url
+            } %}
+            {% include "components/pagination.njk" %}
+        {% endif %}
+    </div>    
+</section>
