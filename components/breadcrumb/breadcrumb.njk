@@ -1,0 +1,14 @@
+{% if context %}
+  {% set items = context.items %}
+  {% set divider = context.divider %}
+{% endif %}
+
+<nav {% if divider %}style="--mkui-breadcrumb-divider: '{{ divider }}';"{% endif %} aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    {% for item in items %}
+      <li class="breadcrumb-item">
+        <a href="{{ item.url | url }}">{{ item.title | e | safe }}</a>
+      </li>
+    {% endfor %}
+  </ol>
+</nav>

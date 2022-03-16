@@ -1,0 +1,45 @@
+//
+// Breadcrumb component styles.
+//
+
+@use '../../design-tokens' as mkui;
+
+$breadcrumb-font-size: null !default;
+$breadcrumb-padding-y: 0 !default;
+$breadcrumb-padding-x: 0 !default;
+$breadcrumb-item-padding-x: 0.5rem !default;
+$breadcrumb-margin-bottom: 1rem !default;
+$breadcrumb-bg: null !default;
+$breadcrumb-divider-color: mkui.$gray-600 !default;
+$breadcrumb-active-color: mkui.$gray-600 !default;
+$breadcrumb-divider: quote('/') !default;
+$breadcrumb-border-radius: null !default;
+
+.breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  padding: $breadcrumb-padding-y $breadcrumb-padding-x;
+  margin-bottom: $breadcrumb-margin-bottom;
+  @include mkui.font-size($breadcrumb-font-size);
+  list-style: none;
+  background-color: $breadcrumb-bg;
+  @include mkui.border-radius($breadcrumb-border-radius);
+}
+
+.breadcrumb-item {
+  // The separator between breadcrumbs (by default, a forward-slash: "/")
+  + .breadcrumb-item {
+    padding-left: $breadcrumb-item-padding-x;
+
+    &::before {
+      float: left; // Suppress inline spacings and underlining of the separator
+      padding-right: $breadcrumb-item-padding-x;
+      color: $breadcrumb-divider-color;
+      content: var(--#{mkui.$variable-prefix}breadcrumb-divider, $breadcrumb-divider);
+    }
+  }
+
+  &.active {
+    color: $breadcrumb-active-color;
+  }
+}
