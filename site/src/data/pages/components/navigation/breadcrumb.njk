@@ -21,19 +21,60 @@ breadcrumbItems:
 <h1>{{ metadata.title }}</h1>
 <p>{{ metadata.description }}</p>
 
-<h2>Exemplo</h2>
+<section>
+<h2 class="pt-4">Exemplo</h2>
 <div class="docs-example">
-  {% set context = {
-    items: breadcrumbItems
-  } %}
-  {% include "breadcrumb/breadcrumb.njk" %}
+{% set context = {
+  items: [
+    { url: '#', title: 'Home' },
+    { url: '#', title: 'Subpágina' },
+    { url: '#', title: 'Subpágina' },
+    { url: '#', title: 'Subpágina' }
+  ]
+} %}
+{% include "breadcrumb/breadcrumb.njk" %}
 </div>
+{% highlight 'liquid' %}
+{% raw %}
+{% set context = {
+  items: [
+    { url: '#', title: 'Home' },
+    { url: '#', title: 'Subpágina' },
+    { url: '#', title: 'Subpágina' },
+    { url: '#', title: 'Subpágina' }
+  ]
+} %}
+{% include "breadcrumb/breadcrumb.njk" %}
+{% endraw %}
+{% endhighlight %}
+</section>
 
-<h2>Divisor personalizado</h2>
+<section>
+<h2 class="pt-4">Divisor personalizado</h2>
 <div class="docs-example">
-  {% set context = {
-    items: breadcrumbItems,
-    divider: '>'
-  } %}
-  {% include "breadcrumb/breadcrumb.njk" %}
+{% set context = {
+  items: [
+    { url: '#', title: 'Home' },
+    { url: '#', title: 'Subpágina' },
+    { url: '#', title: 'Subpágina' },
+    { url: '#', title: 'Subpágina' }
+  ],
+  divider: '>'
+} %}
+{% include "breadcrumb/breadcrumb.njk" %}
 </div>
+{% highlight 'liquid' %}
+{% raw %}
+{% set context = {
+  items: [
+    { url: '#', title: 'Home' },
+    { url: '#', title: 'Subpágina' },
+    { url: '#', title: 'Subpágina' },
+    { url: '#', title: 'Subpágina' }
+  ],
+  divider: '>'
+} %}
+{% include "breadcrumb/breadcrumb.njk" %}
+{% endraw %}
+{% endhighlight %}
+</section>
