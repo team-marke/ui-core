@@ -128,6 +128,20 @@ const loadNavbar = async () => {
 };
 
 /**
+ * Load Pagination components.
+ */
+const loadPagination = async () => {
+  if (document.querySelector('.pagination')) {
+    const { Pagination } = await import(
+      /* webpackChunkName: "components.pagination" */ '../../../../components/pagination/pagination'
+    );
+    document.querySelectorAll('.pagination').forEach((pagination) => {
+      new Pagination(pagination);
+    });
+  }
+};
+
+/**
  * Load and handle toast-stack examples.
  */
 const loadToastStackExamples = async () => {
@@ -208,6 +222,7 @@ const loadDynamicModules = () => {
   loadCarousel();
   loadToastStackExamples();
   loadInputs();
+  loadPagination();
 };
 
 /**

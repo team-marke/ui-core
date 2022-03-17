@@ -1,15 +1,19 @@
-{%- if context -%}
+{% if context %}
   {% set all = context.all %}
   {% set previous = context.previous %}
   {% set next = context.next %}
   {% set first = context.first %}
   {% set last = context.last %}
   {% set currentPage = context.currentPage %}
-{%- endif -%}
+  {% if context.offset %}
+    {% set offset = context.offset %}
+  {% else %}
+    {% set offset = 2 %}
+  {% endif %}
+{% endif %}
 
-<nav class="d-flex justify-content-center mt-4 mt-lg-0" aria-label="Blog navigation">
+<nav aria-label="Page navigation">
   <ul class="pagination">
-    {# To first page #}
     {% if first != currentPage %}
       <li class="page-item">
         <a class="page-link" href="{{ first | url | safe }}" aria-label="First">
@@ -17,7 +21,6 @@
         </a>
       </li>
     {% endif %}
-    {# To previous page #}
     {% if previous %}
       <li class="page-item">
         <a class="page-link" href="{{ previous | url | safe }}" aria-label="Previous">
@@ -25,33 +28,16 @@
         </a>
       </li>
     {% endif %}
-    {% for href in all %}
-      {% if href == currentPage %}
-        {% if previous %}
-          <li class="page-item">
-            <a class="page-link" href="{{ previous | url | safe }}" aria-label="Previous">
-              {{ loop.index - 1 }}
-            </a>
-          </li>
-        {% endif %}
-        <li
-          class="page-item {% if href == page.url %}active{% endif %}"
-          {% if href == page.url %}aria-current="page"{% endif %} 
-        >
-          <a class="page-link" href="{{ href | url | safe }}">
-            {{ loop.index }}
-          </a>
-        </li>
-        {% if next %}
-          <li class="page-item">
-            <a class="page-link" href="{{ next | url | safe }}" aria-label="Next">
-              {{ loop.index + 1 }}
-            </a>
-          </li>
-        {% endif %}
-      {% endif %}
+    {% for item in all | getHrefsInRange(currentPage, offset) %}
+      <li
+        class="page-item{% if item.href == currentPage %} active{% endif %}"
+        {% if item.href == currentPage %}aria-current="page"{% endif %}
+      >
+        <a class="page-link" href="{{ item.href | url | safe }}">
+          {{ item.paginationNumber }}
+        </a>
+      </li>
     {% endfor %}
-    {# To next page #}
     {% if next %}
       <li class="page-item">
         <a class="page-link" href="{{ next | url | safe}}" aria-label="Next">
@@ -59,7 +45,6 @@
         </a>
       </li>
     {% endif %}
-    {# To last page #}
     {% if last != currentPage %}
       <li class="page-item">
         <a class="page-link" href="{{ last | url | safe }}" aria-label="Last">
