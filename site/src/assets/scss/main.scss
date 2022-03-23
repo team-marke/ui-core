@@ -5,15 +5,16 @@
 @use 'marke-ui' as mkui;
 
 //
-// Components
+// Dependencies
 //
-
 @use '~lightgallery/scss/lightgallery' as lightgallery with (
   $lg-path-fonts: '~lightgallery/fonts',
   $lg-path-images: '~lightgallery/images',
 );
 
-// Marke UI
+//
+// Components
+//
 @use '../../../../components/accordion';
 @use '../../../../components/actionbar';
 @use '../../../../components/breadcrumb';
@@ -42,7 +43,11 @@
 );
 
 //
+// Sections
+//
+@use '../../../../sections/feature';
+
+//
 // Layouts
 //
-
 @use 'layouts/docs';

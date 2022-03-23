@@ -1,0 +1,20 @@
+//
+// Highlight component styles
+//
+
+@use '../../design-tokens' as mkui;
+
+$font-size: mkui.$h5-font-size;
+$font-weight: mkui.$font-weight-bold;
+$color: mkui.$primary !default;
+$text-transform: uppercase !default;
+$margin-bottom: mkui.$headings-margin-bottom !default;
+
+.highlight {
+  display: block;
+  @include mkui.font-size($font-size);
+  font-weight: $font-weight;
+  color: $color;
+  text-transform: $text-transform;
+  margin-bottom: $margin-bottom;
+}

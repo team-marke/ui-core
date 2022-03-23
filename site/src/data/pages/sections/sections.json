@@ -1,0 +1,10 @@
+{
+  "tags": [
+    "sections"
+  ],
+  "layout": "docs",
+  "permalink": "docs/sections/{{ page.fileSlug }}/",
+  "eleventyNavigation": {
+    "parent": "sections"
+  }
+}

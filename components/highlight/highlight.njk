@@ -1,0 +1,5 @@
+{% if context %}
+  {% set title = context.title %}
+{% endif %}
+
+<span class="highlight">{{ title | e | safe }}</span>

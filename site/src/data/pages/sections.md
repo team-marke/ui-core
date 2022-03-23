@@ -2,7 +2,7 @@
 permalink: false
 eleventyNavigation:
   parent: docs
-  key: components
-  title: Componentes
-  order: 0
+  key: sections
+  title: Sections
+  order: 1
 ---

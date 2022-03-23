@@ -30,11 +30,13 @@ module.exports = (eleventyConfig) => {
     global.nunjucksEnvironment = new Nunjucks.Environment([
       new Nunjucks.FileSystemLoader('site/src/layouts', { ...commonLoaderOptions, watch: true }),
       new Nunjucks.FileSystemLoader('components', { ...commonLoaderOptions, watch: true }),
+      new Nunjucks.FileSystemLoader('sections', { ...commonLoaderOptions, watch: true }),
     ]);
   } else {
     global.nunjucksEnvironment = new Nunjucks.Environment([
       new Nunjucks.FileSystemLoader('site/src/layouts', { ...commonLoaderOptions }),
       new Nunjucks.FileSystemLoader('components', { ...commonLoaderOptions }),
+      new Nunjucks.FileSystemLoader('sections', { ...commonLoaderOptions }),
     ]);
   }
   eleventyConfig.setLibrary('njk', global.nunjucksEnvironment);
@@ -59,6 +61,7 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addWatchTarget('./site/src/transforms/');
   eleventyConfig.addWatchTarget('./site/src/collections/');
   eleventyConfig.addWatchTarget('components/');
+  eleventyConfig.addWatchTarget('sections/');
   eleventyConfig.addWatchTarget('tools/');
 
   // Dynamically get the path for all project filters, shortcodes, tranforms, collections and layouts

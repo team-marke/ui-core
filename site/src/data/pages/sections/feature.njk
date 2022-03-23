@@ -1,0 +1,77 @@
+---
+eleventyNavigation:
+  key: feature
+  title: Feature
+metadata:
+  title: Feature
+  description:
+sample:
+  title: Ut enim ad minim veniam
+  description: Luctus venenatis lectus magna fringilla urna porttitor rhoncus dolor. Sit amet mauris commodo quis imperdiet massa tincidunt nunc.
+  label: Occaecat
+  items:
+    - title: Egestas
+      description: Ultrices neque ornare aenean euismod elementum nisi quis.
+      image:
+        src: https://res.cloudinary.com/webmaster-marke/image/upload/v1627480564/Planejamento_e_Setup_lufax0.svg
+        alt: lorem ipsum
+    - title: Ultricies mi
+      description: Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu.
+      image:
+        src: https://res.cloudinary.com/webmaster-marke/image/upload/v1627480566/Posicionamento_no_Google_xetmce.svg
+        alt: lorem ipsum
+    - title: Sagittis
+      description: Pellentesque elit ullamcorper dignissim cras tincidunt lobortis.
+      image:
+        src: https://res.cloudinary.com/webmaster-marke/image/upload/v1627480559/Marketing_de_Conte%C3%BAdo_acibxr.svg
+        alt: lorem ipsum
+    - title: Sagittis
+      description: Pellentesque elit ullamcorper dignissim cras tincidunt lobortis.
+      image:
+        src: https://res.cloudinary.com/webmaster-marke/image/upload/v1627480548/Diagn%C3%B3stico_Interno_zj05cr.svg
+        alt: lorem ipsum
+    - title: Sagittis
+      description: Pellentesque elit ullamcorper dignissim cras tincidunt lobortis.
+      image:
+        src: https://res.cloudinary.com/webmaster-marke/image/upload/v1627480552/Gest%C3%A3o_de_Redes_Sociais_byueyg.svg
+        alt: lorem ipsum
+    - title: Sagittis
+      description: Pellentesque elit ullamcorper dignissim cras tincidunt lobortis.
+      image:
+        src: https://res.cloudinary.com/webmaster-marke/image/upload/v1627480544/Aumentar_sua_reputa%C3%A7%C3%A3o_sb0djn.svg
+        alt: lorem ipsum
+---
+<h1>{{ metadata.title }}</h1>
+
+{% set context = {
+  title: {
+    tag: 'h3',
+    text: sample.title
+  },
+  description: sample.description,
+  highlight: sample.label,
+  items: sample.items
+} %}
+{% include "feature/feature-1.njk" %}
+
+{% set context = {
+  title: {
+    tag: 'h3',
+    text: sample.title
+  },
+  description: sample.description,
+  highlight: sample.label,
+  items: sample.items
+} %}
+{% include "feature/feature-2.njk" %}
+
+{% set context = {
+  title: {
+    tag: 'h3',
+    text: sample.title
+  },
+  description: sample.description,
+  highlight: sample.label,
+  items: sample.items
+} %}
+{% include "feature/feature-3.njk" %}

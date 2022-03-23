@@ -28,6 +28,7 @@ module.exports = (source, opts) => {
       imageUrl = source;
     }
   } catch (err) {
+    console.log(err);
     imageUrl = source;
   }
   return imageUrl;
