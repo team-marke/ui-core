@@ -3,6 +3,11 @@
   {% set description = context.description %}
   {% set highlight = context.highlight %}
   {% set items = context.items %}
+  {% if context.background %}
+    {% set background = 'bg-' + context.background %}
+  {% else %}
+    {% set background = 'bg-body' %}
+  {% endif %}
 {% endif %}
 
 {% if title.tag %}
@@ -17,7 +22,7 @@
   {% set titleContent = (title.text | e | safe) %}
 {% endif %}
 
-<section class="py-4 py-lg-5 text-center">
+<section class="py-4 py-lg-5 text-center {{ background }}">
   <div class="container">
     <div class="row mb-4">
       <div class="col-12 col-lg-9 col-xl-8 mx-auto">
@@ -33,7 +38,7 @@
         {% endif %}
       </div>
     </div>
-    <div class="row">
+    <div class="row g-4">
       <div class="col-12">
         {% set arr = [] %}
         {% for item in items %}
@@ -55,7 +60,7 @@
                 class="img-fluid mb-3"
               >
               <h3>{{ item.title | e | safe }}</h3>
-              <p>{{ item.description | e | safe }}</p>
+              <p class="mb-0">{{ item.description | e | safe }}</p>
             </div>
           {% endset %}
           {% set arr = (arr.push(renderedItem), arr) %}

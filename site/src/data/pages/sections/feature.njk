@@ -42,7 +42,9 @@ sample:
         alt: lorem ipsum
 ---
 <h1>{{ metadata.title }}</h1>
+<p>{{ metadata.description }}</p>
 
+<h2>Variante 1</h2>
 {% set context = {
   title: {
     tag: 'h3',
@@ -50,10 +52,12 @@ sample:
   },
   description: sample.description,
   highlight: sample.label,
-  items: sample.items
+  items: sample.items,
+  background: 'light'
 } %}
 {% include "feature/feature-1.njk" %}
 
+<h2>Variante 2</h2>
 {% set context = {
   title: {
     tag: 'h3',
@@ -61,10 +65,12 @@ sample:
   },
   description: sample.description,
   highlight: sample.label,
-  items: sample.items
+  items: sample.items,
+  background: 'light'
 } %}
 {% include "feature/feature-2.njk" %}
 
+<h2>Variante 3</h2>
 {% set context = {
   title: {
     tag: 'h3',
@@ -72,6 +78,7 @@ sample:
   },
   description: sample.description,
   highlight: sample.label,
-  items: sample.items
+  items: sample.items,
+  background: 'light'
 } %}
 {% include "feature/feature-3.njk" %}
