@@ -8,10 +8,13 @@ metadata:
 sample:
   title: Ut enim ad minim veniam
   description: Luctus venenatis lectus magna fringilla urna porttitor rhoncus dolor. Sit amet mauris commodo quis imperdiet massa tincidunt nunc.
-  label: Occaecat
+  highlight: Occaecat
   image:
-    src: https://res.cloudinary.com/webmaster-marke/image/upload/v1627480564/Planejamento_e_Setup_lufax0.svg
+    src: https://res.cloudinary.com/webmaster-marke/image/upload/v1626966856/Afinal-o-que-%C3%A9-SEO-e-qual-a-import%C3%A2ncia-de-otimizar-um-site.jpg
     alt: lorem ipsum
+    classes:
+      - rounded-3
+      - shadow
 ---
 
 <h1>{{ metadata.title }}</h1>
@@ -20,7 +23,8 @@ sample:
   title: {
     text: sample.title
   },
+  highlight: sample.highlight,
   description: sample.description,
-  item: sample.image
+  image: sample.image
 } %}
 {% include "hero/hero-1.njk" %}

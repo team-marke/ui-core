@@ -1,7 +1,9 @@
 {% if context %}
   {% set title = context.title %}
   {% set description = context.description %}
-  {% set item = context.item %}
+  {% set highlight = context.highlight %}
+  {% set image = context.image %}
+  {% set isReverse = context.isReverse %}
 {% endif %}
 
 {% if title.tag %}
@@ -16,10 +18,42 @@
   {% set titleContent = (title.text | e | safe) %}
 {% endif %}
 
+{% if image.width %}
+  {% set imageWidth = image.width %}
+{% else %}
+  {% set imageWidth = 500 %}
+{% endif %}
+
+{% if image.height %}
+  {% set imageHeight = image.height %}
+{% else %}
+  {% set imageHeight = 500 %}
+{% endif %}
+
+{% if image.crop %}
+  {% set imageCrop = image.crop %}
+{% else %}
+  {% set imageCrop = 'thumb' %}
+{% endif %}
+
+{% if image.classes %}
+  {% set imageClasses = image.classes | join(" ") %}
+{% endif %}
+
+{% if isReverse %}
+  {% set order = "row-reverse" %}
+{% else %}
+  {% set order = "row" %}
+{% endif %}
+
 <section class="py-4 py-lg-5">
   <div class="container">
-    <div class="row align-items-center">
-      <div class="col-12 col-lg-6 order-1 order-lg-0">
+    <div class="row align-items-center flex-lg-{{order}} flex-column-reverse">
+      <div class="col-12 col-lg-6">
+        {% if highlight %}
+          {% set context = { title: highlight } %}
+          {% include '../../components/highlight/highlight.njk' %}
+        {% endif %}
         {% if title %}
           <{{ titleTag }}>{{ titleContent }}</{{ titleTag }}>
         {% endif %}
@@ -27,28 +61,17 @@
           {{ description | markdown | safe }}
         {% endif %}
       </div>
-      <div class="col-12 col-lg-6 order-0 order-lg-1">
-        {% if item.width %}
-            {% set itemWidth = item.width %}
-          {% else %}
-            {% set itemWidth = 500 %}
-          {% endif %}
-        {% set renderedItem %}
-            <div>
-              <img
-                src="{% imageUrl item.image.src, { fetch_format: 'auto', quality: 'auto', width: itemWidth, aspect_ratio: '1:1', crop: 'pad' } %}"
-                srcset="
-                  {% imageUrl item.image.src, { fetch_format: 'auto', quality: 'auto', width: itemWidth, aspect_ratio: '1:1', crop: 'pad' } %},
-                  {% imageUrl item.image.src, { fetch_format: 'auto', quality: 'auto', width: itemWidth, aspect_ratio: '1:1', crop: 'pad', drp: 2 } %} 2x"
-                alt="{{ item.image.alt | e | safe }}"
-                width="{{ itemWidth }}"
-                height="{{ itemWidth }}"
-                class="img-fluid mb-3"
-              >
-              <h3>{{ item.title | e | safe }}</h3>
-              <p>{{ item.description | e | safe }}</p>
-            </div>
-          {% endset %}
+      <div class="col-12 col-lg-6">
+          <img
+            src="{% imageUrl image.src, { fetch_format: 'auto', quality: 'auto', width: imageWidth, height: imageHeight, crop: imageCrop} %}"
+            srcset="
+              {% imageUrl image.src, { fetch_format: 'auto', quality: 'auto', width: imageWidth, height: imageHeight, crop: imageCrop } %},
+              {% imageUrl image.src, { fetch_format: 'auto', quality: 'auto', width: imageWidth, height: imageHeight, crop: imageCrop, drp: 2 } %} 2x"
+            alt="{{ image.alt | e | safe }}"
+            width="{{ imageWidth }}"
+            height="{{ imageHeight }}"
+            class="img-fluid {{imageClasses}}"
+          >
       </div>
     </div>
   </div>
