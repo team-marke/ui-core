@@ -1,0 +1,55 @@
+{% if context %}
+  {% set title = context.title %}
+  {% set description = context.description %}
+  {% set item = context.item %}
+{% endif %}
+
+{% if title.tag %}
+  {% set titleTag = (title.tag | e | safe) %}
+{% else %}
+  {% set titleTag = 'h2' %}
+{% endif %}
+
+{% if title.html %}
+  {% set titleContent = (title.html | markdown | safe) %}
+{% else %}
+  {% set titleContent = (title.text | e | safe) %}
+{% endif %}
+
+<section class="py-4 py-lg-5">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-12 col-lg-6 order-1 order-lg-0">
+        {% if title %}
+          <{{ titleTag }}>{{ titleContent }}</{{ titleTag }}>
+        {% endif %}
+        {% if description %}
+          {{ description | markdown | safe }}
+        {% endif %}
+      </div>
+      <div class="col-12 col-lg-6 order-0 order-lg-1">
+        {% if item.width %}
+            {% set itemWidth = item.width %}
+          {% else %}
+            {% set itemWidth = 500 %}
+          {% endif %}
+        {% set renderedItem %}
+            <div>
+              <img
+                src="{% imageUrl item.image.src, { fetch_format: 'auto', quality: 'auto', width: itemWidth, aspect_ratio: '1:1', crop: 'pad' } %}"
+                srcset="
+                  {% imageUrl item.image.src, { fetch_format: 'auto', quality: 'auto', width: itemWidth, aspect_ratio: '1:1', crop: 'pad' } %},
+                  {% imageUrl item.image.src, { fetch_format: 'auto', quality: 'auto', width: itemWidth, aspect_ratio: '1:1', crop: 'pad', drp: 2 } %} 2x"
+                alt="{{ item.image.alt | e | safe }}"
+                width="{{ itemWidth }}"
+                height="{{ itemWidth }}"
+                class="img-fluid mb-3"
+              >
+              <h3>{{ item.title | e | safe }}</h3>
+              <p>{{ item.description | e | safe }}</p>
+            </div>
+          {% endset %}
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,26 @@
+---
+eleventyNavigation:
+  key: hero
+  title: Hero
+metadata:
+  title: Hero
+  description:
+sample:
+  title: Ut enim ad minim veniam
+  description: Luctus venenatis lectus magna fringilla urna porttitor rhoncus dolor. Sit amet mauris commodo quis imperdiet massa tincidunt nunc.
+  label: Occaecat
+  image:
+    src: https://res.cloudinary.com/webmaster-marke/image/upload/v1627480564/Planejamento_e_Setup_lufax0.svg
+    alt: lorem ipsum
+---
+
+<h1>{{ metadata.title }}</h1>
+
+{% set context = {
+  title: {
+    text: sample.title
+  },
+  description: sample.description,
+  item: sample.image
+} %}
+{% include "hero/hero-1.njk" %}
