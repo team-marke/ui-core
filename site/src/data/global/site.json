@@ -6,6 +6,7 @@
   "author": "{{ pkg.author }}",
   "locale": "pt-BR",
   "logo": "https://res.cloudinary.com/webmaster-marke/image/upload/v1620931656/Logo_Marke_dt6azg_pthlhj.svg",
+  "logoDark": "https://res.cloudinary.com/webmaster-marke/image/upload/v1626289554/Marke_logo_dark.svg",
   "logoMobile": "https://res.cloudinary.com/webmaster-marke/image/upload/v1620931656/Logo_Marke_dt6azg_pthlhj.svg",
   "favicon": "https://res.cloudinary.com/webmaster-marke/image/upload/v1621454510/favicon-marke-180x180_blycth.svg",
   "social": {

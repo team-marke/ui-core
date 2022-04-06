@@ -1,0 +1,51 @@
+{% if context %}
+  {% set theme = context.theme %}
+  {% set logoWidth = context.logoWidth %}
+  {% set align = context.align %}
+  {% set button = context.button %}
+{% endif %}
+
+{% set navbarLinks = collections.all | eleventyNavigation %}
+
+{% if theme == "light" %}
+  {% set logoTheme = site.logoDark %}
+{% else  %}
+  {% set logoTheme = site.logo %}
+{% endif %}
+
+{% if align == "start" %}
+  {% set barAlign = "justify-content-start" %}
+{% endif %}
+{% if align == "center" %}
+  {% set barAlign = "justify-content-center" %}
+{% endif %}
+{% if align == "end" %}
+  {% set barAlign = "justify-content-end" %}
+{% endif %}
+
+<header class="page-header">
+  <div class="container position-relative">
+    {% set children %}
+    <div class="d-flex">
+      {% set context = {
+        theme: 'secondary',
+        href: button.url,
+        text: button.text
+      } %}
+      {% include "button/button.njk" %}
+    </div>
+    {% endset %}
+    {% set context = {
+      id: "main-nav",
+      currentPageUrl: page.url,
+      links: navbarLinks,
+      brandLogo: logoTheme,
+      brandLogoMobile: logoTheme,
+      brandLogoWidth: logoWidth,
+      brandUrl: global.site_absolute_url,
+      variant: theme,
+      nav_override_classes: ['w-100', barAlign ]
+    } %}
+    {% include "navbar/navbar.njk" %}
+  </div>
+</header>

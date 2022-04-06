@@ -1,0 +1,32 @@
+---
+eleventyNavigation:
+  key: header
+  title: Header
+metadata:
+  title: Header
+  description:
+---
+<h1>{{ metadata.title }}</h1>
+
+<p>Header Simples</p>
+<div class="bg-primary mb-2">
+  {% set context = {
+    theme: "light",
+    align: "end"
+  } %}
+  {% include "header/header-1.njk" %}
+</div>
+
+
+<p>Header com Botão</p>
+<div class="bg-light">
+  {% set context = {
+    theme: "light",
+    align: "start",
+    button:{
+      url: "/",
+      text: "Botão"
+    }
+  } %}
+  {% include "header/header-2.njk" %}
+</div>
