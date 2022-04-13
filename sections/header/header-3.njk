@@ -2,10 +2,9 @@
   {% set theme = context.theme %}
   {% set logoWidth = context.logoWidth %}
   {% set align = context.align %}
-  {% set button = context.button %}
-  {% set links = links %}
+  {% set links = context.links %}
+  {% set socials = context.socials %}
 {% endif %}
-
 
 {% if theme == "light" %}
   {% set logoTheme = site.logoDark %}
@@ -24,21 +23,19 @@
 {% endif %}
 
 <header class="page-header">
-  <div class="container position-relative">
+  <div class="container">
     {% set children %}
-    <div class="d-flex">
-      {% set context = {
-        theme: 'secondary',
-        href: button.url,
-        text: button.text
-      } %}
-      {% include "button/button.njk" %}
-    </div>
-    {% endset %}
+      {%- set context = {
+          variant: theme,
+          items: socials
+        } %}
+        {% include "socialbar/socialbar.njk" %}
+      {% endset %}
     {% set context = {
       id: "main-nav",
       currentPageUrl: page.url,
       links: links,
+      children: children,
       brandLogo: logoTheme,
       brandLogoMobile: logoTheme,
       brandLogoWidth: logoWidth,

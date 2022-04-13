@@ -8,9 +8,44 @@ metadata:
 ---
 <h1>{{ metadata.title }}</h1>
 
+{% set navbarLinks = [
+      {
+        url: "",
+        title: "Home"
+      },
+      {
+        url: "",
+        title: "Quem Somos"
+      }
+    ] %}
+
+{%- set socialLinks = [
+        {
+          href:  'https://instagram.com',
+          icon: 'instagram'
+        },
+        {
+          href:  'https://facebook.com',
+          icon: 'facebook'
+        },
+        {
+          href:  'https://youtube.com',
+          icon: 'youtube'
+        },
+        {
+          href:  'https://linkedin.com',
+          icon: 'linkedin'
+        },
+        {
+          href:  'https://whatsapp.com',
+          icon: 'whatsapp'
+        }
+      ] %}
+
 <p>Header Simples</p>
 <div class="bg-primary mb-2">
   {% set context = {
+    links: navbarLinks,
     theme: "light",
     align: "end"
   } %}
@@ -21,6 +56,7 @@ metadata:
 <p>Header com Botão</p>
 <div class="bg-light">
   {% set context = {
+    links: navbarLinks,
     theme: "light",
     align: "start",
     button:{
@@ -29,4 +65,16 @@ metadata:
     }
   } %}
   {% include "header/header-2.njk" %}
+</div>
+
+
+<p>Header com Social Bar</p>
+<div class="bg-primary mb-2">
+  {% set context = {
+    links: navbarLinks,
+    socials: socialLinks,
+    theme: "light",
+    align: "center"
+  } %}
+  {% include "header/header-3.njk" %}
 </div>

@@ -2,9 +2,8 @@
   {% set theme = context.theme %}
   {% set logoWidth = context.logoWidth %}
   {% set align = context.align %}
+  {% set links = context.links %}
 {% endif %}
-
-{% set navbarLinks = collections.all | eleventyNavigation %}
 
 {% if theme == "light" %}
   {% set logoTheme = site.logoDark %}
@@ -27,7 +26,7 @@
     {% set context = {
       id: "main-nav",
       currentPageUrl: page.url,
-      links: navbarLinks,
+      links: links,
       brandLogo: logoTheme,
       brandLogoMobile: logoTheme,
       brandLogoWidth: logoWidth,
