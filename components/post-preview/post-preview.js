@@ -5,7 +5,7 @@
 import { dom as faDom, library as faLibrary, config as faConfig } from '@fortawesome/fontawesome-svg-core';
 import { faCalendarAlt } from '@fortawesome/free-regular-svg-icons';
 
-export class PostPreview {
+class PostPreview {
   constructor(el) {
     this.el = el;
     this.init();
@@ -17,3 +17,5 @@ export class PostPreview {
     faDom.i2svg({ node: this.el });
   }
 }
+
+export default PostPreview;

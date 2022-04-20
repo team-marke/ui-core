@@ -18,9 +18,9 @@ class ToastStack {
   constructor(options) {
     options = {
       max: 5,
-      anchor: { 
+      anchor: {
         vertical: 'bottom',
-        horizontal: 'left' 
+        horizontal: 'left'
       },
       action: '',
       ...options,
@@ -109,4 +109,4 @@ class ToastStack {
   }
 }
 
-export { ToastStack };
+export default ToastStack;

@@ -107,4 +107,4 @@ class Select extends Input {
   }
 }
 
-export { Select };
+export default Select;

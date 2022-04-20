@@ -47,4 +47,4 @@ class MastheadSlider {
   }
 }
 
-export { MastheadSlider };
+export default MastheadSlider;

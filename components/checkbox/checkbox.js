@@ -13,4 +13,4 @@ class Checkbox extends Input {
   }
 }
 
-export { Checkbox };
+export default Checkbox;

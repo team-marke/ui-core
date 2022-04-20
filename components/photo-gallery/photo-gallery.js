@@ -4,7 +4,7 @@
 
 import lightGallery from 'lightgallery';
 
-export class PhotoGallery {
+class PhotoGallery {
   /**
    * Inits a new photo gallery.
    * @param {HTMLElement} el
@@ -52,3 +52,5 @@ export class PhotoGallery {
     });
   }
 }
+
+export default PhotoGallery;

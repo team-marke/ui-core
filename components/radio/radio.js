@@ -54,4 +54,4 @@ class Radio extends Input {
   }
 }
 
-export { Radio };
+export default Radio;

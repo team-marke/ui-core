@@ -13,4 +13,4 @@ class TextField extends Input {
   }
 }
 
-export { TextField };
+export default TextField;

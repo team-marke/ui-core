@@ -8,6 +8,7 @@ class GridResponsiveSlider {
   constructor(...args) {
     this.Swiper = this.initSlider(args);
   }
+
   initSlider(args) {
     let sliderContainer;
     let swiperParams;
@@ -53,4 +54,4 @@ class GridResponsiveSlider {
   }
 }
 
-export { GridResponsiveSlider };
+export default GridResponsiveSlider;

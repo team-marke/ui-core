@@ -17,7 +17,7 @@ import {
 } from '@fortawesome/free-brands-svg-icons';
 import { faPhone, faEnvelope, faPhoneSquare, faEnvelopeSquare } from '@fortawesome/free-solid-svg-icons';
 
-export class Actionbar {
+class Actionbar {
   constructor(el) {
     this.el = el;
     this.init();
@@ -44,3 +44,5 @@ export class Actionbar {
     faDom.i2svg({ node: this.el });
   }
 }
+
+export default Actionbar

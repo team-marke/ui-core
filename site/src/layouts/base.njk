@@ -16,7 +16,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css?family=Abril+Fatface:400,700|Nunito:400,700&display=swap" rel="stylesheet">
     <link href="/assets/app.{{ pkg | objectHash | safe }}.css" type="text/css" rel="stylesheet">
-    <script src="/assets/app.{{ pkg | objectHash | safe }}.js" type="text/javascript" async defer></script>
+    <script src="/assets/app.{{ pkg | objectHash | safe }}.js" type="text/javascript" defer></script>
     {%- block headSchema %}
       {% include "global/schema.njk" %}
     {%- endblock %}

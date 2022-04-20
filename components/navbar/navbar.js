@@ -6,7 +6,7 @@ import SmoothScrollLink from '../../tools/core-components/smooth-scroll-link';
  * Navbar component.
  */
 
-export class Navbar {
+class Navbar {
   constructor(el) {
     el.querySelectorAll('.offcanvas').forEach((offcanvasEl) => {
       const offcanvas = new Offcanvas(offcanvasEl);
@@ -39,3 +39,5 @@ class NavLink extends SmoothScrollLink {
     }
   }
 }
+
+export default Navbar
