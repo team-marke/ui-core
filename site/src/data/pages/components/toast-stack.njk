@@ -29,8 +29,7 @@ metadata:
         override_atts: {
           'data-toast-message': 'Exemplo de notificação.',
           'data-toast-variant': 'primary',
-          'data-toast-auto-hide-duration': '3000',
-          'data-toast-closebutton': 'false'
+          'data-toast-auto-hide-duration': '3000'
         }
       } %}
       {% include "button/button.njk" %}
@@ -46,8 +45,7 @@ metadata:
     override_atts: {
       'data-toast-message': 'Exemplo de notificação.',
       'data-toast-variant': 'primary',
-      'data-toast-auto-hide-duration': '3000',
-      'data-toast-closebutton': 'false'
+      'data-toast-auto-hide-duration': '3000'
     }
   } %}
   {% include "button/button.njk" %}
@@ -66,7 +64,8 @@ metadata:
       override_classes: ['toast-stack-example-button'],
       override_atts: {
         'data-toast-message': 'Você pode me fechar.',
-        'data-toast-variant': 'primary'
+        'data-toast-variant': 'primary',
+        'data-toast-closebutton': true
       }
     } %}
     {% include "button/button.njk" %}
@@ -81,7 +80,8 @@ metadata:
     override_classes: ['toast-stack-example-button'],
     override_atts: {
       'data-toast-message': 'Você pode me fechar.',
-      'data-toast-variant': 'primary'
+      'data-toast-variant': 'primary',
+      'data-toast-closebutton': true
     }
   } %}
   {% include "button/button.njk" %}
@@ -173,8 +173,7 @@ metadata:
       override_atts: {
         'data-toast-message': 'Notificação de 5 segundos.',
         'data-toast-variant': 'primary',
-        'data-toast-auto-hide-duration': '5000',
-        'data-toast-closebutton': 'false'
+        'data-toast-auto-hide-duration': '5000'
       }
     } %}
     {% include "button/button.njk" %}
@@ -190,8 +189,7 @@ metadata:
     override_atts: {
       'data-toast-message': 'Notificação de 5 segundos.',
       'data-toast-variant': 'primary',
-      'data-toast-auto-hide-duration': '5000',
-      'data-toast-closebutton': 'false'
+      'data-toast-auto-hide-duration': '5000'
     }
   } %}
   {% include "button/button.njk" %}
@@ -212,7 +210,6 @@ metadata:
         'data-toast-message': 'Você só pode me ver uma vez.',
         'data-toast-variant': 'primary',
         'data-toast-auto-hide-duration': '3000',
-        'data-toast-closebutton': 'false',
         'data-toast-id': 'false'
       }
     } %}
@@ -231,7 +228,6 @@ metadata:
       'data-toast-message': 'Você só pode me ver uma vez.',
       'data-toast-variant': 'primary',
       'data-toast-auto-hide-duration': '3000',
-      'data-toast-closebutton': 'false',
       'data-toast-id': 'false'
     }
   } %}

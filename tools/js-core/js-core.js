@@ -14,14 +14,14 @@ class JsCore {
       'select',
       'socialbar',
       'text-field',
-      'toast-stack'
+      'toast-stack',
+      'accordion',
+      'tabs'
     ];
   }
 
   /**
-   * TODO: suporte para os componentes accordion e tabs
    * TODO: reestruturar componete Video Modal/Teaser
-   * TODO: Adicionar exemplos ToastStack
    */
 
   async init() {

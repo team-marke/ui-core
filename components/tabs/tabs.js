@@ -4,12 +4,10 @@
 
 import Tab from 'bootstrap/js/src/tab';
 
-(() => {
-  Array.from(document.querySelectorAll('.tabs__link')).forEach((node) => {
-    let tab = new Tab(node);
-    node.addEventListener('click', function (event) {
-      event.preventDefault();
-      tab.show();
-    });
-  });
-})();
+class Tabs {
+  constructor(el) {
+    this.el = el;
+  }
+}
+
+export default Tabs;

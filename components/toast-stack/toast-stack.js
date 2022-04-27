@@ -13,24 +13,21 @@ class ToastStack {
    * @param {Object} [options.anchor]
    * @param {String} [options.anchor.vertical]
    * @param {String} [options.anchor.horizontal]
-   * @param {String} [options.action]
    */
   constructor(options) {
     options = {
       max: 5,
       anchor: {
         vertical: 'bottom',
-        horizontal: 'left'
+        horizontal: 'left',
       },
-      action: '',
       ...options,
-    }
+    };
     this.el = document.createElement('div');
     this.el.classList.add('toast-stack');
     document.body.appendChild(this.el);
     this.max = options.max;
     this.anchor = options.anchor;
-    this.action = options.action;
     this.el.classList.add(`toast-stack--v-${this.anchor.vertical}`, `toast-stack--h-${this.anchor.horizontal}`);
     this.shownToasts = [];
   }
@@ -42,10 +39,11 @@ class ToastStack {
    * @param {String} [args.variant]
    * @param {Number} [args.autoHideDuration]
    * @param {String} [args.id]
-   * @param {String} [args.action]
+   * @param {String} [args.closeButton]
    */
-  enqueueToast({ message, variant, autoHideDuration = 0, id, action = '' }) {
-    const toastIdExists = this.shownToasts.some(toast => toast._element.id == id);
+  enqueueToast({ message, variant, autoHideDuration = 0, id, closeButton = false }) {
+    console.log(closeButton);
+    const toastIdExists = this.shownToasts.some((toast) => toast._element.id == id);
     if (toastIdExists) {
       return;
     }
@@ -57,7 +55,7 @@ class ToastStack {
     }
     this.el.insertAdjacentHTML(
       'beforeEnd',
-      this._renderToast({ message: message, id: id, classes: classes, action: action })
+      this._renderToast({ message: message, id: id, classes: classes, closeButton: closeButton })
     );
     const toastEl = this.el.lastElementChild;
     if (typeof autoHideDuration === 'string') {
@@ -74,22 +72,27 @@ class ToastStack {
     this.shownToasts.push(toast);
   }
 
+  _renderCloseButton() {
+    return '<button type="button" class="btn-close btn-close-white" aria-label="Close" data-bs-dismiss="toast"></button>';
+  }
+
   /**
    * Renders the toast makrup.
    * @param {Object} args
    * @param {String} args.message
    * @param {String} [args.id]
    * @param {Array} [args.classes]
-   * @param {String} [args.action]
+   * @param {String} [args.closeButton]
    * @returns {String} rendered toast markup.
    */
-  _renderToast({ message = '', id = '', classes = [], action = '' }) {
+  _renderToast({ message = '', id = '', classes = [], closeButton }) {
     return `
-       <div id="${id}" class="toast-stack__item ${classes.join(' ')} toast" role="alert" aria-live="assertive" aria-atomic="true">
+       <div id="${id}" class="toast-stack__item ${classes.join(
+      ' '
+    )} toast" role="alert" aria-live="assertive" aria-atomic="true">
          <div class="toast-body d-flex justify-content-between">
            <span>${message}</span>
-           ${this.action}
-           ${action}
+           ${closeButton ? this._renderCloseButton() : ''}
          </div>
        </div>
      `;
@@ -104,9 +107,9 @@ class ToastStack {
       let element = toast._element;
       toast.dispose();
       element.remove();
-      this.shownToasts = this.shownToasts.filter(toastItem => toastItem !== toast)
+      this.shownToasts = this.shownToasts.filter((toastItem) => toastItem !== toast);
     });
   }
 }
 
-export default ToastStack;
+export { ToastStack };
