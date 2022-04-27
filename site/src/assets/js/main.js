@@ -1,6 +1,7 @@
 import 'regenerator-runtime/runtime.js';
 import '../scss/main.scss';
 import JsCore from '../../../../tools/js-core/js-core';
+import { async } from 'regenerator-runtime/runtime.js';
 
 // import '../../../../components/accordion/accordion';
 // import '../../../../components/tabs/tabs';
@@ -50,6 +51,19 @@ import JsCore from '../../../../tools/js-core/js-core';
 //     }
 //   }
 // };
+const loadModal = () => {
+  if (document.querySelector('.modal')) {
+    import(/* webpackChunkName: "components.modal" */ '../../../../components/modal/modal').then(
+      ({ Modal }) => {
+        document.querySelectorAll('.modal').forEach((modal) => {
+          new Modal(modal);
+        });
+      }
+    );
+  }
+};
+loadModal();
+
 
 const loadJsCore = () => new JsCore().init();
 
