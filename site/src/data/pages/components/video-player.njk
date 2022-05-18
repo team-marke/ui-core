@@ -1,0 +1,21 @@
+---
+eleventyNavigation:
+  key: video-player
+  title: Video Player
+metadata:
+  title: Video Player
+  description: Use o Video Player para adicionar um vídeo diretamente no site, abrindo um modal para a reprodução do conteúdo. Usando um link no YouTube é possível reproduzir qualquer vídeo.
+---
+{%- if context -%}
+  {% set id = context.id %}
+  {% set alt = context.alt %}
+  {% set custom_thumbnail = context.custom_thumbnail %}
+  {% set maxwidth = context.maxwidth %}
+  {% set size = context.size %}
+{%- endif -%}
+
+{% set context = {
+  id: 'qrBhP9pGu8s',
+  alt: 'Balada JP'
+} %}
+{% include "video-player/video-player.njk" %}

@@ -63,7 +63,18 @@ const loadModal = () => {
   }
 };
 loadModal();
-
+const loadPlayer = () => {
+  if (document.querySelector('.video-player')) {
+    import(/* webpackChunkName: "components.modal" */ '../../../../components/video-player/video-player').then(
+      ({ VideoPlayer }) => {
+        document.querySelectorAll('.video-player').forEach((player) => {
+          new VideoPlayer(player);
+        });
+      }
+    );
+  }
+};
+loadPlayer();
 
 const loadJsCore = () => new JsCore().init();
 
