@@ -10,36 +10,39 @@
   data-video-player-id="{{ id | safe }}"
   {% if maxwidth %}
   style="max-width: {{ maxwidth }}"
-  {%- endif -%}
+  {% endif %}
 >
   {% if custom_thumbnail %}
-  <picture class="video-player__thumb">
+  <picture>
     <img
       alt="{{ alt | e | safe }}"
       src="{{ custom_thumbnail | url | safe }}"
+      class="video-player__thumb"
       loading="lazy"
       width="500"
       height="280"
     >
   </picture>
   {% else %}
-  <picture class="video-player__thumb">
+  <picture>
     <source media="(min-width: 768px)" srcset="https://i.ytimg.com/vi_webp/{{ id }}/maxresdefault.webp" type="image/webp">
     <source media="(min-width: 768px)" srcset="https://i.ytimg.com/vi/{{ id }}/maxresdefault.jpg" type="image/jpeg">
     <source srcset="https://i.ytimg.com/vi_webp/{{ id }}/hqdefault.webp" type="image/webp">
     <source srcset="https://i.ytimg.com/vi/{{ id }}/hqdefault.jpg" type="image/jpeg">
     <img
       src="https://i.ytimg.com/vi/{{ id }}/hqdefault.jpg"
+      class="video-player__thumb"
       loading="lazy"
       alt="{{ alt | e | safe }}"
       width="500"
-      height="280">
+      height="280"
+    >
   </picture>
   {% endif %}
   <i class="video-player__play fas fa-play-circle"></i>
 </a>
 
-<div class="video-player-modal fade" id="{{id}}" tabindex="-1" aria-hidden="true">
+<div class="video-player-modal modal fade" id="{{id}}" tabindex="-1" aria-hidden="true">
   <div class="video-player-modal__content">
     <div class="video-player-modal__header">
       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>

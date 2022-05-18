@@ -14,7 +14,7 @@ class JsCore {
       'select',
       'socialbar',
       'text-field',
-      'toast-stack'
+      'toast-stack',
     ];
   }
 
@@ -24,7 +24,16 @@ class JsCore {
    * TODO: Adicionar exemplos ToastStack
    */
 
-  async init() {
+  init() {
+    this.loadBootstrapComponents();
+    this.loadComponents();
+  }
+
+  async loadBootstrapComponents() {
+    const { Modal } = await import('bootstrap/js/dist/modal');
+  }
+
+  async loadComponents() {
     for (const component of this._components) {
       if (!document.querySelector(`.${component}`)) continue;
       this._loadComponent(component);

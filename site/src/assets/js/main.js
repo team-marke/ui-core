@@ -51,30 +51,6 @@ import { async } from 'regenerator-runtime/runtime.js';
 //     }
 //   }
 // };
-const loadModal = () => {
-  if (document.querySelector('.modal')) {
-    import(/* webpackChunkName: "components.modal" */ '../../../../components/modal/modal').then(
-      ({ Modal }) => {
-        document.querySelectorAll('.modal').forEach((modal) => {
-          new Modal(modal);
-        });
-      }
-    );
-  }
-};
-loadModal();
-const loadPlayer = () => {
-  if (document.querySelector('.video-player')) {
-    import(/* webpackChunkName: "components.modal" */ '../../../../components/video-player/video-player').then(
-      ({ VideoPlayer }) => {
-        document.querySelectorAll('.video-player').forEach((player) => {
-          new VideoPlayer(player);
-        });
-      }
-    );
-  }
-};
-loadPlayer();
 
 const loadJsCore = () => new JsCore().init();
 
