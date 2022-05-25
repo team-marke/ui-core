@@ -1,17 +1,17 @@
 /**
- * Accordion component
+ * Modal component
  *
  * This component is created via data atributes
  */
 
-class Accordion {
+class Modal {
   constructor(el) {
     this.init();
   }
 
   async init() {
-    await import('bootstrap/js/src/collapse');
+    await import('bootstrap/js/src/modal');
   }
 }
 
-export default Accordion;
+export default Modal;

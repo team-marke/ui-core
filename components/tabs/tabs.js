@@ -1,15 +1,19 @@
 /**
- * Tabs component scripts.
+ * Tabs component
+ *
+ * This component is created via data atributes
  */
 
 import Tab from 'bootstrap/js/src/tab';
 
-(() => {
-  Array.from(document.querySelectorAll('.tabs__link')).forEach((node) => {
-    let tab = new Tab(node);
-    node.addEventListener('click', function (event) {
-      event.preventDefault();
-      tab.show();
-    });
-  });
-})();
+class Tabs {
+  constructor(el) {
+    this.init();
+  }
+
+  async init() {
+    await import('bootstrap/js/src/tab');
+  }
+}
+
+export default Tabs;

@@ -1,11 +1,13 @@
 class JsCore {
   constructor() {
     this._components = [
+      'accordion',
       'grid-responsive-slider',
       'carousel',
       'checkbox',
       'actionbar',
       'masthead-slider',
+      'modal',
       'navbar',
       'pagination',
       'photo-gallery',
@@ -13,6 +15,7 @@ class JsCore {
       'radio',
       'select',
       'socialbar',
+      'tabs',
       'text-field',
       'toast-stack',
     ];
@@ -25,12 +28,7 @@ class JsCore {
    */
 
   init() {
-    this.loadBootstrapComponents();
     this.loadComponents();
-  }
-
-  async loadBootstrapComponents() {
-    const { Modal } = await import('bootstrap/js/dist/modal');
   }
 
   async loadComponents() {
