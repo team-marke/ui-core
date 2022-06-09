@@ -6,7 +6,7 @@
 
 $border-radius: mkui.$border-radius !default;
 $transition: all 0.2s ease-in-out !default;
-$thumb-brightness: brightness(0.75) !default;
+$thumb-filter: brightness(0.75) !default;
 $icon-color: mkui.$light !default;
 $icon-hover-color: mkui.$primary !default;
 
@@ -19,7 +19,7 @@ $icon-hover-color: mkui.$primary !default;
     aspect-ratio: 16/9;
     max-width: 100%;
     border-radius: $border-radius;
-    filter: $thumb-brightness;
+    filter: $thumb-filter;
     transition: $transition;
   }
 

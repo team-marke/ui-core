@@ -7,22 +7,21 @@ metadata:
   description: Um cabeçalho com conteúdo personalizável.
 masthead:
   image: https://res.cloudinary.com/webmaster-marke/image/upload/v1626966853/Como-vender-mais-e-gerar-novas-oportunidades-na-Internet.jpg
-  bgColor: '#b7485d'
   title: Como Vender
   description: Como vender mais e gerar novas oportunidades na Internet
 ---
-<h1>{{metadata.title}}</h1>
-<p>{{metadata.description}}</p>
+<h1>{{ metadata.title }}</h1>
+<p>{{ metadata.description }}</p>
 
 <h2>Exemplo</h2>
 <div class="docs-example">
   {% set content %}
     <div class="container">
       <div class="row">
-        <div class="col-12 col-lg-6">
+        <div class="col-12 col-lg-8">
           <div class="p-3 bg-light rounded-3">
-            <h1>{{ masthead.title }}</h1>
-            <p>{{ masthead.description }}</p>
+            <h1>{{ masthead.title | e | safe }}</h1>
+            <p>{{ masthead.description | e | safe }}</p>
             {% set context = { theme: 'primary', text: 'Ex cibo putent' } %}
             {% include "button/button.njk" %}
           </div>
@@ -31,24 +30,23 @@ masthead:
     </div>
   {% endset %}
 
-  {%- set context = {
+  {% set context = {
     image: masthead.image,
-    bgColor: masthead.bgColor,
-    children: content
+    children: content,
+    background_color: '#b7485d'
   } %}
   {% include "masthead/masthead.njk" %}
 </div>
 
-{% highlight 'liquid' %}
-  {% raw %}
+<h2>Exemplo</h2>
 <div class="docs-example">
   {% set content %}
     <div class="container">
       <div class="row">
-        <div class="col-12 col-lg-6">
+        <div class="col-12 col-lg-8">
           <div class="p-3 bg-light rounded-3">
-            <h1>{{ masthead.title }}</h1>
-            <p>{{ masthead.description }}</p>
+            <h1>{{ masthead.title | e | safe }}</h1>
+            <p>{{ masthead.description | e | safe }}</p>
             {% set context = { theme: 'primary', text: 'Ex cibo putent' } %}
             {% include "button/button.njk" %}
           </div>
@@ -57,68 +55,14 @@ masthead:
     </div>
   {% endset %}
 
-  {%- set context = {
+  {% set context = {
     image: masthead.image,
-    bgColor: masthead.bgColor,
-    children: content
-  } %}
-  {% include "masthead/masthead.njk" %}
-</div>
-  {% endraw %}
-{% endhighlight %}
-
-<h2>Aspect Ratio</h2>
-<div class="docs-example">
-  {% set content %}
-    <div class="container">
-      <div class="row">
-        <div class="col-12 col-lg-6">
-          <div class="p-3 bg-light rounded-3">
-            <h1>{{ masthead.title }}</h1>
-            <p>{{ masthead.description }}</p>
-            {% set context = { theme: 'primary', text: 'Ex cibo putent' } %}
-            {% include "button/button.njk" %}
-          </div>
-        </div>
-      </div>
-    </div>
-  {% endset %}
-
-  {%- set context = {
-    image: masthead.image,
-    bgColor: masthead.bgColor,
-    imgAr: '16:9',
-    children: content
+    children: content,
+    background_color: '#b7485d',
+    darkened: true,
+    height: 600
   } %}
   {% include "masthead/masthead.njk" %}
 </div>
 
-{% highlight 'liquid' %}
-  {% raw %}
-<div class="docs-example">
-  {% set content %}
-    <div class="container">
-      <div class="row">
-        <div class="col-12 col-lg-6">
-          <div class="p-3 bg-light rounded-3">
-            <h1>{{ masthead.title }}</h1>
-            <p>{{ masthead.description }}</p>
-            {% set context = { theme: 'primary', text: 'Ex cibo putent' } %}
-            {% include "button/button.njk" %}
-          </div>
-        </div>
-      </div>
-    </div>
-  {% endset %}
-
-  {%- set context = {
-    image: masthead.image,
-    bgColor: masthead.bgColor,
-    imgAr: '16:9',
-    children: content
-  } %}
-  {% include "masthead/masthead.njk" %}
-</div>
-  {% endraw %}
-{% endhighlight %}
 
