@@ -1,7 +1,5 @@
 /**
  * Modal component
- *
- * This component is created via data atributes
  */
 
 class Modal {

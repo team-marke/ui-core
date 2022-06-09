@@ -13,23 +13,23 @@
   {% set size = "md" %}
 {% endif %}
 
-<div class="modal fade" id="{{id}}" tabindex="-1" aria-hidden="true">
+<div class="modal fade" id="{{ id }}" tabindex="-1" aria-hidden="true">
   <div class="
-    modal-dialog modal-{{size}}
-    {%if centered %} modal-dialog-centered{% endif %}
+    modal-dialog modal-{{ size }}
+    {% if centered %} modal-dialog-centered{% endif %}
     {% if scrollable %} modal-dialog-scrollable{% endif %}
   ">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">{{title | e | safe}}</h5>
+        <h5 class="modal-title">{{ title | e | safe }}</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        {{body | safe }}
+        {{ body | safe }}
       </div>
       {% if footer %}
         <div class="modal-footer">
-          {{footer | safe }}
+          {{ footer | safe }}
         </div>
       {% endif %}
     </div>

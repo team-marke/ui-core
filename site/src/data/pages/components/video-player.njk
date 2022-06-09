@@ -7,8 +7,14 @@ metadata:
   description: Use o Video Player para adicionar um vídeo diretamente no site, abrindo um modal para a reprodução do conteúdo. Usando um link no YouTube é possível reproduzir qualquer vídeo.
 ---
 
-{% set context = {
-  id: 'qrBhP9pGu8s',
-  alt: 'Balada JP'
-} %}
-{% include "video-player/video-player.njk" %}
+<h1>{{ metadata.title | e | safe }}</h1>
+<p>{{ metadata.description | e | safe }}</p>
+
+<h2>Exemplo</h2>
+<div class="docs-example">
+  {% set context = {
+    id: 'qrBhP9pGu8s',
+    alt: 'Balada JP'
+  } %}
+  {% include "video-player/video-player.njk" %}
+</div>

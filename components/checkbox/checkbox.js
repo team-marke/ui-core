@@ -1,6 +1,6 @@
-//
-// Checkbox component scripts.
-//
+/**
+ * Checkbox component
+ */
 
 import Input from '../../tools/core-components/input/input';
 

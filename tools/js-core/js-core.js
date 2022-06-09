@@ -18,12 +18,12 @@ class JsCore {
       'tabs',
       'text-field',
       'toast-stack',
+      'video-player'
     ];
   }
 
   /**
-   * TODO: suporte para os componentes accordion e tabs
-   * TODO: reestruturar componete Video Modal/Teaser
+   * TODO: reestruturar componete Video Player
    * TODO: Adicionar exemplos ToastStack
    */
 

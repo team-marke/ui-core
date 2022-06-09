@@ -1,10 +1,6 @@
 /**
  * Tabs component
- *
- * This component is created via data atributes
  */
-
-import Tab from 'bootstrap/js/src/tab';
 
 class Tabs {
   constructor(el) {

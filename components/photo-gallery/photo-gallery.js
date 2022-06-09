@@ -1,5 +1,5 @@
 /**
- * Photo gallery component.
+ * Photo Gallery component
  */
 
 import lightGallery from 'lightgallery';

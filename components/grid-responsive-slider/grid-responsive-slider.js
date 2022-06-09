@@ -1,7 +1,7 @@
 /**
- * Grid responsive slider using Swiper API.
- * Read more about the API at @link https://swiperjs.com/api/
+ * Grid Responsive Slider component
  */
+
 import Swiper, { Pagination, Autoplay } from 'swiper';
 
 class GridResponsiveSlider {

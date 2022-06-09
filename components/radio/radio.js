@@ -1,6 +1,6 @@
-//
-// Radio component scripts.
-//
+/**
+ * Radio component
+ */
 
 import Input from '../../tools/core-components/input/input';
 

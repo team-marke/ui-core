@@ -1,6 +1,5 @@
 /**
- * Masthead Slider component scripts.
- * Uses Swiper API. Read more about the API at @link https://swiperjs.com/api/
+ * Masthead Slider component
  */
 
 import Swiper, { Pagination, Navigation, EffectFade, Autoplay } from 'swiper';

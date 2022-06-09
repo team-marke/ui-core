@@ -14,9 +14,16 @@
 >
   {% if custom_thumbnail %}
   <picture>
+    <source
+      media="(min-width: 768px)"
+      srcset="{% imageUrl custom_thumbnail, { fetch_format: 'auto', quality: 'auto', width: '1280', height: '720', crop: 'thumb' } %}"
+    >
+    <source
+      srcset="{% imageUrl custom_thumbnail, { fetch_format: 'auto', quality: 'auto', width: '480', height: '360', crop: 'thumb' } %}"
+    >
     <img
       alt="{{ alt | e | safe }}"
-      src="{{ custom_thumbnail | url | safe }}"
+      src="{% imageUrl custom_thumbnail, { fetch_format: 'auto', quality: 'auto', width: '1280', height: '720', crop: 'thumb' } %}"
       class="video-player__thumb"
       loading="lazy"
       width="500"
@@ -41,36 +48,3 @@
   {% endif %}
   <i class="video-player__play fas fa-play-circle"></i>
 </a>
-
-<div class="video-player-modal modal fade" id="{{id}}" tabindex="-1" aria-hidden="true">
-  <div class="video-player-modal__content">
-    <div class="video-player-modal__header">
-      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-    </div>
-      <div class="video-player-modal__player modal-body"></div>
-    </div>
-  </div>
-</div>
-
-{# <div
-  class="video-modal modal fade"
-  id="video-modal-{{ id | safe }}"
-  tabindex="-1"
-  role="dialog"
-  aria-modal="true"
->
-  <div class="video-modal__dialog modal-dialog modal-xl modal-dialog-centered" role="document">
-    <div class="video-modal__content modal-content bg-transparent border-0">
-      <div class="video-modal__header modal-header border-0">
-        <button
-          type="button"
-          class="btn-close btn-close-white"
-          data-bs-dismiss="modal"
-          aria-label="Close"
-        >
-        </button>
-      </div>
-      <div class="video-modal__player modal-body bg-dark mb-0 p-0" data-videoid="{{ id | safe }}"></div>
-    </div>
-  </div>
-</div> #}

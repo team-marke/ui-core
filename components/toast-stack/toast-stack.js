@@ -1,5 +1,5 @@
 /**
- * Toast stack component scripts.
+ * Toast Stack component
  */
 
 import Toast from 'bootstrap/js/src/toast';
