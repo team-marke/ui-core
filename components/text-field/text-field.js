@@ -1,6 +1,6 @@
-//
-// Text Field component scripts.
-//
+/**
+ * Text Field component
+ */
 
 import Input from '../../tools/core-components/input/input';
 

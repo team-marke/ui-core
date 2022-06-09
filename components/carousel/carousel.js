@@ -1,6 +1,5 @@
 /**
- * Carousel Slider.
- * Uses Swiper API. Read more about the API at @link https://swiperjs.com/api/
+ * Carousel component
  */
 
 import Swiper, { Navigation, Pagination, Autoplay } from 'swiper';

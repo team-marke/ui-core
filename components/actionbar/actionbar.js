@@ -1,5 +1,5 @@
 /**
- * Actionbar component.
+ * Actionbar component
  */
 
 import { dom as faDom, library as faLibrary, config as faConfig } from '@fortawesome/fontawesome-svg-core';

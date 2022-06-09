@@ -1,10 +1,10 @@
+/**
+ * Navbar component
+ */
+
 import Offcanvas from 'bootstrap/js/src/offcanvas';
 import Dropdown from 'bootstrap/js/src/dropdown';
 import SmoothScrollLink from '../../tools/core-components/smooth-scroll-link';
-
-/**
- * Navbar component.
- */
 
 class Navbar {
   constructor(el) {

@@ -1,12 +1,14 @@
 /**
- * Tabs component scripts.
+ * Tabs component
  */
-
-import Tab from 'bootstrap/js/src/tab';
 
 class Tabs {
   constructor(el) {
-    this.el = el;
+    this.init();
+  }
+
+  async init() {
+    await import('bootstrap/js/src/tab');
   }
 }
 

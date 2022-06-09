@@ -1,0 +1,24 @@
+---
+eleventyNavigation:
+  key: modal
+  title: Modal
+metadata:
+  title: Modal
+  description:
+---
+
+<div class="docs-example">
+  {% set modalBody %}
+    <p>Some text in the modal.</p>
+  {% endset %}
+
+  <button type="button" data-bs-toggle="modal" data-bs-target="#modalExemplo">Launch modal</button>
+
+  {% set context = {
+    id: "modalExemplo",
+    title: "Header do Modal",
+    size: sm,
+    body: modalBody
+  } %}
+  {% include "modal/modal.njk" %}
+</div>

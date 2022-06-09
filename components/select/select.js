@@ -1,7 +1,6 @@
-//
-// Select component scripts.
-// Uses choices.js library features.
-//
+/**
+ * Select component
+ */
 
 import Input from '../../tools/core-components/input/input';
 import Choices from 'choices.js';

@@ -1,11 +1,13 @@
 class JsCore {
   constructor() {
     this._components = [
+      'accordion',
       'grid-responsive-slider',
       'carousel',
       'checkbox',
       'actionbar',
       'masthead-slider',
+      'modal',
       'navbar',
       'pagination',
       'photo-gallery',
@@ -13,18 +15,22 @@ class JsCore {
       'radio',
       'select',
       'socialbar',
+      'tabs',
       'text-field',
       'toast-stack',
-      'accordion',
-      'tabs'
+      'video-player'
     ];
   }
 
   /**
-   * TODO: reestruturar componete Video Modal/Teaser
+   * TODO: Adicionar exemplos ToastStack
    */
 
-  async init() {
+  init() {
+    this.loadComponents();
+  }
+
+  async loadComponents() {
     for (const component of this._components) {
       if (!document.querySelector(`.${component}`)) continue;
       this._loadComponent(component);

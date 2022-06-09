@@ -1,12 +1,14 @@
 /**
- * Accordion component scripts.
+ * Accordion component
  */
-
-import Collapse from 'bootstrap/js/src/collapse';
 
 class Accordion {
   constructor(el) {
-    this.el = el;
+    this.init();
+  }
+
+  async init() {
+    await import('bootstrap/js/src/collapse');
   }
 }
 
