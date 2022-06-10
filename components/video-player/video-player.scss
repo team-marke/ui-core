@@ -2,6 +2,7 @@
 // Video player styles
 //
 
+@use '../modal';
 @use '../../design-tokens' as mkui;
 
 $border-radius: mkui.$border-radius !default;
