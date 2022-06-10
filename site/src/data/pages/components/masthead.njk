@@ -6,7 +6,7 @@ metadata:
   title: Masthead
   description: Um cabeçalho com conteúdo personalizável.
 masthead:
-  image: https://res.cloudinary.com/webmaster-marke/image/upload/v1626966853/Como-vender-mais-e-gerar-novas-oportunidades-na-Internet.jpg
+  image: https://res.cloudinary.com/webmaster-marke/image/upload/v1626966708/fazer-um-site.jpg
   title: Como Vender
   description: Como vender mais e gerar novas oportunidades na Internet
 ---
@@ -15,54 +15,161 @@ masthead:
 
 <h2>Exemplo</h2>
 <div class="docs-example">
-  {% set content %}
+  {% set children %}
     <div class="container">
       <div class="row">
         <div class="col-12 col-lg-8">
           <div class="p-3 bg-light rounded-3">
             <h1>{{ masthead.title | e | safe }}</h1>
             <p>{{ masthead.description | e | safe }}</p>
-            {% set context = { theme: 'primary', text: 'Ex cibo putent' } %}
+            {% set context = { theme: 'primary', text: 'Lorem Ipsum' } %}
             {% include "button/button.njk" %}
           </div>
         </div>
       </div>
     </div>
   {% endset %}
-
   {% set context = {
     image: masthead.image,
-    children: content,
+    alt: masthead.title,
+    children: children,
     background_color: '#b7485d'
   } %}
   {% include "masthead/masthead.njk" %}
 </div>
+<div class="docs-highlight">
+{% highlight 'liquid' %}{% raw %}
+{% set children %}
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-lg-8">
+        <div class="p-3 bg-light rounded-3">
+          <h1>{{ masthead.title | e | safe }}</h1>
+          <p>{{ masthead.description | e | safe }}</p>
+          {% set context = { theme: 'primary', text: 'Lorem Ipsum' } %}
+          {% include "button/button.njk" %}
+        </div>
+      </div>
+    </div>
+  </div>
+{% endset %}
 
-<h2>Exemplo</h2>
+{% set context = {
+  image: masthead.image,
+  alt: masthead.title,
+  children: children,
+  background_color: '#b7485d'
+} %}
+
+{% include "masthead/masthead.njk" %}
+{% endraw %}{% endhighlight %}
+</div>
+
+<h2>Imagem escurecida</h2>
 <div class="docs-example">
-  {% set content %}
+  {% set children %}
     <div class="container">
       <div class="row">
         <div class="col-12 col-lg-8">
           <div class="p-3 bg-light rounded-3">
             <h1>{{ masthead.title | e | safe }}</h1>
             <p>{{ masthead.description | e | safe }}</p>
-            {% set context = { theme: 'primary', text: 'Ex cibo putent' } %}
+            {% set context = { theme: 'primary', text: 'Lorem Ipsum' } %}
             {% include "button/button.njk" %}
           </div>
         </div>
       </div>
     </div>
   {% endset %}
-
   {% set context = {
     image: masthead.image,
-    children: content,
+    alt: masthead.title,
+    children: children,
     background_color: '#b7485d',
-    darkened: true,
-    height: 600
+    darkened: true
   } %}
   {% include "masthead/masthead.njk" %}
 </div>
+<div class="docs-highlight">
+{% highlight 'liquid' %}{% raw %}
+{% set children %}
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-lg-8">
+        <div class="p-3 bg-light rounded-3">
+          <h1>{{ masthead.title | e | safe }}</h1>
+          <p>{{ masthead.description | e | safe }}</p>
+          {% set context = { theme: 'primary', text: 'Lorem Ipsum' } %}
+          {% include "button/button.njk" %}
+        </div>
+      </div>
+    </div>
+  </div>
+{% endset %}
 
+{% set context = {
+  image: masthead.image,
+  alt: masthead.title,
+  children: children,
+  background_color: '#b7485d',
+  darkened: true
+} %}
+
+{% include "masthead/masthead.njk" %}
+{% endraw %}{% endhighlight %}
+</div>
+
+<h2>Crop customizado</h2>
+<div class="docs-example">
+  {% set children %}
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-lg-8">
+          <div class="p-3 bg-light rounded-3">
+            <h1>{{ masthead.title | e | safe }}</h1>
+            <p>{{ masthead.description | e | safe }}</p>
+            {% set context = { theme: 'primary', text: 'Lorem Ipsum' } %}
+            {% include "button/button.njk" %}
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endset %}
+  {% set context = {
+    image: masthead.image,
+    alt: masthead.title,
+    children: children,
+    background_color: '#b7485d',
+    crop: 'fill'
+  } %}
+  {% include "masthead/masthead.njk" %}
+</div>
+<div class="docs-highlight">
+{% highlight 'liquid' %}{% raw %}
+{% set children %}
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-lg-8">
+        <div class="p-3 bg-light rounded-3">
+          <h1>{{ masthead.title | e | safe }}</h1>
+          <p>{{ masthead.description | e | safe }}</p>
+          {% set context = { theme: 'primary', text: 'Lorem Ipsum' } %}
+          {% include "button/button.njk" %}
+        </div>
+      </div>
+    </div>
+  </div>
+{% endset %}
+
+{% set context = {
+  image: masthead.image,
+  alt: masthead.title,
+  children: children,
+  background_color: '#b7485d',
+  crop: 'fill'
+} %}
+
+{% include "masthead/masthead.njk" %}
+{% endraw %}{% endhighlight %}
+</div>
 

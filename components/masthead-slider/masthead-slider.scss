@@ -1,73 +1,53 @@
 //
-// Masthead slider component styles.
+// Masthead Slider
 //
 
 @use '../../design-tokens' as mkui;
 @use '../../design-tokens/sliders' as sliders;
 
-$transition: all .15s linear !default;
-$pagination-color: mkui.$light !default;
-$theme-color: mkui.$light !default;
-$pagination-bullets-bottom: .5rem !default; 
+$transition: all 0.15s linear !default;
+$nav-btn-disabled-opacity: 0.25 !default;
+$active-pagination-bullet-width: 1.5rem !default;
+$pagination-bullets-bottom: 0.5rem !default;
 
 .masthead-slider {
-  --swiper-pagination-color: #{$pagination-color};
-  --swiper-theme-color: #{$theme-color};
-  @include mkui.media-breakpoint-up(lg){
-    min-height: 450px;
-  }
-  .masthead-slider__button-prev,
-  .masthead-slider__button-next {
+  --swiper-theme-color: #{mkui.$light};
+  &__button-prev,
+  &__button-next {
     display: none;
-    @include mkui.media-breakpoint-up(lg){
-      display: block;
-    }
     opacity: 0;
+    transition: $transition;
+
     &.swiper-button-disabled {
       opacity: 0;
     }
-    transition: $transition;
-    &:after {
+
+    @include mkui.media-breakpoint-up(lg) {
       display: block;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
     }
   }
-  &:hover .masthead-slider__button-prev,
-  &:hover .masthead-slider__button-next {
+
+  &:hover &__button-prev,
+  &:hover &__button-next {
     opacity: 1;
+
     &.swiper-button-disabled {
-      opacity: 0.35;
+      opacity: $nav-btn-disabled-opacity;
     }
   }
-  &__button-prev {
-    @include mkui.media-breakpoint-up(xl){
-      left: 2rem;
-    }
-  }
-  &__button-next {
-    @include mkui.media-breakpoint-up(xl){
-      right: 2rem;
-    }
-  }
+
   &__pagination {
-    &.swiper-pagination-bullets {
-      bottom: $pagination-bullets-bottom;
-      @include mkui.media-breakpoint-up(lg){
-        bottom: $pagination-bullets-bottom * 2;
-      }
-    }
     .swiper-pagination-bullet {
-      background: var(--swiper-pagination-color);
-      opacity: 1;
       border-radius: 5px;
       transition: $transition;
+
       &-active {
-        width: 25px;
+        width: $active-pagination-bullet-width;
       }
     }
   }
-}
 
+  & .masthead__children {
+    padding-bottom: calc(2rem + 10px);
+  }
+}

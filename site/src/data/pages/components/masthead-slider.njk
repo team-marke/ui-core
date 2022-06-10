@@ -8,247 +8,146 @@ metadata:
 masthead:
   items:
     - image: https://res.cloudinary.com/webmaster-marke/image/upload/v1626966856/Afinal-o-que-%C3%A9-SEO-e-qual-a-import%C3%A2ncia-de-otimizar-um-site.jpg
-      bgColor: '#3c3c3c'
       title: SEO
       description: Afinal o que é SEO e qual sua importância
     - image: https://res.cloudinary.com/webmaster-marke/image/upload/v1626966857/Google-Analytics-como-ferramenta-para-otimizar-as-convers%C3%B5es.jpg
-      bgColor: '#1fd2a7'
       title: Google Analytics
       description: Ferramenta para otimizar as conversões
     - image: https://res.cloudinary.com/webmaster-marke/image/upload/v1626966853/Como-vender-mais-e-gerar-novas-oportunidades-na-Internet.jpg
-      bgColor: '#b7485d'
       title: Como vender
       description: Como vender mais e gerar novas oportunidades na Internet
 ---
-<h1>{{metadata.title}}</h1>
-<p>{{metadata.description}}</p>
+<h1>{{ metadata.title | e | safe }}</h1>
+<p>{{ metadata.description | e | safe }}</p>
 
-<section id="mastehead">
-  <h2 class="pt-4">Exemplo</h2>
-  <div class="docs-example">
-    {% set slides = [] %}
-    {% for item in masthead.items %}
-      {% set renderedMasthead %}
-        {% set content %}
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-lg-6 offset-lg-3">
-                <div class="p-3 bg-light rounded-3" style="--bs-bg-opacity: .5;">
-                  <h1>{{ item.title }}</h1>
-                  <p>{{ item.description }}</p>
-                  {% set context = { theme: 'primary', text: 'Acesse' } %}
-                  {% include "button/button.njk" %}
-                </div>
-              </div>
-            </div>
-          </div>
-        {% endset %}
-        {%- set context = {
-          image: item.image,
-          bgColor: item.bgColor,
-          classes: ['pb-4', 'pb-lg-0'],
-          children: content
-        } %}
-        {% include "masthead/masthead.njk" %}
-      {% endset %}
-      {% set slides = (slides.push(renderedMasthead), slides) %}
-    {% endfor %}
-    {%- set context = {
-      slides: slides
-    } %}
-    {% include "masthead-slider/masthead-slider.njk" %}
-  </div>
-
-{% highlight 'liquid' %}
-  {% raw %}
+<h2>Exemplo</h2>
 <div class="docs-example">
   {% set slides = [] %}
   {% for item in masthead.items %}
-    {% set renderedMasthead %}
-      {% set content %}
+    {% set masthead %}
+      {% set children %}
         <div class="container">
           <div class="row">
-            <div class="col-12 col-lg-6 offset-lg-3">
-              <div class="p-3 bg-light rounded-3" style="--bs-bg-opacity: .5;">
-                <h1>{{ item.title }}</h1>
-                <p>{{ item.description }}</p>
-                {% set context = { theme: 'primary', text: 'Acesse' } %}
-                {% include "button/button.njk" %}
-              </div>
+            <div class="col-12 text-center text-white">
+              <h1>{{ item.title }}</h1>
+              <p>{{ item.description }}</p>
             </div>
           </div>
         </div>
       {% endset %}
-      {%- set context = {
+      {% set context = {
         image: item.image,
-        bgColor: item.bgColor,
-        classes: ['pb-4', 'pb-lg-0'],
-        children: content
+        background_color: '#b7485d',
+        children: children,
+        darkened: true
       } %}
       {% include "masthead/masthead.njk" %}
     {% endset %}
-    {% set slides = (slides.push(renderedMasthead), slides) %}
+    {% set slides = (slides.push(masthead), slides) %}
   {% endfor %}
-  {%- set context = {
+  {% set context = {
     slides: slides
   } %}
   {% include "masthead-slider/masthead-slider.njk" %}
 </div>
-  {% endraw %}
-{% endhighlight %}
-</section>
+<div class="docs-highlight">
+{% highlight 'liquid' %}{% raw %}
+{% set slides = [] %}
 
-<section id="masthead-autoplay">
-  <h2 class="pt-4">Com autoplay</h2>
-  <p>As imagens ficam em loop automaticamente.</p>
-  <div class="docs-example">
-    {% set slides = [] %}
-    {% for item in masthead.items %}
-      {% set renderedMasthead %}
-        {% set content %}
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-lg-6 offset-lg-3">
-                <div class="p-3 bg-light rounded-3" style="--bs-bg-opacity: .5;">
-                  <h1>{{ item.title }}</h1>
-                  <p>{{ item.description }}</p>
-                  {% set context = { theme: 'primary', text: 'Ex cibo putent' } %}
-                  {% include "button/button.njk" %}
-                </div>
-              </div>
-            </div>
+{% for item in masthead.items %}
+  {% set masthead %}
+    {% set children %}
+      <div class="container">
+        <div class="row">
+          <div class="col-12 text-center text-white">
+            <h1>{{ item.title }}</h1>
+            <p>{{ item.description }}</p>
           </div>
-        {% endset %}
-        {%- set context = {
-          image: item.image,
-          bgColor: item.bgColor,
-          classes: ['pb-4', 'pb-lg-0'],
-          children: content
-        } %}
-        {% include "masthead/masthead.njk" %}
-      {% endset %}
-      {% set slides = (slides.push(renderedMasthead), slides) %}
-    {% endfor %}
-    {%- set context = {
-      slides: slides,
-      autoplay: 3000
+        </div>
+      </div>
+    {% endset %}
+    {% set context = {
+      image: item.image,
+      background_color: '#b7485d',
+      children: children,
+      darkened: true
     } %}
-    {% include "masthead-slider/masthead-slider.njk" %}
-  </div>
+    {% include "masthead/masthead.njk" %}
+  {% endset %}
+  {% set slides = (slides.push(masthead), slides) %}
+{% endfor %}
 
-  {% highlight 'liquid' %}
-  {% raw %}
+{% set context = {
+  slides: slides
+} %}
+
+{% include "masthead-slider/masthead-slider.njk" %}
+{% endraw %}{% endhighlight %}
+</div>
+
+<h2>Com autoplay</h2>
 <div class="docs-example">
   {% set slides = [] %}
   {% for item in masthead.items %}
-    {% set renderedMasthead %}
-      {% set content %}
+    {% set masthead %}
+      {% set children %}
         <div class="container">
           <div class="row">
-            <div class="col-12 col-lg-6 offset-lg-3">
-              <div class="p-3 bg-light rounded-3" style="--bs-bg-opacity: .5;">
-                <h1>{{ item.title }}</h1>
-                <p>{{ item.description }}</p>
-                {% set context = { theme: 'primary', text: 'Ex cibo putent' } %}
-                {% include "button/button.njk" %}
-              </div>
+            <div class="col-12 text-center text-white">
+              <h1>{{ item.title }}</h1>
+              <p>{{ item.description }}</p>
             </div>
           </div>
         </div>
       {% endset %}
-      {%- set context = {
+      {% set context = {
         image: item.image,
-        bgColor: item.bgColor,
-        classes: ['pb-4', 'pb-lg-0'],
-        children: content
+        background_color: '#b7485d',
+        children: children,
+        darkened: true
       } %}
       {% include "masthead/masthead.njk" %}
     {% endset %}
-    {% set slides = (slides.push(renderedMasthead), slides) %}
+    {% set slides = (slides.push(masthead), slides) %}
   {% endfor %}
-  {%- set context = {
+  {% set context = {
     slides: slides,
-    autoplay: 3000
+    autoplay: 3500
   } %}
   {% include "masthead-slider/masthead-slider.njk" %}
 </div>
-  {% endraw %}
-{% endhighlight %}
-</section>
+<div class="docs-highlight">
+{% highlight 'liquid' %}{% raw %}
+{% set slides = [] %}
 
-<section id="masthead-custom">
-  <h2 class="pt-4">Cor de navegação customizada</h2>
-  <div class="docs-example">
-    {% set slides = [] %}
-    {% for item in masthead.items %}
-      {% set renderedMasthead %}
-        {% set content %}
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-lg-6 offset-lg-3">
-                <div class="p-3 bg-light rounded-3" style="--bs-bg-opacity: .5;">
-                  <h1>{{ item.title }}</h1>
-                  <p>{{ item.description }}</p>
-                  {% set context = { theme: 'primary', text: 'Ex cibo putent' } %}
-                  {% include "button/button.njk" %}
-                </div>
-              </div>
-            </div>
+{% for item in masthead.items %}
+  {% set masthead %}
+    {% set children %}
+      <div class="container">
+        <div class="row">
+          <div class="col-12 text-center text-white">
+            <h1>{{ item.title }}</h1>
+            <p>{{ item.description }}</p>
           </div>
-        {% endset %}
-        {%- set context = {
-          image: item.image,
-          bgColor: item.bgColor,
-          classes: ['pb-4', 'pb-lg-0'],
-          children: content
-        } %}
-        {% include "masthead/masthead.njk" %}
-      {% endset %}
-      {% set slides = (slides.push(renderedMasthead), slides) %}
-    {% endfor %}
-    {%- set context = {
-      slides: slides,
-      navColor: '#ffc107'
+        </div>
+      </div>
+    {% endset %}
+    {% set context = {
+      image: item.image,
+      background_color: '#b7485d',
+      children: children,
+      darkened: true
     } %}
-    {% include "masthead-slider/masthead-slider.njk" %}
-  </div>
+    {% include "masthead/masthead.njk" %}
+  {% endset %}
+  {% set slides = (slides.push(masthead), slides) %}
+{% endfor %}
 
-    {% highlight 'liquid' %}
-  {% raw %}
-  <div class="docs-example">
-    {% set slides = [] %}
-    {% for item in masthead.items %}
-      {% set renderedMasthead %}
-        {% set content %}
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-lg-6 offset-lg-3">
-                <div class="p-3 bg-light rounded-3" style="--bs-bg-opacity: .5;">
-                  <h1>{{ item.title }}</h1>
-                  <p>{{ item.description }}</p>
-                  {% set context = { theme: 'primary', text: 'Ex cibo putent' } %}
-                  {% include "button/button.njk" %}
-                </div>
-              </div>
-            </div>
-          </div>
-        {% endset %}
-        {%- set context = {
-          image: item.image,
-          bgColor: item.bgColor,
-          classes: ['pb-4', 'pb-lg-0'],
-          children: content
-        } %}
-        {% include "masthead/masthead.njk" %}
-      {% endset %}
-      {% set slides = (slides.push(renderedMasthead), slides) %}
-    {% endfor %}
-    {%- set context = {
-      slides: slides,
-      navColor: '#ffc107'
-    } %}
-    {% include "masthead-slider/masthead-slider.njk" %}
-  </div>
-  {% endraw %}
-{% endhighlight %}
-</section>
+{% set context = {
+  slides: slides,
+  autoplay: 3500
+} %}
+
+{% include "masthead-slider/masthead-slider.njk" %}
+{% endraw %}{% endhighlight %}
+</div>

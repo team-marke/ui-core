@@ -1,25 +1,18 @@
-{%- if context -%}
+{% if context %}
   {% set slides = context.slides %}
-  {% set navColor = context.navColor %}
   {% set autoplay = context.autoplay %}
-{%- endif -%}
+{% endif %}
 
 <div
-  {% if autoplay %}data-autoplay="{{ autoplay | e | safe }}"{% endif %}
   class="masthead-slider swiper-container"
-  style="
-    {%- if navColor %}
-      --swiper-pagination-color: {{ navColor | safe }};
-      --swiper-theme-color: {{ navColor | safe }};
-    {%- endif %}
-  "
+  {% if autoplay %}data-autoplay="{{ autoplay | e | safe }}"{% endif %}
 >
   <div class="masthead-slider__wrapper swiper-wrapper">
-    {%- for slide in slides %}
+    {% for slide in slides %}
       <div class="masthead-slider__slide swiper-slide">
         {{ slide | safe }}
       </div>
-    {%- endfor%}
+    {% endfor%}
   </div>
   <div class="masthead-slider__button-prev swiper-button-prev"></div>
   <div class="masthead-slider__button-next swiper-button-next"></div>

@@ -1,26 +1,26 @@
 //
-// Masthead component styles.
+// Masthead
 //
 
 @use '../../design-tokens' as mkui;
 
-$height: 450px !default;
-$image-filter: brightness(75%) !default;
+$image-filter: brightness(65%) !default;
 $children-padding-y: 1rem !default;
 $children-padding-x: 0 !default;
 
 .masthead {
+  --masthead-height: 450px;
   position: relative;
 
   &__image {
-    object-fit: cover;
-    aspect-ratio: 21 / 9;
+    aspect-ratio: 16 / 9;
     width: 100%;
+    object-fit: cover;
     height: auto;
 
     @include mkui.media-breakpoint-up(lg) {
-      aspect-ratio: auto;
-      height: $height;
+      aspect-ratio: unset;
+      height: var(--masthead-height);
     }
   }
 

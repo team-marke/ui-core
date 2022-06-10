@@ -1,5 +1,6 @@
 {% if context %}
   {% set image = context.image %}
+  {% set alt = context.alt %}
   {% set darkened = context.darkened %}
   {% set background_color = context.background_color %}
   {% set override_classes = context.classes %}
@@ -46,8 +47,8 @@
       />
       <img
         class="masthead__image"
-        style="height: {{ height + 'px' }};"
-        alt="{{ title | e | safe }}"
+        style="--masthead-height: {{ height + 'px' }};"
+        alt="{{ alt | e | safe }}"
         loading="lazy"
         width="1920"
         height="{{ height }}"
