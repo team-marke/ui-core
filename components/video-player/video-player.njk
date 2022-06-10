@@ -1,16 +1,13 @@
-{%- if context -%}
+{% if context %}
   {% set id = context.id %}
   {% set alt = context.alt %}
   {% set custom_thumbnail = context.custom_thumbnail %}
   {% set maxwidth = context.maxwidth %}
-{%- endif -%}
+{% endif %}
 
 <a
   class="video-player"
   data-video-player-id="{{ id | safe }}"
-  {% if maxwidth %}
-  style="max-width: {{ maxwidth }}"
-  {% endif %}
 >
   {% if custom_thumbnail %}
   <picture>
@@ -26,8 +23,9 @@
       src="{% imageUrl custom_thumbnail, { fetch_format: 'auto', quality: 'auto', width: '1280', height: '720', crop: 'thumb' } %}"
       class="video-player__thumb"
       loading="lazy"
-      width="500"
-      height="280"
+      width="1280"
+      height="720"
+      {% if maxwidth %}style="max-width: {{ maxwidth }}"{% endif %}
     >
   </picture>
   {% else %}
@@ -41,8 +39,9 @@
       class="video-player__thumb"
       loading="lazy"
       alt="{{ alt | e | safe }}"
-      width="500"
-      height="280"
+      width="1280"
+      height="720"
+      {% if maxwidth %}style="max-width: {{ maxwidth }}"{% endif %}
     >
   </picture>
   {% endif %}
