@@ -1,5 +1,5 @@
 class JsCore {
-  constructor() {
+  constructor(components) {
     this._components = [
       'accordion',
       'grid-responsive-slider',
@@ -18,8 +18,11 @@ class JsCore {
       'tabs',
       'text-field',
       'toast-stack',
-      'video-player'
+      'video-player',
     ];
+    if (components) {
+      this._components = components;
+    }
   }
 
   /**
@@ -38,8 +41,12 @@ class JsCore {
   }
 
   async _loadComponent(component) {
-    const { default: Component } = await import(`../../components/${component}/${component}.js`);
-    document.querySelectorAll(`.${component}`).forEach((el) => new Component(el));
+    try {
+      const { default: Component } = await import(`../../components/${component}/${component}.js`);
+      document.querySelectorAll(`.${component}`).forEach((el) => new Component(el));
+    } catch (error) {
+      console.error(error);
+    }
   }
 }
 
