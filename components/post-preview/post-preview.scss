@@ -6,16 +6,26 @@
 @use '../../design-tokens' as mkui;
 @use '../../components/button' as btn;
 
-$title-color: inherit !default;
-$title-link-color: inherit !default;
-$title-link-color-hover: inherit !default;
 $title-font-size: mkui.$h3-font-size !default;
 $title-font-family: mkui.$headings-font-family !default;
 $title-font-weight: mkui.$headings-font-weight !default;
 $title-transition: mkui.$transition-base !default;
 
-$excerpt-color: mkui.$text-muted !default;
 $excerpt-font-size: 0.9rem !default;
+
+// Dark
+$dark-title-color: mkui.$black !default;
+$dark-title-link-color: mkui.$black !default;
+$dark-title-link-color-hover: mkui.$black !default;
+$dark-date-color: mkui.$black !default;
+$dark-excerpt-color: mkui.$text-muted !default;
+
+// Light
+$light-title-color: mkui.$white !default;
+$light-title-link-color: mkui.$white !default;
+$light-title-link-color-hover: mkui.$white !default;
+$light-date-color: mkui.$white !default;
+$light-excerpt-color: mkui.$text-muted !default;
 
 .post-preview {
   position: relative;
@@ -23,10 +33,8 @@ $excerpt-font-size: 0.9rem !default;
   gap: 1rem;
   flex-direction: column;
   &__title-link {
-    color: $title-link-color;
     text-decoration: none;
     &:hover {
-      color: $title-link-color-hover;
       text-decoration: none;
     }
   }
@@ -36,10 +44,8 @@ $excerpt-font-size: 0.9rem !default;
     @include mkui.font-size($title-font-size);
     font-weight: $title-font-weight;
     transition: $title-transition;
-    color: $title-color;
   }
   &__excerpt {
-    color: $excerpt-color;
     @include mkui.font-size($excerpt-font-size);
     margin-bottom: 0;
   }
@@ -72,4 +78,42 @@ $excerpt-font-size: 0.9rem !default;
       text-decoration: none;
     }
   }
+
+  &--dark {
+    .post-preview__title-link {
+      color: $dark-title-link-color;
+      &:hover {
+        color: $dark-title-link-color-hover;
+      }
+    }
+    .post-preview__title {
+      color: $dark-title-color;
+    }
+    .post-preview__date {
+      color: $dark-date-color;
+    }
+    .post-preview__excerpt {
+      color: $dark-excerpt-color;
+    }
+  }
+
+  &--light {
+    .post-preview__title-link {
+      color: $light-title-link-color;
+      &:hover {
+        color: $light-title-link-color-hover;
+      }
+    }
+    .post-preview__title {
+      color: $light-title-color;
+    }
+    .post-preview__date {
+      color: $light-date-color;
+    }
+    .post-preview__excerpt {
+      color: $light-excerpt-color;
+    }
+  }
 }
+
+
