@@ -4,7 +4,7 @@
 
 @use 'sass:math';
 @use '../../design-tokens' as mkui;
-@use '../../components/button' as btn;
+@use '../../components/chip' as chip;
 
 $title-font-size: mkui.$h3-font-size !default;
 $title-font-family: mkui.$headings-font-family !default;
