@@ -6,7 +6,7 @@ metadata:
   title: Cards
   description: Use cards para criar componentes que necessitam ser contidos em um único lugar, podendo inserir links, imagens e descrições.
 ---
-<h1>{{ metadata.title | e | safe}}</h1>
+<h1>{{ metadata.title | e | safe }}</h1>
 <p>{{ metadata.description | e | safe }}</p>
 
 <h2>Exemplo</h2>
@@ -33,7 +33,7 @@ metadata:
 {% endraw %}{% endhighlight %}
 </div>
 
-<h2>Exemplo com header</h2>
+<h2>Com header</h2>
 <div class="docs-example">
   {% set header %}
     <span>Você insere um texto no header para aparecer antes do conteúdo do corpo</span>

@@ -20,7 +20,7 @@
     {% endif %}
   ">
   {% if link %}
-  <a class="card__link" href="{{ link | url | safe }}">
+  <a class="card__link" href="{{ link | url | safe }}"></a>
   {% endif %}
   {% if header %}
   <div class="card__header">{{ header | safe }}</div>
@@ -39,8 +39,5 @@
   {% endif %}
   {% if body %}
   <div class="card__body">{{ body | safe }}</div>
-  {% endif %}
-  {% if link %}
-  </a>
   {% endif %}
 </div>
