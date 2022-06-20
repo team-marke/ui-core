@@ -1,99 +1,46 @@
-{%- if context %}
-  {%- if context.componentClasses %}
-    {%- set componentClasses = context.componentClasses %}
-  {%- endif %}
-  {%- if not context.overlay %}
-    {%- set overlay = false %}
-  {%- else %}
-    {%- set overlay = context.overlay %}
-  {%- endif -%}
-  {%- if not context.interactive %}
-    {%- set interactive = false %}
-  {%- else %}
-    {%- set interactive = context.interactive %}
-  {%- endif -%}
-  {%- set image = context.image %}
-  {%- if context.image and not context.image.position %}
-    {%- set imagePos = 'top' %}
-    {%- if overlay %}
-      {%- set imagePos = 'overlay' %}
-    {%- endif %}
-  {%- else %}
-    {%- set imagePos = context.image.position %}
-  {%- endif %}
-  {%- set cardBody = context.body %}
-  {%- if context.header %}
-    {%- set cardHeader = context.header %}
-  {%- endif %}
-{%- endif %}
+{% if context %}
+  {% set header = context.header %}
+  {% set image = context.image %}
+  {% set body = context.body %}
+  {% set overlay = context.overlay %}
+  {% set link = context.link %}
+  {% set override_classes = context.classes %}
+{% endif %}
 
 <div class="
     card
-    {%- if interactive %}
+    {% if link %}
     card--interactive
-    {%- endif %}
-    {%- if componentClasses %}
-    {{ componentClasses | join(" ") | safe }}
-    {%- endif %}
+    {% endif %}
+    {% if overlay %}
+    card--overlay
+    {% endif %}
+    {% if override_classes %}
+    {{ override_classes | join(" ") | safe }}
+    {% endif %}
   ">
-  {%- if image.link and not overlay %}
-  <a href="{{ image.link | url | safe }}">
-  {%- endif %}
-  {% if context.header %}
-  <div class="
-    card__header
-    {%- if overlay %}
-    card__header--overlay
-    {%- endif %}
-  ">
-    {{ cardHeader | safe }}
-  </div>
+  {% if link %}
+  <a class="card__link" href="{{ link | url | safe }}">
   {% endif %}
-  {%- if image.url %}
+  {% if header %}
+  <div class="card__header">{{ header | safe }}</div>
+  {% endif %}
+  {% if image %}
   <img
-    src="
-    {%-
-      imageUrl image.url, {
-        crop: 'thumb',
-        width: image.width,
-        height: image.height,
-        quality: 'auto',
-        fetch: 'auto'
-    } %}"
-    srcset="
-    {%-
-      imageUrl image.url, {
-        crop: 'thumb',
-        width: image.width',
-        height: image.height,
-        dpr: 2,
-        quality: 'auto',
-        fetch: 'auto'
-      }
-    %} 2x"
+    src="{% imageUrl image.url, { crop: 'thumb', width: image.width, height: image.height, quality: 'auto', fetch: 'auto' } %}"
+    srcset="{% imageUrl image.url, { crop: 'thumb', width: image.width', height: image.height, dpr: 2, quality: 'auto', fetch: 'auto' } %} 2x"
     width="{{ image.width | e | safe }}"
     height="{{ image.height | e | safe }}"
     loading="lazy"
-    class="card__img card__img--{{ imagePos | e | safe }}"
+    class="card__img card__img--top"
     alt="{{ image.alt | e | safe }}"
     title="{{ image.title | e | safe }}"
   >
-  {%- endif %}
-  {%- if image.link and not overlay %}
+  {% endif %}
+  {% if body %}
+  <div class="card__body">{{ body | safe }}</div>
+  {% endif %}
+  {% if link %}
   </a>
-  {%- endif %}
-  {%- if image.link and overlay %}
-  <a class="" href="{{ image.link | url | safe }}">
-  {%- endif %}
-  <div class="
-    card__body
-    {%- if overlay %}
-    card__body--overlay
-    {%- endif %}
-  ">
-    {{ cardBody | safe }}
-  </div>
-  {%- if image.link and overlay %}
-  </a>
-  {%- endif %}
+  {% endif %}
 </div>

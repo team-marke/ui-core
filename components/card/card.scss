@@ -22,6 +22,7 @@ $transition: mkui.$transition-base !default;
 $hover-box-shadow: mkui.$box-shadow-hover !default;
 
 $img-overlay-padding: mkui.$card-img-overlay-padding !default;
+$img-overlay-filter: brightness(0.75) !default;
 $cap-padding-y: mkui.$card-cap-padding-y !default;
 $cap-padding-x: mkui.$card-cap-padding-x !default;
 $cap-color: mkui.$card-cap-color !default;
@@ -33,7 +34,7 @@ $group-margin: mkui.$card-group-margin !default;
   position: relative;
   display: flex;
   flex-direction: column;
-  min-width: 0; // See https://github.com/twbs/bootstrap/pull/22740#issuecomment-305868106
+  min-width: 0;
   height: $height;
   word-wrap: $word-wrap;
   background-color: $bg;
@@ -56,23 +57,27 @@ $group-margin: mkui.$card-group-margin !default;
       @include mkui.border-top-radius($inner-border-radius);
     }
 
-    &:last-child  {
+    &:last-child {
       border-bottom-width: 0;
       @include mkui.border-bottom-radius($inner-border-radius);
     }
   }
-
-  // Due to specificity of the above selector (`.card > .list-group`), we must
-  // use a child selector here to prevent double borders.
   > .card__header + .list-group,
   > .list-group + .card__footer {
     border-top: 0;
   }
 }
 
+.card__link {
+  text-decoration: none;
+  color: inherit;
+
+  &:hover {
+    color: inherit;
+  }
+}
+
 .card__body {
-  // Enable `flex-grow: 1` for decks and groups so that card blocks take up
-  // as much space as possible, ensuring footers are aligned to the bottom.
   flex: 1 1 auto;
   position: static;
   padding: $spacer-y * 0.75 $spacer-x * 0.75;
@@ -114,26 +119,12 @@ $group-margin: mkui.$card-group-margin !default;
 }
 
 .card--interactive:hover .card__body {
-  transform: translateY(- math.div($spacer-y, 4));
+  transform: translateY(-(math.div($spacer-y, 4)));
 }
-
-.card__body--overlay {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  padding: $img-overlay-padding;
-  @include mkui.border-radius($inner-border-radius);
-}
-
-//
-// Optional textual caps
-//
 
 .card__header {
   padding: $cap-padding-y $cap-padding-x;
-  margin-bottom: 0; // Removes the default margin-bottom of <hN>
+  margin-bottom: 0;
   color: $cap-color;
   background-color: $cap-bg;
   border-bottom: $border;
@@ -154,14 +145,10 @@ $group-margin: mkui.$card-group-margin !default;
   }
 }
 
-//
-// Header navs
-//
-
 .card__header-tabs {
-  margin-right: - $cap-padding-x * .5;
-  margin-bottom: - $cap-padding-y;
-  margin-left: - $cap-padding-x * .5;
+  margin-right: -$cap-padding-x * 0.5;
+  margin-bottom: -$cap-padding-y;
+  margin-left: -$cap-padding-x * 0.5;
   border-bottom: 0;
 
   @if mkui.$nav-tabs-link-active-bg != mkui.$card-bg {
@@ -173,11 +160,10 @@ $group-margin: mkui.$card-group-margin !default;
 }
 
 .card__header-pills {
-  margin-right: - $cap-padding-x * .5;
-  margin-left: - $cap-padding-x * .5;
+  margin-right: -$cap-padding-x * 0.5;
+  margin-left: -$cap-padding-x * 0.5;
 }
 
-// Card image
 .card__img {
   display: block;
   position: relative;
@@ -188,23 +174,15 @@ $group-margin: mkui.$card-group-margin !default;
   white-space: nowrap;
 }
 
-.card__img--overlay,
 .card__img--top {
   @include mkui.border-top-radius($inner-border-radius);
 }
 
-.card__img--overlay,
 .card__img--bottom {
   @include mkui.border-bottom-radius($inner-border-radius);
 }
 
-//
-// Card groups
-//
-
 .card__group {
-  // The child selector allows nested `.card` within `.card__group`
-  // to display properly.
   > .card {
     margin-bottom: $group-margin;
   }
@@ -212,10 +190,7 @@ $group-margin: mkui.$card-group-margin !default;
   @include mkui.media-breakpoint-up(sm) {
     display: flex;
     flex-flow: row wrap;
-    // The child selector allows nested `.card` within `.card__group`
-    // to display properly.
     > .card {
-      // Flexbugs #4: https://github.com/philipwalton/flexbugs#flexbug-4
       flex: 1 0 0%;
       margin-bottom: 0;
 
@@ -224,19 +199,16 @@ $group-margin: mkui.$card-group-margin !default;
         border-left: 0;
       }
 
-      // Handle rounded corners
       @if mkui.$enable-rounded {
         &:not(:last-child) {
           @include mkui.border-end-radius(0);
 
           .card__img-top,
           .card__header {
-            // stylelint-disable-next-line property-disallowed-list
             border-top-right-radius: 0;
           }
           .card__img-bottom,
           .card__footer {
-            // stylelint-disable-next-line property-disallowed-list
             border-bottom-right-radius: 0;
           }
         }
@@ -246,16 +218,31 @@ $group-margin: mkui.$card-group-margin !default;
 
           .card__img-top,
           .card__header {
-            // stylelint-disable-next-line property-disallowed-list
             border-top-left-radius: 0;
           }
           .card__img-bottom,
           .card__footer {
-            // stylelint-disable-next-line property-disallowed-list
             border-bottom-left-radius: 0;
           }
         }
       }
     }
+  }
+}
+
+.card--overlay {
+  .card__body {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: $img-overlay-padding;
+    @include mkui.border-radius($inner-border-radius);
+  }
+  .card__img {
+    @include mkui.border-top-radius($inner-border-radius);
+    @include mkui.border-bottom-radius($inner-border-radius);
+    filter: $img-overlay-filter;
   }
 }
