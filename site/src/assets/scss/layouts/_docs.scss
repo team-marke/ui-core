@@ -62,3 +62,16 @@
     max-width: 18rem;
   }
 }
+
+.docs-highlight {
+  margin-top: mkui.$spacer * 0.75;
+  border: solid mkui.$border-color;
+  border-color: mkui.$border-color;
+  border-width: mkui.$border-width;
+  border-radius: mkui.$border-radius;
+
+  & > * {
+    margin: 0 !important;
+    border-radius: inherit;
+  }
+}

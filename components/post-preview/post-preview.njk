@@ -20,6 +20,7 @@
   {% if context.variant == "light" %}
     {% set variant = "post-preview--light" %}
   {% endif %}
+  {% set categories_outline = context.categories_outline %}
 {% endif %}
 
 <div class="post-preview {{ variant | safe }}">
@@ -44,7 +45,12 @@
   {% if categories %}
   <div class="post-preview__categories">
     {% for category in categories %}
-    <a href="{{ category.url | url | safe }}" class="post-preview__category">{{ category.title | e | safe }}</a>
+      {% set context = {
+        link: category.url,
+        text: category.title,
+        outline: categories_outline
+      } %}
+      {% include "../chip/chip.njk" %}
     {% endfor %}
   </div>
   {% endif %}
