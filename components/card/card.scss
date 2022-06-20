@@ -71,12 +71,11 @@ $group-margin: mkui.$card-group-margin !default;
 .card__link {
   position: absolute;
   top: 0;
+  bottom: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  right: 0;
   text-decoration: none;
   color: inherit;
-  z-index: 1;
 
   &:hover {
     color: inherit;
@@ -87,10 +86,16 @@ $group-margin: mkui.$card-group-margin !default;
   flex: 1 1 auto;
   position: static;
   padding: $spacer-y * 0.75 $spacer-x * 0.75;
+  color: $color;
+  pointer-events: none;
+
+  a, button {
+    pointer-events: all;
+  }
+
   @include mkui.media-breakpoint-up(lg) {
     padding: $spacer-y $spacer-x;
   }
-  color: $color;
 }
 
 .card__body--icon-left {
@@ -178,6 +183,7 @@ $group-margin: mkui.$card-group-margin !default;
   overflow: hidden;
   text-indent: 100%;
   white-space: nowrap;
+  pointer-events: none;
 }
 
 .card__img--top {

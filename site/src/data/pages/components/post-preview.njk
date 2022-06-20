@@ -120,7 +120,15 @@ metadata:
     {% include "post-preview/post-preview.njk" %}
   {% endset %}
   {% set context = {
-    body: body
+    body: body,
+    link: '#',
+    image: {
+      url: "https://res.cloudinary.com/webmaster-marke/image/upload/v1626966856/Afinal-o-que-%C3%A9-SEO-e-qual-a-import%C3%A2ncia-de-otimizar-um-site.jpg",
+      alt: 'Alt da imagem de card de exemplo',
+      title: 'Title da imagem de card de exemplo',
+      width: '350',
+      height: '200'
+    }
   } %}
   {% include 'card/card.njk' %}
 </div>
@@ -147,7 +155,15 @@ metadata:
   {% include "post-preview/post-preview.njk" %}
 {% endset %}
 {% set context = {
-  body: body
+  body: body,
+  link: '#',
+  image: {
+    url: "https://res.cloudinary.com/webmaster-marke/image/upload/v1626966856/Afinal-o-que-%C3%A9-SEO-e-qual-a-import%C3%A2ncia-de-otimizar-um-site.jpg",
+    alt: 'Alt da imagem de card de exemplo',
+    title: 'Title da imagem de card de exemplo',
+    width: '350',
+    height: '200'
+  }
 } %}
 {% include 'card/card.njk' %}
 {% endraw %}{% endhighlight %}
