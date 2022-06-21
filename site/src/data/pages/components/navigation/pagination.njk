@@ -21,8 +21,7 @@ hrefs:
 <h1>{{ metadata.title | e | safe }}</h1>
 <p>{{ metadata.description | e | safe }}</p>
 
-<section>
-<h2 class="pt-4">Exemplo de Pagination</h2>
+<h2>Exemplo</h2>
 <div class="docs-example">
 {% set context = {
   all: hrefs,
@@ -34,8 +33,8 @@ hrefs:
 } %}
 {% include "pagination/pagination.njk" %}
 </div>
-{% highlight 'liquid' %}
-{% raw %}
+<div class="docs-highlight">
+{% highlight 'liquid' %}{% raw %}
 {% set context = {
   all: hrefs,
   previous: hrefs[3],
@@ -45,12 +44,10 @@ hrefs:
   currentPage: hrefs[4]
 } %}
 {% include "pagination/pagination.njk" %}
-{% endraw %}
-{% endhighlight %}
-</section>
+{% endraw %}{% endhighlight %}
+</div>
 
-<section>
-<h2 class="pt-4">Pagination com offset definido</h2>
+<h2>Com offset definido</h2>
 <p>A variável offset, se definida, define um número máximo de items que serão exbidos antes e depois do item ativo. Este exemplo demonstra com 3, por padrão a propriedade está definida com 2.</p>
 <div class="docs-example">
 {% set context = {
@@ -64,18 +61,18 @@ hrefs:
 } %}
 {% include "pagination/pagination.njk" %}
 </div>
-{% highlight 'liquid' %}
-{% raw %}
+<div class="docs-highlight">
+{% highlight 'liquid' %}{% raw %}
 {% set context = {
   all: hrefs,
-  previous: hrefs[6],
-  next: hrefs[8],
+  previous: hrefs[3],
+  next: hrefs[5],
   first: hrefs[0],
   last: hrefs[(hrefs | length) - 1],
-  currentPage: hrefs[7],
+  currentPage: hrefs[4],
   offset: 3
 } %}
 {% include "pagination/pagination.njk" %}
-{% endraw %}
-{% endhighlight %}
-</section>
+{% endraw %}{% endhighlight %}
+</div>
+
