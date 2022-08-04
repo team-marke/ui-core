@@ -10,7 +10,7 @@ class JsCore {
       'modal',
       'navbar',
       'pagination',
-      'photo-gallery',
+      'gallery',
       'post-preview',
       'radio',
       'select',

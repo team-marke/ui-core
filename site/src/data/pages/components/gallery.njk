@@ -1,0 +1,77 @@
+---
+eleventyNavigation:
+  key: gallery
+  title: Gallery
+metadata:
+  title: Gallery
+  description: Crie uma galeria de fotos para a vizualização com um tamanho maior.
+gallery:
+  thumbnail: https://res.cloudinary.com/webmaster-marke/image/upload/v1626966708/fazer-um-site.jpg
+  items:
+    - url: https://res.cloudinary.com/webmaster-marke/image/upload/v1636740077/como-criar-um-instagram-comercial.jpg
+      description: Como criar um Instagram comercial?
+    - url: https://res.cloudinary.com/webmaster-marke/image/upload/v1628529641/o-que-%C3%A9-o-google-ads.jpg
+      description: O que é Google Ads?
+---
+<h1>{{ metadata.title | e | safe }}</h1>
+<p>{{ metadata.description | e | safe }}</p>
+
+<h2>Exemplo</h2>
+<div class="docs-example">
+  {% set children %}
+    <div class="text-primary">Abrir galeria!</div>
+  {% endset %}
+  {% set context = {
+    children: children,
+    gallery: gallery.items
+  } %}
+  {% include "gallery/gallery.njk" %}
+</div>
+<div class="docs-highlight">
+{% highlight 'liquid' %}{% raw %}
+{% set children %}
+  <div class="text-primary">Abrir galeria!</div>
+{% endset %}
+
+{% set context = {
+  children: children,
+  gallery: gallery.items
+} %}
+
+{% include "gallery/gallery.njk" %}
+{% endraw %}{% endhighlight %}
+</div>
+
+<h2>Exemplo com uma imagem de toggler</h2>
+<div class="docs-example">
+  {% set children %}
+    <img
+      src="{% imageUrl gallery.thumbnail, { fetch_format: 'auto', quality: 'auto', width: 300 } %}"
+      class="img-fluid"
+      alt="Gallery toggler"
+    >
+  {% endset %}
+  {% set context = {
+    children: children,
+    gallery: gallery.items
+  } %}
+  {% include "gallery/gallery.njk" %}
+</div>
+<div class="docs-highlight">
+{% highlight 'liquid' %}{% raw %}
+{% set children %}
+  <img
+    src="{% imageUrl gallery.thumbnail, { fetch_format: 'auto', quality: 'auto', width: 300 } %}"
+    class="img-fluid"
+    alt="Gallery toggler"
+  >
+{% endset %}
+
+{% set context = {
+  children: children,
+  gallery: gallery.items
+} %}
+
+{% include "gallery/gallery.njk" %}
+{% endraw %}{% endhighlight %}
+</div>

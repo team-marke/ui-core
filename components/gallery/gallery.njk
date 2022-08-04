@@ -1,0 +1,11 @@
+{% if context %}
+  {% set gallery = context.gallery %}
+  {% set children = context.children %}
+{% endif %}
+
+<div
+  class="gallery"
+  data-gallery='{{ gallery | photosGalleryData | safe }}'
+>
+  {{ children | safe }}
+</div>
