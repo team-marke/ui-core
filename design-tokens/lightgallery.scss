@@ -1,0 +1,4 @@
+@use '~lightgallery/scss/lightgallery' as lightgallery with (
+  $lg-path-fonts: '~lightgallery/fonts',
+  $lg-path-images: '~lightgallery/images',
+);

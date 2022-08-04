@@ -1667,7 +1667,7 @@ __metadata:
     html-minifier: ^4.0.0
     js-yaml: ^3.13.1
     jsdom: ^16.6.0
-    lightgallery: ^2.1.6
+    lightgallery: ^2.5.0
     markdown-it: ^12.0.6
     mini-css-extract-plugin: ^2.5.3
     npm-run-all: ^4.1.5
@@ -8197,10 +8197,10 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
-"lightgallery@npm:^2.1.6":
-  version: 2.4.0
-  resolution: "lightgallery@npm:2.4.0"
-  checksum: 6ad1483f93e4c50283a3e375d0df73a8a4b4a144bd9cb8924ab647eaa0f0c25136a9fa7e89b28dc4f7d67afd74a72bfb6f43a0ade91c0c1faab2cceba0867854
+"lightgallery@npm:^2.5.0":
+  version: 2.5.0
+  resolution: "lightgallery@npm:2.5.0"
+  checksum: 7b210ea1fcffeaf891528e31853a351e8c8316af7aa4a9816091c8863c9e909c9d040e1cf2649fa2e4dc2a7b79128261adc81a4c136ef2a6c0b145e19cae3fe4
   languageName: node
   linkType: hard
 

@@ -4,15 +4,6 @@
 
 @use 'marke-ui' as mkui;
 
-//
-// Components
-//
-
-@use '~lightgallery/scss/lightgallery' as lightgallery with (
-  $lg-path-fonts: '~lightgallery/fonts',
-  $lg-path-images: '~lightgallery/images',
-);
-
 // Marke UI
 @use '../../../../components/accordion';
 @use '../../../../components/actionbar';

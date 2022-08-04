@@ -1,21 +1,23 @@
 //
-// Photo Gallery Teaser
+// Photo Gallery
 //
 
-$thumb-border-radius: .25rem;
-$transition: all .2s ease-in-out;
+@use '../../design-tokens/lightgallery' as lg;
+
+$thumb-border-radius: 0.25rem;
+$transition: all 0.2s ease-in-out;
 
 .photo-gallery {
   text-decoration: none;
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
-  &__thumb{
+  &__thumb {
     border-radius: $thumb-border-radius;
     filter: brightness(0.8);
     transition: $transition;
-    margin-bottom: .5rem;
-    img{
+    margin-bottom: 0.5rem;
+    img {
       max-width: 100%;
       height: auto;
       border-radius: $thumb-border-radius;
@@ -24,11 +26,11 @@ $transition: all .2s ease-in-out;
       filter: brightness(1);
     }
   }
-  &__body{
+  &__body {
     text-align: center;
   }
 }
 
-.photo-gallery-dynamic{
+.photo-gallery-dynamic {
   display: inline-block;
 }
