@@ -32,6 +32,7 @@ $light-excerpt-color: mkui.$text-muted !default;
   display: flex;
   gap: 1rem;
   flex-direction: column;
+  height: 100%;
 
   &__title-link {
     text-decoration: none;
@@ -66,6 +67,7 @@ $light-excerpt-color: mkui.$text-muted !default;
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
+    margin-top: auto;
   }
 
   &--dark {
