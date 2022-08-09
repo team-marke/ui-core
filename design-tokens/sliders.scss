@@ -1,9 +1,0 @@
-@use 'index' as mkui;
-
-@use '~swiper/swiper' with (
-  $themeColor: mkui.$primary,
-);
-
-@use '~swiper/components/pagination/pagination';
-@use '~swiper/components/navigation/navigation';
-@use '~swiper/components/effect-fade/effect-fade';

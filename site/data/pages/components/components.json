@@ -1,0 +1,10 @@
+{
+  "tags": [
+    "components"
+  ],
+  "layout": "docs.njk",
+  "permalink": "components/{{ page.fileSlug }}/",
+  "eleventyNavigation": {
+    "parent": "home"
+  }
+}

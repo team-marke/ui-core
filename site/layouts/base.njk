@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="{{ site.locale }}">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% CloudinaryImgUrl site.favicon, { quality: 'auto', width: 180, height: 180, crop: 'scale' } %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% CloudinaryImgUrl site.favicon, { quality: 'auto', width: 32, height: 32, crop: 'scale' } %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% CloudinaryImgUrl site.favicon, { quality: 'auto', width: 16, height: 16, crop: 'scale' } %}">
+    <meta name="robots" content="noindex,nofollow" />
+    {% include "global/meta-info.njk" %}
+    {% block extraMetaInfo %}
+    {% endblock %}
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css?family=Abril+Fatface:400,700|Nunito:400,700&display=swap" rel="stylesheet">
+    <link href="/assets/app.{{ pkg | objectHash | safe }}.css" type="text/css" rel="stylesheet">
+    <link href="https://unpkg.com/prismjs@1.20.0/themes/prism-tomorrow.css" rel="stylesheet">
+    <script src="/assets/app.{{ pkg | objectHash | safe }}.js" type="text/javascript" defer></script>
+  </head>
+  <body>
+    {% include "partials/page-header.njk" %}
+    {% block content %}
+    {% endblock content %}
+    {% include "partials/page-footer.njk" %}
+  </body>
+</html>

@@ -1,0 +1,14 @@
+---
+eleventyNavigation:
+  key: button
+  title: Button
+metadata:
+  title: Buttons
+  description: Os Botões podem ser personalizados com diversos parêmtros para acomodar as necessidades do projeto.
+---
+
+<h1>{{ metadata.title | e | safe }}</h1>
+<p>{{ metadata.description | e | safe }}</p>
+
+{% Button '#', 'primary' %}Lorem{% endButton %}
+{% Button '#', 'secondary' %}Lorem{% endButton %}

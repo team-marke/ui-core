@@ -7,10 +7,10 @@ const hash = require('object-hash');
 module.exports = {
   main: {
     entry: {
-      app: './site/src/assets/js/main.js',
+      app: './site/assets/js/main.js',
     },
     output: {
-      path: path.resolve(__dirname, 'site/dist/assets'),
+      path: path.resolve(__dirname, 'dist/assets'),
       filename: '[name].' + hash.MD5(package) + '.js',
       chunkFilename: '[name].[chunkhash].js',
       publicPath: '/assets/',
@@ -54,13 +54,6 @@ module.exports = {
             },
             'sass-loader',
           ],
-        },
-        {
-          test: /\.(woff(2)?|ttf|eot|svg|gif)(\?v=\d+\.\d+\.\d+)?$/, 
-          loader: 'file-loader',
-          options: {
-            name: '[name].[ext]'
-          }
         }
       ],
     },
