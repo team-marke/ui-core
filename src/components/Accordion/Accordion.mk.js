@@ -1,18 +1,20 @@
+const Markdown = require('../../core-components/Markdown');
+
 function Accordion(content, id, items) {
   function getItems() {
     let str = '';
-    for (const item of items) {
-      str += getItem(item);
+    for (const [index, item] of items.entries()) {
+      str += getItem(index, item);
     }
     return str;
   }
 
-  function getItem(item, index) {
+  function getItem(index, item) {
     return `
       <div class="accordion-item">
         <${item.tag} class="accordion-header" id="${id}-heading-${index}">
           <button
-            class="accordion-button"
+            class="accordion-button collapsed"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#${id}-collapse-${index}"
@@ -24,7 +26,7 @@ function Accordion(content, id, items) {
         </${item.tag}>
         <div id="${id}-collapse-${index}" class="accordion-collapse collapse" aria-labelledby="${id}-heading-${index}" data-bs-parent="#${id}">
           <div class="accordion-body">
-            ${item.content}
+            ${Markdown(item.content)}
           </div>
         </div>
       </div>

@@ -5,7 +5,47 @@ eleventyNavigation:
 metadata:
   title: Accordion
   description: Usado para mostrar várias informações em cards diferentes, o Accordion permite que o usuário abra uma aba por vez, podendo ser usado numa sessão de perguntas e respostas.
+items:
+  - title: Lorem Ipsum Dollor
+    tag: h3
+    content: Usado para mostrar várias informações em cards diferentes, o Accordion permite
+  - title: Lorem Ipsum Dollor
+    tag: h3
+    content: Usado para mostrar várias informações em cards diferentes, o Accordion permite
+  - title: Lorem Ipsum Dollor
+    tag: h3
+    content: Usado para mostrar várias informações em cards diferentes, o Accordion permite
+items2:
+  - title: Lorem Ipsum Dollor
+    tag: h2
+    content: >-
+      ## Heading level 2
+
+      I just love __bold text__.
+
+      - First item
+
+      - Second item
+
+      - Third item
+
+      - Fourth item
+  - title: Lorem Ipsum Dollor
+    tag: h2
+    content: Usado para mostrar várias informações em cards diferentes, o Accordion permite
+  - title: Lorem Ipsum Dollor
+    tag: h2
+    content: Usado para mostrar várias informações em cards diferentes, o Accordion permite
 ---
 
 <h1>{{ metadata.title | e | safe }}</h1>
 <p>{{ metadata.description | e | safe }}</p>
+
+
+<div class="p-4">
+  {% Accordion 'accordion-example', items %}{% endAccordion %}
+</div>
+
+<div class="p-4">
+  {% Accordion 'accordion-example-2', items2 %}{% endAccordion %}
+</div>

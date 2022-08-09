@@ -9,3 +9,7 @@ metadata:
 
 <h1>{{ metadata.title | e | safe }}</h1>
 <p>{{ metadata.description | e | safe }}</p>
+
+{% set navPages = collections.all | eleventyNavigationBreadcrumb(page.fileSlug, { includeSelf: true }) %}
+
+{% Breadcrumb navPages, page.url %}{% endBreadcrumb %}

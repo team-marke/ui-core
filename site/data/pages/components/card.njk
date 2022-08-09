@@ -5,6 +5,51 @@ eleventyNavigation:
 metadata:
   title: Cards
   description: Use cards para criar componentes que necessitam ser contidos em um único lugar, podendo inserir links, imagens e descrições.
+card1:
+  image:
+    url: https://res.cloudinary.com/webmaster-marke/image/upload/v1659640851/vantagens-de-trabalhar-com-marketing-digital.png
+    alt: Lorem ipsum
+    width: 300
+    height: 200
+card2:
+  image:
+    url: https://res.cloudinary.com/webmaster-marke/image/upload/v1659640851/vantagens-de-trabalhar-com-marketing-digital.png
+    alt: Lorem ipsum
+    width: 300
+    height: 200
+    transformations:
+      fetch_format: auto
+      quality: 'auto:best'
+      effect: "blur:300"
 ---
+
 <h1>{{ metadata.title | e | safe }}</h1>
 <p>{{ metadata.description | e | safe }}</p>
+
+{% Card card1.image, false, false, ['text-center'] %}
+  <h5 class="card-title">Lorem ipsum</h5>
+  <h6 class="card-subtitle">Foo Bar</h6>
+{% endCard %}
+
+{% Card false, false, false, ['text-bg-primary'] %}
+  <h5 class="card-title">Lorem ipsum</h5>
+  <h6 class="card-subtitle">Foo Bar</h6>
+{% endCard %}
+
+{% Card false, false, false, ['text-bg-secondary'] %}
+  <h5 class="card-title">Lorem ipsum</h5>
+  <h6 class="card-subtitle">Foo Bar</h6>
+{% endCard %}
+
+{% Card false, false, false, ['text-bg-success'] %}
+  <h5 class="card-title">Lorem ipsum</h5>
+  <h6 class="card-subtitle">Foo Bar</h6>
+{% endCard %}
+
+{% Card %}
+  <h5 class="card-title">Lorem ipsum</h5>
+  <h6 class="card-subtitle mb-3">Foo Bar</h6>
+  {% Button '#', 'primary', false, false, false, ['stretched-link'] %}Click me{% endButton %}
+{% endCard %}
+
+{% Card card2.image, 'hello', 'world' %}Lorem{% endCard %}

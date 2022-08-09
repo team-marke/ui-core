@@ -1,9 +1,16 @@
-function Breadcrumb(content, items) {
+function Breadcrumb(content, items, currentPageUrl) {
   function getItem(item) {
-    return `
-      <li class="breadcrumb-item">
-        <a href="${item.url}">${item.title}</a>
-      </li>`;
+    if (item.url == currentPageUrl) {
+      return `
+        <li class="breadcrumb-item active" aria-current="page">
+          ${item.title}
+        </li>`;
+    } else {
+      return `
+        <li class="breadcrumb-item">
+          <a href="${item.url}">${item.title}</a>
+        </li>`;
+    }
   }
 
   function getItems() {
@@ -11,6 +18,7 @@ function Breadcrumb(content, items) {
     for (const item of items) {
       str += getItem(item);
     }
+    return str;
   }
 
   return `
