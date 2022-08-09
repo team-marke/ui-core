@@ -1,0 +1,13 @@
+---
+eleventyNavigation:
+  key: map
+  title: Map
+metadata:
+  title: Maps
+  description: Um widget do Google Maps direto no site.
+---
+
+<h1>{{ metadata.title | e | safe }}</h1>
+<p>{{ metadata.description | e | safe }}</p>
+
+{% Maps 'Feevale Techpark - Hub One Novo Hamburgo', '500', '300' %}{% endMaps %}
