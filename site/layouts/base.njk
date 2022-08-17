@@ -18,9 +18,16 @@
     <script src="/assets/app.{{ pkg | objectHash | safe }}.js" type="text/javascript" defer></script>
   </head>
   <body>
-    {% include "partials/page-header.njk" %}
-    {% block content %}
-    {% endblock content %}
-    {% include "partials/page-footer.njk" %}
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12 col-lg-2 pt-3">
+          {% include "partials/page-sidebar.njk" %}
+        </div>
+        <div class="col-12 col-lg-6 pt-3">
+          {% block content %}
+          {% endblock content %}
+        </div>
+      </div>
+    </div>
   </body>
 </html>

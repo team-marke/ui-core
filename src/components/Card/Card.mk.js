@@ -1,6 +1,6 @@
 const CloudinaryImgUrl = require('../../core-components/CloudinaryImgUrl');
 
-function Card(content, img, header, footer, classes) {
+function Card(content, { img, header, footer, classes, overlay } = false) {
   function getImage() {
     if (!img) {
       return '';
@@ -14,7 +14,7 @@ function Card(content, img, header, footer, classes) {
     };
     return `
       <img
-        class="card-img-top"
+        class="${overlay ? 'card-img' : 'card-img-top'}"
         src="${CloudinaryImgUrl(img.url, img.transformations ? img.transformations : defaultTransforms)}"
         alt="${img.alt}"
         width="${img.width}"
@@ -52,16 +52,27 @@ function Card(content, img, header, footer, classes) {
     return classes.join(' ');
   }
 
-  return `
-    <div class="card ${getClasses()}">
-      ${getImage()}
-      ${getHeader()}
-      <div class="card-body">
-      ${content}
+  if (overlay) {
+    return `
+      <div class="card ${getClasses()}">
+        ${getImage()}
+        <div class="card-img-overlay">
+        ${content}
+        </div>
       </div>
-      ${getFooter()}
-    </div>
-  `;
+    `;
+  }
+
+  return `
+      <div class="card ${getClasses()}">
+        ${getImage()}
+        ${getHeader()}
+        <div class="card-body">
+        ${content}
+        </div>
+        ${getFooter()}
+      </div>
+    `;
 }
 
 module.exports = Card;

@@ -5,51 +5,83 @@ eleventyNavigation:
 metadata:
   title: Cards
   description: Use cards para criar componentes que necessitam ser contidos em um único lugar, podendo inserir links, imagens e descrições.
-card1:
+mock:
+  title: Diagnóstico Interno
+  text: Primeiro é fundamental entender qual a situação atual da sua presença digital e de seus investimentos, sinalizando o que está funcionando e o que precisa melhorar.
+  header: Este é o header
+  footer: Este é o footer
   image:
     url: https://res.cloudinary.com/webmaster-marke/image/upload/v1659640851/vantagens-de-trabalhar-com-marketing-digital.png
     alt: Lorem ipsum
     width: 300
     height: 200
-card2:
-  image:
+  image2:
     url: https://res.cloudinary.com/webmaster-marke/image/upload/v1659640851/vantagens-de-trabalhar-com-marketing-digital.png
     alt: Lorem ipsum
     width: 300
-    height: 200
+    height: 100
     transformations:
       fetch_format: auto
       quality: 'auto:best'
       effect: "blur:300"
 ---
-
 <h1>{{ metadata.title | e | safe }}</h1>
 <p>{{ metadata.description | e | safe }}</p>
-
-{% Card card1.image, false, false, ['text-center'] %}
-  <h5 class="card-title">Lorem ipsum</h5>
-  <h6 class="card-subtitle">Foo Bar</h6>
-{% endCard %}
-
-{% Card false, false, false, ['text-bg-primary'] %}
-  <h5 class="card-title">Lorem ipsum</h5>
-  <h6 class="card-subtitle">Foo Bar</h6>
-{% endCard %}
-
-{% Card false, false, false, ['text-bg-secondary'] %}
-  <h5 class="card-title">Lorem ipsum</h5>
-  <h6 class="card-subtitle">Foo Bar</h6>
-{% endCard %}
-
-{% Card false, false, false, ['text-bg-success'] %}
-  <h5 class="card-title">Lorem ipsum</h5>
-  <h6 class="card-subtitle">Foo Bar</h6>
-{% endCard %}
-
-{% Card %}
-  <h5 class="card-title">Lorem ipsum</h5>
-  <h6 class="card-subtitle mb-3">Foo Bar</h6>
-  {% Button '#', 'primary', false, false, false, ['stretched-link'] %}Click me{% endButton %}
-{% endCard %}
-
-{% Card card2.image, 'hello', 'world' %}Lorem{% endCard %}
+<section class="py-4">
+  <h4>Exemplo</h4>
+  <div class="row">
+    <div class="col-5">
+      {% Card %}
+        <h5 class="card-title">{{ mock.title }}</h5>
+        <p class="card-text">{{ mock.text }}</p>
+        {% Button { theme: 'primary', href: '#' } %}Clique{% endButton %}
+      {% endCard %}
+    </div>
+  </div>
+</section>
+<section class="py-4">
+  <h4>Imagem no topo</h4>
+  <div class="row">
+    <div class="col-5">
+      {% Card { img: mock.image } %}
+        <h5 class="card-title">{{ mock.title }}</h5>
+        <p class="card-text">{{ mock.text }}</p>
+        {% Button { theme: 'primary', href: '#' } %}Clique{% endButton %}
+      {% endCard %}
+    </div>
+  </div>
+</section>
+<section class="py-4">
+  <h4>Header e Footer</h4>
+  <div class="row">
+    <div class="col-5">
+      {% Card { header: mock.header, footer: mock.footer } %}
+        <h5 class="card-title">{{ mock.title }}</h5>
+        <p class="card-text">{{ mock.text }}</p>
+      {% endCard %}
+    </div>
+  </div>
+</section>
+<section class="py-4">
+  <h4>Imagem de fundo</h4>
+  <div class="row">
+    <div class="col-5">
+      {% Card { img: mock.image, overlay: true } %}
+        <h5 class="card-title">{{ mock.title }}</h5>
+        <p class="card-text">{{ mock.text }}</p>
+      {% endCard %}
+    </div>
+  </div>
+</section>
+<section class="py-4">
+  <h4>Link em todo Card</h4>
+  <div class="row">
+    <div class="col-5">
+      {% Card %}
+        <h5 class="card-title">{{ mock.title }}</h5>
+        <p class="card-text">{{ mock.text }}</p>
+        {% Button { theme: 'primary', href: '#', classes: ['stretched-link'] } %}Clique{% endButton %}
+      {% endCard %}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,26 @@
+---
+eleventyNavigation:
+  key: pagination
+  title: Pagination
+metadata:
+  title: Pagination
+  description: Lorem Ipsum
+permalink: 'components/pagination/{% if pagination.pageNumber > 0 %}{{ pagination.pageNumber + 1 }}/{% endif %}'
+pagination:
+  data: testdata
+  size: 2
+testdata:
+ - item1
+ - item2
+ - item3
+ - item4
+ - item5
+ - item6
+ - item7
+ - item8
+---
+
+<h1>{{ metadata.title | e | safe }}</h1>
+<p>{{ metadata.description | e | safe }}</p>
+
+{% Pagination { eleventyPagination: pagination } %}{% endPagination %}

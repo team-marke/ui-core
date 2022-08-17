@@ -12,4 +12,4 @@ metadata:
 
 {% set navPages = collections.all | eleventyNavigationBreadcrumb(page.fileSlug, { includeSelf: true }) %}
 
-{% Breadcrumb navPages, page.url %}{% endBreadcrumb %}
+{% Breadcrumb { eleventyBreadcrumbs: navPages, currentPageUrl: page.url } %}{% endBreadcrumb %}

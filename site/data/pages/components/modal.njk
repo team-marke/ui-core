@@ -1,0 +1,64 @@
+---
+eleventyNavigation:
+  key: modal
+  title: Modal
+metadata:
+  title: Modal
+  description: Os modais são elementos que dependem de ativação para serem exibidos
+mock:
+  id: modal-exemplo
+  id2: modal-exemplo2
+  id3: modal-exemplo3
+  title: Esse é o título
+  footer: Esse é o footer
+  content: >-
+    ### Lorem ipsum dollor
+
+
+    - foo
+
+    - bar
+
+
+    **Texto em bold**
+  btn:
+    title: Revelar Modal
+  scrollContent: >-
+    ### Lorem ipsum dollor
+
+
+    - foo
+
+    - bar
+
+    <p style="margin-bottom: 100vh"></p>
+
+
+    **Texto em bold**
+---
+<h1>{{ metadata.title | e | safe }}</h1>
+<p>{{ metadata.description | e | safe }}</p>
+<section class="py-4">
+  <h4>Exemplo</h4>
+  <p>Clique no botão para revelar o Modal</p>
+  {% Button { href: '#', theme: 'outline-primary', atts: { 'data-bs-toggle':'modal', 'data-bs-target':'#' + mock.id } } %}{{ mock.btn.title }}{% endButton %}
+  {% Modal { id: mock.id, title: mock.title, footer: mock.footer } %}
+    {% Markdown mock.content %}
+  {% endModal %}
+</section>
+<section class="py-4">
+  <h4>Centralizado</h4>
+  <p>Clique no botão para revelar o Modal</p>
+  {% Button { href: '#', theme: 'outline-secondary', atts: { 'data-bs-toggle':'modal', 'data-bs-target':'#' + mock.id2 } } %}{{ mock.btn.title }}{% endButton %}
+  {% Modal { id: mock.id2, title: mock.title, footer: mock.footer, classes: ['modal-dialog-centered'] } %}
+    {% Markdown mock.content %}
+  {% endModal %}
+</section>
+<section class="py-4">
+  <h4>Com scroll</h4>
+  <p>Clique no botão para revelar o Modal</p>
+  {% Button { href: '#', theme: 'outline-success', atts: { 'data-bs-toggle':'modal', 'data-bs-target':'#' + mock.id3 } } %}{{ mock.btn.title }}{% endButton %}
+  {% Modal { id: mock.id3, title: mock.title, footer: mock.footer, classes: ['modal-dialog-scrollable'] } %}
+    {% Markdown mock.scrollContent %}
+  {% endModal %}
+</section>

@@ -1,0 +1,28 @@
+<aside class="h-100">
+  <a href="{{ global.site_absolute_url | url }}" class="d-block mb-4">
+    <img
+      src="{% CloudinaryImgUrl site.logo, { fetch_format: 'auto', quality: 'auto:best', width: 120, height: 28, dpr: 2 } %}"
+      width="120"
+      height="28"
+      alt="{{ site.name | e | safe }}"
+    >
+  </a>
+  <nav>
+    <a href="#" class="link-dark h5" data-bs-toggle="collapse" data-bs-target="#componentsList" aria-expanded="false" aria-controls="componentsList">
+      Componentes
+    </a>
+    <div class="collapse show" id="componentsList">
+      <div class="list-group collapsed mt-2">
+        {% for component in collections.page | eleventyNavigation('home') %}
+          <a
+            href="{{ component.url | url }}"
+            class="list-group-item list-group-item-action {% if component.url == page.url %}active{% endif %}"
+            {% if component.url == page.url %}aria-current="true"{% endif %}
+          >
+            {{ component.title | e | safe }}
+          </a>
+        {% endfor %}
+      </div>
+    </div>
+  </nav>
+</aside>

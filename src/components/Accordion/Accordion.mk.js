@@ -1,6 +1,6 @@
 const Markdown = require('../../core-components/Markdown');
 
-function Accordion(content, id, items) {
+function Accordion(content, { id, items, flush }) {
   function getItems() {
     let str = '';
     for (const [index, item] of items.entries()) {
@@ -34,7 +34,7 @@ function Accordion(content, id, items) {
   }
 
   return `
-    <div class="accordion" id="${id}">
+    <div class="accordion ${flush ? 'accordion-flush' : ''}" id="${id}">
       ${getItems()}
     </div>
   `;

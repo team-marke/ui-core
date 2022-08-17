@@ -5,13 +5,16 @@ eleventyNavigation:
 metadata:
   title: Tabs
   description: Um widget do Google Maps direto no site.
-item:
+items:
   - title: Lorem ipsum
-    content: test
+    content: >-
+      ## This is a h2
+
+      hello **world**
   - title: Lorem ipsum 2
     content: texto diferente
 ---
 <h1>{{ metadata.title | e | safe }}</h1>
 <p>{{ metadata.decription | e | safe }}</p>
 
-{% Tabs 'tabTest', item %}{% endTabs%}
+{% Tabs { id: 'tabTest', items: items } %}{% endTabs %}

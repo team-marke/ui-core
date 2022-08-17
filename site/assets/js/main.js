@@ -7,11 +7,18 @@ const loadCollapse = async () => {
   }
 };
 
-const loadTabs = async () => {
+const loadTab = async () => {
   if (document.querySelector('button[data-bs-toggle="tab"]')) {
     await import('bootstrap/js/dist/tab');
   }
 };
 
+const loadModal = async () => {
+  if (document.querySelector('.modal')) {
+    await import('bootstrap/js/dist/modal');
+  }
+};
+
 loadCollapse();
-loadTabs();
+loadTab();
+loadModal();

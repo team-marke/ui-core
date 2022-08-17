@@ -1,4 +1,5 @@
-function Breadcrumb(content, items, currentPageUrl) {
+function Breadcrumb(content, { eleventyBreadcrumbs, currentPageUrl } = false) {
+
   function getItem(item) {
     if (item.url == currentPageUrl) {
       return `
@@ -15,7 +16,7 @@ function Breadcrumb(content, items, currentPageUrl) {
 
   function getItems() {
     let str = '';
-    for (const item of items) {
+    for (const item of eleventyBreadcrumbs) {
       str += getItem(item);
     }
     return str;

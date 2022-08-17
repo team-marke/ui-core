@@ -10,5 +10,6 @@ metadata:
 <h1>{{ metadata.title | e | safe }}</h1>
 <p>{{ metadata.description | e | safe }}</p>
 
-{% Button '#', 'primary' %}Lorem{% endButton %}
-{% Button '#', 'secondary' %}Lorem{% endButton %}
+{% Button { size: 'sm', href: '#', theme: 'primary', classes: ['text-danger'] } %}Lorem{% endButton %}
+
+{% Button { href: '#', theme: 'secondary' } %}Lorem{% endButton %}

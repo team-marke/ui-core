@@ -1,6 +1,8 @@
-var slugify = require('slugify');
+const slugify = require('slugify');
+const Markdown = require('../../core-components/Markdown');
 
-function Tabs(content, id, items) {
+function Tabs(content, { id, items }) {
+
   function getNavItems() {
     let str = '';
     for (const [index, item] of items.entries()) {
@@ -42,7 +44,7 @@ function Tabs(content, id, items) {
         aria-labelledby="${slugify(item.title)}-tab"
         tabindex="0"
         >
-          ${item.content}
+          ${Markdown(item.content)}
       </div>
     `;
   }
