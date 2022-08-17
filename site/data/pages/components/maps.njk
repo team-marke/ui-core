@@ -9,5 +9,7 @@ metadata:
 
 <h1>{{ metadata.title | e | safe }}</h1>
 <p>{{ metadata.description | e | safe }}</p>
-
-{% Maps { query: 'Feevale Techpark - Hub One Novo Hamburgo', width: '500', height: '300' } %}{% endMaps %}
+<section id="standard" class="py-4">
+  <h2>Exemplo</h2>
+  {% Maps { query: 'Feevale Techpark - Hub One Novo Hamburgo', width: '500', height: '300' } %}{% endMaps %}
+</section>

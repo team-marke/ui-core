@@ -4,7 +4,7 @@ eleventyNavigation:
   title: Pagination
 metadata:
   title: Pagination
-  description: Lorem Ipsum
+  description: Componente para organização dos posts em páginas.
 permalink: 'components/pagination/{% if pagination.pageNumber > 0 %}{{ pagination.pageNumber + 1 }}/{% endif %}'
 pagination:
   data: testdata
@@ -19,8 +19,9 @@ testdata:
  - item7
  - item8
 ---
-
 <h1>{{ metadata.title | e | safe }}</h1>
 <p>{{ metadata.description | e | safe }}</p>
-
-{% Pagination { eleventyPagination: pagination } %}{% endPagination %}
+<section id="standard" class="py-4">
+  <h2>Exemplo</h2>
+  {% Pagination { eleventyPagination: pagination } %}{% endPagination %}
+</section>
