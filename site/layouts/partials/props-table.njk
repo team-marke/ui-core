@@ -1,0 +1,23 @@
+<section class="py-4">
+  <h2>Propriedades</h2>
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Nome</th>
+          <th scope="col">Tipo</th>
+          <th scope="col">Descrição</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for prop in props %}
+          <tr>
+            <td><code>{{ prop.name }}</code></td>
+            <td>{{ prop.type }}</td>
+            <td>{{ prop.desc }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</section>

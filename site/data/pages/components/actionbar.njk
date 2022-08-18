@@ -1,0 +1,58 @@
+---
+eleventyNavigation:
+  key: actionbar
+  title: Actionbar
+metadata:
+  title: Actionbar
+  description: Use cards para criar componentes que necessitam ser contidos em um único lugar, podendo inserir links, imagens e descrições.
+props:
+  - name: content
+    type: 'null'
+    desc: Não utilizado.
+  - name: startItems
+    type: Array
+    desc: Lista dos items renderizados a esquerda do Actionbar.
+  - name: endItems
+    type: Array
+    desc: Lista dos items renderizados a direita do Actionbar.
+  - name: theme
+    type: String
+    desc: Cor dos itens.
+  - name: fontSize
+    type: Number
+    desc: Tamanho da fonte dos itens.
+  - name: classes
+    type: Array
+    desc: Array de classes adicionais, inseridas na tag pai.
+mock:
+  startItems:
+    - text: (51) 9999-9999
+      icon: fa-brands fa-whatsapp
+      href: '#'
+  endItems:
+    - text:
+      href: '#'
+      icon: fa-brands fa-facebook
+    - text:
+      href: '#'
+      icon: fa-solid fa-envelope
+    - html: <span>Ola mundo</span>
+
+---
+
+<h1>{{ metadata.title | e | safe }}</h1>
+<p>{{ metadata.description | e | safe }}</p>
+<section class="py-4">
+  <h4>Exemplo</h4>
+  <div class="p-3">
+    {% Actionbar { startItems: mock.startItems, endItems: mock.endItems, theme: 'primary', fontSize: 4 } %}{% endActionbar %}
+  </div>
+</section>
+<section class="py-4">
+  <h4>Em seção escura</h4>
+  <div class="bg-dark p-3">
+    {% Actionbar { startItems: mock.startItems, endItems: mock.endItems, theme: 'light' } %}{% endActionbar %}
+  </div>
+</section>
+
+{% include 'partials/props-table.njk' %}

@@ -1,0 +1,32 @@
+---
+eleventyNavigation:
+  key: copyrightbar
+  title: Copyrightbar
+metadata:
+  title: Copyrightbar
+  description: Use cards para criar componentes que necessitam ser contidos em um único lugar, podendo inserir links, imagens e descrições.
+mock:
+  text: © MkUI Todos os direitos reservados.
+  image:
+    src: https://res.cloudinary.com/webmaster-marke/image/upload/Marke_Marketing_Digital.svg
+    alt: MkUI
+    link: https://marke.com.br
+  image2:
+    src: https://res.cloudinary.com/webmaster-marke/image/upload/Marke_Marketing_Digital_light.png
+    alt: MkUI
+    link: https://marke.com.br
+---
+<h1>{{ metadata.title | e | safe }}</h1>
+<p>{{ metadata.description | e | safe }}</p>
+<section class="py-4">
+  <h4>Exemplo</h4>
+  <div class="p-3">
+    {% Copyrightbar { text: mock.text, image: mock.image } %}{% endCopyrightbar %}
+  </div>
+</section>
+<section class="py-4">
+  <h4>Em seção escura</h4>
+  <div class="bg-dark p-3">
+    {% Copyrightbar { text: mock.text, image: mock.image2, classes: ['text-white'] } %}{% endCopyrightbar %}
+  </div>
+</section>

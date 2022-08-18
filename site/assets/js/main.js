@@ -1,5 +1,6 @@
 import 'regenerator-runtime/runtime.js';
 import '../scss/main.scss';
+import '../js/fontawesome';
 
 const loadCollapse = async () => {
   if (document.querySelector('.collapse')) {

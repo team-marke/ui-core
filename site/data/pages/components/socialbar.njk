@@ -1,0 +1,37 @@
+---
+eleventyNavigation:
+  key: socialbar
+  title: Socialbar
+metadata:
+  title: Socialbar
+  description: Use cards para criar componentes que necessitam ser contidos em um único lugar, podendo inserir links, imagens e descrições.
+props:
+  - name: foo
+    type: bar
+    desc: lorem
+mock:
+  items:
+    - icon: fa-brands fa-whatsapp
+      href: '#'
+    - icon: fa-brands fa-whatsapp
+      href: '#'
+    - icon: fa-brands fa-whatsapp
+      href: '#'
+---
+
+<h1>{{ metadata.title | e | safe }}</h1>
+<p>{{ metadata.description | e | safe }}</p>
+<section class="py-4">
+  <h4>Exemplo</h4>
+  <div class="p-3">
+    {% Socialbar { items: mock.items, theme: 'primary', fontSize: 4 } %}{% endSocialbar %}
+  </div>
+</section>
+<section class="py-4">
+  <h4>Em seção escura</h4>
+  <div class="bg-dark p-3">
+    {% Socialbar { items: mock.items, theme: 'light', fontSize: 4, classes: ['text-white'] } %}{% endSocialbar %}
+  </div>
+</section>
+
+{% include 'partials/props-table.njk' %}

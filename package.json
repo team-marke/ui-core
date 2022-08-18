@@ -8,6 +8,10 @@
     "url": "https://github.com/team-marke/marke-ui.git"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.1.2",
+    "@fortawesome/free-brands-svg-icons": "^6.1.2",
+    "@fortawesome/free-regular-svg-icons": "^6.1.2",
+    "@fortawesome/free-solid-svg-icons": "^6.1.2",
     "@popperjs/core": "^2.11.5",
     "bootstrap": "5.2.0",
     "cloudinary": "^1.30.1",
