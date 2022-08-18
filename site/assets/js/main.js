@@ -8,6 +8,12 @@ const loadCollapse = async () => {
   }
 };
 
+const loadDropdown = async () => {
+  if (document.querySelector('.dropdown')) {
+    await import('bootstrap/js/dist/dropdown');
+  }
+};
+
 const loadTab = async () => {
   if (document.querySelector('button[data-bs-toggle="tab"]')) {
     await import('bootstrap/js/dist/tab');
@@ -23,3 +29,4 @@ const loadModal = async () => {
 loadCollapse();
 loadTab();
 loadModal();
+loadDropdown();

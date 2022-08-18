@@ -1,0 +1,83 @@
+---
+eleventyNavigation:
+  key: navbar
+  title: Navbar
+metadata:
+  title: Navbar
+  description: Use cards para criar componentes que necessitam ser contidos em um único lugar, podendo inserir links, imagens e descrições.
+mock:
+  brandImg:
+    src: https://res.cloudinary.com/webmaster-marke/image/upload/Marke_Marketing_Digital.svg
+    alt: Lorem ipsum
+    width: 120
+    height: 40
+  brandImg2:
+    src: https://res.cloudinary.com/webmaster-marke/image/upload/Marke_Marketing_Digital_light.png
+    alt: Lorem ipsum
+    width: 120
+    height: 40
+  eleventyNavigation:
+    - parent: 'home'
+      key: 'card'
+      title: 'Card'
+      url: '/components/card/'
+      parentKey: 'home'
+      children: []
+    - parent: 'home'
+      key: 'copyrightbar'
+      title: 'Copyrightbar'
+      url: '/components/copyrightbar/'
+      parentKey: 'home'
+      children: []
+    - parent: 'home'
+      key: 'button'
+      title: 'Button'
+      url: '/components/button/'
+      parentKey: 'home'
+      children: []
+    - parent: 'home'
+      title: 'bar'
+      url: 'http://localhost:8080/components/navbar/#foo'
+  eleventyNavigation2:
+    - parent: 'home'
+      key: 'card'
+      title: 'Card'
+      url: '/components/card/'
+      parentKey: 'home'
+      children: []
+    - parent: 'home'
+      key: 'copyrightbar'
+      title: 'Copyrightbar'
+      url: '/components/copyrightbar/'
+      parentKey: 'home'
+      children:
+        - parent: 'home'
+          key: 'button'
+          title: 'Button'
+          url: '/components/button/'
+          parentKey: 'home'
+          children: []
+        - parent: 'home'
+          key: 'navbar'
+          title: 'Navbar'
+          url: '/components/navbar/'
+          parentKey: 'home'
+          children: []
+---
+
+<h1>{{ metadata.title | e | safe }}</h1>
+<p>{{ metadata.description | e | safe }}</p>
+<section class="py-4">
+  <h4>Exemplo</h4>
+  <div class="p-3">
+    {% Navbar { eleventyNavigation: mock.eleventyNavigation, currentPageUrl: page.url ,id: 'teste', brandImg: mock.brandImg, brandImgMobile: mock.brandImg } %}
+      {% Button { href: '#', theme: 'secondary' } %}Lorem{% endButton %}
+    {% endNavbar %}
+  </div>
+</section>
+<section class="py-4">
+  <h4>Em seção escura</h4>
+  <div class="p-3 bg-dark">
+    {% Navbar { eleventyNavigation: mock.eleventyNavigation, currentPageUrl: page.url ,id: 'teste2', brandImg: mock.brandImg2, brandImgMobile: mock.brandImg2, dark: true } %}{% endNavbar %}
+  </div>
+</section>

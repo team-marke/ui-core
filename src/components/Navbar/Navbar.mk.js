@@ -1,6 +1,6 @@
 const CloudinaryImgUrl = require('../../core-components/CloudinaryImgUrl');
 
-function Navbar(content, { eleventyNavigation, id, brand, brandMobile, background, dark, sticky, position, classes }) {
+function Navbar(content, { eleventyNavigation, currentPageUrl, id, expand, brandImg, brandImgMobile, dark, classes }) {
   function getClasses() {
     if (!Array.isArray(classes)) {
       return '';
@@ -8,85 +8,134 @@ function Navbar(content, { eleventyNavigation, id, brand, brandMobile, backgroun
     return classes.join(' ');
   }
 
-  function getOffCanvaItems() {
+  function getNav() {
+    return `
+      <ul class="navbar-nav ${getClasses()}">
+        ${getNavItems()}
+      </ul>
+      ${content}
+    `;
+  }
+
+  function getNavItems() {
     let str = '';
-    for (const [index, item] of items.entries()) {
-      str += getOffcanvaItem(index, item);
+    for (const item of eleventyNavigation) {
+      str += getNavItem(item);
     }
     return str;
   }
 
-  function getBrand() {
-    if (!brand) {
+  function getNavItem(item) {
+    if (item.children && item.children.length > 0) {
+      return `
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle ${item.children.some((item) => currentPageUrl == item.url) ? 'active' : ''}"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            ${item.title}
+          </a>
+          <ul class="dropdown-menu">
+            ${getDropdownItems(item.children)}
+          </ul>
+        </li>
+      `;
+    }
+    return `
+      <li class="nav-item">
+        <a
+          href="${item.url}"
+          class="nav-link ${currentPageUrl == item.url ? 'active' : ''}"
+          ${currentPageUrl == item.url ? 'aria-current="page"' : ''}
+        >
+          ${item.title}
+        </a>
+      </li>
+    `;
+  }
+
+  function getDropdownItems(items) {
+    let str = '';
+    for (const item of items) {
+      str += `
+        <li>
+          <a
+            href="${item.url}"
+            class="dropdown-item ${currentPageUrl == item.url ? 'active' : ''}"
+            ${currentPageUrl == item.url ? 'aria-current="page"' : ''}
+          >
+            ${item.title}
+          </a>
+        </li>
+      `;
+    }
+    return str;
+  }
+
+  function getBrandImg() {
+    if (!brandImg) {
       return '';
     }
+
     const defaultTransforms = {
       fetch_format: 'auto',
       quality: 'auto',
-      width: brand.width,
-      height: brand.height,
-      crop: 'fill',
+      width: brandImg.width,
+      height: brandImg.height,
+      crop: 'pad',
     };
+
     return `
-    <a class="navbar-brand" href="${brand.url}">
+      <a class="navbar-brand" href="${brandImg.href}">
+        <img
+          class="d-none d-lg-inline-block"
+          src="${CloudinaryImgUrl(brandImg.src, brandImg.transformations ? brandImg.transformations : defaultTransforms)}"
+          alt="${brandImg.alt}"
+          width="${brandImg.width}"
+          height="${brandImg.height}"
+        >
+        ${getBrandImgMobile()}
+      </a>
+    `;
+  }
+
+  function getBrandImgMobile() {
+    if (!brandImgMobile) {
+      return '';
+    }
+
+    const defaultTransforms = {
+      fetch_format: 'auto',
+      quality: 'auto',
+      width: brandImgMobile.width,
+      height: brandImgMobile.height,
+      crop: 'pad',
+    };
+
+    return `
       <img
-        class="d-none d-lg-block"
-        src="${CloudinaryImgUrl(brand.logo, brand.transformations ? brand.transformations : defaultTransforms)}"
-        alt=""
-        width="${brand.width}"
-        height="${brand.height}"
-      >
-      <img
-        class="d-block d-lg-none"
+        class="d-inline-block d-lg-none"
         src="${CloudinaryImgUrl(
-          brandMobile.logo,
-          brandMobile.transformations ? brandMobile.transformations : defaultTransforms
+          brandImgMobile.src,
+          brandImgMobile.transformations ? brandImgMobile.transformations : defaultTransforms
         )}"
-        alt=""
-        width="${brandMobile.width}"
-        height="${brandMobile.height}"
+        alt="${brandImgMobile.alt}"
+        width="${brandImgMobile.width}"
+        height="${brandImgMobile.height}"
       >
-    </a>
     `;
-  }
-
-  function getOffcanvaHeader() {
-    return `
-      <div class="offcanvas-header">
-        ${getBrand()}
-        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-      </div>
-    `;
-  }
-
-  function getOffcanvaItem(index, item) {
-    return `
-    <div class="offcanvas-body">
-      <ul class="navbar-nav ${getClasses()} justify-content-end">
-        <li class="nav-item">
-          <a class="nav-link ${index == 0 ? 'active' : ''}" href="${item.permalink}">${item.key}</a>
-        </li>
-      </ul>
-    </div>
-    `;
-  }
-
-  function getBackground() {
-    return `bg-${background}`;
-  }
-  function getSticky() {
-    return `sticky-${sticky}`;
   }
 
   return `
-    <nav class="navbar ${dark} ${getBackground()} navbar-expand-lg ${getSticky()}">
-      ${getBrand()}
-      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#${id}" aria-controls="${id}">
+    <nav class="navbar navbar-expand-${expand ? expand : 'lg'} ${dark ? 'navbar-dark' : ''}">
+      ${getBrandImg()}
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#${id}" aria-controls="${id}">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="offcanvas offcanvas-${position} text-${getBackground()}" tabindex="-1" id="${id}" aria-labelledby="${id}Label">
-        ${getOffcanvaHeader()}
-        ${getOffCanvaItems()}
+      <div class="collapse navbar-collapse" id="${id}">
+        ${getNav()}
       </div>
     </nav>
   `;
