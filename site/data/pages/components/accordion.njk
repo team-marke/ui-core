@@ -38,11 +38,11 @@ mock:
 ---
 <h1>{{ metadata.title | e | safe }}</h1>
 <p>{{ metadata.description | e | safe }}</p>
-<section class="py-4">
+<section id="standard" class="py-4">
   <h4>Exemplo</h4>
   {% Accordion { id: mock.id, items: mock.items } %}{% endAccordion %}
 </section>
-<section class="py-4">
+<section id="borderless" class="py-4">
   <h4>Sem bordas</h4>
   {% Accordion { id: mock.id2, items: mock.items, flush: true } %}{% endAccordion %}
 </section>

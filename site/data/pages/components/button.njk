@@ -9,7 +9,12 @@ metadata:
 
 <h1>{{ metadata.title | e | safe }}</h1>
 <p>{{ metadata.description | e | safe }}</p>
+<section id="standard" class="py-4">
+  <h2>Botão padrão</h2>
+  {% Button { href: '#', theme: 'secondary' } %}Lorem{% endButton %}
+</section>
+<section id="small-warning" class="py-4">
+  <h2>Botão pequeno usando bg-color</h2>
+  {% Button { size: 'sm', href: '#', theme: 'primary', classes: ['text-bg-primary'] } %}Lorem{% endButton %}
+</section>
 
-{% Button { size: 'sm', href: '#', theme: 'primary', classes: ['text-danger'] } %}Lorem{% endButton %}
-
-{% Button { href: '#', theme: 'secondary' } %}Lorem{% endButton %}

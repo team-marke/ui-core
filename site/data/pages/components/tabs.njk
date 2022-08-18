@@ -6,15 +6,17 @@ metadata:
   title: Tabs
   description: Um widget do Google Maps direto no site.
 items:
-  - title: Lorem ipsum
+  - title: Página 01
     content: >-
-      ## This is a h2
+      ## Inserir um h2
 
-      hello **world**
-  - title: Lorem ipsum 2
-    content: texto diferente
+      Hello **World!**
+  - title: Página 02
+    content: Um parágrafo padrão
 ---
 <h1>{{ metadata.title | e | safe }}</h1>
 <p>{{ metadata.decription | e | safe }}</p>
-
-{% Tabs { id: 'tabTest', items: items } %}{% endTabs %}
+<section id="standard" class="py-4">
+  <h2>Exemplo</h2>
+  {% Tabs { id: 'tabTest', items: items } %}{% endTabs %}
+</section>
