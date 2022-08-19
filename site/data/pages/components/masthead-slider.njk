@@ -1,0 +1,76 @@
+---
+eleventyNavigation:
+  key: masthead-slider
+  title: Masthead Slider
+metadata:
+  title: Masthead Slider
+  description: Use cards para criar componentes que necessitam ser contidos em um único lugar, podendo inserir links, imagens e descrições.
+props:
+  - name: foo
+    type: bar
+    desc: lorem
+mock:
+  mastheads:
+    - title: Nulla ut pellentesque
+      desc: Donec lorem orci, pulvinar eget massa ac, vehicula volutpat lorem. Maecenas purus felis, auctor sed justo.
+      btn:
+        href: '#'
+        content: Donec
+        theme: outline-light
+      image:
+        src: https://res.cloudinary.com/webmaster-marke/image/upload/v1659728051/livros-de-marketing-digital.jpg
+        alt: Lorem Ipsum Dollor
+        width: 1920
+        height: 450
+      imageMobile:
+        src: https://res.cloudinary.com/webmaster-marke/image/upload/v1659728051/livros-de-marketing-digital.jpg
+        alt: Lorem Ipsum Dollor
+        width: 400
+        height: 200
+    - title: Nulla ut pellentesque
+      desc: Donec lorem orci, pulvinar eget massa ac, vehicula volutpat lorem. Maecenas purus felis, auctor sed justo.
+      btn:
+        href: '#'
+        content: Donec
+        theme: outline-light
+      image:
+        src: https://res.cloudinary.com/webmaster-marke/image/upload/v1626966721/whatsapp-para-negocios.jpg
+        alt: Lorem Ipsum Dollor
+        width: 1920
+        height: 450
+      imageMobile:
+        src: https://res.cloudinary.com/webmaster-marke/image/upload/v1626966721/whatsapp-para-negocios.jpg
+        alt: Lorem Ipsum Dollor
+        width: 400
+        height: 200
+---
+
+<h1>{{ metadata.title | e | safe }}</h1>
+<p>{{ metadata.description | e | safe }}</p>
+<section class="py-4">
+  <h4>Exemplo</h4>
+  <div class="p-3">
+    <div class="bg-dark">
+      {% set arr = [] %}
+      {% for masthead in mock.mastheads %}
+        {% set html %}
+          {% Masthead { image: masthead.image, imageMobile: masthead.imageMobile } %}
+            <div class="container text-white">
+              <div class="row">
+                <div class="col-6 mx-auto text-center ">
+                  <h2>{{ masthead.title }}</h2>
+                  <p>{{ masthead.desc }}</p>
+                  {% Button { theme: masthead.btn.theme, href: masthead.btn.href } %}{{ masthead.btn.content }}{% endButton %}
+                </div>
+              </div>
+            </div>
+          {% endMasthead %}
+        {% endset %}
+        {% set arr = (arr.push(html), arr) %}
+      {% endfor %}
+      {% MastheadSlider { mastheads: arr } %}{% endMastheadSlider %}
+    </div>
+  </div>
+</section>
+
+{% include 'partials/props-table.njk' %}

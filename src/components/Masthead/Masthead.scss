@@ -1,0 +1,44 @@
+//
+// Masthead
+//
+
+$image-filter: brightness(65%) !default;
+
+.masthead {
+  padding-bottom: 1rem;
+  @include media-breakpoint-up(lg) {
+    position: relative;
+    padding-bottom: 0;
+  }
+
+  &__image {
+    display: none;
+    @include media-breakpoint-up(lg) {
+      width: 100%;
+      object-fit: cover;
+      display: inline-block;
+    }
+  }
+
+  &__image-mobile {
+    display: inline-block;
+    width: 100%;
+    object-fit: cover;
+    margin-bottom: 1rem;
+    @include media-breakpoint-up(lg) {
+      display: none;
+    }
+  }
+
+  &__content {
+    @include media-breakpoint-up(lg) {
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 100%;
+      display: flex;
+      align-items: center;
+    }
+  }
+}

@@ -26,7 +26,14 @@ const loadModal = async () => {
   }
 };
 
+const loadMastheadSlider = async () => {
+  if (document.querySelector('.masthead-slider')) {
+    await import('../../../src/components/MastheadSlider/MastheadSlider');
+  }
+};
+
 loadCollapse();
 loadTab();
 loadModal();
 loadDropdown();
+loadMastheadSlider();
