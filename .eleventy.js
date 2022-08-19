@@ -6,16 +6,25 @@ const syntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight');
 const Nunjucks = require('nunjucks');
 
 module.exports = (eleventyConfig) => {
-
+  // Setup nunjucks environment instance for template layouts
   const commonLoaderOptions = {
     trimBlocks: true,
     lstripBlocks: true,
+  };
+  if (process.env.ELEVENTY_ENV == 'development') {
+    global.nunjucksEnvironment = new Nunjucks.Environment([
+      new Nunjucks.FileSystemLoader(['site/layouts'], {
+        ...commonLoaderOptions,
+        watch: true,
+      }),
+      new Nunjucks.NodeResolveLoader({ ...commonLoaderOptions, watch: true }),
+    ]);
+  } else {
+    global.nunjucksEnvironment = new Nunjucks.Environment([
+      new Nunjucks.FileSystemLoader(['site/layouts'], { ...commonLoaderOptions }),
+      new Nunjucks.NodeResolveLoader({ ...commonLoaderOptions }),
+    ]);
   }
-  global.nunjucksEnvironment = new Nunjucks.Environment([
-    new Nunjucks.FileSystemLoader('site/layouts', { ...commonLoaderOptions, watch: true }),
-    new Nunjucks.FileSystemLoader('src/components', { ...commonLoaderOptions, watch: true }),
-  ]);
-
   eleventyConfig.setLibrary('njk', global.nunjucksEnvironment);
 
   // Add eleventy plugins
