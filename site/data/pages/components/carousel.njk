@@ -1,0 +1,52 @@
+---
+eleventyNavigation:
+  key: carousel
+  title: Carousel
+metadata:
+  title: Carousels
+  description: Use carousels para apresentar o seu conteúdo na página.
+mock:
+  title: Diagnóstico Interno
+  text: Primeiro é fundamental entender qual a situação atual da sua presença digital e de seus investimentos, sinalizando o que está funcionando e o que precisa melhorar.
+  header: Este é o header
+  footer: Este é o footer
+  image:
+    url: https://res.cloudinary.com/webmaster-marke/image/upload/v1659640851/vantagens-de-trabalhar-com-marketing-digital.png
+    alt: Lorem ipsum
+    width: 300
+    height: 200
+  image2:
+    url: https://res.cloudinary.com/webmaster-marke/image/upload/v1659640851/vantagens-de-trabalhar-com-marketing-digital.png
+    alt: Lorem ipsum
+    width: 300
+    height: 100
+    transformations:
+      fetch_format: auto
+      quality: 'auto:best'
+      effect: "blur:300"
+---
+<h1>{{ metadata.title | e | safe }}</h1>
+<p>{{ metadata.description | e | safe }}</p>
+<section class="py-4">
+  {# <h4>Exemplo</h4>
+  <div class="row">
+    <div class="col-5">
+      {% Carousel {pagination: true, autoplay: false, minSlides: 1, maxSlides: 3} %}
+        {% Card %}
+          <h5 class="card-title">{{ mock.title }}</h5>
+          <p class="card-text">{{ mock.text }}</p>
+          {% Button { theme: 'primary', href: '#' } %}Clique{% endButton %}
+        {% endCard %}
+        {% Card { img: mock.image } %}
+          <h5 class="card-title">{{ mock.title }}</h5>
+          <p class="card-text">{{ mock.text }}</p>
+          {% Button { theme: 'primary', href: '#' } %}Clique{% endButton %}
+        {% endCard %}
+        {% Card { header: mock.header, footer: mock.footer } %}
+          <h5 class="card-title">{{ mock.title }}</h5>
+          <p class="card-text">{{ mock.text }}</p>
+        {% endCard %}
+      {% endCarousel %}
+    </div>
+  </div> #}
+</section>
