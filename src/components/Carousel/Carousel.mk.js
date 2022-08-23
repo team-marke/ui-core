@@ -1,59 +1,41 @@
-import Swiper, {  Navigation, Pagination } from "swiper";
+function Carousel(content, { slides, minSlides, maxSlides, spaceBetween, color }) {
+  function getSlides() {
+    let str = '';
+    for (const slide of slides) {
+      str += `
+        <div class="swiper-slide carousel__slide">
+          ${slide}
+        </div>
+      `;
+    }
+    return str;
+  }
 
-function Carousel(content, { id, pagination, orientation, autoplay, loopBoolean, minSlides, maxSlides }) {
-  function getLoop() {
-    return loopBoolean;
+  function getColor() {
+    if (!color) return '';
+    return `
+      style="--swiper-theme-color:${color}; --swiper-navigation-color:${color}"
+    `;
   }
-  function getAutoplay() {
-    return autoplay;
-  }
-  function getOrientation() {
-    return orientation ? orientation : 'horizontal';
-  }
-  function getMinSlides() {
-    return minSlides ? minSlides : 1;
-  }
-  function getMaxSlides() {
-    return maxSlides ? maxSlides : 3;
-  }
-  function getPagination(){
-    return pagination;
-  }
-  swiperParams = {
-    modules: [Navigation, Pagination],
-    direction: getOrientation(),
-    loop: getLoop(),
-    autoplay: getAutoplay(),
-    speed: 400,
-
-    breakpoints: {
-      0: {
-        navigation: false,
-        slidesPerView: getMinSlides(),
-        pagination: true,
-      },
-      992: {
-        navigation: {
-          nextEl: 'swiper-button-next',
-          prevEl: 'swiper-button-prev',
-        },
-        slidesPerView: getMaxSlides(),
-        pagination: getPagination(),
-      },
-    },
-  };
-
-  const swiper =  new Swiper('swiper', swiperParams);
 
   return `
-    <div class="swiper">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide">
-          ${content}
+    <div
+      class="swiper carousel"
+      data-min-slides-per-view="${minSlides}"
+      data-max-slides-per-view="${maxSlides}"
+      data-space-between="${spaceBetween ? spaceBetween : 16}"
+      ${getColor()}
+    >
+      <div class="swiper-container carousel__container">
+        <div class="swiper-wrapper carousel__wrapper">
+          ${getSlides()}
         </div>
       </div>
+      <div class="swiper-button-prev carousel__button-prev"></div>
+      <div class="swiper-button-next carousel__button-next"></div>
+      <div class="swiper-pagination carousel__pagination"></div>
     </div>
-  `
+  `;
 }
 
 module.exports = Carousel;

@@ -30,6 +30,12 @@ const loadMastheadSlider = async () => {
   if (document.querySelector('.masthead-slider')) {
     await import('../../../src/components/MastheadSlider/MastheadSlider');
   }
+}
+
+const loadCarousel = async () => {
+  if (document.querySelector('.carousel')) {
+    await import('../../../src/components/Carousel/Carousel');
+  }
 };
 
 loadCollapse();
@@ -37,3 +43,4 @@ loadTab();
 loadModal();
 loadDropdown();
 loadMastheadSlider();
+loadCarousel();
