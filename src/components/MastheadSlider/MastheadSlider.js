@@ -13,6 +13,9 @@ import Swiper, { Navigation, Pagination, EffectFade } from 'swiper';
         clickable: true,
       },
       effect: 'fade',
+      fadeEffect: { crossFade: true },
+      autoHeight: true,
+      slidesPerView: 1,
     });
   });
 })();
