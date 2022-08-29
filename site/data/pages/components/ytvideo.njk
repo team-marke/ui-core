@@ -1,0 +1,17 @@
+---
+eleventyNavigation:
+  key: ytvideo
+  title: YTVideo
+metadata:
+  title: YTVideo
+  description: Usado para mostrar várias informações em cards diferentes, o Accordion permite que o usuário abra uma aba por vez, podendo ser usado numa sessão de perguntas e respostas.
+mock:
+  id: Gs069dndIYk
+---
+<h1>{{ metadata.title | e | safe }}</h1>
+<p>{{ metadata.description | e | safe }}</p>
+<section id="standard" class="py-4">
+  <h4>Exemplo</h4>
+  {% YTVideo { id: mock.id } %}{% endYTVideo %}
+</section>
+

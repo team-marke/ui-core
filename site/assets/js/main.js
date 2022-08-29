@@ -30,11 +30,17 @@ const loadMastheadSlider = async () => {
   if (document.querySelector('.masthead-slider')) {
     await import('../../../src/components/MastheadSlider/MastheadSlider');
   }
-}
+};
 
 const loadCarousel = async () => {
   if (document.querySelector('.carousel')) {
     await import('../../../src/components/Carousel/Carousel');
+  }
+};
+
+const loadYTVideo = async () => {
+  if (document.querySelector('.yt-video')) {
+    await import('../../../src/components/YTPlayer/YTVideo');
   }
 };
 
@@ -44,3 +50,4 @@ loadModal();
 loadDropdown();
 loadMastheadSlider();
 loadCarousel();
+loadYTVideo();

@@ -2216,6 +2216,7 @@ __metadata:
     swiper: ^8.3.2
     webpack: ^5.73.0
     webpack-cli: ^4.10.0
+    yt-player: ^3.6.1
   languageName: unknown
   linkType: soft
 
@@ -5379,6 +5380,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"load-script2@npm:^2.0.1":
+  version: 2.0.6
+  resolution: "load-script2@npm:2.0.6"
+  checksum: a9c54f07eacb1af147c742a922fedc1dc2e7923999e5857a4be363a76b60ae625d4a94cbab371c67dad5f1a98b5c9387e57db4e83fbcf1d25fa9c8404de5df41
+  languageName: node
+  linkType: hard
+
 "loader-runner@npm:^4.2.0":
   version: 4.3.0
   resolution: "loader-runner@npm:4.3.0"
@@ -8425,5 +8433,14 @@ __metadata:
     y18n: ^5.0.5
     yargs-parser: ^20.2.2
   checksum: b14afbb51e3251a204d81937c86a7e9d4bdbf9a2bcee38226c900d00f522969ab675703bee2a6f99f8e20103f608382936034e64d921b74df82b63c07c5e8f59
+  languageName: node
+  linkType: hard
+
+"yt-player@npm:^3.6.1":
+  version: 3.6.1
+  resolution: "yt-player@npm:3.6.1"
+  dependencies:
+    load-script2: ^2.0.1
+  checksum: 05d16c15b8f4a3adea8f2d6e8ea63c10e9f26c69fca744fe047b4eeeff8c7cf2a14d30c93f2cb319adb08b268bc1a8fb10f1e17f1c441130f2415711d9e95ed5
   languageName: node
   linkType: hard

@@ -1,0 +1,57 @@
+//
+// YTVideo
+//
+
+.yt-video {
+  position: relative;
+  cursor: pointer;
+
+  &__thumb {
+    object-fit: cover;
+    max-width: 100%;
+    height: auto;
+    border-radius: $border-radius;
+    filter: brightness(0.75);
+    transition: $transition-base;
+  }
+
+  &__play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 3em;
+    width: 3em !important;
+    color: $light;
+    transition: $transition-base;
+  }
+
+  &:hover {
+    .yt-video__thumb {
+      filter: brightness(1);
+    }
+    .yt-video__play {
+      color: $primary;
+    }
+  }
+
+  &__modal-content {
+    background-color: transparent;
+    border: none;
+  }
+
+  &__modal-header {
+    border: none;
+  }
+
+  &__modal-body {
+    padding: 0;
+    aspect-ratio: 16 / 9;
+  }
+
+  &__modal-player {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+}
