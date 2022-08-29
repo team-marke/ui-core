@@ -40,7 +40,7 @@ const loadCarousel = async () => {
 
 const loadYTVideo = async () => {
   if (document.querySelector('.yt-video')) {
-    await import('../../../src/components/YTPlayer/YTVideo');
+    await import('../../../src/components/YTVideo/YTVideo');
   }
 };
 
