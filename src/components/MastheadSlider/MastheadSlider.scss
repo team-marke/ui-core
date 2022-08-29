@@ -5,4 +5,35 @@
 .masthead-slider {
   --swiper-theme-color: #{$light};
   --swiper-navigation-color: #{$light};
+
+  &__button-prev,
+  &__button-next {
+    display: none;
+  }
+
+  &__wrapper {
+    padding-bottom: 2rem;
+  }
+
+  &__pagination {
+    .swiper-pagination-bullet {
+      border-radius: 5px;
+      transition: $transition-base;
+
+      &-active {
+        width: 1.25rem;
+      }
+    }
+  }
+
+  @include media-breakpoint-up(lg) {
+    &__button-prev,
+    &__button-next {
+      display: block;
+    }
+
+    &__wrapper {
+      padding-bottom: 0;
+    }
+  }
 }
