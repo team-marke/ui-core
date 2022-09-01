@@ -1,0 +1,65 @@
+---
+eleventyNavigation:
+  key: gridresponsive
+  title: Grid Responsive
+metadata:
+  title: Grid Responsive
+  description:
+mock:
+  slides:
+    - title: Nulla ut pellentesque
+      desc: Donec lorem orci, pulvinar eget massa ac, vehicula volutpat lorem. Maecenas purus felis, auctor sed justo.
+    - title: Nulla ut pellentesque
+      desc: Donec lorem orci, pulvinar eget massa ac, vehicula volutpat lorem. Maecenas purus felis, auctor sed justo.
+    - title: Nulla ut pellentesque
+      desc: Donec lorem orci, pulvinar eget massa ac, vehicula volutpat lorem. Maecenas purus felis, auctor sed justo.
+    - title: Nulla ut pellentesque
+      desc: Maecenas purus felis, auctor sed justo.
+    - title: Nulla ut pellentesque
+      desc: Donec lorem orci, pulvinar eget massa ac, vehicula volutpat lorem. Maecenas purus felis, auctor sed justo.
+    - title: Nulla ut pellentesque
+      desc: Donec lorem orci, pulvinar eget massa ac, vehicula volutpat lorem. Maecenas purus felis, auctor sed justo.
+    - title: Nulla ut pellentesque
+      desc: pulvinar eget massa ac, vehicula volutpat lorem. Maecenas purus felis, auctor sed justo.
+    - title: Nulla ut pellentesque
+      desc: Donec lorem orci, pulvinar eget massa ac, vehicula volutpat lorem. Maecenas purus felis, auctor sed justo.
+    - title: Nulla ut pellentesque
+      desc: Donec lorem orci, pulvinar eget massa ac, vehicula volutpat lorem. Maecenas purus felis, auctor sed justo.
+    - title: Nulla ut pellentesque
+      desc: Donec lorem
+props:
+  - name: slides
+    type: Array
+    desc: Um array de slides com conteúdos HTML já renderizados
+  - name: minSlides
+    type: Number
+    desc: Número mínimo de slides aparentes (mobile)
+  - name: maxSlides
+    type: Number
+    desc: Número máximo de slides aparentes (desktop)
+  - name: spaceBetween
+    type: Number
+    desc: Tamanho em pixels da distância entre cada slide. Padrão é 16px
+  - name: color
+    type: String
+    desc: Cor hexadecimal das navegação e paginação. (Opcional)
+---
+
+<h1>{{ metadata.title | e | safe }}</h1>
+<p>{{ metadata.description | e | safe }}</p>
+<section class="py-4">
+  <h4>Exemplo</h4>
+  {% set arr = [] %}
+  {% for slide in mock.slides %}
+    {% set html %}
+      {% Card %}
+        <h5 class="card-title">{{ slide.title }}</h5>
+        <p class="card-text">{{ slide.desc }}</p>
+      {% endCard %}
+    {% endset %}
+    {% set arr = (arr.push(html), arr) %}
+  {% endfor %}
+  {% GridResponsive { slides: arr, slidesTotal: arr | length, maxColumns: 3, minColumns: 1, spaceBetween: 16 } %}{% endGridResponsive %}
+</section>
+
+{% include 'partials/props-table.njk' %}

@@ -38,6 +38,12 @@ const loadCarousel = async () => {
   }
 };
 
+const loadGridResponsive = async () => {
+  if (document.querySelector('.grid-responsive')) {
+    await import('../../../src/components/GridResponsive/GridResponsive');
+  }
+};
+
 const loadYTVideo = async () => {
   if (document.querySelector('.yt-video')) {
     await import('../../../src/components/YTVideo/YTVideo');
@@ -50,4 +56,5 @@ loadModal();
 loadDropdown();
 loadMastheadSlider();
 loadCarousel();
+loadGridResponsive();
 loadYTVideo();
