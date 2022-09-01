@@ -1,4 +1,4 @@
-function GridResponsive(content, { slides, minColumns, maxColumns, slidesTotal, spaceBetween, color }) {
+function GridResponsive(content, { slides, minSlides, maxSlides, spaceBetween, color }) {
   function getSlides() {
     let str = '';
     for (const slide of slides) {
@@ -13,25 +13,19 @@ function GridResponsive(content, { slides, minColumns, maxColumns, slidesTotal, 
 
   function getColor() {
     if (!color) return '';
-    return `
-      style="--swiper-theme-color:${color}; --swiper-pagination-color:${color}"
-    `;
+    return `--swiper-theme-color:${color}; --swiper-navigation-color:${color}`;
   }
 
   return `
     <div
       class="swiper grid-responsive"
-      data-min-columns="${minColumns}"
-      data-max-columns="${maxColumns}"
-      data-total-slides="${slidesTotal}"
+      data-min-slides-per-view="${minSlides}"
       data-space-between="${spaceBetween ? spaceBetween : 16}"
-      ${getColor()}
+      style="--grid-responsive-max-columns: ${maxSlides ? maxSlides : 3}; ${getColor()}"
     >
-      <div class="swiper-container grid-responsive__container">
-        <div class="swiper-wrapper grid-responsive__wrapper">
-          ${getSlides()}
-        </div>
-      </div>
+    <div class="swiper-wrapper grid-responsive__wrapper">
+      ${getSlides()}
+    </div>
       <div class="swiper-pagination carousel__pagination"></div>
     </div>
   `;

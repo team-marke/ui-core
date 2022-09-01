@@ -1,68 +1,29 @@
 .grid-responsive {
-  padding-bottom: 1rem;
-  margin-right: calc(var(--mkui-gutter-x) / -2);
-  margin-left: calc(var(--mkui-gutter-x) / -2);
-  @media (min-width: 992px) {
-    padding-top: calc(var(--mkui-gutter-y) / -2);
-    padding-right: calc(var(--mkui-gutter-x) / -2);
-    padding-bottom: 1.5rem;
-    padding-left: calc(var(--mkui-gutter-x) / -2);
-    margin-bottom: 0;
-    &__pagination {
+  --swiper-navigation-size: 1rem;
+  --swiper-theme-color: #{$dark};
+  --swiper-navigation-color: #{$dark};
+
+  width: 100%;
+
+  &__wrapper {
+    margin-bottom: 2rem;
+  }
+
+  &__pagination {
+    display: block;
+    bottom: 0 !important;
+    @include media-breakpoint-up(lg) {
       display: none;
     }
   }
-  &.swiper-container:not(.swiper-container-initialized) {
-    padding-bottom: 0;
-    .swiper-wrapper {
-      display: grid;
-      grid-template-columns: repeat(var(--grid-responsive-total), calc(100% - var(--mkui-gutter-x) * 3));
-      grid-template-rows: repeat(var(--grid-responsive-total) / var(--grid-responsive-max-columns), 1fr);
-      grid-gap: 0;
-      overflow-x: hidden;
-      padding-left: calc(var(--mkui-gutter-x) * 3 / 2);
-      padding-bottom: 2.75rem;
-      @media (min-width: 992px) {
-        padding-left: 0;
-        grid-template-columns: repeat(var(--grid-responsive-max-columns), 1fr);
-      }
-    }
-    .swiper-slide {
-      width: 100%;
-      @media (min-width: 992px) {
-        width: 100%;
-      }
-    }
-  }
-  &__pagination {
-    bottom: 0 !important;
-  }
-  &__slide {
-    height: auto;
-    padding-right: calc(var(--mkui-gutter-x) / 2);
-    padding-bottom: 1rem;
-    padding-left: calc(var(--mkui-gutter-x) / 2);
-    @media (max-width: 991px) {
-      &:first-child {
-        margin-left: calc(10vw / var(--grid-responsive-min-columns));
-      }
-      &:last-child {
-        margin-right: calc(10vw / var(--grid-responsive-min-columns));
-      }
-    }
-    @media (min-width: 992px) {
-      padding-top: calc(var(--mkui-gutter-y) / 2);
-      padding-right: calc(var(--mkui-gutter-x) / 2);
-      padding-bottom: calc(var(--mkui-gutter-y) / 2);
-      padding-left: calc(var(--mkui-gutter-x) / 2);
-    }
-  }
 
-  /* Swiper CSS Mode */
-  &.swiper-container-css-mode {
-    > .swiper-wrapper > .swiper-slide {
-      scroll-snap-align: center center;
-      scroll-snap-stop: always;
+  @include media-breakpoint-up(lg) {
+    &__wrapper {
+      margin-bottom: 0;
+      display: grid;
+      grid-template-columns: repeat(var(--grid-responsive-max-columns), 1fr);
+      column-gap: var(--bs-gutter-x);
+      row-gap: var(--bs-gutter-y);
     }
   }
 }

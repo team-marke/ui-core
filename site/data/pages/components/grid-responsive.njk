@@ -47,7 +47,7 @@ props:
 
 <h1>{{ metadata.title | e | safe }}</h1>
 <p>{{ metadata.description | e | safe }}</p>
-<section class="py-4">
+<section class="py-4 g-3">
   <h4>Exemplo</h4>
   {% set arr = [] %}
   {% for slide in mock.slides %}
@@ -59,7 +59,7 @@ props:
     {% endset %}
     {% set arr = (arr.push(html), arr) %}
   {% endfor %}
-  {% GridResponsive { slides: arr, slidesTotal: arr | length, maxColumns: 3, minColumns: 1, spaceBetween: 16 } %}{% endGridResponsive %}
+  {% GridResponsive { slides: arr, maxSlides: 3, minSlides: 1, spaceBetween: 16, color: 'red' } %}{% endGridResponsive %}
 </section>
 
 {% include 'partials/props-table.njk' %}
