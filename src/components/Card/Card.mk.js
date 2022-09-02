@@ -15,6 +15,7 @@ function Card(content, { img, header, footer, classes, overlay } = false) {
     return `
       <img
         class="${overlay ? 'card-img' : 'card-img-top'}"
+        style="${overlay ? 'object-fit: cover;' : ''}"
         src="${CloudinaryImgUrl(img.url, img.transformations ? img.transformations : defaultTransforms)}"
         alt="${img.alt}"
         width="${img.width}"
