@@ -26,7 +26,7 @@ function GridResponsive(content, { slides, minSlides, maxSlides, spaceBetween, c
     <div class="swiper-wrapper grid-responsive__wrapper">
       ${getSlides()}
     </div>
-      <div class="swiper-pagination carousel__pagination"></div>
+      <div class="swiper-pagination grid-responsive__pagination"></div>
     </div>
   `;
 }

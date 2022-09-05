@@ -9,14 +9,14 @@ import Swiper, { Navigation, Pagination, EffectFade } from 'swiper';
       autoHeight: true,
       slidesPerView: 1,
       pagination: {
-        el: '.swiper-pagination',
+        el: '.masthead-slider__pagination',
         clickable: true,
       },
       breakpoints: {
         992: {
           navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
+            nextEl: '.masthead-slider__button-next',
+            prevEl: '.masthead-slider__button-prev',
           },
         },
       },

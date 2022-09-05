@@ -6,9 +6,9 @@ import Swiper, { Navigation, Pagination } from 'swiper';
     const maxSlidesPerView = carousel.dataset.maxSlidesPerView ? carousel.dataset.maxSlidesPerView : 3;
     const spaceBetween = carousel.dataset.spaceBetween ? parseInt(carousel.dataset.spaceBetween) : 16;
     Swiper.use([Navigation, Pagination]);
-    new Swiper(carousel.querySelector('.swiper-container'), {
+    new Swiper(carousel.querySelector('.carousel__container'), {
       pagination: {
-        el: '.swiper-pagination',
+        el: '.carousel__pagination',
         clickable: true,
       },
       slidesPerView: minSlidesPerView,
@@ -17,8 +17,8 @@ import Swiper, { Navigation, Pagination } from 'swiper';
         992: {
           slidesPerView: maxSlidesPerView,
           navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
+            nextEl: '.carousel__button-next',
+            prevEl: '.carousel__button-prev',
           },
         },
       },

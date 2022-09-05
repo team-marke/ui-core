@@ -11,7 +11,7 @@ import Swiper, { Pagination } from 'swiper';
         spaceBetween: spaceBetween,
         slidesPerView: minSlidesPerView,
         pagination: {
-          el: '.swiper-pagination',
+          el: '.grid-responsive__pagination',
           clickable: true,
         },
       });
