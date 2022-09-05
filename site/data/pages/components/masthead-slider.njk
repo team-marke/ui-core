@@ -10,6 +10,7 @@ props:
     type: bar
     desc: lorem
 mock:
+  id: masthead-slider-example
   mastheads:
     - title: Nulla ut pellentesque
       desc: Donec lorem orci, pulvinar eget massa ac, vehicula volutpat lorem. Maecenas purus felis, auctor sed justo.
@@ -99,7 +100,7 @@ mock:
         {% endset %}
         {% set arr = (arr.push(html), arr) %}
       {% endfor %}
-      {% MastheadSlider { mastheads: arr } %}{% endMastheadSlider %}
+      {% MastheadSlider { mastheads: arr, id: mock.id } %}{% endMastheadSlider %}
     </div>
   </div>
 </section>

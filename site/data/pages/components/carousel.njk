@@ -6,6 +6,7 @@ metadata:
   title: Carousel
   description: Use carousel para apresentar o seu conteúdo na página.
 mock:
+  id: carousel-example
   slides:
     - title: Nulla ut pellentesque
       desc: Donec lorem orci, pulvinar eget massa ac, vehicula volutpat lorem. Maecenas purus felis, auctor sed justo.
@@ -59,7 +60,7 @@ props:
     {% endset %}
     {% set arr = (arr.push(html), arr) %}
   {% endfor %}
-  {% Carousel { slides: arr, maxSlides: 3, minSlides: 1, spaceBetween: 16 } %}{% endCarousel %}
+  {% Carousel { slides: arr, maxSlides: 3, minSlides: 1, spaceBetween: 16, id: mock.id } %}{% endCarousel %}
 </section>
 
 {% include 'partials/props-table.njk' %}

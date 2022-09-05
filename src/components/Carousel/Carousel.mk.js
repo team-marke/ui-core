@@ -1,4 +1,4 @@
-function Carousel(content, { slides, minSlides, maxSlides, spaceBetween, color }) {
+function Carousel(content, { slides, id, minSlides, maxSlides, spaceBetween, color }) {
   function getSlides() {
     let str = '';
     for (const slide of slides) {
@@ -21,6 +21,7 @@ function Carousel(content, { slides, minSlides, maxSlides, spaceBetween, color }
   return `
     <div
       class="swiper carousel"
+      id="${id}"
       data-min-slides-per-view="${minSlides}"
       data-max-slides-per-view="${maxSlides}"
       data-space-between="${spaceBetween ? spaceBetween : 16}"
@@ -31,9 +32,9 @@ function Carousel(content, { slides, minSlides, maxSlides, spaceBetween, color }
           ${getSlides()}
         </div>
       </div>
-      <div class="swiper-button-prev carousel__button-prev"></div>
-      <div class="swiper-button-next carousel__button-next"></div>
-      <div class="swiper-pagination carousel__pagination"></div>
+      <div class="swiper-button-prev carousel__button-prev carousel__button-prev-${id}"></div>
+      <div class="swiper-button-next carousel__button-next carousel__button-next-${id}"></div>
+      <div class="swiper-pagination carousel__pagination carousel__pagination-${id}"></div>
     </div>
   `;
 }

@@ -1,4 +1,4 @@
-function GridResponsive(content, { slides, minSlides, maxSlides, spaceBetween, color }) {
+function GridResponsive(content, { slides, id, minSlides, maxSlides, spaceBetween, color }) {
   function getSlides() {
     let str = '';
     for (const slide of slides) {
@@ -18,6 +18,7 @@ function GridResponsive(content, { slides, minSlides, maxSlides, spaceBetween, c
 
   return `
     <div
+      id="${id}"
       class="swiper grid-responsive"
       data-min-slides-per-view="${minSlides}"
       data-space-between="${spaceBetween ? spaceBetween : 16}"
@@ -26,7 +27,7 @@ function GridResponsive(content, { slides, minSlides, maxSlides, spaceBetween, c
     <div class="swiper-wrapper grid-responsive__wrapper">
       ${getSlides()}
     </div>
-      <div class="swiper-pagination grid-responsive__pagination"></div>
+      <div class="swiper-pagination grid-responsive__pagination grid-responsive__pagination-${id}"></div>
     </div>
   `;
 }

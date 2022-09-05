@@ -6,12 +6,13 @@ import Swiper, { Pagination } from 'swiper';
     if (isMobile) {
       const minSlidesPerView = gridResponsive.dataset.minSlidesPerView ? gridResponsive.dataset.minSlidesPerView : 1;
       const spaceBetween = gridResponsive.dataset.spaceBetween ? parseInt(gridResponsive.dataset.spaceBetween) : 16;
+      const id = gridResponsive.id;
       Swiper.use([Pagination]);
       new Swiper(gridResponsive, {
         spaceBetween: spaceBetween,
         slidesPerView: minSlidesPerView,
         pagination: {
-          el: '.grid-responsive__pagination',
+          el: `.grid-responsive__pagination-${id}`,
           clickable: true,
         },
       });

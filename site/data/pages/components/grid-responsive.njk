@@ -6,6 +6,7 @@ metadata:
   title: Grid Responsive
   description:
 mock:
+  id: grid-responsive-example
   slides:
     - title: Nulla ut pellentesque
       desc: Donec lorem orci, pulvinar eget massa ac, vehicula volutpat lorem. Maecenas purus felis, auctor sed justo.
@@ -59,7 +60,7 @@ props:
     {% endset %}
     {% set arr = (arr.push(html), arr) %}
   {% endfor %}
-  {% GridResponsive { slides: arr, maxSlides: 3, minSlides: 1, spaceBetween: 16, color: 'red' } %}{% endGridResponsive %}
+  {% GridResponsive { slides: arr, id: mock.id, maxSlides: 3, minSlides: 1, spaceBetween: 16, color: 'red' } %}{% endGridResponsive %}
 </section>
 
 {% include 'partials/props-table.njk' %}
