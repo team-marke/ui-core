@@ -129,7 +129,7 @@ function Navbar(content, { eleventyNavigation, currentPageUrl, id, expand, brand
   }
 
   return `
-    <nav class="navbar navbar-expand-${expand ? expand : 'lg'} ${dark ? 'navbar-dark' : ''}">
+    <nav class="navbar navbar-expand-${expand ? expand : 'lg'} ${dark ? 'navbar-dark' : ''}" id="${id}">
       ${getBrandImg()}
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#${id}" aria-controls="${id}">
         <span class="navbar-toggler-icon"></span>
