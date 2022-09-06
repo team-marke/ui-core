@@ -85,6 +85,7 @@ function Navbar(content, { eleventyNavigation, currentPageUrl, id, expand, brand
       width: brandImg.width,
       height: brandImg.height,
       crop: 'pad',
+      dpr: 2,
     };
 
     return `
@@ -112,6 +113,7 @@ function Navbar(content, { eleventyNavigation, currentPageUrl, id, expand, brand
       width: brandImgMobile.width,
       height: brandImgMobile.height,
       crop: 'pad',
+      dpr: 2,
     };
 
     return `
