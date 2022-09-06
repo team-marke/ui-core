@@ -1,9 +1,9 @@
 import Swiper, { Navigation, Pagination, EffectFade } from 'swiper';
 
 (() => {
+  Swiper.use([Navigation, Pagination, EffectFade]);
   Array.from(document.querySelectorAll('.masthead-slider')).forEach((mastheadSlider) => {
     const id = mastheadSlider.id
-    Swiper.use([Navigation, Pagination, EffectFade]);
     new Swiper(mastheadSlider, {
       effect: 'fade',
       fadeEffect: { crossFade: true },
