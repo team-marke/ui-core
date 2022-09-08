@@ -1,5 +1,4 @@
-function Pagination(content, { eleventyPagination, size }) {
-
+function Pagination(content, { eleventyPagination, ariaLabel, classes, size }) {
   function getPrevOrNext(href, title) {
     if (href) {
       return `
@@ -43,14 +42,20 @@ function Pagination(content, { eleventyPagination, size }) {
     `;
   }
 
-
   function getSize() {
     return size ? `pagination-${size}` : '';
   }
 
+  function getClasses() {
+    if (!Array.isArray(classes)) {
+      return '';
+    }
+    return classes.join(' ');
+  }
+
   return `
-    <nav aria-label="...">
-      <ul class="pagination ${getSize()}">
+    <nav aria-label="${ariaLabel}">
+      <ul class="pagination ${getSize()} ${getClasses()}">
         ${getPrevOrNext(eleventyPagination.href.previous, 'Anterior')}
         ${getItems()}
         ${getPrevOrNext(eleventyPagination.href.next, 'Próximo')}
