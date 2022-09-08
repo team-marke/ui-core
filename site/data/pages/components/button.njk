@@ -18,3 +18,6 @@ metadata:
   {% Button { size: 'sm', href: '#', theme: 'primary', classes: ['text-bg-primary'] } %}Lorem{% endButton %}
 </section>
 
+{% ShareButton { url: page.url, title: 'Lorem ipsum', locale: site.locale, theme: 'secondary' } %}{% endShareButton %}
+
+{% DisqusComments { url: 'https://marke.com.br', id: page.filePathStem, title: metadata.title, forumName: 'marke' } %}{% endDisqusComments %}

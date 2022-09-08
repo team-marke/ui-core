@@ -5,10 +5,10 @@
 
 import { dom as faDom, library as faLibrary, config as faConfig } from '@fortawesome/fontawesome-svg-core';
 import { faWhatsapp, faInstagram, faFacebook } from '@fortawesome/free-brands-svg-icons';
-import { faEnvelope, faPlayCircle } from '@fortawesome/free-solid-svg-icons';
+import { faEnvelope, faPlayCircle, faShareAlt } from '@fortawesome/free-solid-svg-icons';
 
 (() => {
-  faLibrary.add(faWhatsapp, faInstagram, faFacebook, faEnvelope, faPlayCircle);
+  faLibrary.add(faWhatsapp, faInstagram, faFacebook, faEnvelope, faPlayCircle, faShareAlt);
   faConfig.showMissingIcons = false;
   faDom.watch();
 })();
