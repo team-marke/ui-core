@@ -1,0 +1,18 @@
+---
+eleventyNavigation:
+  key: disqus-comments
+  title: DisqusComments
+metadata:
+  title: DisqusComments
+  description: Widget de comentários do DisqUs
+mock:
+  url: 'https://marke.com.br'
+  forumName: 'marke'
+---
+
+<h1>{{ metadata.title | e | safe }}</h1>
+<p>{{ metadata.description | e | safe }}</p>
+<section class="py-4">
+  <h2>Exemplo</h2>
+  {% DisqusComments { url: mock.url, id: page.filePathStem, title: metadata.title, forumName: mock.forumName } %}{% endDisqusComments %}
+</section>

@@ -1,7 +1,7 @@
-function ShareButton(content, { url, title, locale, theme = 'primary', text = 'Compartilhar' }) {
+function ShareButton(content, { url, title, locale, theme = 'primary', text = 'Compartilhar', position = 'start' }) {
   return `
     <div
-      class="a2a_kit position-fixed bottom-0 start-0 m-3"
+      class="a2a_kit position-fixed bottom-0 ${position}-0 m-3"
       data-a2a-url="${url}"
       data-a2a-title="${title}"
       style="z-index: 1030;"

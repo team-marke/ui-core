@@ -1,0 +1,15 @@
+---
+eleventyNavigation:
+  key: share-button
+  title: ShareButton
+metadata:
+  title: ShareButton
+  description: Botão flutuante para o compartilhamento da URL atual.
+---
+
+<h1>{{ metadata.title | e | safe }}</h1>
+<p>{{ metadata.description | e | safe }}</p>
+<section class="py-4">
+  <h2>Exemplo</h2>
+  {% ShareButton { url: page.url, title: metadata.metadata, locale: site.locale, position: 'end' } %}{% endShareButton %}
+</section>

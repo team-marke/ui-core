@@ -3,21 +3,37 @@ eleventyNavigation:
   key: button
   title: Button
 metadata:
-  title: Buttons
+  title: Button
   description: Os Botões podem ser personalizados com diversos parêmtros para acomodar as necessidades do projeto.
 ---
 
 <h1>{{ metadata.title | e | safe }}</h1>
 <p>{{ metadata.description | e | safe }}</p>
-<section id="standard" class="py-4">
-  <h2>Botão padrão</h2>
-  {% Button { href: '#', theme: 'secondary' } %}Lorem{% endButton %}
+<section class="py-4">
+  <h2>Exemplos</h2>
+  {% Button { href: '#', theme: 'primary' } %}Primary{% endButton %}
+  {% Button { href: '#', theme: 'secondary' } %}Secondary{% endButton %}
+  {% Button { href: '#', theme: 'success' } %}Success{% endButton %}
+  {% Button { href: '#', theme: 'danger' } %}Danger{% endButton %}
+  {% Button { href: '#', theme: 'warning' } %}Warning{% endButton %}
+  {% Button { href: '#', theme: 'info' } %}Info{% endButton %}
+  {% Button { href: '#', theme: 'light' } %}Light{% endButton %}
+  {% Button { href: '#', theme: 'dark' } %}Dark{% endButton %}
+  {% Button { href: '#', theme: 'link' } %}Link{% endButton %}
 </section>
-<section id="small-warning" class="py-4">
-  <h2>Botão pequeno usando bg-color</h2>
-  {% Button { size: 'sm', href: '#', theme: 'primary', classes: ['text-bg-primary'] } %}Lorem{% endButton %}
+<section class="py-4">
+  <h2>Outline</h2>
+  {% Button { href: '#', theme: 'outline-primary' } %}Primary{% endButton %}
+  {% Button { href: '#', theme: 'outline-secondary' } %}Secondary{% endButton %}
+  {% Button { href: '#', theme: 'outline-success' } %}Success{% endButton %}
+  {% Button { href: '#', theme: 'outline-danger' } %}Danger{% endButton %}
+  {% Button { href: '#', theme: 'outline-warning' } %}Warning{% endButton %}
+  {% Button { href: '#', theme: 'outline-info' } %}Info{% endButton %}
+  {% Button { href: '#', theme: 'outline-light' } %}Light{% endButton %}
+  {% Button { href: '#', theme: 'outline-dark' } %}Dark{% endButton %}
 </section>
-
-{% ShareButton { url: page.url, title: 'Lorem ipsum', locale: site.locale, theme: 'secondary' } %}{% endShareButton %}
-
-{% DisqusComments { url: 'https://marke.com.br', id: page.filePathStem, title: metadata.title, forumName: 'marke' } %}{% endDisqusComments %}
+<section class="py-4">
+  <h2>Tamanhos</h2>
+  {% Button { href: '#', theme: 'primary', size: 'lg' } %}Grande{% endButton %}
+  {% Button { href: '#', theme: 'primary', size: 'sm' } %}Pequeno{% endButton %}
+</section>
