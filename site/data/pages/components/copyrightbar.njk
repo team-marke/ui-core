@@ -5,6 +5,13 @@ eleventyNavigation:
 metadata:
   title: Copyrightbar
   description: Use cards para criar componentes que necessitam ser contidos em um único lugar, podendo inserir links, imagens e descrições.
+props:
+  - name: image
+    type: String
+    desc: Imagem da empresa.
+  - name: text
+    type: String
+    desc: Texto descrevendo os direitos.
 mock:
   text: © MkUI Todos os direitos reservados.
   image:
@@ -30,3 +37,4 @@ mock:
     {% Copyrightbar { text: mock.text, image: mock.image2, classes: ['text-white'] } %}{% endCopyrightbar %}
   </div>
 </section>
+{% include 'partials/props-table.njk' %}

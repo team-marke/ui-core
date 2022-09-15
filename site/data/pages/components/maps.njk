@@ -5,6 +5,16 @@ eleventyNavigation:
 metadata:
   title: Maps
   description: Um widget do Google Maps direto no site.
+props:
+  - name: query
+    type: String
+    desc: Uma query do Google Maps.
+  - name: width
+    type: Number
+    desc: Largura do Mapa.
+  - name: height
+    type: Number
+    desc: Altura do Mapa.
 ---
 
 <h1>{{ metadata.title | e | safe }}</h1>
@@ -13,3 +23,4 @@ metadata:
   <h2>Exemplo</h2>
   {% Maps { query: 'Feevale Techpark - Hub One Novo Hamburgo', width: '500', height: '300' } %}{% endMaps %}
 </section>
+{% include 'partials/props-table.njk' %}

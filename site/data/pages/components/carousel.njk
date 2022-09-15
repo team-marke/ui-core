@@ -45,7 +45,6 @@ props:
     type: String
     desc: Cor hexadecimal das navegação e paginação. (Opcional)
 ---
-
 <h1>{{ metadata.title | e | safe }}</h1>
 <p>{{ metadata.description | e | safe }}</p>
 <section class="py-4">
@@ -62,5 +61,4 @@ props:
   {% endfor %}
   {% Carousel { slides: arr, maxSlides: 3, minSlides: 1, spaceBetween: 16, id: mock.id } %}{% endCarousel %}
 </section>
-
 {% include 'partials/props-table.njk' %}

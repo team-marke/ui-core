@@ -1,6 +1,6 @@
 function DisqusComments(content, { url, id, title, forumName }) {
   return `
-    <div id="disqus_thread" class="pt-3 pt-lg-5"></div>
+    <div id="disqus_thread"></div>
     <script>
       var disqus_config = function () {
         this.page.url = "${url}";

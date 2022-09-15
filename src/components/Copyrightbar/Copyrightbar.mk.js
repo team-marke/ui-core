@@ -2,7 +2,7 @@ const CloudinaryImgUrl = require('../../core-components/CloudinaryImgUrl');
 
 function Coypyrightbar(content, { text, image, classes }) {
   function getText() {
-    return `<small class="small">${text}</small>`;
+    return `<small class="small d-block">${text}</small>`;
   }
 
   function getImage() {
@@ -33,7 +33,7 @@ function Coypyrightbar(content, { text, image, classes }) {
   }
 
   return `
-    <div class="d-flex flex-column flex-lg-row align-items-center justify-content-lg-between ${getClasses()}">
+    <div class="text-center ${getClasses()}">
       ${getText()}
       ${getImage()}
     </div>

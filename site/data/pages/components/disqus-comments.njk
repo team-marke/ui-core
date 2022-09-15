@@ -1,10 +1,23 @@
 ---
 eleventyNavigation:
   key: disqus-comments
-  title: DisqusComments
+  title: Disqus Comments
 metadata:
-  title: DisqusComments
+  title: Disqus Comments
   description: Widget de comentários do DisqUs
+props:
+  - name: url
+    type: String
+    desc: URL da página.
+  - name: id
+    type: String
+    desc: Um identificador único da página.
+  - name: title
+    type: String
+    desc: O meta-title da página.
+  - name: forumName
+    type: String
+    desc: O shortname do forum do Disqus.
 mock:
   url: 'https://marke.com.br'
   forumName: 'marke'
@@ -16,3 +29,4 @@ mock:
   <h2>Exemplo</h2>
   {% DisqusComments { url: mock.url, id: page.filePathStem, title: metadata.title, forumName: mock.forumName } %}{% endDisqusComments %}
 </section>
+{% include 'partials/props-table.njk' %}

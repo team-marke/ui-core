@@ -6,9 +6,15 @@ metadata:
   title: Masthead
   description: Use cards para criar componentes que necessitam ser contidos em um único lugar, podendo inserir links, imagens e descrições.
 props:
-  - name: foo
-    type: bar
-    desc: lorem
+  - name: content
+    type: String
+    desc: O conteúdo masthead.
+  - name: image
+    type: Object
+    desc: A imagem do masthead.
+  - name: imageMobile
+    type: Object
+    desc: A imagem para mobile do masthead.
 mock:
   title: Nulla ut pellentesque
   desc: Donec lorem orci, pulvinar eget massa ac, vehicula volutpat lorem. Maecenas purus felis, auctor sed justo.
@@ -27,7 +33,6 @@ mock:
     width: 400
     height: 200
 ---
-
 <h1>{{ metadata.title | e | safe }}</h1>
 <p>{{ metadata.description | e | safe }}</p>
 <section class="py-4">
@@ -48,5 +53,4 @@ mock:
     </div>
   </div>
 </section>
-
 {% include 'partials/props-table.njk' %}

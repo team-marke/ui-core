@@ -6,9 +6,13 @@ metadata:
   title: Masthead Slider
   description: Use cards para criar componentes que necessitam ser contidos em um único lugar, podendo inserir links, imagens e descrições.
 props:
-  - name: foo
-    type: bar
-    desc: lorem
+  - name: mastheads
+    type: Array
+    desc: >-
+      Array de [mastheads](/components/masthead/)
+  - name: id
+    type: String
+    desc: Identificador único do masthead
 mock:
   id: masthead-slider-example
   mastheads:
@@ -76,7 +80,6 @@ mock:
         alt: Lorem Ipsum Dollor
         width: 400
 ---
-
 <h1>{{ metadata.title | e | safe }}</h1>
 <p>{{ metadata.description | e | safe }}</p>
 <section class="py-4">
@@ -104,5 +107,4 @@ mock:
     </div>
   </div>
 </section>
-
 {% include 'partials/props-table.njk' %}
