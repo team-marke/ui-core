@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "site/dist",
+    "public": "dist",
     "headers": [
       {
         "source": "*",
