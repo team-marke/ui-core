@@ -14,7 +14,7 @@
           <tr>
             <td><code>{{ prop.name }}</code></td>
             <td>{{ prop.type }}</td>
-            <td>{{ prop.desc }}</td>
+            <td>{{ prop.desc | markdown | safe }}</td>
           </tr>
         {% endfor %}
       </tbody>

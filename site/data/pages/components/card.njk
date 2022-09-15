@@ -5,11 +5,32 @@ eleventyNavigation:
 metadata:
   title: Cards
   description: Use cards para criar componentes que necessitam ser contidos em um único lugar, podendo inserir links, imagens e descrições.
+props:
+  - name: content
+    type: String
+    desc: Conteúdo do card.
+  - name: img
+    type: Object
+    desc: Imagem do card.
+  - name: header
+    type: String
+    desc: Conteúdo no topo do card.
+  - name: footer
+    type: String
+    desc: Conteúdo no fim do card.
+  - name: classes
+    type: Array
+    desc: Array de classes adicionais.
+  - name: overlay
+    type: Boolean
+    desc: Define se tem imagem de fundo ou não.
 mock:
-  title: Diagnóstico Interno
-  text: Primeiro é fundamental entender qual a situação atual da sua presença digital e de seus investimentos, sinalizando o que está funcionando e o que precisa melhorar.
-  header: Este é o header
-  footer: Este é o footer
+  title: Dui sapien eget mi
+  text: Lectus sit amet est placerat. Massa vitae tortor condimentum lacinia quis. Risus viverra adipiscing at in tellus integer feugiat.
+  header: Enim lobortis
+  footer: Magna eget
+  btn:
+    content: Pretium
   image:
     url: https://res.cloudinary.com/webmaster-marke/image/upload/v1659640851/vantagens-de-trabalhar-com-marketing-digital.png
     alt: Lorem ipsum
@@ -34,7 +55,7 @@ mock:
       {% Card %}
         <h5 class="card-title">{{ mock.title }}</h5>
         <p class="card-text">{{ mock.text }}</p>
-        {% Button { theme: 'primary', href: '#' } %}Clique{% endButton %}
+        {% Button { theme: 'primary', href: '#' } %}{{ mock.btn.content }}{% endButton %}
       {% endCard %}
     </div>
   </div>
@@ -46,7 +67,7 @@ mock:
       {% Card { img: mock.image } %}
         <h5 class="card-title">{{ mock.title }}</h5>
         <p class="card-text">{{ mock.text }}</p>
-        {% Button { theme: 'primary', href: '#' } %}Clique{% endButton %}
+        {% Button { theme: 'primary', href: '#' } %}{{ mock.btn.content }}{% endButton %}
       {% endCard %}
     </div>
   </div>
@@ -80,8 +101,9 @@ mock:
       {% Card %}
         <h5 class="card-title">{{ mock.title }}</h5>
         <p class="card-text">{{ mock.text }}</p>
-        {% Button { theme: 'primary', href: '#', classes: ['stretched-link'] } %}Clique{% endButton %}
+        {% Button { theme: 'primary', href: '#', classes: ['stretched-link'] } %}{{ mock.btn.content }}{% endButton %}
       {% endCard %}
     </div>
   </div>
 </section>
+{% include 'partials/props-table.njk' %}

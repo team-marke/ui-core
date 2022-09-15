@@ -5,6 +5,14 @@ eleventyNavigation:
 metadata:
   title: Breadcrumb
   description: O Breadcrumb permite a exibição de forma ordenada da hierarquia das páginas e subpáginas de sessões do site.
+props:
+  - name: eleventyBreadcrumbs
+    type: Array
+    desc: >-
+      Um Array de breadcrumbs no formato padrão do 11ty. Mais detalhes nos [docs](https://www.11ty.dev/docs/plugins/navigation/#example-breadcrumbs)
+  - name: currentPageUrl
+    type: String
+    desc: A URL da página atual.
 ---
 
 <h1>{{ metadata.title | e | safe }}</h1>
@@ -14,3 +22,4 @@ metadata:
   {% set navPages = collections.all | eleventyNavigationBreadcrumb(page.fileSlug, { includeSelf: true }) %}
   {% Breadcrumb { eleventyBreadcrumbs: navPages, currentPageUrl: page.url } %}{% endBreadcrumb %}
 </section>
+{% include 'partials/props-table.njk' %}

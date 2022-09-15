@@ -4,14 +4,29 @@ eleventyNavigation:
   title: YTVideo
 metadata:
   title: YTVideo
-  description: Usado para mostrar várias informações em cards diferentes, o Accordion permite que o usuário abra uma aba por vez, podendo ser usado numa sessão de perguntas e respostas.
+  description: Utilize o YTVideo como player de vídeos responsivo do Youtube.
+props:
+  - name: id
+    type: String
+    desc: ID do vídeo no Youtube.
+  - name: alt
+    type: String
+    desc: Texto alternativo do vídeo.
+  - name: customThumbnail
+    type: String
+    desc: Uma imagem customizada para a thumbnail do vídeo.
+  - name: maxwidth
+    type: Number
+    desc: Número em px da largura máxima da thumbnail.
 mock:
   id: Gs069dndIYk
+  alt: Interdum velit laoreet id donec ultrices
 ---
 <h1>{{ metadata.title | e | safe }}</h1>
 <p>{{ metadata.description | e | safe }}</p>
-<section id="standard" class="py-4">
+<section class="py-4">
   <h4>Exemplo</h4>
-  {% YTVideo { id: mock.id } %}{% endYTVideo %}
+  {% YTVideo { id: mock.id, maxwidth: 480 } %}{% endYTVideo %}
 </section>
+{% include 'partials/props-table.njk' %}
 

@@ -4,11 +4,8 @@ eleventyNavigation:
   title: Actionbar
 metadata:
   title: Actionbar
-  description: Use cards para criar componentes que necessitam ser contidos em um único lugar, podendo inserir links, imagens e descrições.
+  description: Use a actionbar para disponibilizar liks e informações de contato do site.
 props:
-  - name: content
-    type: 'null'
-    desc: Não utilizado.
   - name: startItems
     type: Array
     desc: Lista dos items renderizados a esquerda do Actionbar.
@@ -36,7 +33,7 @@ mock:
     - text:
       href: '#'
       icon: fa-solid fa-envelope
-    - html: <span>Ola mundo</span>
+    - html: <span>Tellus rutrum</span>
 
 ---
 
@@ -45,7 +42,7 @@ mock:
 <section class="py-4">
   <h4>Exemplo</h4>
   <div class="p-3">
-    {% Actionbar { startItems: mock.startItems, endItems: mock.endItems, theme: 'primary', fontSize: 4 } %}{% endActionbar %}
+    {% Actionbar { startItems: mock.startItems, endItems: mock.endItems, theme: 'primary' } %}{% endActionbar %}
   </div>
 </section>
 <section class="py-4">
@@ -54,5 +51,4 @@ mock:
     {% Actionbar { startItems: mock.startItems, endItems: mock.endItems, theme: 'light' } %}{% endActionbar %}
   </div>
 </section>
-
 {% include 'partials/props-table.njk' %}

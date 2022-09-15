@@ -5,6 +5,34 @@ eleventyNavigation:
 metadata:
   title: Button
   description: Os Botões podem ser personalizados com diversos parêmtros para acomodar as necessidades do projeto.
+props:
+  - name: content
+    type: String
+    desc: Conteúdo do botão.
+  - name: href
+    type: String
+    desc: Link do botão.
+  - name: theme
+    type: String
+    desc: Tema do botão.
+  - name: theme
+    type: String
+    desc: Tema do botão.
+  - name: target
+    type: String
+    desc: Target do link, para abrir em nova guia é preciso especificar target="_blank"
+  - name: id
+    type: String
+    desc: Identificador único do botão.
+  - name: size
+    type: String
+    desc: Tamanho do botão.
+  - name: classes
+    type: Array
+    desc: Array de classes adicionais.
+  - name: atts
+    type: Object
+    desc: Objeto de atributos adicionais.
 ---
 
 <h1>{{ metadata.title | e | safe }}</h1>
@@ -37,3 +65,4 @@ metadata:
   {% Button { href: '#', theme: 'primary', size: 'lg' } %}Grande{% endButton %}
   {% Button { href: '#', theme: 'primary', size: 'sm' } %}Pequeno{% endButton %}
 </section>
+{% include 'partials/props-table.njk' %}
