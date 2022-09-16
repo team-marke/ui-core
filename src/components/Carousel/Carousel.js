@@ -6,12 +6,14 @@ import Swiper, { Navigation, Pagination } from 'swiper';
     const minSlidesPerView = carousel.dataset.minSlidesPerView ? carousel.dataset.minSlidesPerView : 1;
     const maxSlidesPerView = carousel.dataset.maxSlidesPerView ? carousel.dataset.maxSlidesPerView : 3;
     const spaceBetween = carousel.dataset.spaceBetween ? parseInt(carousel.dataset.spaceBetween) : 16;
-    const id = carousel.id
+    const autoHeight = carousel.hasAttribute('data-auto-height');
+    const id = carousel.id;
     new Swiper(carousel.querySelector('.carousel__container'), {
       pagination: {
         el: `.carousel__pagination-${id}`,
         clickable: true,
       },
+      autoHeight: autoHeight,
       slidesPerView: minSlidesPerView,
       spaceBetween: spaceBetween,
       breakpoints: {
