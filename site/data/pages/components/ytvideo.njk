@@ -24,6 +24,14 @@ mock:
 ---
 <h1>{{ metadata.title | e | safe }}</h1>
 <p>{{ metadata.description | e | safe }}</p>
+
+<div class="alert alert-primary" role="alert">
+<p>Para assegurar o funcionamento correto do componente você precisa baixar:</p>
+{% highlight "bash" %}
+yarn add yt-player@3.6.1
+{% endhighlight %}
+</div>
+
 <section class="py-4">
   <h4>Exemplo</h4>
   {% YTVideo { id: mock.id, maxwidth: 480 } %}{% endYTVideo %}

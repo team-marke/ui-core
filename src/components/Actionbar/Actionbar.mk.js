@@ -1,4 +1,8 @@
-function Actionbar(content, { startItems, endItems, theme, fontSize, classes }) {
+function Actionbar(content, { startItems, endItems, theme, fontSize, gap, classes }) {
+  function getGap() {
+    return gap ? `gap-${gap}` : 'gap-2';
+  }
+
   function getFontSize() {
     return fontSize ? `fs-${fontSize}` : '';
   }
@@ -49,8 +53,8 @@ function Actionbar(content, { startItems, endItems, theme, fontSize, classes }) 
 
   return `
     <div class="d-flex justify-content-between ${getFontSize()} ${getClasses()}">
-      <div class="d-flex gap-2">${getItems(startItems)}</div>
-      <div class="d-flex gap-2">${getItems(endItems)}</div>
+      <div class="d-flex ${getGap()}">${getItems(startItems)}</div>
+      <div class="d-flex ${getGap()}">${getItems(endItems)}</div>
     </div>
   `;
 }

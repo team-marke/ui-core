@@ -17,7 +17,7 @@ mock:
   id: masthead-slider-example
   mastheads:
     - title: Nulla ut pellentesque
-      desc: Donec lorem orci, pulvinar eget massa ac, vehicula volutpat lorem. Maecenas purus felis, auctor sed justo.
+      desc: In mollis nunc sed id semper risus. Congue eu consequat ac
       btn:
         href: '#'
         content: Donec
@@ -49,7 +49,7 @@ mock:
         width: 400
         height: 200
     - title: Nulla ut pellentesque
-      desc: Donec lorem orci, pulvinar eget massa ac, vehicula volutpat lorem. Maecenas purus felis, auctor sed justo.
+      desc: elis donec et odio pellentesque. Porttitor
       btn:
         href: '#'
         content: Donec
@@ -64,7 +64,7 @@ mock:
         alt: Lorem Ipsum Dollor
         width: 400
         height: 200
-    - title: Nulla ut pellentesque
+    - title: Sit amet consectetur adipiscing
       desc: Donec lorem orci, pulvinar eget massa ac, vehicula volutpat lorem. Maecenas purus felis, auctor sed justo.
       btn:
         href: '#'
@@ -82,6 +82,14 @@ mock:
 ---
 <h1>{{ metadata.title | e | safe }}</h1>
 <p>{{ metadata.description | e | safe }}</p>
+
+<div class="alert alert-primary" role="alert">
+<p>Para assegurar o funcionamento correto do componente você precisa baixar:</p>
+{% highlight "bash" %}
+yarn add swiper@8.3.2
+{% endhighlight %}
+</div>
+
 <section class="py-4">
   <h4>Exemplo</h4>
   <div class="p-3">
@@ -92,7 +100,7 @@ mock:
           {% Masthead { image: masthead.image, imageMobile: masthead.imageMobile } %}
             <div class="container text-white">
               <div class="row">
-                <div class="col-6 mx-auto text-center ">
+                <div class="col-12 col-lg-6 mx-auto text-center ">
                   <h2>{{ masthead.title }}</h2>
                   <p>{{ masthead.desc }}</p>
                   {% Button { theme: masthead.btn.theme, href: masthead.btn.href } %}{{ masthead.btn.content }}{% endButton %}

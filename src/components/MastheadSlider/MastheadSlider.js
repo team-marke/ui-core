@@ -7,7 +7,6 @@ import Swiper, { Navigation, Pagination, EffectFade } from 'swiper';
     new Swiper(mastheadSlider, {
       effect: 'fade',
       fadeEffect: { crossFade: true },
-      autoHeight: true,
       slidesPerView: 1,
       pagination: {
         el: `.masthead-slider__pagination-${id}`,

@@ -1,4 +1,4 @@
-function Carousel(content, { slides, id, minSlides, maxSlides, spaceBetween, autoHeight, color }) {
+function Carousel(content, { slides, id, minSlides, maxSlides, spaceBetween, color }) {
   function getSlides() {
     let str = '';
     for (const slide of slides) {
@@ -24,7 +24,6 @@ function Carousel(content, { slides, id, minSlides, maxSlides, spaceBetween, aut
       id="${id}"
       data-min-slides-per-view="${minSlides}"
       data-max-slides-per-view="${maxSlides}"
-      ${autoHeight ? 'data-auto-height' : ''}
       ${getColor()}
     >
       <div class="swiper-container carousel__container">

@@ -9,25 +9,25 @@ mock:
   id: grid-responsive-example
   slides:
     - title: Nulla ut pellentesque
-      desc: Donec lorem orci, pulvinar eget massa ac, vehicula volutpat lorem. Maecenas purus felis, auctor sed justo.
+      desc: Faucibus interdum posuere lorem ipsum dolor. Porttitor eget dolor morbi non arcu risus quis varius quam. Nisi vitae suscipit tellus mauris a.
     - title: Nulla ut pellentesque
       desc: Donec lorem orci, pulvinar eget massa ac, vehicula volutpat lorem. Maecenas purus felis, auctor sed justo.
     - title: Nulla ut pellentesque
-      desc: Donec lorem orci, pulvinar eget massa ac, vehicula volutpat lorem. Maecenas purus felis, auctor sed justo.
+      desc: Pharetra pharetra massa massa ultricies mi quis hendrerit dolor magna. In pellentesque massa placerat duis. Semper quis lectus nulla at volutpat.
     - title: Nulla ut pellentesque
       desc: Maecenas purus felis, auctor sed justo.
     - title: Nulla ut pellentesque
-      desc: Donec lorem orci, pulvinar eget massa ac, vehicula volutpat lorem. Maecenas purus felis, auctor sed justo.
+      desc: Feugiat in ante metus dictum at tempor. Dolor morbi non arcu risus quis varius quam quisque. Aliquet risus feugiat in ante metus dictum at tempor commodo. Faucibus purus in massa tempor nec feugiat nisl.
     - title: Nulla ut pellentesque
       desc: Donec lorem orci, pulvinar eget massa ac, vehicula volutpat lorem. Maecenas purus felis, auctor sed justo.
     - title: Nulla ut pellentesque
       desc: pulvinar eget massa ac, vehicula volutpat lorem. Maecenas purus felis, auctor sed justo.
     - title: Nulla ut pellentesque
-      desc: Donec lorem orci, pulvinar eget massa ac, vehicula volutpat lorem. Maecenas purus felis, auctor sed justo.
+      desc: Magna eget est lorem ipsum dolor sit amet consectetur. Proin libero nunc consequat interdum varius sit amet mattis vulputate. Sed cras ornare arcu dui vivamus. Nec feugiat in fermentum posuere urna nec tincidunt praesent semper. Ac turpis egestas sed tempus urna et pharetra pharetra.
     - title: Nulla ut pellentesque
       desc: Donec lorem orci, pulvinar eget massa ac, vehicula volutpat lorem. Maecenas purus felis, auctor sed justo.
     - title: Nulla ut pellentesque
-      desc: Donec lorem
+      desc: Eu feugiat pretium nibh ipsum consequat nisl. Sit amet consectetur adipiscing elit duis tristique sollicitudin nibh. Bibendum at varius vel pharetra vel turpis nunc.
 props:
   - name: slides
     type: Array
@@ -40,25 +40,33 @@ props:
     desc: Número máximo de slides aparentes (desktop)
   - name: spaceBetween
     type: Number
-    desc: Tamanho em pixels da distância entre cada slide. Padrão é 16px
+    desc: Tamanho em pixels da distância entre cada slide, padrão 16px. (Opcional)
   - name: color
     type: String
     desc: Cor hexadecimal das navegação e paginação. (Opcional)
 ---
 <h1>{{ metadata.title | e | safe }}</h1>
 <p>{{ metadata.description | e | safe }}</p>
+
+<div class="alert alert-primary" role="alert">
+<p>Para assegurar o funcionamento correto do componente você precisa baixar:</p>
+{% highlight "bash" %}
+yarn add swiper@8.3.2
+{% endhighlight %}
+</div>
+
 <section class="py-4 g-3">
   <h4>Exemplo</h4>
   {% set arr = [] %}
   {% for slide in mock.slides %}
     {% set html %}
-      {% Card %}
+      {% Card { classes: ["h-100"] } %}
         <h5 class="card-title">{{ slide.title }}</h5>
         <p class="card-text">{{ slide.desc }}</p>
       {% endCard %}
     {% endset %}
     {% set arr = (arr.push(html), arr) %}
   {% endfor %}
-  {% GridResponsive { slides: arr, id: mock.id, maxSlides: 3, minSlides: 1, spaceBetween: 16, color: 'red' } %}{% endGridResponsive %}
+  {% GridResponsive { slides: arr, id: mock.id, maxSlides: 3, minSlides: 1, color: 'red' } %}{% endGridResponsive %}
 </section>
 {% include 'partials/props-table.njk' %}

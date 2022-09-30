@@ -9,17 +9,13 @@ mock:
   id: carousel-example
   slides:
     - title: Nulla ut pellentesque
-      desc: Donec lorem orci, pulvinar eget massa ac, vehicula volutpat lorem. Maecenas purus felis, auctor sed justo.
+      desc: Etiam sit amet nisl purus. In mollis nunc sed id semper risus. Congue eu consequat ac felis donec et odio pellentesque. Porttitor eget dolor morbi non arcu risus quis varius quam.
     - title: Nulla ut pellentesque
-      desc: Donec lorem orci, pulvinar eget massa ac, vehicula volutpat lorem. Maecenas purus felis, auctor sed justo.
+      desc: Ac turpis egestas sed tempus urna et pharetra pharetra. Mauris augue neque gravida in.
     - title: Nulla ut pellentesque
-      desc: Donec lorem orci, pulvinar eget massa ac, vehicula volutpat lorem. Maecenas purus felis, auctor sed justo.
+      desc: Donec lorem orci, pulvinar eget massa ac, vehicula volutpat lorem. Maecenas purus felis, auctor sed justo hendrerit dolor.
     - title: Nulla ut pellentesque
-      desc: Maecenas purus felis, auctor sed justo.
-    - title: Nulla ut pellentesque
-      desc: Donec lorem orci, pulvinar eget massa ac, vehicula volutpat lorem. Maecenas purus felis, auctor sed justo.
-    - title: Nulla ut pellentesque
-      desc: Donec lorem orci, pulvinar eget massa ac, vehicula volutpat lorem. Maecenas purus felis, auctor sed justo.
+      desc: Eget sit amet tellus cras adipiscing enim eu turpis egestas. Massa massa ultricies mi quis hendrerit dolor magna eget. Massa enim nec dui nunc mattis.
     - title: Nulla ut pellentesque
       desc: pulvinar eget massa ac, vehicula volutpat lorem. Maecenas purus felis, auctor sed justo.
     - title: Nulla ut pellentesque
@@ -27,7 +23,7 @@ mock:
     - title: Nulla ut pellentesque
       desc: Donec lorem orci, pulvinar eget massa ac, vehicula volutpat lorem. Maecenas purus felis, auctor sed justo.
     - title: Nulla ut pellentesque
-      desc: Donec lorem
+      desc: Ac turpis egestas sed tempus urna et pharetra pharetra. Mauris augue neque gravida in fermentum et sollicitudin ac orci.
 props:
   - name: slides
     type: Array
@@ -41,21 +37,26 @@ props:
   - name: spaceBetween
     type: Number
     desc: Tamanho em pixels da distância entre cada slide. Padrão é 16px.
-  - name: autoHeight
-    type: Boolean
-    desc: Define se a altura do slide será automatica.
   - name: color
     type: String
     desc: Cor hexadecimal das navegação e paginação. (Opcional)
 ---
 <h1>{{ metadata.title | e | safe }}</h1>
 <p>{{ metadata.description | e | safe }}</p>
+
+<div class="alert alert-primary" role="alert">
+<p>Para assegurar o funcionamento correto do componente você precisa baixar:</p>
+{% highlight "bash" %}
+yarn add swiper@8.3.2
+{% endhighlight %}
+</div>
+
 <section class="py-4">
   <h4>Exemplo</h4>
   {% set arr = [] %}
   {% for slide in mock.slides %}
     {% set html %}
-      {% Card %}
+      {% Card { classes: ["h-100"] } %}
         <h5 class="card-title">{{ slide.title }}</h5>
         <p class="card-text">{{ slide.desc }}</p>
       {% endCard %}

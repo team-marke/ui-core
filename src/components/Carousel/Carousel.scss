@@ -23,6 +23,10 @@
     }
   }
 
+  &__slide {
+    height: auto !important;
+  }
+
   &__button-prev,
   &__button-next {
     display: none;

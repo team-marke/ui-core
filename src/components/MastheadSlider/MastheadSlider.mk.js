@@ -3,7 +3,7 @@ function MastheadSlider(content, { mastheads, id }) {
     let str = '';
     for (const masthead of mastheads) {
       str += `
-        <div class="swiper-slide">${masthead}</div>
+        <div class="swiper-slide masthead-slider__slide">${masthead}</div>
       `;
     }
     return str;
