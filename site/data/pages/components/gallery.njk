@@ -1,0 +1,69 @@
+---
+eleventyNavigation:
+  key: gallery
+  title: Gallery
+metadata:
+  title: Gallery
+  description: Galeria para apresentação de fotos.
+props:
+  - name: id
+    type: String
+    desc: Um identificador único para aquele Accordion
+  - name: items
+    type: Array
+    desc: 'Um array de items, com cada objeto contentendo as props: tag, title e content'
+  - name: flush
+    type: Boolean
+    desc: Determina o estilo do Accordion sem bordas
+mock:
+  columns: 4
+  images:
+    - src: https://res.cloudinary.com/webmaster-marke/image/upload/v1659640851/vantagens-de-trabalhar-com-marketing-digital.png
+      alt: lorem ipsum
+      proportion: 2
+    - src: https://res.cloudinary.com/webmaster-marke/image/upload/v1659640851/vantagens-de-trabalhar-com-marketing-digital.png
+      alt: lorem ipsum
+      proportion: 1
+    - src: https://res.cloudinary.com/webmaster-marke/image/upload/v1659640851/vantagens-de-trabalhar-com-marketing-digital.png
+      alt: lorem ipsum
+      proportion: 1
+    - src: https://res.cloudinary.com/webmaster-marke/image/upload/v1659640851/vantagens-de-trabalhar-com-marketing-digital.png
+      alt: lorem ipsum
+      proportion: 1
+    - src: https://res.cloudinary.com/webmaster-marke/image/upload/v1659640851/vantagens-de-trabalhar-com-marketing-digital.png
+      alt: lorem ipsum
+      proportion: 1
+    - src: https://res.cloudinary.com/webmaster-marke/image/upload/v1659640851/vantagens-de-trabalhar-com-marketing-digital.png
+      alt: lorem ipsum
+      proportion: 2
+    - src: https://res.cloudinary.com/webmaster-marke/image/upload/v1659640851/vantagens-de-trabalhar-com-marketing-digital.png
+      alt: lorem ipsum
+      proportion: 2
+    - src: https://res.cloudinary.com/webmaster-marke/image/upload/v1659640851/vantagens-de-trabalhar-com-marketing-digital.png
+      alt: lorem ipsum
+      proportion: 1
+    - src: https://res.cloudinary.com/webmaster-marke/image/upload/v1659640851/vantagens-de-trabalhar-com-marketing-digital.png
+      alt: lorem ipsum
+      proportion: 1
+---
+<h1>{{ metadata.title | e | safe }}</h1>
+<p>{{ metadata.description | e | safe }}</p>
+
+<section class="py-4">
+  <h4>Exemplo</h4>
+
+  <div class="gallery" style="--gallery-cols: {{ mock.columns }}">
+    {% for image in mock.images %}
+      <img
+        class="gallery__img"
+        style="grid-column: span {{image.proportion}}"
+        src="{{ image.src }}"
+        alt="{{ image.alt }}"
+      >
+    {% endfor %}
+  </div>
+
+  {% Gallery { id: mock.id, items: mock.items } %}{% endGallery %}
+</section>
+{% include 'partials/props-table.njk' %}
+
