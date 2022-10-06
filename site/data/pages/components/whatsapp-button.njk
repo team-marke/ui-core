@@ -1,0 +1,15 @@
+---
+eleventyNavigation:
+  key: whatsapp-button
+  title: Whatsapp Button
+metadata:
+  title: Whatsapp Button
+  description: Botão flutuante para o contato.
+---
+
+<h1>{{ metadata.title | e | safe }}</h1>
+<p>{{ metadata.description | e | safe }}</p>
+<section class="py-4">
+  <h2>Exemplo</h2>
+  {% WhatsappButton { url: page.url, title: metadata.metadata, locale: site.locale, position: 'end' } %}{% endWhatsappButton %}
+</section>
