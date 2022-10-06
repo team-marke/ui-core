@@ -1,4 +1,4 @@
-function WhatsappButton(content, { position = 'end' }) {
+function WhatsappButton(content, { position = 'end' } = false) {
   return `
     <a
       href="${content}"

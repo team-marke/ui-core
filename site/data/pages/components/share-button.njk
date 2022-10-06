@@ -5,11 +5,38 @@ eleventyNavigation:
 metadata:
   title: Share Button
   description: Botão flutuante para o compartilhamento da URL atual.
+props:
+  - name: content
+    type: String
+    desc: Texto do botão. Padrão é Compartilhar.
+  - name: url
+    type: String
+    desc: A URL da página.
+  - name: title
+    type: String
+    desc: O meta-title da página.
+  - name: locale
+    type: String
+    desc: A linguagem/região do site. Padrão é pt-BR.
+  - name: theme
+    type: String
+    desc: O tema do botão.
+  - name: position
+    type: String
+    desc: A posição do botão no canto inferior. Padrão é start.
+mock:
+  content: 'Compartilhar'
 ---
 
 <h1>{{ metadata.title | e | safe }}</h1>
 <p>{{ metadata.description | e | safe }}</p>
+<style>
+  .share-button {
+    position: relative !important;
+  }
+</style>
 <section class="py-4">
   <h2>Exemplo</h2>
-  {% ShareButton { url: page.url, title: metadata.metadata, locale: site.locale, position: 'end' } %}{% endShareButton %}
+  {% ShareButton { url: page.url, title: metadata.metadata, locale: site.locale, position: 'end' } %}{{ mock.content }}{% endShareButton %}
 </section>
+{% include 'partials/props-table.njk' %}

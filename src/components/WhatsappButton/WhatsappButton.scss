@@ -1,13 +1,13 @@
 .whatsapp-button {
-  width: 4rem;
-  height: 4rem;
-  padding: 1rem;
+  width: 3rem;
+  height: 3rem;
+  padding: 0.75rem;
   background: #25d366;
   color: #fff;
   font-size: 2rem;
   position: fixed;
   bottom: 0;
-  margin: 1.5rem;
+  margin: 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -18,5 +18,12 @@
   &:hover {
     background: #128c7e;
     color: #fff;
+  }
+
+  @include media-breakpoint-up(lg) {
+    width: 4rem;
+    height: 4rem;
+    padding: 1rem;
+    margin: 1.5rem;
   }
 }

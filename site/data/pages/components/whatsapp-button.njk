@@ -5,11 +5,26 @@ eleventyNavigation:
 metadata:
   title: Whatsapp Button
   description: Botão flutuante para o contato.
+props:
+  - name: content
+    type: String
+    desc: Link do Whatsapp
+  - name: position
+    type: String
+    desc: A posição do botão no canto inferior. Padrão é end.
+mock:
+  href: '#'
 ---
 
 <h1>{{ metadata.title | e | safe }}</h1>
 <p>{{ metadata.description | e | safe }}</p>
+<style>
+  .whatsapp-button {
+    position: relative !important;
+  }
+</style>
 <section class="py-4">
   <h2>Exemplo</h2>
-  {% WhatsappButton { url: page.url, title: metadata.metadata, locale: site.locale, position: 'end' } %}{% endWhatsappButton %}
+  {% WhatsappButton %}{{ mock.href }}{% endWhatsappButton %}
 </section>
+{% include 'partials/props-table.njk' %}
