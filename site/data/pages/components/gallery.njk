@@ -8,62 +8,59 @@ metadata:
 props:
   - name: id
     type: String
-    desc: Um identificador único para aquele Accordion
-  - name: items
+    desc: Um identificador único para esse slider.
+  - name: images
     type: Array
-    desc: 'Um array de items, com cada objeto contentendo as props: tag, title e content'
-  - name: flush
-    type: Boolean
-    desc: Determina o estilo do Accordion sem bordas
+    desc: Um array de imagens.
+  - name: columns
+    type: Number
+    desc: A quantidade de colunas da galeria.
+  - name: minSlides
+    type: Number
+    desc: Número mínimo de slides aparentes (mobile)
+  - name: spaceBetween
+    type: Number
+    desc: Tamanho em pixels da distância entre cada slide, padrão 16px. (Opcional)
+  - name: color
+    type: String
+    desc: Cor hexadecimal das navegação e paginação. (Opcional)
 mock:
+  id: gallery-example
   columns: 4
   images:
-    - src: https://res.cloudinary.com/webmaster-marke/image/upload/v1659640851/vantagens-de-trabalhar-com-marketing-digital.png
+    - src: https://res.cloudinary.com/webmaster-marke/image/upload/v1665077187/o-que-faz-um-gestor-de-tr%C3%A1fego.jpg
       alt: lorem ipsum
-      proportion: 2
-    - src: https://res.cloudinary.com/webmaster-marke/image/upload/v1659640851/vantagens-de-trabalhar-com-marketing-digital.png
+      size: 2
+    - src: https://res.cloudinary.com/webmaster-marke/image/upload/v1665075988/rede-social-voltada-para-contatos-profissionais.jpg
       alt: lorem ipsum
-      proportion: 1
-    - src: https://res.cloudinary.com/webmaster-marke/image/upload/v1659640851/vantagens-de-trabalhar-com-marketing-digital.png
+      size: 1
+    - src: https://res.cloudinary.com/webmaster-marke/image/upload/v1664998556/churn-rate.png
       alt: lorem ipsum
-      proportion: 1
-    - src: https://res.cloudinary.com/webmaster-marke/image/upload/v1659640851/vantagens-de-trabalhar-com-marketing-digital.png
+      size: 1
+    - src: https://res.cloudinary.com/webmaster-marke/image/upload/v1664887873/metricas-de-marketing-digital.jpg
       alt: lorem ipsum
-      proportion: 1
-    - src: https://res.cloudinary.com/webmaster-marke/image/upload/v1659640851/vantagens-de-trabalhar-com-marketing-digital.png
+      size: 1
+    - src: https://res.cloudinary.com/webmaster-marke/image/upload/v1664825552/criar-um-canal-no-Youtube.jpg
       alt: lorem ipsum
-      proportion: 1
-    - src: https://res.cloudinary.com/webmaster-marke/image/upload/v1659640851/vantagens-de-trabalhar-com-marketing-digital.png
+      size: 1
+    - src: https://res.cloudinary.com/webmaster-marke/image/upload/v1664816943/texto-criativo.jpg
       alt: lorem ipsum
-      proportion: 2
-    - src: https://res.cloudinary.com/webmaster-marke/image/upload/v1659640851/vantagens-de-trabalhar-com-marketing-digital.png
+      size: 2
+    - src: https://res.cloudinary.com/webmaster-marke/image/upload/v1664564122/growth-marketing.jpg
       alt: lorem ipsum
-      proportion: 2
-    - src: https://res.cloudinary.com/webmaster-marke/image/upload/v1659640851/vantagens-de-trabalhar-com-marketing-digital.png
+      size: 2
+    - src: https://res.cloudinary.com/webmaster-marke/image/upload/v1664478442/empresa-de-cria%C3%A7%C3%A3o-de-sites.jpg
       alt: lorem ipsum
-      proportion: 1
-    - src: https://res.cloudinary.com/webmaster-marke/image/upload/v1659640851/vantagens-de-trabalhar-com-marketing-digital.png
+      size: 1
+    - src: https://res.cloudinary.com/webmaster-marke/image/upload/v1664393312/empresas-de-marketing-digital.png
       alt: lorem ipsum
-      proportion: 1
+      size: 1
 ---
 <h1>{{ metadata.title | e | safe }}</h1>
 <p>{{ metadata.description | e | safe }}</p>
-
 <section class="py-4">
   <h4>Exemplo</h4>
-
-  <div class="gallery" style="--gallery-cols: {{ mock.columns }}">
-    {% for image in mock.images %}
-      <img
-        class="gallery__img"
-        style="grid-column: span {{image.proportion}}"
-        src="{{ image.src }}"
-        alt="{{ image.alt }}"
-      >
-    {% endfor %}
-  </div>
-
-  {% Gallery { id: mock.id, items: mock.items } %}{% endGallery %}
+  {% Gallery { images:mock.images, columns:mock.columns, id: mock.id} %}{% endGallery %}
 </section>
 {% include 'partials/props-table.njk' %}
 

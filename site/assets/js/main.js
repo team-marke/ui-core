@@ -44,6 +44,12 @@ const loadGridResponsive = async () => {
   }
 };
 
+const loadGallery = async () => {
+  if (document.querySelector('.gallery')) {
+    await import('../../../src/components/Gallery/Gallery');
+  }
+};
+
 const loadYTVideo = async () => {
   if (document.querySelector('.yt-video')) {
     await import('../../../src/components/YTVideo/YTVideo');
@@ -58,3 +64,4 @@ loadMastheadSlider();
 loadCarousel();
 loadGridResponsive();
 loadYTVideo();
+loadGallery();

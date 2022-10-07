@@ -20,13 +20,13 @@ function GridResponsive(content, { slides, id, minSlides, maxSlides, spaceBetwee
     <div
       id="${id}"
       class="swiper grid-responsive"
-      data-min-slides-per-view="${minSlides}"
+      data-min-slides-per-view="${minSlides ? minSlides : 1}"
       data-space-between="${spaceBetween ? spaceBetween : 16}"
       style="--grid-responsive-max-columns: ${maxSlides ? maxSlides : 3}; ${getColor()}"
     >
-    <div class="swiper-wrapper grid-responsive__wrapper">
-      ${getSlides()}
-    </div>
+      <div class="swiper-wrapper grid-responsive__wrapper">
+        ${getSlides()}
+      </div>
       <div class="swiper-pagination grid-responsive__pagination grid-responsive__pagination-${id}"></div>
     </div>
   `;
