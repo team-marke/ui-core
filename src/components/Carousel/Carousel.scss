@@ -33,7 +33,7 @@
     @include media-breakpoint-up(lg) {
       display: flex;
       padding: 1rem;
-
+      transform: translateY(-0.5rem);
       background: $white;
       border: $border-width $border-color $border-style;
       border-radius: 50%;
