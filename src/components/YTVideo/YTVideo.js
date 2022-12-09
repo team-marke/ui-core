@@ -14,7 +14,8 @@ class YTVideo {
   }
 
   addListeners() {
-    this.el.addEventListener('click', () => {
+    this.el.addEventListener('click', (event) => {
+      event.preventDefault();
       this.modal.show();
       if (this.player.getState() == 'unstarted') {
         this.player.load(this.videoId, true);
