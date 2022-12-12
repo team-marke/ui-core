@@ -1,0 +1,62 @@
+---
+eleventyNavigation:
+  key: timeline
+  title: Timeline
+metadata:
+  title: Timeline
+  description: Usado para mostrar várias informações no formato de linha temporal.
+props:
+  - name: id
+    type: String
+    desc: Um identificador único para aquela Timeline.
+  - name: items
+    type: Array
+    desc: 'Um array de items com conteúdos HTML já renderizados.'
+  - name: theme
+    type: String
+    desc: Tema da Timeline.
+  - name: bulletSize
+    type: Number
+    desc: 'O tamanho de cada bullet da Timeline, padrão: 32px.'
+  - name: bulletRadius
+    type: Number
+    desc: 'O arredondamento das bordas de cada bullet da Timeline, padrão: 8px.'
+mock:
+  id: timeline-exemplo
+  items:
+    - title: Enim lobortis scelerisque
+      year: 1990
+      content: >-
+        Lacus sed turpis tincidunt id aliquet risus feugiat. Purus non enim praesent elementum facilisis leo vel. Semper feugiat nibh sed pulvinar proin gravida hendrerit lectus a. Pellentesque habitant morbi tristique senectus et netus et.
+    - title: Lorem ipsum dolor sit amet, consectetur adipiscing
+      year: 2000
+      content: >-
+        Facilisis volutpat est velit egestas dui id. Non nisi est sit amet facilisis magna. Purus gravida quis blandit turpis cursus in hac habitasse. Aliquam sem et tortor consequat. Gravida cum sociis natoque penatibus et magnis dis parturient montes.
+    - title: Tempor orci eu lobortis elementum nibh tellus molesti
+      year: 2010
+      content: >-
+        Urna molestie at elementum eu facilisis sed odio morbi. In nisl nisi scelerisque eu ultrices vitae auctor eu augue. Praesent elementum facilisis leo vel fringilla.
+    - title: In tellus integer feugiat
+      year: 2020
+      content: >-
+        Nibh praesent tristique magna sit amet purus gravida quis blandit. Varius quam quisque id diam vel quam. Felis donec et odio pellentesque diam. Interdum posuere lorem ipsum dolor sit amet. Id neque aliquam vestibulum morbi blandit cursus risus at.
+---
+
+<h1>{{ metadata.title | e | safe }}</h1>
+<p>{{ metadata.description | e | safe }}</p>
+<section class="py-4">
+  <h4>Exemplo</h4>
+  {% set arr = [] %}
+  {% for item in mock.items %}
+    {% set html %}
+    {% Card { classes: ["h-100"] } %}
+    <span class="d-block mb-2 text-primary fw-bold">{{ item.year }}</span>
+    <h5>{{ item.title }}</h5>
+    {{ item.content | markdown | safe }}
+    {% endCard %}
+    {% endset %}
+    {% set arr = (arr.push(html), arr) %}
+  {% endfor %}
+  {% Timeline { id: mock.id, items: arr, theme: 'primary' } %}{% endTimeline %}
+</section>
+{% include 'partials/props-table.njk' %}
