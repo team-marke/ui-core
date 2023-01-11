@@ -17,6 +17,7 @@ function Gallery(content, { images, columns, color, id, minSlides, spaceBetween 
             class="gallery__img"
             src="${CloudinaryImgUrl(image.src, image.transformations ? image.transformations : defaultTransforms)}"
             alt="${image.alt}"
+            loading="lazy"
           >
         </div>
       `;
