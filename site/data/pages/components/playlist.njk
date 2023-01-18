@@ -1,0 +1,26 @@
+---
+eleventyNavigation:
+  key: playlist
+  title: Playlist
+metadata:
+  title: Playlist
+  description: Utilize o componente Playlist para apresentar vídeos do youtube.
+mock:
+  id: Gs069dndIYk
+  alt: Interdum velit laoreet id donec ultrices
+---
+<h1>{{ metadata.title | e | safe }}</h1>
+<p>{{ metadata.description | e | safe }}</p>
+
+<div class="alert alert-primary" role="alert">
+<p>Para assegurar o funcionamento correto do componente você precisa baixar:</p>
+{% highlight "bash" %}
+yarn add yt-player@3.6.1
+{% endhighlight %}
+</div>
+
+<section class="py-4">
+  <h4>Exemplo</h4>
+  {% Playlist { ids: ['Gs069dndIYk', 'god7hAPv8f0', 'Lrle0x_DHBM', 'r58GQYFZeLE'], maxwidth: 480 } %}{% endPlaylist %}
+</section>
+

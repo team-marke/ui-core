@@ -10,11 +10,7 @@ props:
     type: Array
     desc: >-
       Array de [mastheads](/components/masthead/)
-  - name: id
-    type: String
-    desc: Identificador único do masthead
 mock:
-  id: masthead-slider-example
   mastheads:
     - title: Nulla ut pellentesque
       desc: In mollis nunc sed id semper risus. Congue eu consequat ac
@@ -111,7 +107,7 @@ yarn add swiper@8.3.2
         {% endset %}
         {% set arr = (arr.push(html), arr) %}
       {% endfor %}
-      {% MastheadSlider { mastheads: arr, id: mock.id } %}{% endMastheadSlider %}
+      {% MastheadSlider { mastheads: arr } %}{% endMastheadSlider %}
     </div>
   </div>
 </section>

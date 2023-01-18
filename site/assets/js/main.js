@@ -56,6 +56,12 @@ const loadYTVideo = async () => {
   }
 };
 
+const loadPlaylist = async () => {
+  if (document.querySelector('.playlist')) {
+    await import('../../../src/components/Playlist/Playlist');
+  }
+};
+
 loadCollapse();
 loadTab();
 loadModal();
@@ -65,3 +71,4 @@ loadCarousel();
 loadGridResponsive();
 loadYTVideo();
 loadGallery();
+loadPlaylist();

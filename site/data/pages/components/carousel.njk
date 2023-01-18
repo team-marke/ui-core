@@ -6,7 +6,6 @@ metadata:
   title: Carousel
   description: Use carousel para apresentar o seu conteúdo na página.
 mock:
-  id: carousel-example
   slides:
     - title: Nulla ut pellentesque
       desc: Etiam sit amet nisl purus. In mollis nunc sed id semper risus. Congue eu consequat ac felis donec et odio pellentesque. Porttitor eget dolor morbi non arcu risus quis varius quam.
@@ -25,9 +24,6 @@ mock:
     - title: Nulla ut pellentesque
       desc: Ac turpis egestas sed tempus urna et pharetra pharetra. Mauris augue neque gravida in fermentum et sollicitudin ac orci.
 props:
-  - name: id
-    type: String
-    desc: Um identificador único para esse slider.
   - name: slides
     type: Array
     desc: Um array de slides com conteúdos HTML já renderizados.
@@ -66,6 +62,6 @@ yarn add swiper@8.3.2
     {% endset %}
     {% set arr = (arr.push(html), arr) %}
   {% endfor %}
-  {% Carousel { slides: arr, maxSlides: 3, minSlides: 1, spaceBetween: 16, id: mock.id } %}{% endCarousel %}
+  {% Carousel { slides: arr, maxSlides: 3, minSlides: 1, spaceBetween: 16 } %}{% endCarousel %}
 </section>
 {% include 'partials/props-table.njk' %}

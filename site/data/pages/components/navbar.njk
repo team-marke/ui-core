@@ -70,7 +70,7 @@ mock:
 <section class="py-4">
   <h4>Exemplo</h4>
   <div class="p-3">
-    {% Navbar { eleventyNavigation: mock.eleventyNavigation, currentPageUrl: page.url ,id: 'teste', brandImg: mock.brandImg, brandImgMobile: mock.brandImg } %}
+    {% Navbar { eleventyNavigation: mock.eleventyNavigation, currentPageUrl: page.url, brandImg: mock.brandImg, brandImgMobile: mock.brandImg } %}
       {% Button { href: '#', theme: 'secondary' } %}Lorem{% endButton %}
     {% endNavbar %}
   </div>
@@ -78,6 +78,6 @@ mock:
 <section class="py-4">
   <h4>Em seção escura</h4>
   <div class="p-3 bg-dark">
-    {% Navbar { eleventyNavigation: mock.eleventyNavigation, currentPageUrl: page.url ,id: 'teste2', brandImg: mock.brandImg2, brandImgMobile: mock.brandImg2, dark: true } %}{% endNavbar %}
+    {% Navbar { eleventyNavigation: mock.eleventyNavigation, currentPageUrl: page.url, brandImg: mock.brandImg2, brandImgMobile: mock.brandImg2, dark: true } %}{% endNavbar %}
   </div>
 </section>

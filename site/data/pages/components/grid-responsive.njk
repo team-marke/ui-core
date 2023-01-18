@@ -6,7 +6,6 @@ metadata:
   title: Grid Responsive
   description:
 mock:
-  id: grid-responsive-example
   slides:
     - title: Nulla ut pellentesque
       desc: Faucibus interdum posuere lorem ipsum dolor. Porttitor eget dolor morbi non arcu risus quis varius quam. Nisi vitae suscipit tellus mauris a.
@@ -29,9 +28,6 @@ mock:
     - title: Nulla ut pellentesque
       desc: Eu feugiat pretium nibh ipsum consequat nisl. Sit amet consectetur adipiscing elit duis tristique sollicitudin nibh. Bibendum at varius vel pharetra vel turpis nunc.
 props:
-  - name: id
-    type: String
-    desc: Um identificador único para esse slider.
   - name: slides
     type: Array
     desc: Um array de slides com conteúdos HTML já renderizados
@@ -70,6 +66,6 @@ yarn add swiper@8.3.2
     {% endset %}
     {% set arr = (arr.push(html), arr) %}
   {% endfor %}
-  {% GridResponsive { slides: arr, id: mock.id, maxSlides: 3, minSlides: 1, color: 'red' } %}{% endGridResponsive %}
+  {% GridResponsive { slides: arr, maxSlides: 3, minSlides: 1 } %}{% endGridResponsive %}
 </section>
 {% include 'partials/props-table.njk' %}

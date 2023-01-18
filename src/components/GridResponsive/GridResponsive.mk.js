@@ -1,4 +1,8 @@
-function GridResponsive(content, { slides, id, minSlides, maxSlides, spaceBetween, color }) {
+const IdGenerator = require('../../helpers/idGenerator');
+
+function GridResponsive(content, { slides, minSlides, maxSlides, spaceBetween, color }) {
+  const id = IdGenerator();
+
   function getSlides() {
     let str = '';
     for (const slide of slides) {

@@ -1,6 +1,9 @@
 const Markdown = require('../../core-components/Markdown');
+const IdGenerator = require('../../helpers/idGenerator');
 
-function Accordion(content, { id, items, flush }) {
+function Accordion(content, { items, flush }) {
+  const id = IdGenerator();
+
   function getItems() {
     let str = '';
     for (const [index, item] of items.entries()) {

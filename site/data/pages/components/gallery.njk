@@ -6,9 +6,6 @@ metadata:
   title: Gallery
   description: Galeria para apresentação de fotos.
 props:
-  - name: id
-    type: String
-    desc: Um identificador único para esse slider.
   - name: images
     type: Array
     desc: Um array de imagens.
@@ -25,7 +22,6 @@ props:
     type: String
     desc: Cor hexadecimal das navegação e paginação. (Opcional)
 mock:
-  id: gallery-example
   columns: 4
   images:
     - src: https://res.cloudinary.com/webmaster-marke/image/upload/v1665077187/o-que-faz-um-gestor-de-tr%C3%A1fego.jpg
@@ -60,7 +56,7 @@ mock:
 <p>{{ metadata.description | e | safe }}</p>
 <section class="py-4">
   <h4>Exemplo</h4>
-  {% Gallery { images:mock.images, columns:mock.columns, id: mock.id} %}{% endGallery %}
+  {% Gallery { images:mock.images, columns:mock.columns } %}{% endGallery %}
 </section>
 {% include 'partials/props-table.njk' %}
 

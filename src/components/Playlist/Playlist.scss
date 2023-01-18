@@ -1,0 +1,32 @@
+.playlist {
+  --swiper-theme-color: #{$light};
+  --swiper-navigation-color: #{$light};
+
+  &__wrapper {
+    margin-bottom: 2rem;
+    @include media-breakpoint-up(lg) {
+      margin-bottom: 0;
+    }
+  }
+
+  .swiper-slide:not(.swiper-slide-active) {
+    transform: scale(0.85);
+    pointer-events: none;
+  }
+
+  &__button-prev,
+  &__button-next {
+    display: none;
+    @include media-breakpoint-up(lg) {
+      display: block;
+    }
+  }
+
+  &__pagination {
+    display: block;
+    bottom: 0 !important;
+    @include media-breakpoint-up(lg) {
+      display: none;
+    }
+  }
+}

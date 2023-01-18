@@ -6,9 +6,6 @@ metadata:
   title: Accordion
   description: Usado para mostrar várias informações em cards diferentes, o Accordion permite que o usuário abra uma aba por vez, podendo ser usado numa sessão de perguntas e respostas.
 props:
-  - name: id
-    type: String
-    desc: Um identificador único para aquele Accordion
   - name: items
     type: Array
     desc: 'Um array de items, com cada objeto contentendo as props: tag, title e content'
@@ -16,7 +13,6 @@ props:
     type: Boolean
     desc: Determina o estilo do Accordion sem bordas
 mock:
-  id: accordion-exemplo
   items:
     - title: Mauris commodo quis imperdiet massa?
       tag: h3
@@ -37,17 +33,16 @@ mock:
         Netus et malesuada fames ac turpis egestas sed tempus urna.
         Aliquam malesuada bibendum arcu vitae elementum curabitur vitae nunc.
         Interdum velit laoreet id donec ultrices tincidunt arcu non. Tellus rutrum tellus pellentesque eu tincidunt tortor.
-  id2: accordion-exemplo2
 ---
 <h1>{{ metadata.title | e | safe }}</h1>
 <p>{{ metadata.description | e | safe }}</p>
 <section class="py-4">
   <h4>Exemplo</h4>
-  {% Accordion { id: mock.id, items: mock.items } %}{% endAccordion %}
+  {% Accordion { items: mock.items } %}{% endAccordion %}
 </section>
 <section class="py-4">
   <h4>Flush</h4>
-  {% Accordion { id: mock.id2, items: mock.items, flush: true } %}{% endAccordion %}
+  {% Accordion { items: mock.items, flush: true } %}{% endAccordion %}
 </section>
 {% include 'partials/props-table.njk' %}
 

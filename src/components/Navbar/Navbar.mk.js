@@ -1,6 +1,9 @@
 const CloudinaryImgUrl = require('../../core-components/CloudinaryImgUrl');
+const IdGenerator = require('../../helpers/idGenerator');
 
-function Navbar(content, { eleventyNavigation, currentPageUrl, id, expand, brandImg, brandImgMobile, dark, classes }) {
+function Navbar(content, { eleventyNavigation, currentPageUrl, expand, brandImg, brandImgMobile, dark, classes }) {
+  const id = IdGenerator();
+
   function getClasses() {
     if (!Array.isArray(classes)) {
       return '';

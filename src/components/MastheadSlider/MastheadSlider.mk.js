@@ -1,4 +1,8 @@
-function MastheadSlider(content, { mastheads, id }) {
+const IdGenerator = require('../../helpers/idGenerator');
+
+function MastheadSlider(content, { mastheads }) {
+  const id = IdGenerator();
+
   function getSlides() {
     let str = '';
     for (const masthead of mastheads) {

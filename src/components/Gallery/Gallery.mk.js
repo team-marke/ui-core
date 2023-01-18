@@ -1,6 +1,9 @@
 const CloudinaryImgUrl = require('../../core-components/CloudinaryImgUrl');
+const IdGenerator = require('../../helpers/idGenerator');
 
-function Gallery(content, { images, columns, color, id, minSlides, spaceBetween }) {
+function Gallery(content, { images, columns, color, minSlides, spaceBetween }) {
+  const id = IdGenerator();
+
   function getImages() {
     const defaultTransforms = {
       fetch_format: 'auto',
