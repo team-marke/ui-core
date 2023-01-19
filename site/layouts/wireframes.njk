@@ -1,0 +1,44 @@
+{% extends 'docs.njk' %}
+{% block content %}
+  <section>
+    <h1>{{ title }}</h1>
+    {{ description | markdown | safe }}
+  </section>
+  <section class="pt-3">
+    <div class="d-flex gap-3">
+      {% for item in items %}
+        <a href="{{ item.url | url }}" class="mk-docs-wireframe-card" target="_blank">
+          <img
+            class="mk-docs-wireframe-card__image"
+            src="{% CloudinaryImgUrl item.image, { fetch_format: 'auto', quality: 'auto:best', width: 300, height: 400, crop: 'thumb', gravity: 'north' } %}"
+            alt="{{ item.title }}"
+            title="{{ item.title }}"
+            loading="lazy"
+            height="400"
+            width="300"
+          />
+          <span class="mk-docs-wireframe-card__title badge bg-primary">
+            {{ item.title }}
+          </span>
+        </a>
+      {% endfor %}
+    </div>
+  </section>
+  <section class="pt-3">
+    <h5>Utilizar como template:</h5>
+    <form class="row row-cols-lg-auto g-3 align-items-center" id="wireframe-project-generator">
+      <div class="col-12">
+        <select class="form-select">
+          <option selected disabled>Escolha uma opção</option>
+          {% for item in items %}
+            <option value="{{ (item.github + "/generate") | url }} ">{{ item.title }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="col-12">
+        <button type="submit" class="btn btn-outline-primary">Gerar projeto</button>
+      </div>
+    </form>
+  </section>
+{% endblock %}
+{{ content | safe }}

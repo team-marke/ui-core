@@ -1,5 +1,5 @@
 <aside class="h-100">
-  <a href="{{ global.site_absolute_url | url }}" class="d-block mb-4">
+  <a href="{{ global.site_absolute_url | url }}" class="d-block mb-5">
     <img
       src="{% CloudinaryImgUrl site.logo, { fetch_format: 'auto', quality: 'auto:best', width: 120, height: 28, dpr: 2 } %}"
       width="120"
@@ -7,22 +7,32 @@
       alt="{{ site.name | e | safe }}"
     >
   </a>
-  <nav>
-    <a href="#" class="link-dark h5" data-bs-toggle="collapse" data-bs-target="#componentsList" aria-expanded="false" aria-controls="componentsList">
-      Componentes
-    </a>
-    <div class="collapse show" id="componentsList">
-      <div class="list-group collapsed mt-2">
-        {% for component in collections.page | eleventyNavigation('home') %}
+  <nav class="mk-docs-sidebar">
+    <h5 class="mb-2">Wireframes <span class="badge bg-primary">Novo</span></h5>
+    <ul class="list-unstyled ps-2">
+      <li>
+        <a
+          href="/wireframes"
+          class="{% if "/wireframes" == page.url %}link-primary{% else %}link-dark{% endif %}"
+          {% if "/wireframes" == page.url %}aria-current="true"{% endif %}
+        >
+          O que é?
+        </a>
+      </li>
+    </ul>
+    <h5 class="mb-2">Componentes</h5>
+    <ul class="list-unstyled ps-2">
+      {% for component in collections.page | eleventyNavigation('home') %}
+        <li>
           <a
             href="{{ component.url | url }}"
-            class="list-group-item list-group-item-action {% if component.url == page.url %}active{% endif %}"
+            class="{% if component.url == page.url %}link-primary{% else %}link-dark{% endif %}"
             {% if component.url == page.url %}aria-current="true"{% endif %}
           >
             {{ component.title | e | safe }}
           </a>
-        {% endfor %}
-      </div>
-    </div>
+        </li>
+      {% endfor %}
+    </ul>
   </nav>
 </aside>
