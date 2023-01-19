@@ -13,6 +13,13 @@ items:
       Hello **World!**
   - title: Página 02
     content: Um parágrafo padrão
+props:
+  - name: id
+    type: string
+    desc: Identificador do tabs
+  - name: items
+    type: Object
+    desc: Objeto contendo o título e conteúdo de cada tab
 ---
 <h1>{{ metadata.title | e | safe }}</h1>
 <p>{{ metadata.decription | e | safe }}</p>
@@ -20,3 +27,4 @@ items:
   <h2>Exemplo</h2>
   {% Tabs { id: 'tabTest', items: items } %}{% endTabs %}
 </section>
+{% include "partials/props-table.njk" %}

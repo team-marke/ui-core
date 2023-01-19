@@ -8,6 +8,13 @@ metadata:
 mock:
   id: Gs069dndIYk
   alt: Interdum velit laoreet id donec ultrices
+props:
+  - name: ids
+    type: Array
+    desc: Ids dos vídeos que estão na playlist
+  - name: maxwidth
+    type: int
+    desc: Largura máxima dos vídeos
 ---
 <h1>{{ metadata.title | e | safe }}</h1>
 <p>{{ metadata.description | e | safe }}</p>
@@ -23,4 +30,4 @@ yarn add yt-player@3.6.1
   <h4>Exemplo</h4>
   {% Playlist { ids: ['Gs069dndIYk', 'god7hAPv8f0', 'Lrle0x_DHBM', 'r58GQYFZeLE'], maxwidth: 480 } %}{% endPlaylist %}
 </section>
-
+{% include "partials/props-table.njk" %}

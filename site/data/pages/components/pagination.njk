@@ -18,6 +18,10 @@ testdata:
  - item6
  - item7
  - item8
+props:
+  - name: eleventyPagination
+    type: Object
+    desc: Objeto contendo as páginas com o conteúdo do site
 ---
 <h1>{{ metadata.title | e | safe }}</h1>
 <p>{{ metadata.description | e | safe }}</p>
@@ -25,3 +29,4 @@ testdata:
   <h2>Exemplo</h2>
   {% Pagination { eleventyPagination: pagination } %}{% endPagination %}
 </section>
+{% include "partials/props-table.njk" %}
