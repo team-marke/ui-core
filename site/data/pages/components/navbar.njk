@@ -63,6 +63,22 @@ mock:
           url: '/components/navbar/'
           parentKey: 'home'
           children: []
+props:
+  - name: eleventyNavigation
+    type: Object
+    desc: Navegação hierarquica das páginas do projeto
+  - name: currentPageUrl
+    type: String
+    desc: Indica a página atual
+  - name: brandImg
+    type: Object
+    desc: Logo do site com origem da imagem, alt text, altura e largura
+  - name: brandImgMobile
+    type: Object
+    desc: Logo do site com origem da imagem, alt text, altura e largura  na versão mobile
+  - name: dark
+    type: boolean
+    desc: Opção escura do navbar
 ---
 
 <h1>{{ metadata.title | e | safe }}</h1>
@@ -81,3 +97,4 @@ mock:
     {% Navbar { eleventyNavigation: mock.eleventyNavigation, currentPageUrl: page.url, brandImg: mock.brandImg2, brandImgMobile: mock.brandImg2, dark: true } %}{% endNavbar %}
   </div>
 </section>
+{% include "partials/props-table.njk" %}

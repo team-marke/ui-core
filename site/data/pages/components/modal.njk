@@ -35,6 +35,19 @@ mock:
 
 
     **Texto em bold**
+props:
+  - name: id
+    type: String
+    desc: Id do Modal
+  - name: title
+    type: String
+    desc: Título do Modal
+  - name: footer
+    type: Object
+    desc: Cria o footer do modal com a marcação especificada
+  - name: classes
+    type: Array
+    desc: Classes adcionais do Modal
 ---
 <h1>{{ metadata.title | e | safe }}</h1>
 <p>{{ metadata.description | e | safe }}</p>
@@ -62,3 +75,4 @@ mock:
     {% Markdown mock.scrollContent %}
   {% endModal %}
 </section>
+{% include "partials/props-table.njk" %}
