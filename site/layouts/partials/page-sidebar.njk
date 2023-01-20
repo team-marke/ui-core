@@ -1,7 +1,7 @@
 <aside class="h-100">
   <a href="{{ global.site_absolute_url | url }}" class="d-block mb-5">
     <img
-      src="{% CloudinaryImgUrl site.logo, { fetch_format: 'auto', quality: 'auto:best', width: 120, height: 28, dpr: 2 } %}"
+      src="{% CloudinaryImgUrl site.logo, { fetch_format: 'auto', quality: 'auto:best', width: 120, height: 28, dpr: 2, crop: 'pad' } %}"
       width="120"
       height="28"
       alt="{{ site.name | e | safe }}"
