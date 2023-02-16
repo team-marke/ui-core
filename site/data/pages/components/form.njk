@@ -1,0 +1,53 @@
+---
+eleventyNavigation:
+  key: form
+  title: Form
+metadata:
+  title: Form
+  description: Um componente para criar formulários.
+props:
+  - name: fields
+    type: Array
+    desc: Os campos.
+---
+
+<h1>{{ metadata.title | e | safe }}</h1>
+<p>{{ metadata.description | e | safe }}</p>
+<section id="standard" class="py-4">
+  <h2>Exemplo</h2>
+  {% set fields = [
+    {
+      type: 'text',
+      placeholder: 'Text',
+      id: 'text',
+      label: 'Text',
+      col: 5
+    },
+    {
+      type: 'email',
+      placeholder: 'email',
+      id: 'email',
+      label: 'Email'
+    },
+    {
+      type: 'checkbox',
+      placeholder: 'email',
+      value: 'foo',
+      id: 'email',
+      label: 'Email'
+    },
+    {
+      type: 'select',
+      placeholder: 'email',
+      value: 'foo',
+      id: 'email',
+      label: 'Email',
+      options: [
+        { text: 'ola', value: 'ola' },
+        { text: 'mundo', value: 'mundo' }
+      ]
+    }
+  ] %}
+  {% Form { fields: fields } %}{% endForm %}
+</section>
+{% include 'partials/props-table.njk' %}
