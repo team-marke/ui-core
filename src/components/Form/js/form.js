@@ -1,11 +1,14 @@
 import BtnSpinner from './btn-spinner';
 import ToastResponse from './toast-response';
 
+/**
+ * Default component for sending emails with Marke Forms V2
+ * @param {HTMLFormElement} - The form element itself
+ */
 export default class Form {
   constructor(form) {
     this.form = form;
     this.fields = Array.from(form.elements).filter((element) => !(element instanceof HTMLButtonElement));
-    this.action = form.action;
     this.successMsg = form.dataset.successMsg || 'Formulário enviado com sucesso!';
     this.errorMsg = form.dataset.errorMsg || 'Houve um erro ao enviar o formulário, tente novamente mais tarde!';
     this.btnSpinner = new BtnSpinner(form.querySelector('button[type=submit]'));
@@ -18,8 +21,7 @@ export default class Form {
       if (!field.value) return;
       data.push({
         label: field.labels[0]?.innerHTML,
-        value: field.value,
-        type: field.type
+        value: field.value
       });
     });
     return data;
@@ -34,7 +36,6 @@ export default class Form {
         subject: process.env.FORM_SUBMIT_SUBJECT,
         fields: this.getFormData(),
       });
-      console.log(body);
       const res = await fetch(url, {
         method: 'POST',
         headers: {

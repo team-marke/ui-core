@@ -14,7 +14,78 @@ props:
 <h1>{{ metadata.title | e | safe }}</h1>
 <p>{{ metadata.description | e | safe }}</p>
 <section id="standard" class="py-4">
-  <h2>Exemplo</h2>
+  <h2>Exemplo - Marke Forms</h2>
+  {% set fields = [
+    {
+      type: 'text',
+      placeholder: 'Primeiro Nome',
+      id: 'firstname',
+      label: 'Primeiro Nome',
+      col: 6
+    },
+    {
+      type: 'text',
+      placeholder: 'Último Nome',
+      id: 'lastname',
+      label: 'Último Nome',
+      col: 6
+    },
+    {
+      type: 'email',
+      placeholder: 'Email',
+      id: 'email',
+      label: 'Email',
+      col: 6
+    },
+    {
+      type: 'tel',
+      placeholder: 'Telefone',
+      id: 'phone',
+      label: 'Phone',
+      col: 6
+    },
+    {
+      type: 'select',
+      id: 'select',
+      label: 'Select',
+      options: [
+        { text: 'ola', value: 'ola' },
+        { text: 'mundo', value: 'mundo' },
+        { text: 'fdfas', value: 'fsadfsd', selected: true }
+      ],
+      col: 12
+    },
+    {
+      type: 'checkbox',
+      options: [
+        { text: 'ola', value: 'ola', id: 'id1' },
+        { text: 'mundo', value: 'mundo', id: 'id2' }
+      ],
+      col: 12
+    },
+    {
+      type: 'radio',
+      name: 'radioExample',
+      options: [
+        { text: 'Sim', value: 'yes', id: 'yesId', checked: true },
+        { text: 'Não', value: 'no', id: 'noId' }
+      ],
+      col: 12
+    },
+    {
+      type: 'submit',
+      id: 'submit',
+      text: 'Submit',
+      theme: 'secondary',
+      size: 'lg',
+      classes: ['text-danger'],
+      col: 12
+    }
+  ] %}
+  {% Form { fields: fields } %}{% endForm %}
+</section>
+<section id="standard" class="py-4">
+  <h2>Exemplo - Hubspot</h2>
   {% set fields = [
     {
       type: 'text',
