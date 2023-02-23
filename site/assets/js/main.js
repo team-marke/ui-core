@@ -63,6 +63,12 @@ const loadPlaylist = async () => {
   }
 };
 
+const loadForm = async () => {
+  if (document.querySelector('.form')) {
+    await import('../../../src/components/Form/Form');
+  }
+};
+
 loadCollapse();
 loadTab();
 loadModal();
@@ -73,3 +79,4 @@ loadGridResponsive();
 loadYTVideo();
 loadGallery();
 loadPlaylist();
+loadForm();

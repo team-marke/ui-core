@@ -1,8 +1,10 @@
 const Generic = require('./fields/Generic.mk');
 const Checkbox = require('./fields/Checkbox.mk');
+const Radio = require('./fields/Radio.mk');
 const Select = require('./fields/Select.mk');
+const Submit = require('./fields/Submit.mk');
 
-function Form(content, { fields }) {
+function Form(content, { fields, gutter }) {
   function getFields() {
     if (!Array.isArray(fields)) {
       return '';
@@ -22,16 +24,20 @@ function Form(content, { fields }) {
     switch (field.type) {
       case 'checkbox':
         return Checkbox(false, { ...field });
+      case 'radio':
+        return Radio(false, { ...field });
       case 'select':
         return Select(false, { ...field });
+      case 'submit':
+        return Submit(field.text, { ...field });
       default:
         return Generic(false, { ...field });
     }
   }
 
   return `
-    <form>
-      <div class="row">
+    <form class="form">
+      <div class="row g-${gutter ? gutter : 3}">
         ${getFields()}
       </div>
     </form>
