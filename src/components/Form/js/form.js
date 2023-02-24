@@ -11,6 +11,7 @@ export default class Form {
     this.fields = Array.from(form.elements).filter((element) => !(element instanceof HTMLButtonElement));
     this.successMsg = form.dataset.successMsg || 'Formulário enviado com sucesso!';
     this.errorMsg = form.dataset.errorMsg || 'Houve um erro ao enviar o formulário, tente novamente mais tarde!';
+    this.redirect = form.dataset.redirect;
     this.btnSpinner = new BtnSpinner(form.querySelector('button[type=submit]'));
     this.listenFormEvents();
   }
@@ -21,7 +22,7 @@ export default class Form {
       if (!field.value) return;
       data.push({
         label: field.labels[0]?.innerHTML,
-        value: field.value
+        value: field.value,
       });
     });
     return data;
@@ -61,6 +62,9 @@ export default class Form {
       });
     }
     this.btnSpinner.stopSpin();
+    if (this.redirect) {
+      window.open(this.redirect, '_blank');
+    }
   }
 
   listenFormEvents() {

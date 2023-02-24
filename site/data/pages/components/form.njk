@@ -82,7 +82,7 @@ props:
       col: 12
     }
   ] %}
-  {% Form { fields: fields } %}{% endForm %}
+  {% Form { fields: fields, redirect: 'https://marke.com.br' } %}{% endForm %}
 </section>
 <section id="standard" class="py-4">
   <h2>Exemplo - Hubspot</h2>
@@ -92,6 +92,7 @@ props:
       placeholder: 'Primeiro Nome',
       id: 'firstname',
       label: 'Primeiro Nome',
+      required: true,
       col: 6,
       dataset: {
         "hubspot-field": "firstname"
@@ -102,6 +103,7 @@ props:
       placeholder: 'Último Nome',
       id: 'lastname',
       label: 'Último Nome',
+      required: true,
       col: 6,
       dataset: {
         "hubspot-field": "lastname"
@@ -112,6 +114,7 @@ props:
       placeholder: 'Último Nome',
       id: 'company',
       label: 'Empresa',
+      required: true,
       col: 6,
       dataset: {
         "hubspot-field": "company"
@@ -122,6 +125,7 @@ props:
       placeholder: 'Email',
       id: 'email',
       label: 'Email',
+      required: true,
       col: 6,
       dataset: {
         "hubspot-field": "email"
@@ -132,6 +136,7 @@ props:
       placeholder: 'Phone',
       id: 'phone',
       label: 'Phone',
+      required: true,
       col: 6,
       dataset: {
         "hubspot-field": "phone"
@@ -142,16 +147,18 @@ props:
       placeholder: 'Endereço',
       id: 'address',
       label: 'Endereço',
+      required: true,
       col: 6,
       dataset: {
         "hubspot-field": "address"
       }
     },
     {
-      type: 'text',
+      type: 'textarea',
       placeholder: 'Menssagem',
       id: 'menssagem',
       label: 'Menssagem',
+      required: true,
       col: 12,
       dataset: {
         "hubspot-field": "menssagem"

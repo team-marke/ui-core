@@ -64,5 +64,8 @@ export default class HubspotForm extends Form {
       });
     }
     this.btnSpinner.stopSpin();
+    if (this.redirect) {
+      window.open(this.redirect, '_blank');
+    }
   }
 }

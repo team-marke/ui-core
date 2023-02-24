@@ -79,4 +79,4 @@ loadGridResponsive();
 loadYTVideo();
 loadGallery();
 loadPlaylist();
-//loadForm();
+loadForm();

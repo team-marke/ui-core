@@ -1,4 +1,4 @@
-function Select(content, { label, options, id }) {
+function Select(content, { label, options, id, required }) {
   function getOptions() {
     let str = '';
     for (const option of options) {
@@ -9,7 +9,7 @@ function Select(content, { label, options, id }) {
 
   return `
     <label for="${id}" class="form-label">${label}</label>
-    <select class="form-select" id="${id}">
+    <select class="form-select" id="${id}" ${required ? 'required' : ''}>
       ${getOptions()}
     </select>
   `;

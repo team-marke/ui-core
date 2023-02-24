@@ -3,8 +3,9 @@ const Checkbox = require('./fields/Checkbox.mk');
 const Radio = require('./fields/Radio.mk');
 const Select = require('./fields/Select.mk');
 const Submit = require('./fields/Submit.mk');
+const Textarea = require('./fields/Textarea.mk');
 
-function Form(content, { fields, gutter, integration }) {
+function Form(content, { fields, gutter, integration, redirect }) {
   function getFields() {
     if (!Array.isArray(fields)) {
       return '';
@@ -30,6 +31,8 @@ function Form(content, { fields, gutter, integration }) {
         return Select(false, { ...field });
       case 'submit':
         return Submit(field.text, { ...field });
+      case 'textarea':
+        return Textarea(field.text, { ...field });
       default:
         return Generic(false, { ...field });
     }
@@ -55,8 +58,19 @@ function Form(content, { fields, gutter, integration }) {
     return str;
   }
 
+  function getRedirect() {
+    if (!redirect) {
+      return ''
+    }
+    return `data-redirect="${redirect}"`
+  }
+
   return `
-    <form class="form" ${getIntegrationType()} ${getIntegrationOptions()}>
+    <form class="form"
+      ${getIntegrationType()}
+      ${getIntegrationOptions()}
+      ${getRedirect()}
+    >
       <div class="row g-${gutter ? gutter : 3}">
         ${getFields()}
       </div>
