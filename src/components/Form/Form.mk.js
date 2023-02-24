@@ -4,7 +4,7 @@ const Radio = require('./fields/Radio.mk');
 const Select = require('./fields/Select.mk');
 const Submit = require('./fields/Submit.mk');
 
-function Form(content, { fields, gutter }) {
+function Form(content, { fields, gutter, integration }) {
   function getFields() {
     if (!Array.isArray(fields)) {
       return '';
@@ -35,8 +35,28 @@ function Form(content, { fields, gutter }) {
     }
   }
 
+  function getIntegrationType() {
+    if (!integration) {
+      return '';
+    }
+    return `
+      data-integration="${integration.type}"
+    `;
+  }
+
+  function getIntegrationOptions() {
+    if (!integration) {
+      return '';
+    }
+    let str = '';
+    for (const [key, value] of Object.entries(integration.options)) {
+      str += `data-${key}="${value}"`;
+    }
+    return str;
+  }
+
   return `
-    <form class="form">
+    <form class="form" ${getIntegrationType()} ${getIntegrationOptions()}>
       <div class="row g-${gutter ? gutter : 3}">
         ${getFields()}
       </div>
