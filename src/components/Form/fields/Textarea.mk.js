@@ -13,8 +13,8 @@ function Textarea(content, { type, id, label, placeholder, dataset, required, ro
 
   return `
     <label for="${id}" class="form-label">${label}</label>
-    <textarea class="form-control" id="${id}" rows="${rows}" placeholder="${placeholder}
-      ${getDataset()}"
+    <textarea class="form-control" id="${id}" rows="${rows}" placeholder="${placeholder}"
+      ${getDataset()}
       ${required ? 'required' : ''}
     >
     </textarea>
