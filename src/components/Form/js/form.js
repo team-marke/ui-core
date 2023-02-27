@@ -9,8 +9,8 @@ export default class Form {
   constructor(form) {
     this.form = form;
     this.fields = Array.from(form.elements).filter((element) => !(element instanceof HTMLButtonElement));
-    this.successMsg = form.dataset.successMsg || 'Formulário enviado com sucesso!';
-    this.errorMsg = form.dataset.errorMsg || 'Houve um erro ao enviar o formulário, tente novamente mais tarde!';
+    this.successMsg = form.dataset.messageSuccess || 'Formulário enviado com sucesso!';
+    this.errorMsg = form.dataset.messageError || 'Houve um erro ao enviar o formulário, tente novamente mais tarde!';
     this.redirect = form.dataset.redirect;
     this.btnSpinner = new BtnSpinner(form.querySelector('button[type=submit]'));
     this.listenFormEvents();
