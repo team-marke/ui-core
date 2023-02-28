@@ -16,9 +16,16 @@ function Generic(content, { type, id, label, placeholder, dataset, required }) {
     return str;
   }
 
+  function getPlaceHolder() {
+    if (!placeholder) {
+      return '';
+    }
+    return `placeholder="${placeholder}"`;
+  }
+
   return `
     <label for="${id}" class="form-label">${label}</label>
-    <input type="${type}" class="form-control" id="${id}" placeholder="${placeholder}" ${getDataset()}
+    <input type="${type}" class="form-control" id="${id}" ${getPlaceHolder()} ${getDataset()}
     ${required ? 'required' : ''}>
   `;
 }
