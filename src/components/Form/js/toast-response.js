@@ -9,6 +9,7 @@ export default class ToastResponse {
     const node = document.createElement('div');
     node.classList.add('toast-container', 'position-fixed', 'bottom-0', 'start-0');
     document.body.appendChild(node);
+    return node;
   }
 
   showToast({ text, theme }) {
