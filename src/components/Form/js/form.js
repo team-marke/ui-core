@@ -13,6 +13,7 @@ export default class Form {
     this.errorMsg = form.dataset.messageError || 'Houve um erro ao enviar o formulário, tente novamente mais tarde!';
     this.redirect = form.dataset.redirect;
     this.btnSpinner = new BtnSpinner(form.querySelector('button[type=submit]'));
+    this.toastResponse = new ToastResponse();
     this.listenFormEvents();
   }
 
@@ -45,18 +46,18 @@ export default class Form {
         body: body,
       });
       if (res.status == 201) {
-        ToastResponse.showToast({
+        this.toastResponse.showToast({
           text: this.successMsg,
           theme: 'success',
         });
       } else {
-        ToastResponse.showToast({
+        this.toastResponse.showToast({
           text: this.errorMsg,
           theme: 'danger',
         });
       }
     } catch (error) {
-      ToastResponse.showToast({
+      this.toastResponse.showToast({
         text: this.errorMsg,
         theme: 'danger',
       });
