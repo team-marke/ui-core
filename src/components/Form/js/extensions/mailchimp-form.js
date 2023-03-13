@@ -36,7 +36,6 @@ export default class MailchimpForm extends Form {
         email: this.fields.find((field) => field.dataset.mailchimpField == 'email').value,
         fields: this.getFormFields(),
       });
-      console.log(body);
       const res = await fetch(url, {
         method: 'POST',
         headers: {
