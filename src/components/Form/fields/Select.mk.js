@@ -1,4 +1,4 @@
-function Select(content, { label, options, id, required }) {
+function Select(content, { label, options, id, required, dataset }) {
   function getOptions() {
     let str = '';
     for (const option of options) {
