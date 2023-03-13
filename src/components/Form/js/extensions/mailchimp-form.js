@@ -44,18 +44,18 @@ export default class MailchimpForm extends Form {
         body: body,
       });
       if (res.status == 201 || res.status == 200) {
-        ToastResponse.showToast({
+        this.toastResponse.showToast({
           text: this.successMsg,
           theme: 'success',
         });
       } else {
-        ToastResponse.showToast({
+        this.toastResponse.showToast({
           text: this.errorMsg,
           theme: 'danger',
         });
       }
     } catch (error) {
-      ToastResponse.showToast({
+      this.toastResponse.showToast({
         text: this.errorMsg,
         theme: 'danger',
       });
