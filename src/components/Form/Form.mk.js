@@ -52,9 +52,6 @@ function Form(content, { fields, gutter, integration, redirect, messages }) {
       return '';
     }
     let str = '';
-    for (const [key, value] of Object.entries(integration.options)) {
-      str += `data-${key}="${value}"`;
-    }
     return str;
   }
 

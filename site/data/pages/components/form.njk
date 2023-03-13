@@ -84,7 +84,7 @@ props:
   ] %}
   {% Form { fields: fields, redirect: 'https://marke.com.br' } %}{% endForm %}
 </section>
-<section id="standard" class="py-4">
+<section id="hubspot" class="py-4">
   <h2>Exemplo - Hubspot</h2>
   {% set fields = [
     {
@@ -180,6 +180,57 @@ props:
       "form-id": 'd8b0af1e-eb01-42f5-95c1-06aae9526049',
       "portal-id": '8192914'
     }
+  } %}
+  {% Form { fields: fields, integration: integration } %}{% endForm %}
+</section>
+<section id="mailchimp" class="py-4">
+  <h2>Exemplo - Mailchimp</h2>
+  {% set fields = [
+    {
+      type: 'text',
+      placeholder: 'Primeiro Nome',
+      id: 'firstname',
+      label: 'Primeiro Nome',
+      required: true,
+      col: 6,
+      dataset: {
+        "mailchimp-field": "NOME"
+      }
+    },
+    {
+      type: 'text',
+      placeholder: 'Último Nome',
+      id: 'lastname',
+      label: 'Último Nome',
+      required: true,
+      col: 6,
+      dataset: {
+        "mailchimp-field": "SOBRENOME"
+      }
+    },
+    {
+      type: 'email',
+      placeholder: 'Email',
+      id: 'email',
+      label: 'Email',
+      required: true,
+      col: 6,
+      dataset: {
+        "mailchimp-field": "email"
+      }
+    },
+    {
+      type: 'submit',
+      id: 'submit',
+      text: 'Submit',
+      theme: 'secondary',
+      size: 'lg',
+      classes: ['text-danger'],
+      col: 12
+    }
+  ] %}
+  {% set integration = {
+    type: 'mailchimp'
   } %}
   {% Form { fields: fields, integration: integration } %}{% endForm %}
 </section>
