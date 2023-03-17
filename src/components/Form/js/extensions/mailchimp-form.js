@@ -11,6 +11,14 @@ export default class MailchimpForm extends Form {
     this.apiKey = process.env.MAILCHIMP_API_KEY;
     this.serverPrefix = process.env.MAILCHIMP_SERVER_PREFIX;
     this.listId = process.env.MAILCHIMP_LIST_ID;
+    this.tags = getTags();
+  }
+
+  getTags() {
+    if(!this.form.dataset.tags){
+      return []
+    }
+    return this.form.dataset.tags.split(", ")
   }
 
   getFormFields() {
@@ -35,6 +43,7 @@ export default class MailchimpForm extends Form {
         listId: this.listId,
         email: this.fields.find((field) => field.dataset.mailchimpField == 'email').value,
         fields: this.getFormFields(),
+        tags: this.tags,
       });
       const res = await fetch(url, {
         method: 'POST',
