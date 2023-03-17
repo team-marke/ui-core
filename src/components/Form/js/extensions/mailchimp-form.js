@@ -11,7 +11,7 @@ export default class MailchimpForm extends Form {
     this.apiKey = process.env.MAILCHIMP_API_KEY;
     this.serverPrefix = process.env.MAILCHIMP_SERVER_PREFIX;
     this.listId = process.env.MAILCHIMP_LIST_ID;
-    this.tags = getTags();
+    this.tags = this.getTags();
   }
 
   getTags() {
