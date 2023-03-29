@@ -12,6 +12,13 @@ props:
   - name: position
     type: String
     desc: A posição do botão no canto inferior. Padrão é end.
+  - name: openModal
+    type: Boolean
+    desc: Define se o botão deve abrir um modal. Padrão é false.
+  - name: modalProps
+    type: Object
+    desc: >-
+      Define as props de um componente [modal](/components/modal/). Apenas utilize com openModal = true
 mock:
   href: '#'
 ---
@@ -26,5 +33,48 @@ mock:
 <section class="py-4">
   <h2>Exemplo</h2>
   {% WhatsappButton %}{{ mock.href }}{% endWhatsappButton %}
+</section>
+<section class="py-4">
+  <h2>Exemplo com formulário</h2>
+  {% WhatsappButton { openModal: true, modalProps: { title: 'Preencha o formulário abaixo que para entrar em contato.', classes: ['modal-dialog-centered'] } } %}
+    {% set fields = [
+      {
+        type: 'text',
+        placeholder: 'Primeiro Nome',
+        id: 'firstname',
+        label: 'Primeiro Nome',
+        col: 6
+      },
+      {
+        type: 'text',
+        placeholder: 'Último Nome',
+        id: 'lastname',
+        label: 'Último Nome',
+        col: 6
+      },
+      {
+        type: 'email',
+        placeholder: 'Email',
+        id: 'email',
+        label: 'Email',
+        col: 6
+      },
+      {
+        type: 'tel',
+        placeholder: 'Telefone',
+        id: 'phone',
+        label: 'Phone',
+        col: 6
+      },
+      {
+        type: 'submit',
+        id: 'submit',
+        text: 'Submit',
+        theme: 'primary',
+        col: 12
+      }
+    ] %}
+    {% Form { fields: fields, redirect: 'https://marke.com.br' } %}{% endForm %}
+  {% endWhatsappButton %}
 </section>
 {% include 'partials/props-table.njk' %}
