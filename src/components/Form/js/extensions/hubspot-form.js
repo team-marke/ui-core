@@ -47,25 +47,14 @@ export default class HubspotForm extends Form {
         body: body,
       });
       if (res.status == 201 || res.status == 200) {
-        this.toastResponse.showToast({
-          text: this.successMsg,
-          theme: 'success',
-        });
+        this.showFeedback(this.successMsg, 'success');
+        this.openNewTab();
       } else {
-        this.toastResponse.showToast({
-          text: this.errorMsg,
-          theme: 'danger',
-        });
+        this.showFeedback(this.errorMsg, 'danger');
       }
     } catch (error) {
-      this.toastResponse.showToast({
-        text: this.errorMsg,
-        theme: 'danger',
-      });
+      this.showFeedback(this.errorMsg, 'danger');
     }
     this.btnSpinner.stopSpin();
-    if (this.redirect) {
-      window.open(this.redirect, '_blank');
-    }
   }
 }

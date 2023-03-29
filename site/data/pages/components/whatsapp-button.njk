@@ -36,7 +36,7 @@ mock:
 </section>
 <section class="py-4">
   <h2>Exemplo com formulário</h2>
-  {% WhatsappButton { openModal: true, modalProps: { title: 'Preencha o formulário abaixo que para entrar em contato.', classes: ['modal-dialog-centered'] } } %}
+  {% WhatsappButton { openModal: true, modalProps: { id: 'whatsapp-form', title: 'Preencha o formulário abaixo que para entrar em contato.', classes: ['modal-dialog-centered'] } } %}
     {% set fields = [
       {
         type: 'text',

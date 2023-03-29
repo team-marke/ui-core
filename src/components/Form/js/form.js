@@ -29,6 +29,19 @@ export default class Form {
     return data;
   }
 
+  openNewTab() {
+    if (this.redirect) {
+      window.open(this.redirect, '_blank').focus();
+    }
+  }
+
+  showFeedback(message, theme) {
+    this.toastResponse.showToast({
+      text: message,
+      theme: theme,
+    });
+  }
+
   async submit() {
     this.btnSpinner.startSpin();
     try {
@@ -46,26 +59,15 @@ export default class Form {
         body: body,
       });
       if (res.status == 201) {
-        this.toastResponse.showToast({
-          text: this.successMsg,
-          theme: 'success',
-        });
+        this.showFeedback(this.successMsg, 'success');
+        this.openNewTab();
       } else {
-        this.toastResponse.showToast({
-          text: this.errorMsg,
-          theme: 'danger',
-        });
+        this.showFeedback(this.errorMsg, 'danger');
       }
     } catch (error) {
-      this.toastResponse.showToast({
-        text: this.errorMsg,
-        theme: 'danger',
-      });
+      this.showFeedback(this.errorMsg, 'danger');
     }
     this.btnSpinner.stopSpin();
-    if (this.redirect) {
-      window.open(this.redirect, '_blank');
-    }
   }
 
   listenFormEvents() {
@@ -73,6 +75,7 @@ export default class Form {
       event.preventDefault();
       event.stopPropagation();
       this.submit();
+      this.form.reset();
     });
   }
 }
