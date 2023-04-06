@@ -34,9 +34,9 @@ function Masthead(content, { image, imageMobile }) {
         height="${imageMobile.height}"
         src="${CloudinaryImgUrl(imageMobile.src, { ...defaultTransforms, width: imageMobile.width, height: imageMobile.height })}"
         srcset="
-          ${CloudinaryImgUrl(image.src, { ...defaultTransforms, width: 375, height: imageMobile.height })} 375w,
-          ${CloudinaryImgUrl(image.src, { ...defaultTransforms, width: 425, height: imageMobile.height })} 425w,
-          ${CloudinaryImgUrl(image.src, { ...defaultTransforms, width: 768, height: imageMobile.height })} 768w
+          ${CloudinaryImgUrl(imageMobile.src, { ...defaultTransforms, width: 375, height: imageMobile.height })} 375w,
+          ${CloudinaryImgUrl(imageMobile.src, { ...defaultTransforms, width: 425, height: imageMobile.height })} 425w,
+          ${CloudinaryImgUrl(imageMobile.src, { ...defaultTransforms, width: 768, height: imageMobile.height })} 768w
         "
       >
     `;
