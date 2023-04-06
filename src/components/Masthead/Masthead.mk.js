@@ -8,6 +8,10 @@ function Masthead(content, { image, imageMobile }) {
     crop: 'thumb',
   };
 
+  function getExactHeight(ogWidth, ogHeight, customWidth) {
+    return customWidth / (ogWidth / ogHeight)
+  }
+
   function getImage() {
     return `
       <img
@@ -34,9 +38,9 @@ function Masthead(content, { image, imageMobile }) {
         height="${imageMobile.height}"
         src="${CloudinaryImgUrl(imageMobile.src, { ...defaultTransforms, width: imageMobile.width, height: imageMobile.height })}"
         srcset="
-          ${CloudinaryImgUrl(imageMobile.src, { ...defaultTransforms, width: 375, height: imageMobile.height })} 375w,
-          ${CloudinaryImgUrl(imageMobile.src, { ...defaultTransforms, width: 425, height: imageMobile.height })} 425w,
-          ${CloudinaryImgUrl(imageMobile.src, { ...defaultTransforms, width: 768, height: imageMobile.height })} 768w
+          ${CloudinaryImgUrl(imageMobile.src, { ...defaultTransforms, width: 375, height: getExactHeight(imageMobile.width, imageMobile.height, 375) })} 375w,
+          ${CloudinaryImgUrl(imageMobile.src, { ...defaultTransforms, width: 425, height: getExactHeight(imageMobile.width, imageMobile.height, 425) })} 425w,
+          ${CloudinaryImgUrl(imageMobile.src, { ...defaultTransforms, width: 768, height: getExactHeight(imageMobile.width, imageMobile.height, 768) })} 768w
         "
       >
     `;
