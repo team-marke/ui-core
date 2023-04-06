@@ -9,7 +9,7 @@ function Masthead(content, { image, imageMobile }) {
   };
 
   function getExactHeight(ogWidth, ogHeight, customWidth) {
-    return customWidth / (ogWidth / ogHeight)
+    return Math.round(customWidth / (ogWidth / ogHeight));
   }
 
   function getImage() {
