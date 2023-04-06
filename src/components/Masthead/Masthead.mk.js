@@ -21,9 +21,9 @@ function Masthead(content, { image, imageMobile }) {
         height="${image.height}"
         src="${CloudinaryImgUrl(image.src, { ...defaultTransforms, width: image.width, height: image.height })}"
         srcset="
-          ${CloudinaryImgUrl(image.src, { ...defaultTransforms, width: 1440, height: image.height })} 1440w,
-          ${CloudinaryImgUrl(image.src, { ...defaultTransforms, width: 1920, height: image.height })} 1920w,
-          ${CloudinaryImgUrl(image.src, { ...defaultTransforms, width: 2560, height: image.height })} 2560w
+          ${CloudinaryImgUrl(image.src, { ...defaultTransforms, width: 1440, height: getExactHeight(imageMobile.width, imageMobile.height, 1440) })} 1440w,
+          ${CloudinaryImgUrl(image.src, { ...defaultTransforms, width: 1920, height: getExactHeight(imageMobile.width, imageMobile.height, 1920) })} 1920w,
+          ${CloudinaryImgUrl(image.src, { ...defaultTransforms, width: 2560, height: getExactHeight(imageMobile.width, imageMobile.height, 2560) })} 2560w
         "
       >
     `;
