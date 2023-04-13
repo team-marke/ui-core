@@ -8,6 +8,7 @@ import ToastResponse from '../toast-response';
 export default class MailchimpForm extends Form {
   constructor(form) {
     super(form);
+    this.subscribedMsg = form.dataset.messageSubscribed || 'Usuário já inscrito!';
     this.apiKey = process.env.MAILCHIMP_API_KEY;
     this.serverPrefix = process.env.MAILCHIMP_SERVER_PREFIX;
     this.listId = process.env.MAILCHIMP_LIST_ID;
@@ -55,6 +56,14 @@ export default class MailchimpForm extends Form {
       if (res.status == 201 || res.status == 200) {
         this.showFeedback(this.successMsg, 'success');
         this.openNewTab();
+      } else if (res.status == 500) {
+        const data = await res.json();
+        const userStatus = data.msg.response.req.data.status;
+        if (userStatus == 'subscribed') {
+          this.showFeedback(this.subscribedMsg, 'success');
+        } else {
+          this.showFeedback(this.errorMsg, 'danger');
+        }
       } else {
         this.showFeedback(this.errorMsg, 'danger');
       }
