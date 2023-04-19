@@ -5,7 +5,7 @@ const Select = require('./fields/Select.mk');
 const Submit = require('./fields/Submit.mk');
 const Textarea = require('./fields/Textarea.mk');
 
-function Form(content, { fields, gutter, integration, redirect, messages }) {
+function Form(content, { fields, gutter, integration, redirect, messages, id }) {
   function getFields() {
     if (!Array.isArray(fields)) {
       return '';
@@ -63,23 +63,33 @@ function Form(content, { fields, gutter, integration, redirect, messages }) {
 
   function getRedirect() {
     if (!redirect) {
-      return ''
+      return '';
     }
-    return `data-redirect="${redirect}"`
+    return `data-redirect="${redirect}"`;
   }
 
   function getMessages() {
     if (!messages) {
-      return ''
+      return '';
     }
     return `
       data-message-success="${messages.success}"
       data-message-error="${messages.error}"
-    `
+    `;
+  }
+
+  function getId() {
+    if (!id) {
+      return '';
+    }
+    return `
+      id="${id}"
+    `;
   }
 
   return `
     <form class="form"
+      ${getId()}
       ${getIntegrationType()}
       ${getIntegrationOptions()}
       ${getRedirect()}

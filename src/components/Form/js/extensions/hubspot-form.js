@@ -1,5 +1,4 @@
 import Form from '../form';
-import ToastResponse from '../toast-response';
 
 /**
  * Default component for sending leads to HubSpot CRM
@@ -48,7 +47,7 @@ export default class HubspotForm extends Form {
       });
       if (res.status == 201 || res.status == 200) {
         this.showFeedback(this.successMsg, 'success');
-        this.openNewTab();
+        this.redirectURL();
       } else {
         this.showFeedback(this.errorMsg, 'danger');
       }

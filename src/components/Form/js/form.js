@@ -29,9 +29,9 @@ export default class Form {
     return data;
   }
 
-  openNewTab() {
+  redirectURL() {
     if (this.redirect) {
-      window.open(this.redirect, '_blank').focus();
+      window.location.href = this.redirect;
     }
   }
 
@@ -60,7 +60,7 @@ export default class Form {
       });
       if (res.status == 201) {
         this.showFeedback(this.successMsg, 'success');
-        this.openNewTab();
+        this.redirectURL();
       } else {
         this.showFeedback(this.errorMsg, 'danger');
       }

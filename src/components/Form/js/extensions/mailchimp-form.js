@@ -1,5 +1,4 @@
 import Form from '../form';
-import ToastResponse from '../toast-response';
 
 /**
  * Default component to subscribe users to a Mailchimp audience list
@@ -55,7 +54,7 @@ export default class MailchimpForm extends Form {
       });
       if (res.status == 201 || res.status == 200) {
         this.showFeedback(this.successMsg, 'success');
-        this.openNewTab();
+        this.redirectURL();
       } else if (res.status == 500) {
         const data = await res.json();
         const userStatus = data.msg.response.req.data.status;
