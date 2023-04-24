@@ -41,4 +41,17 @@ $image-filter: brightness(65%) !default;
       align-items: center;
     }
   }
+
+  &__overlay {
+    display: none;
+    @include media-breakpoint-up(lg) {
+      display: block;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background: var(--masthead-overlay-bg);
+    }
+  }
 }
