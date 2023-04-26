@@ -17,10 +17,12 @@ function Gallery(content, { images, columns, color, minSlides, spaceBetween }) {
       str += `
         <div class="swiper-slide gallery__slide" style="grid-column: span ${image.size}">
           <img
-            class="gallery__img"
             src="${CloudinaryImgUrl(image.src, image.transformations ? image.transformations : defaultTransforms)}"
+            class="gallery__img"
             alt="${image.alt}"
             loading="lazy"
+            width="560"
+            height="310"
           >
         </div>
       `;
@@ -49,6 +51,10 @@ function Gallery(content, { images, columns, color, minSlides, spaceBetween }) {
           <img
             src="${CloudinaryImgUrl(image.src, defaultTransforms)}"
             class="gallery-modal__img"
+            alt="${image.alt}"
+            loading="lazy"
+            width="1200"
+            height="780"
           >
         </div>
       `;

@@ -18,4 +18,8 @@ module.exports = function (eleventyConfig) {
   // Dynamically search and add all js filters
   const filters = glob.sync(path.resolve(__dirname, '../../filters/**/*.js'));
   filters.forEach((filter) => eleventyConfig.addFilter(path.basename(filter, '.js'), require(filter)));
+
+  // Dynamically search and add all js transforms
+  const transforms = glob.sync(path.resolve(__dirname, '../../transforms/**/*.js'));
+  transforms.forEach((transform) => eleventyConfig.addTransform(path.basename(transform, '.js'), require(transform)));
 };

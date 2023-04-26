@@ -1,6 +1,6 @@
 ---
 layout: wireframes.njk
-permalink: wireframes
+permalink: wireframes/
 eleventyNavigation:
   key: wireframes
   title: Wireframes
