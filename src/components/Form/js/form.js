@@ -47,6 +47,7 @@ export default class Form {
     try {
       const url = process.env.FORM_SUBMIT_URL;
       const body = JSON.stringify({
+        from: process.env.FORM_SUBMIT_FROM || false,
         to: process.env.FORM_SUBMIT_TO,
         subject: process.env.FORM_SUBMIT_SUBJECT,
         fields: this.getFormData(),
