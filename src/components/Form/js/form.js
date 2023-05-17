@@ -50,6 +50,7 @@ export default class Form {
         to: process.env.FORM_SUBMIT_TO,
         subject: process.env.FORM_SUBMIT_SUBJECT,
         fields: this.getFormData(),
+        sendGridAPIKey: process.env.SENDGRID_API_KEY || false
       });
       const res = await fetch(url, {
         method: 'POST',
