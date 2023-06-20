@@ -55,3 +55,9 @@ $image-filter: brightness(65%) !default;
     }
   }
 }
+
+.masthead--noimage {
+  .masthead__content {
+    position: relative;
+  }
+}

@@ -81,9 +81,9 @@ function Masthead(content, { image, imageMobile, overlay }) {
   }
 
   return `
-    <div class="masthead">
-    ${getImage()}
-    ${getImageMobile()}
+    <div class="masthead  ${image ? '' : 'masthead--noimage'}">
+    ${image ? getImage() : ''}
+    ${imageMobile ? getImageMobile() : ''}
     ${getOverlay()}
     <div class="masthead__content">
     ${content}
