@@ -2,20 +2,30 @@
 eleventyNavigation:
   key: socialbar
   title: Socialbar
+  order: 19
 metadata:
   title: Socialbar
-  description: Use cards para criar componentes que necessitam ser contidos em um único lugar, podendo inserir links, imagens e descrições.
+  description: Use o Socialbar para listar todos os links de redes sociais ou pontos de contato.
 props:
-  - name: foo
-    type: bar
-    desc: lorem
+  - name: items
+    type: Array
+    desc: Array de itens com icon e href.
+  - name: theme
+    type: String
+    desc: Tema do Socialbar.
+  - name: fontSize
+    type: Number
+    desc: Tamanho da fonte do ícones.
+  - name: classes
+    type: Array
+    desc: Array de classes opcionais.
 mock:
   items:
     - icon: fa-brands fa-whatsapp
       href: '#'
-    - icon: fa-brands fa-whatsapp
+    - icon: fa-brands fa-facebook
       href: '#'
-    - icon: fa-brands fa-whatsapp
+    - icon: fa-brands fa-instagram
       href: '#'
 ---
 

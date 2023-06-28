@@ -1,5 +1,6 @@
 require('dotenv').config();
 const site = require('./site.json');
+const package = require('../../../package.json');
 
 module.exports = {
   random() {
@@ -8,6 +9,7 @@ module.exports = {
     };
     return `${segment()}-${segment()}-${segment()}`;
   },
+  site_version: package.version,
   now: Date.now(),
   environment: process.env.ELEVENTY_ENV,
   site_absolute_url:

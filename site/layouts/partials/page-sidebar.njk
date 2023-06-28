@@ -1,5 +1,5 @@
 <aside class="h-100">
-  <a href="{{ global.site_absolute_url | url }}" class="d-block mb-5">
+  <a href="{{ global.site_absolute_url | url }}" class="d-block">
     <img
       src="{% CloudinaryImgUrl site.logo, { fetch_format: 'auto', quality: 'auto:best', width: 120, height: 28, dpr: 2, crop: 'pad' } %}"
       width="120"
@@ -7,8 +7,9 @@
       alt="{{ site.name | e | safe }}"
     >
   </a>
+  <div class="mb-5">v{{ global.site_version }}</div>
   <nav class="mk-docs-sidebar">
-    <h5 class="mb-2">Wireframes <span class="badge bg-primary">Novo</span></h5>
+    <h5 class="mb-2">Wireframes</h5>
     <ul class="list-unstyled ps-2">
       <li>
         <a
@@ -16,7 +17,7 @@
           class="{% if "/wireframes" == page.url %}link-primary{% else %}link-dark{% endif %}"
           {% if "/wireframes" == page.url %}aria-current="true"{% endif %}
         >
-          O que é?
+          Templates
         </a>
       </li>
     </ul>

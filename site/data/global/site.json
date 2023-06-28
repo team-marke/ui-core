@@ -2,8 +2,6 @@
   "name": "Marke UI",
   "protocol": "https",
   "domain": "ui.marke.com.br",
-  "version": "{{ pkg.version }}",
-  "author": "{{ pkg.author }}",
   "locale": "pt-BR",
   "logo": "https://res.cloudinary.com/webmaster-marke/image/upload/v1674237014/logoMarkeUI.svg",
   "favicon": "https://res.cloudinary.com/webmaster-marke/image/upload/v1621454510/favicon-marke-180x180_blycth.svg"
