@@ -10,12 +10,29 @@ props:
   - name: fields
     type: Array
     desc: Os campos.
+  - name: redirect
+    type: String
+    desc: URL de redirecionamento após sucesso no envio.
+  - name: integration
+    type: String
+    desc: URL de redirecionamento após sucesso no envio.
 ---
 
 <h1>{{ metadata.title | e | safe }}</h1>
 <p>{{ metadata.description | e | safe }}</p>
+
+<div class="alert alert-secondary" role="alert">
+<p>O componente Form utiliza por padrão o <a href="https://github.com/team-marke/marke-forms">Marke Forms</a>, para assegurar o correto funcionamento do componente, é preciso configurar essas variáveis ambiente:</p>
+{% highlight "text" %}
+FORM_SUBMIT_URL=https://us-central1-marke-forms.cloudfunctions.net/v2/submit
+FORM_SUBMIT_TO=teste@teste.com
+FORM_SUBMIT_SUBJECT=Assunto do email
+SENDGRID_API_KEY=xxxxxxxxx
+{% endhighlight %}
+</div>
+
 <section id="standard" class="py-4">
-  <h2>Exemplo - Marke Forms</h2>
+  <h2>Exemplo</h2>
   {% set fields = [
     {
       type: 'text',
@@ -47,20 +64,20 @@ props:
     },
     {
       type: 'select',
-      id: 'select',
-      label: 'Select',
+      id: 'animal',
+      label: 'Animal',
       options: [
-        { text: 'ola', value: 'ola' },
-        { text: 'mundo', value: 'mundo' },
-        { text: 'fdfas', value: 'fsadfsd', selected: true }
+        { text: 'Selecione um animal', value: '', selected: true, disabled: true },
+        { text: 'Gato', value: 'cat' },
+        { text: 'Cachorro', value: 'dog' }
       ],
       col: 12
     },
     {
       type: 'checkbox',
       options: [
-        { text: 'ola', value: 'ola', id: 'id1' },
-        { text: 'mundo', value: 'mundo', id: 'id2' }
+        { text: 'Filmes', value: 'movies', id: 'moviesField' },
+        { text: 'Músicas', value: 'musics', id: 'musicsField' }
       ],
       col: 12
     },
@@ -76,17 +93,37 @@ props:
     {
       type: 'submit',
       id: 'submit',
-      text: 'Submit',
-      theme: 'secondary',
-      size: 'lg',
-      classes: ['text-danger'],
+      text: 'Enviar',
+      theme: 'primary',
       col: 12
     }
   ] %}
   {% Form { fields: fields, redirect: 'https://marke.com.br' } %}{% endForm %}
 </section>
-<section id="hubspot" class="py-4">
-  <h2>Exemplo - Hubspot</h2>
+
+<h2>Integrações</h2>
+
+<section id="integrations" class="py-4">
+<h3>Hubspot</h3>
+<div class="alert alert-secondary" role="alert">
+<p>Para integrar o formulário com o Hubspot, passe o seguinte objeto para o campo <span class="text-primary">integration</span> do componente.</p>
+{% highlight "javascript" %}
+{
+  type: "hubspot",
+  options: {
+    "form-id": "xxxxxx",
+    "portal-id": "xxxxxx"
+  }
+}
+{% endhighlight %}
+<p>Adicionalmente, configure a seguinte propriedade no dataset de cada campo.</p>
+{% highlight "javascript" %}
+{
+  "hubspot-field": "xxxxxx"
+}
+{% endhighlight %}
+</div>
+
   {% set fields = [
     {
       type: 'text',
@@ -108,17 +145,6 @@ props:
       col: 6,
       dataset: {
         "hubspot-field": "lastname"
-      }
-    },
-    {
-      type: 'text',
-      placeholder: 'Último Nome',
-      id: 'company',
-      label: 'Empresa',
-      required: true,
-      col: 6,
-      dataset: {
-        "hubspot-field": "company"
       }
     },
     {
@@ -144,48 +170,33 @@ props:
       }
     },
     {
-      type: 'text',
-      placeholder: 'Endereço',
-      id: 'address',
-      label: 'Endereço',
-      required: true,
-      col: 6,
-      dataset: {
-        "hubspot-field": "address"
-      }
-    },
-    {
-      type: 'textarea',
-      placeholder: 'Menssagem',
-      id: 'menssagem',
-      label: 'Menssagem',
-      required: true,
-      col: 12,
-      dataset: {
-        "hubspot-field": "menssagem"
-      }
-    },
-    {
       type: 'submit',
       id: 'submit',
-      text: 'Submit',
-      theme: 'secondary',
-      size: 'lg',
-      classes: ['text-danger'],
+      text: 'Enviar',
+      theme: 'primary',
       col: 12
     }
   ] %}
-  {% set integration = {
-    type: 'hubspot',
-    options: {
-      "form-id": 'd8b0af1e-eb01-42f5-95c1-06aae9526049',
-      "portal-id": '8192914'
-    }
-  } %}
-  {% Form { fields: fields, integration: integration} %}{% endForm %}
+  {% Form { fields: fields} %}{% endForm %}
 </section>
-<section id="mailchimp" class="py-4">
-  <h2>Exemplo - Mailchimp</h2>
+
+<section id="integrations" class="py-4">
+<h3>Mailchimp</h3>
+<div class="alert alert-secondary" role="alert">
+<p>Para integrar o formulário com o Mailchimp, passe o seguinte objeto para o campo <span class="text-primary">integration</span> do componente.</p>
+{% highlight "javascript" %}
+{
+  type: "mailchimp"
+}
+{% endhighlight %}
+<p>Adicionalmente, configure a seguinte propriedade no dataset de cada campo.</p>
+{% highlight "javascript" %}
+{
+  "mailchimp-field": "xxxxx"
+}
+{% endhighlight %}
+</div>
+
   {% set fields = [
     {
       type: 'text',
@@ -223,16 +234,11 @@ props:
     {
       type: 'submit',
       id: 'submit',
-      text: 'Submit',
-      theme: 'secondary',
-      size: 'lg',
-      classes: ['text-danger'],
+      text: 'Enviar',
+      theme: 'primary',
       col: 12
     }
   ] %}
-  {% set integration = {
-    type: 'mailchimp'
-  } %}
-  {% Form { fields: fields, integration: integration } %}{% endForm %}
+  {% Form { fields: fields} %}{% endForm %}
 </section>
 {% include 'partials/props-table.njk' %}
