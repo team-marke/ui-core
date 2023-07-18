@@ -25,20 +25,24 @@ function Masthead(content, { image, imageMobile, overlay }) {
         alt="${image.alt}"
         width="${image.width}"
         height="${image.height}"
-        src="${CloudinaryImgUrl(image.src, { ...defaultTransforms, width: image.width, height: image.height })}"
+        src="${CloudinaryImgUrl(image.src, {
+          ...(image.transformations ? image.transformations : defaultTransforms),
+          width: image.width,
+          height: image.height,
+        })}"
         srcset="
           ${CloudinaryImgUrl(image.src, {
-            ...defaultTransforms,
+            ...(image.transformations ? image.transformations : defaultTransforms),
             width: 1440,
             height: getExactHeight(image.width, image.height, 1440),
           })} 1440w,
           ${CloudinaryImgUrl(image.src, {
-            ...defaultTransforms,
+            ...(image.transformations ? image.transformations : defaultTransforms),
             width: 1920,
             height: getExactHeight(image.width, image.height, 1920),
           })} 1920w,
           ${CloudinaryImgUrl(image.src, {
-            ...defaultTransforms,
+            ...(image.transformations ? image.transformations : defaultTransforms),
             width: 2560,
             height: getExactHeight(image.width, image.height, 2560),
           })} 2560w
@@ -55,23 +59,23 @@ function Masthead(content, { image, imageMobile, overlay }) {
         width="${imageMobile.width}"
         height="${imageMobile.height}"
         src="${CloudinaryImgUrl(imageMobile.src, {
-          ...defaultTransforms,
+          ...(imageMobile.transformations ? imageMobile.transformations : defaultTransforms),
           width: imageMobile.width,
           height: imageMobile.height,
         })}"
         srcset="
           ${CloudinaryImgUrl(imageMobile.src, {
-            ...defaultTransforms,
+            ...(imageMobile.transformations ? imageMobile.transformations : defaultTransforms),
             width: 375,
             height: getExactHeight(imageMobile.width, imageMobile.height, 375),
           })} 375w,
           ${CloudinaryImgUrl(imageMobile.src, {
-            ...defaultTransforms,
+            ...(imageMobile.transformations ? imageMobile.transformations : defaultTransforms),
             width: 425,
             height: getExactHeight(imageMobile.width, imageMobile.height, 425),
           })} 425w,
           ${CloudinaryImgUrl(imageMobile.src, {
-            ...defaultTransforms,
+            ...(imageMobile.transformations ? imageMobile.transformations : defaultTransforms),
             width: 768,
             height: getExactHeight(imageMobile.width, imageMobile.height, 768),
           })} 768w
