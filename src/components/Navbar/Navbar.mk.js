@@ -1,8 +1,9 @@
 const CloudinaryImgUrl = require('../../core-components/CloudinaryImgUrl');
 const IdGenerator = require('../../helpers/idGenerator');
 
-function Navbar(content, { eleventyNavigation, currentPageUrl, expand, brandImg, brandImgMobile, dark, classes }) {
-  const id = IdGenerator();
+function Navbar(content, { eleventyNavigation, currentPageUrl, expand, brandImg, brandImgMobile, dark, classes, id }) {
+  const navbarId = id || IdGenerator();
+  const collapseId = IdGenerator();
 
   function getClasses() {
     if (!Array.isArray(classes)) {
@@ -134,12 +135,12 @@ function Navbar(content, { eleventyNavigation, currentPageUrl, expand, brandImg,
   }
 
   return `
-    <nav class="navbar navbar-expand-${expand ? expand : 'lg'} ${dark ? 'navbar-dark' : ''}">
+    <nav id="${navbarId}" class="navbar navbar-expand-${expand ? expand : 'lg'} ${dark ? 'navbar-dark' : ''}">
       ${getBrandImg()}
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#${id}" aria-controls="${id}">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#${collapseId}" aria-controls="${collapseId}">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="${id}">
+      <div class="collapse navbar-collapse" id="${collapseId}">
         ${getNav()}
       </div>
     </nav>

@@ -7,6 +7,7 @@ metadata:
   title: Navbar
   description: Use cards para criar componentes que necessitam ser contidos em um único lugar, podendo inserir links, imagens e descrições.
 mock:
+  id: site-navbar-example
   brandImg:
     src: https://res.cloudinary.com/webmaster-marke/image/upload/Marke_Marketing_Digital.svg
     alt: Lorem ipsum
@@ -80,6 +81,9 @@ props:
   - name: dark
     type: boolean
     desc: Opção escura do navbar
+  - name: id
+    type: string
+    desc: O atributo id do navbar
 ---
 
 <h1>{{ metadata.title | e | safe }}</h1>
@@ -87,7 +91,7 @@ props:
 <section class="py-4">
   <h4>Exemplo</h4>
   <div class="p-3">
-    {% Navbar { eleventyNavigation: mock.eleventyNavigation, currentPageUrl: page.url, brandImg: mock.brandImg, brandImgMobile: mock.brandImg } %}
+    {% Navbar { id: mock.id, eleventyNavigation: mock.eleventyNavigation, currentPageUrl: page.url, brandImg: mock.brandImg, brandImgMobile: mock.brandImg } %}
       {% Button { href: '#', theme: 'secondary' } %}Lorem{% endButton %}
     {% endNavbar %}
   </div>
