@@ -20,6 +20,8 @@ function WhatsappButton(content, { position = 'end', openModal = false, modalPro
     <a
       href="${content}"
       class="whatsapp-button ${position}-0"
+      target="_blank"
+      rel="noopener"
     >
       ${base64Img}
     </a>
