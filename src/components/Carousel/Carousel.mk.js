@@ -28,7 +28,7 @@ function Carousel(content, { slides, minSlides, maxSlides, spaceBetween, color }
       id="${id}"
       data-min-slides-per-view="${minSlides}"
       data-max-slides-per-view="${maxSlides}"
-      data-space-between="${spaceBetween}"
+      ${spaceBetween ? "data-space-between='" + spaceBetween + "'" : ''}
       ${getColor()}
     >
       <div class="swiper-container carousel__container">
