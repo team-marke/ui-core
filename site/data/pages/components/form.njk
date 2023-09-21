@@ -103,7 +103,7 @@ SENDGRID_API_KEY=xxxxxxxxx
 
 <h2>Integrações</h2>
 
-<section id="integrations" class="py-4">
+<section id="integrations-hubspot" class="py-4">
 <h3>Hubspot</h3>
 <div class="alert alert-secondary" role="alert">
 <p>Para integrar o formulário com o Hubspot, passe o seguinte objeto para o campo <span class="text-primary">integration</span> do componente.</p>
@@ -180,7 +180,7 @@ SENDGRID_API_KEY=xxxxxxxxx
   {% Form { fields: fields} %}{% endForm %}
 </section>
 
-<section id="integrations" class="py-4">
+<section id="integrations-mailchimp" class="py-4">
 <h3>Mailchimp</h3>
 <div class="alert alert-secondary" role="alert">
 <p>Para integrar o formulário com o Mailchimp, passe o seguinte objeto para o campo <span class="text-primary">integration</span> do componente.</p>
@@ -240,5 +240,76 @@ SENDGRID_API_KEY=xxxxxxxxx
     }
   ] %}
   {% Form { fields: fields} %}{% endForm %}
+</section>
+
+<section id="integrations-gsheets" class="py-4">
+<h3>Google Sheets</h3>
+<div class="alert alert-secondary" role="alert">
+<p>Para integrar o formulário com o Google Sheets, passe o seguinte objeto para o campo <span class="text-primary">integration</span> do componente.</p>
+{% highlight "javascript" %}
+{
+  type: "gsheets",
+  options: {
+    "fileId": "xxxxxx"
+  }
+}
+{% endhighlight %}
+<p>Adicionalmente, configure a seguinte propriedade no dataset de cada campo.</p>
+{% highlight "javascript" %}
+{
+  "gsheet-field": "xxxxx"
+}
+{% endhighlight %}
+</div>
+
+  {% set fields = [
+    {
+      type: 'text',
+      placeholder: 'Primeiro Nome',
+      id: 'firstname',
+      label: 'Primeiro Nome',
+      required: true,
+      col: 6,
+      dataset: {
+        "gsheet-field": "firstname"
+      }
+    },
+    {
+      type: 'text',
+      placeholder: 'Último Nome',
+      id: 'lastname',
+      label: 'Último Nome',
+      required: true,
+      col: 6,
+      dataset: {
+        "gsheet-field": "lastname"
+      }
+    },
+    {
+      type: 'email',
+      placeholder: 'Email',
+      id: 'email',
+      label: 'Email',
+      required: true,
+      col: 6,
+      dataset: {
+        "gsheet-field": "email"
+      }
+    },
+    {
+      type: 'submit',
+      id: 'submit',
+      text: 'Enviar',
+      theme: 'primary',
+      col: 12
+    }
+  ] %}
+  {% set integration = {
+    type: "gsheets",
+    options: {
+      "fileId": "xxxxxx"
+    }
+  } %}
+  {% Form { fields: fields } %}{% endForm %}
 </section>
 {% include 'partials/props-table.njk' %}
