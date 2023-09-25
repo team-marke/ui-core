@@ -265,24 +265,13 @@ SENDGRID_API_KEY=xxxxxxxxx
   {% set fields = [
     {
       type: 'text',
-      placeholder: 'Primeiro Nome',
+      placeholder: 'Nome',
       id: 'firstname',
-      label: 'Primeiro Nome',
+      label: 'Nome',
       required: true,
       col: 6,
       dataset: {
         "gsheet-field": "firstname"
-      }
-    },
-    {
-      type: 'text',
-      placeholder: 'Último Nome',
-      id: 'lastname',
-      label: 'Último Nome',
-      required: true,
-      col: 6,
-      dataset: {
-        "gsheet-field": "lastname"
       }
     },
     {
@@ -310,6 +299,6 @@ SENDGRID_API_KEY=xxxxxxxxx
       "fileId": "xxxxxx"
     }
   } %}
-  {% Form { fields: fields } %}{% endForm %}
+  {% Form { fields: fields, integration: integration } %}{% endForm %}
 </section>
 {% include 'partials/props-table.njk' %}
