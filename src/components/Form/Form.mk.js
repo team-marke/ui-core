@@ -4,6 +4,8 @@ const Radio = require('./fields/Radio.mk');
 const Select = require('./fields/Select.mk');
 const Submit = require('./fields/Submit.mk');
 const Textarea = require('./fields/Textarea.mk');
+const SelectLocationState = require('./fields/location/State.mk');
+const SelectLocationCity = require('./fields/location/City.mk');
 
 function Form(content, { fields, gutter, integration, redirect, messages, id }) {
   function getFields() {
@@ -33,6 +35,10 @@ function Form(content, { fields, gutter, integration, redirect, messages, id }) 
         return Submit(field.text, { ...field });
       case 'textarea':
         return Textarea(field.text, { ...field });
+      case 'select-location-state':
+        return SelectLocationState(false, { ...field });
+      case 'select-location-city':
+        return SelectLocationCity(false, { ...field });
       default:
         return Generic(false, { ...field });
     }

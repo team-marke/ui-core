@@ -1,5 +1,6 @@
 import BtnSpinner from './btn-spinner';
 import ToastResponse from './toast-response';
+import LocationFields from './custom-fields/location-fields';
 
 /**
  * Default component for sending emails with Marke Forms V2
@@ -14,6 +15,7 @@ export default class Form {
     this.redirect = form.dataset.redirect;
     this.btnSpinner = new BtnSpinner(form.querySelector('button[type=submit]'));
     this.toastResponse = new ToastResponse();
+    this.initLocationFields();
     this.listenFormEvents();
   }
 
@@ -51,7 +53,7 @@ export default class Form {
         to: process.env.FORM_SUBMIT_TO,
         subject: process.env.FORM_SUBMIT_SUBJECT,
         fields: this.getFormData(),
-        sendGridAPIKey: process.env.SENDGRID_API_KEY || false
+        sendGridAPIKey: process.env.SENDGRID_API_KEY || false,
       });
       const res = await fetch(url, {
         method: 'POST',
@@ -70,6 +72,27 @@ export default class Form {
       this.showFeedback(this.errorMsg, 'danger');
     }
     this.btnSpinner.stopSpin();
+  }
+
+  initLocationFields() {
+    let stateField = false;
+    let cityField = false;
+
+    this.fields.forEach((field) => {
+      if (field.dataset.locationField == 'state') {
+        stateField = field;
+      }
+    });
+
+    this.fields.forEach((field) => {
+      if (field.dataset.locationField == 'city') {
+        cityField = field;
+      }
+    });
+
+    if (stateField) {
+      new LocationFields(stateField, cityField);
+    }
   }
 
   listenFormEvents() {
