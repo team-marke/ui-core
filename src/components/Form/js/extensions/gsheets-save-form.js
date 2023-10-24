@@ -20,6 +20,7 @@ export default class GsheetsSaveForm extends Form {
       if (!field.value) return;
       data[field.dataset.gsheetField] = field.value;
     });
+    data['Data'] = this.getDate();
     return data;
   }
 
