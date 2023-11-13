@@ -53,6 +53,7 @@ export default class MailchimpForm extends Form {
         body: body,
       });
       if (res.status == 201 || res.status == 200) {
+        this.dispatchSubmitEvent();
         this.showFeedback(this.successMsg, 'success');
         this.redirectURL();
       } else if (res.status == 500) {

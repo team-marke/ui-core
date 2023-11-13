@@ -15,8 +15,18 @@ export default class Form {
     this.redirect = form.dataset.redirect;
     this.btnSpinner = new BtnSpinner(form.querySelector('button[type=submit]'));
     this.toastResponse = new ToastResponse();
+    this.submitEvent = new CustomEvent('mkformsubmit', {
+      detail: {},
+      bubbles: true,
+      cancelable: true,
+      composed: false,
+    });
     this.initLocationFields();
     this.listenFormEvents();
+  }
+
+  dispatchSubmitEvent() {
+    this.form.dispatchEvent(this.submitEvent);
   }
 
   getFormData() {
@@ -63,6 +73,7 @@ export default class Form {
         body: body,
       });
       if (res.status == 201) {
+        this.dispatchSubmitEvent();
         this.showFeedback(this.successMsg, 'success');
         this.redirectURL();
       } else {
