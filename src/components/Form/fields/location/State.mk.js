@@ -1,4 +1,10 @@
-function SelectLocationState(content, { label, id, required, dataset }) {
+function SelectLocationState(content, { label, id, required, dataset, defaultValue }) {
+  function getDefaultValue() {
+    if (defaultValue) {
+      return `data-default-value="${defaultValue}"`
+    }
+  }
+
   function getDataset() {
     if (typeof dataset !== 'object') {
       return '';
@@ -12,7 +18,7 @@ function SelectLocationState(content, { label, id, required, dataset }) {
 
   return `
     <label for="${id}" class="form-label">${label}</label>
-    <select data-location="true" data-location-field="state" class="form-select" id="${id}"  ${required ? 'required' : ''} ${getDataset()}></select>
+    <select data-location="true" data-location-field="state" class="form-select" ${getDefaultValue()} id="${id}" ${required ? 'required' : ''} ${getDataset()}></select>
   `;
 }
 

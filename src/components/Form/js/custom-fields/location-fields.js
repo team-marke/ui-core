@@ -7,8 +7,8 @@ export default class LocationFields {
     this.stateField = stateField;
     this.placeholders = {
       state: 'Selecione um estado',
-      city: 'Selecione uma cidade'
-    }
+      city: 'Selecione uma cidade',
+    };
     this.initStateField();
     if (cityField) {
       this.cityField = cityField;
@@ -42,6 +42,18 @@ export default class LocationFields {
     }
 
     placeHolderOption.disabled = true;
+
+    if (this.stateField.dataset.defaultValue) {
+      for (const state of statesList) {
+        if (state.sigla == this.stateField.dataset.defaultValue) {
+          console.log(this.stateField.dataset.defaultValue);
+          this.stateField.value = state.sigla;
+          if (this.cityField) {
+            await this.updateCityField();
+          }
+        }
+      }
+    }
 
     if (this.cityField) {
       this.stateField.addEventListener('change', () => {
