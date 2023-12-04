@@ -1,4 +1,4 @@
-function Generic(content, { type, id, label, placeholder, dataset, required, value }) {
+function Generic(content, { type, id, label, placeholder, dataset, required }) {
   const supportedTypes = ['text', 'email', 'password', 'tel', 'url'];
 
   if (!supportedTypes.includes(type)) {
@@ -23,16 +23,9 @@ function Generic(content, { type, id, label, placeholder, dataset, required, val
     return `placeholder="${placeholder}"`;
   }
 
-  function getValue() {
-    if (!value) {
-      return '';
-    }
-    return `value="${value}"`;
-  }
-
   return `
     <label for="${id}" class="form-label">${label}</label>
-    <input type="${type}" class="form-control" id="${id}" ${getPlaceHolder()} ${getDataset()} ${getValue()}
+    <input type="${type}" class="form-control" id="${id}" ${getPlaceHolder()} ${getDataset()}
     ${required ? 'required' : ''}>
   `;
 }
