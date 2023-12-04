@@ -1,4 +1,4 @@
-function Hidden(content, { id, name, dataset, value }) {
+function Hidden(content, { id, dataset, value }) {
 
   function getDataset() {
     if (typeof dataset !== 'object') {
@@ -12,7 +12,7 @@ function Hidden(content, { id, name, dataset, value }) {
   }
 
   return `
-    <input type="hidden" id="${id}" name="${name}" ${getDataset()} value="${value}>
+    <input type="hidden" id="${id}" ${getDataset()} value="${value}">
   `;
 }
 
