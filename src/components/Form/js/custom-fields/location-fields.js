@@ -46,7 +46,6 @@ export default class LocationFields {
     if (this.stateField.dataset.defaultValue) {
       for (const state of statesList) {
         if (state.sigla == this.stateField.dataset.defaultValue) {
-          console.log(this.stateField.dataset.defaultValue);
           this.stateField.value = state.sigla;
           if (this.cityField) {
             await this.updateCityField();

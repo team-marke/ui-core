@@ -1,5 +1,6 @@
 import BtnSpinner from './btn-spinner';
 import ToastResponse from './toast-response';
+import TelField from './custom-fields/tel-field';
 import LocationFields from './custom-fields/location-fields';
 
 /**
@@ -21,6 +22,7 @@ export default class Form {
       cancelable: true,
       composed: false,
     });
+    this.initTelFields();
     this.initLocationFields();
     this.listenFormEvents();
   }
@@ -83,6 +85,14 @@ export default class Form {
       this.showFeedback(this.errorMsg, 'danger');
     }
     this.btnSpinner.stopSpin();
+  }
+
+  initTelFields() {
+    this.fields.forEach((field) => {
+      if (field.type == 'tel') {
+        new TelField(field);
+      }
+    });
   }
 
   initLocationFields() {
