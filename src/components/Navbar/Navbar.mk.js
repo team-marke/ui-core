@@ -137,7 +137,7 @@ function Navbar(content, { eleventyNavigation, currentPageUrl, expand, brandImg,
   return `
     <nav id="${navbarId}" class="navbar navbar-expand-${expand ? expand : 'lg'} ${dark ? 'navbar-dark' : ''}">
       ${getBrandImg()}
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#${collapseId}" aria-controls="${collapseId}">
+      <button class="navbar-toggler" type="button" aria-label="Menu principal" data-bs-toggle="collapse" data-bs-target="#${collapseId}" aria-controls="${collapseId}">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="${collapseId}">

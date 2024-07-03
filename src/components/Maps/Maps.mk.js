@@ -28,6 +28,7 @@ function Maps(content, { query, width, height, styles, zoom, id }) {
       height="${height}"
       loading="lazy"
       allowfullscreen
+      title="Mapa do Google Maps"
     >
     </iframe>
   `;

@@ -22,6 +22,7 @@ function Socialbar(content, { items, theme, fontSize, classes }) {
   function getItem(item) {
     return `
       <a
+        aria-label="${item.ariaLabel}"
         href="${item.href}"
         class="link-${theme} ${getFontSize()}"
         target="_blank"
