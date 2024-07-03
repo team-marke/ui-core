@@ -20,6 +20,7 @@ function Card(content, { img, header, footer, classes, overlay } = false) {
         alt="${img.alt}"
         width="${img.width}"
         height="${img.height}"
+        loading="${img.loading}"
       >
     `;
   }
