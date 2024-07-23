@@ -5,17 +5,25 @@
 export default class TelField {
   constructor(input) {
     this.input = input;
-    this.addEventListeners()
-  }
-
-  maskPhoneNumber() {
-    let phoneNumber = this.input.value.replace(/\D/g, '');
-    this.input.value = phoneNumber;
+    this.addEventListeners();
   }
 
   addEventListeners() {
     this.input.addEventListener('input', (e) => {
-      this.maskPhoneNumber()
-    })
+      let x = e.target.value.replace(/\D/g, '');
+      let formatted = '';
+
+      if (x.length > 0) {
+        formatted += '(' + x.substring(0, 2);
+      }
+      if (x.length >= 3) {
+        formatted += ') ' + x.substring(2, 7);
+      }
+      if (x.length >= 8) {
+        formatted += '-' + x.substring(7, 11);
+      }
+
+      e.target.value = formatted;
+    });
   }
 }
