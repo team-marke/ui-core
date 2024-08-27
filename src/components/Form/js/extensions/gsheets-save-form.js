@@ -38,14 +38,15 @@ export default class GsheetsSaveForm extends Form {
         body: body,
       });
       if (res.status == 201) {
-        this.dispatchSubmitEvent();
         this.showFeedback(this.successMsg, 'success');
-        this.redirectURL();
       } else {
         this.showFeedback(this.errorMsg, 'danger');
       }
+      this.dispatchSubmitEvent();
+      this.redirectURL();
     } catch (error) {
       this.showFeedback(this.errorMsg, 'danger');
+      this.redirectURL();
     }
     this.btnSpinner.stopSpin();
   }
