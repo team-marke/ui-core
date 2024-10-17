@@ -10,8 +10,14 @@ export default class GsheetsSaveForm extends Form {
     this.fileId = form.dataset.fileid;
   }
 
-  getDate() {
-    return new Date().toLocaleDateString();
+  getDateString() {
+    const now = new Date();
+    return `${now.getDate()}/${now.getMonth()}/${now.getFullYear()} ${now.getHours()}:${now.getMinutes()}`;
+  }
+
+  setStaticFields(data) {
+    data['Data'] = this.getDateString;
+    data['URL'] = window.location.href;
   }
 
   getFormData() {
@@ -20,7 +26,7 @@ export default class GsheetsSaveForm extends Form {
       if (!field.value) return;
       data[field.dataset.gsheetField] = field.value;
     });
-    data['Data'] = this.getDate();
+    this.setStaticFields(data);
     return data;
   }
 
