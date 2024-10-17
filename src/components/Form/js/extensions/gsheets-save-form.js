@@ -16,7 +16,7 @@ export default class GsheetsSaveForm extends Form {
   }
 
   setStaticFields(data) {
-    data['Data'] = this.getDateString;
+    data['Data'] = this.getDateString();
     data['URL'] = window.location.href;
   }
 
