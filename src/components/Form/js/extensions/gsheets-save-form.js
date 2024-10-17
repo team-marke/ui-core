@@ -12,7 +12,7 @@ export default class GsheetsSaveForm extends Form {
 
   getDateString() {
     const now = new Date();
-    return `${now.getDate()}/${now.getMonth()}/${now.getFullYear()} ${now.getHours()}:${now.getMinutes()}`;
+    return `${now.getDate()}/${now.getMonth() + 1}/${now.getFullYear()} ${now.getHours()}:${now.getMinutes()}`;
   }
 
   setStaticFields(data) {
