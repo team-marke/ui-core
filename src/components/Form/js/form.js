@@ -35,10 +35,17 @@ export default class Form {
     let data = [];
     this.fields.forEach((field) => {
       if (!field.value) return;
-      data.push({
-        label: field.labels[0]?.innerHTML,
-        value: field.value,
-      });
+      if (field.type == 'checkbox') {
+        data.push({
+          label: field.labels[0]?.innerHTML,
+          value: field.checked ? 'Sim' : 'Não',
+        });
+      } else {
+        data.push({
+          label: field.labels[0]?.innerHTML,
+          value: field.value,
+        });
+      }
     });
     return data;
   }
