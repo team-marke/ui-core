@@ -5,15 +5,13 @@ function Gallery(content, { images, columns, color, minSlides, spaceBetween }) {
   const id = IdGenerator();
 
   function getImages() {
-    const defaultTransforms = {
-      fetch_format: 'auto',
-      quality: 'auto',
-      width: 560,
-      height: 310,
-      crop: 'thumb',
-    };
     let str = '';
     for (const image of images) {
+      const defaultTransforms = {
+        fetch_format: 'auto',
+        quality: 'auto',
+        width: 800
+      };
       str += `
         <div class="swiper-slide gallery__slide" style="grid-column: span ${image.size}">
           <img
@@ -21,7 +19,7 @@ function Gallery(content, { images, columns, color, minSlides, spaceBetween }) {
             class="gallery__img"
             alt="${image.alt}"
             loading="lazy"
-            width="560"
+            width="${560 * image.size}"
             height="310"
           >
         </div>
